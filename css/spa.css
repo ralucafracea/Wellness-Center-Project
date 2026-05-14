@@ -7,6 +7,9 @@
     --font-serif: 'Cormorant Garamond', serif;
     --font-sans: 'Montserrat', sans-serif;
 }
+.desktop-nav {
+    display: none; /* Ascuns pe mobil */
+}
 
 * {
     margin: 0;
@@ -56,9 +59,9 @@ body {
 .hero {
     background-image: 
         linear-gradient(rgba(244, 239, 234, 0.15), rgba(244, 239, 234, 0.15)),
-        url('../assets/Spa-pagina-principala.png');
-    background-size: cover;
-    background-position:10% center;
+        url('../assets/spa-masaj.png');
+    background-size:180%;
+    background-position:40% center;
     height: 45vh;
     display: flex;
     align-items: flex-end;
@@ -93,6 +96,7 @@ body {
     font-size: 12px;
     letter-spacing: 1px;
     margin-bottom: 15px;
+    color: #F4EFEA
 }
 
 .section-title {
@@ -434,4 +438,275 @@ body {
     font-size: 10px;
     margin-top: 20px;
     opacity: 0.8;
+}
+
+/* 8.Desktop version*/
+
+@media (min-width: 992px) {
+    
+    /* hero */
+    .hero {
+        background-size: 110%; 
+        background-position: 90% 37%; 
+        height: 70vh; 
+        padding: 100px 80px;
+        display: flex;
+        justify-content: flex-end; 
+        align-items: flex-start; 
+    }
+
+    .hero-content {
+        max-width: 600px; 
+        text-align: right; 
+        text-shadow: 2px 2px 8px rgb(246, 231, 231);
+    }
+
+    .hero-title {
+        font-size: 56px; 
+        color:#631621;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+        color:#631621;
+    }
+
+    /* descriere */
+ .philosophy {
+        padding: 80px;
+        text-align: center;
+        background-color: #F4EFEA; 
+        color: var(--color-primary);
+    }
+
+    .section-title {
+        font-size: 42px;
+        max-width: 600px;
+        margin: 0 auto 30px auto;
+    }
+
+    .section-tag {
+        font-family: var(--font-sans);
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        color: var(--color-primary); 
+    }
+
+    .section-text p {
+        max-width: 700px;
+        margin: 0 auto 15px auto;
+        font-size: 16px;
+    }
+
+    /* tratamente si facilitati */
+   /* tratamente si facilitati (zona generală) */
+    .services {
+        padding: 80px;
+        background-color: #F4EFEA; /* Fundal deschis pentru facilități */
+        color: var(--color-primary);
+    }
+
+    .treatments-bg {
+        background-color: #EBE5D9; 
+    }
+
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    } 
+
+    /* ritualul tau */
+    .visit-steps {
+        padding: 80px;
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #F4EFEA; 
+        color: var(--color-primary);
+    }
+
+    .steps-list li {
+        font-size: 20px;
+    }
+
+    /* carusel */
+    .included-section {
+        display: flex; 
+        align-items: center;
+        padding-top: 0; 
+    }
+
+    .included-content {
+        flex: 1; /* Ocupă jumătate */
+        padding: 80px;
+        text-align: left;
+    }
+
+    .included-list {
+        margin: 30px 0 0 0;
+        font-size: 16px;
+    }
+
+    #spaCarousel {
+    flex: 1.5; 
+}
+
+    .carousel-item img {
+        height: 500px; 
+        width: 100%;
+        object-fit: cover; 
+        object-position: center; 
+    }
+
+    /* --- FOOTER --- */
+    .main-footer {
+        padding: 0 80px 30px 80px;
+    }
+
+    .footer-content {
+        flex-direction: row; 
+        flex-wrap: wrap; 
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-brand-col {
+        max-width: 350px;
+        text-align: left;
+    }
+
+    .footer-brand {
+        text-align: left;
+        margin-bottom: 15px; 
+    }
+
+    .footer-desc {
+        max-width: 100%; 
+    }
+
+    .footer-copy {
+        width: 100%;
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(244, 239, 234, 0.2);
+    }
+}
+
+/* --- Stiluri pentru meniul de mobil (Full Screen) --- */
+.mobile-nav {
+    display: none; /* Ascuns implicit */
+    position: fixed; /* Oprește ecranul din derulare și se suprapune */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* 100% din înălțimea ecranului */
+    background-color: var(--color-bg); /* Pagina crem */
+    z-index: 2000; /* Pus peste header care are 1000 */
+    flex-direction: column;
+    justify-content: center; /* Centrează linkurile pe verticală */
+    align-items: center; /* Centrează linkurile pe orizontală */
+}
+
+/* Când este activ, folosim flex ca să centrăm conținutul */
+.mobile-nav.active {
+    display: flex; 
+}
+
+/* Butonul de închidere (X) sus în dreapta */
+.close-menu {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: transparent;
+    border: none;
+    font-size: 50px; /* Un X mare și ușor de apăsat pe telefon */
+    color: var(--color-primary); /* Culoarea vișinie */
+    cursor: pointer;
+    line-height: 1;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+/* Aspectul link-urilor din interior */
+.mobile-nav a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-family: var(--font-serif); /* Titluri cu fontul elegant */
+    font-size: 36px; /* Text mare */
+    display: block;
+    padding: 20px 0;
+}
+
+@media (min-width: 992px) {
+    
+    /* Ascundem butonul hamburger pe laptop */
+    .hamburger-menu {
+        display: flex;
+    }
+
+    /* Afișăm meniul de desktop */
+    .desktop-nav {
+        display: block;
+    }
+
+    .desktop-nav ul {
+        list-style: none;
+        display: flex; /* Le punem pe orizontală */
+        align-items: center;
+        gap: 30px; /* Spațiu între link-uri */
+        margin: 0;
+    }
+
+    .desktop-nav a {
+        text-decoration: none;
+        color: var(--color-bg); /* Text crem pe fundal vișiniu */
+        font-family: var(--font-sans);
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: opacity 0.3s;
+    }
+
+    .desktop-nav a:hover {
+        opacity: 0.7;
+    }
+
+    /* Stil pentru butonul de rezervă din meniu (opțional) */
+    .btn-reserve {
+        border: 1px solid var(--color-bg);
+        padding: 8px 20px;
+        border-radius: 4px;
+    }
+
+    /* Ne asigurăm că meniul de mobil nu se poate activa pe desktop accidental */
+    .mobile-nav.active {
+        display: none !important;
+    }
 }
