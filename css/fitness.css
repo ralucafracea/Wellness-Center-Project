@@ -1,0 +1,392 @@
+
+:root {
+    --visiniu: #631621;
+    --crem: #F4EFEA;
+    --font-titlu: 'Cormorant Garamond', serif;
+    --font-corp: 'Montserrat', sans-serif;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden; 
+    background-color: var(--crem);
+    font-family: var(--font-corp);
+    color: #333;
+    padding-top: 70px; 
+}
+
+
+.main-header {
+    background-color: var(--visiniu);
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+}
+
+.hamburger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger span {
+    display: block;
+    width: 28px;
+    height: 2px;
+    background-color: white;
+    transition: 0.3s;
+}
+
+
+.hero {
+    height: 80vh;
+    background: url('../assets/Gemini_Generated_Image_u25nbsu25nbsu25n.png') center/cover no-repeat;
+    position: relative;
+    width: 100%;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(244, 239, 234, 0.4), rgba(244, 239, 234, 0.6));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-family: var(--font-titlu);
+    font-size: clamp(2.5rem, 8vw, 3.5rem); 
+    color: var(--visiniu);
+    font-weight: 300;
+}
+
+.btn-book {
+    background: black;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+
+.intro-text {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.intro-text h2 {
+    font-family: var(--font-titlu);
+    color: var(--visiniu);
+    margin-bottom: 15px;
+}
+
+
+.services {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+}
+
+.service-card {
+    background: #fdfaf7;
+    padding: 35px 25px;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    width: 100%;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.service-card h3 {
+    font-family: var(--font-corp);
+    color: var(--visiniu);
+    font-size: 1.2rem;
+    font-weight: 400;
+    max-width: 70%;
+}
+
+.price {
+    color: var(--visiniu);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.duration {
+    font-size: 0.75rem;
+    color: var(--visiniu);
+    opacity: 0.8;
+    margin-bottom: 25px;
+}
+
+.description {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+}
+
+/* 6. DOTĂRI */
+.dotari {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.label-dotari {
+    display: block;
+    color: var(--visiniu);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.dotari h2 {
+    font-family: var(--font-titlu);
+    color: var(--visiniu);
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+}
+
+.dotari-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px; 
+    margin: 0 auto;
+}
+
+.dotari-card {
+    background-color: var(--visiniu);
+    color: white;
+    padding: 40px 30px;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.card-icon {
+    width: 50px;
+    margin-bottom: 25px;
+}
+
+
+.trainers {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.trainers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.trainer-card {
+    background-color: #fdfaf7;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.trainer-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.trainer-info {
+    padding: 30px 25px;
+}
+
+
+.abonamente {
+    background-color: var(--visiniu);
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+}
+
+.abonament-placeholder {
+    width: 100%;
+    max-width: 280px;
+    height: 350px;
+    background-color: #fdfaf7;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+
+.slider-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider-container {
+    display: flex;
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+.slide {
+    min-width: 100%;
+    height: 450px; 
+    object-fit: cover;
+}
+
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10;
+}
+
+.arrow img {
+    width: 20px; 
+    opacity: 0.6;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+
+.final-footer {
+    background-color: var(--visiniu);
+    color: white;
+    padding: 60px 40px 30px;
+    text-align: left;
+}
+
+.footer-title {
+    font-family: var(--font-titlu); /* Cormorant Garamond */
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    font-weight: 300;
+}
+
+.footer-description {
+    font-family: var(--font-corp);
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    max-width: 320px;
+}
+
+.footer-section h4 {
+    font-family: var(--font-corp);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links li a {
+    color: white;
+    text-decoration: none;
+    font-family: var(--font-corp);
+    font-size: 1rem;
+    opacity: 0.9;
+    border-bottom: 1px solid transparent;
+}
+
+.footer-links li a:hover {
+    border-bottom: 1px solid white;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icons img {
+    width: 45px; 
+    height: 45px;
+}
+
+.copyright {
+    margin-top: 60px;
+    font-family: var(--font-corp);
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+
+@media (min-width: 768px) {
+    .dotari-container, .trainers-container {
+        flex-direction: row;
+        max-width: 1200px;
+    }
+    .dotari-card, .trainer-card {
+        flex: 1;
+    }
+    .footer-grid {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
