@@ -1,8 +1,8 @@
 /* Definire variabile */
 :root {
-    --color-primary: #631621; /* Vișiniul folosit peste tot (brand color) */
-    --color-bg: #F4EFEA; /* Bejul luminos din fundal */
-    --color-bg-alt: #E6DDD3; /* Bejul ușor mai închis pentru contrast la secțiuni */
+    --color-primary: #631621; 
+    --color-bg: #F4EFEA; 
+    --color-bg-alt: #EBE5D9; 
     
     --font-serif: 'Cormorant Garamond', serif;
     --font-sans: 'Montserrat', sans-serif;
@@ -93,7 +93,7 @@ body {
     font-size: 12px;
     letter-spacing: 1px;
     margin-bottom: 15px;
-    color: #F4EFEA
+    color: var(--color-primary);
 }
 
 .section-title {
@@ -125,6 +125,7 @@ body {
 .services-header {
     text-align: center;
     margin-bottom: 30px;
+    
 }
 
 .center-text {
@@ -448,7 +449,8 @@ body {
     background-color: var(--color-bg); 
     z-index: 2000; 
     flex-direction: column;
-    justify-content: center; 
+    justify-content: flex-start; 
+    padding-top: 120px;
     align-items: center; 
 }
 
@@ -480,9 +482,9 @@ body {
     color: var(--color-primary);
     text-decoration: none;
     font-family: var(--font-serif); 
-    font-size: 36px; 
+    font-size: 20px; 
     display: block;
-    padding: 20px 0;
+    padding: 15px 0;
 }
 /* 8.Desktop version*/
 
