@@ -4,27 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitness - Tirra Wellness</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/fitness.css">
 </head>
 <body>
 
-    
+    <div class="menu-overlay" id="menuOverlay">
+        <button class="close-btn" id="closeMenuBtn">&times;</button>
+        <nav class="overlay-nav">
+            <a href="../index.html">ACASĂ</a>
+            <a href="spa.html">SPA & WELLNESS</a>
+            <a href="sala.html">FITNESS</a>
+            <a href="#">REZERVĂRI</a>
+            <a href="#">CONTACT</a>
+            <a href="#">CONECTEAZĂ-TE</a>
+        </nav>
+    </div>
+
     <header class="main-header">
-    <div class="logo">
-        
-        <img src="../assets/tirra-logo.png" alt="Tirra Wellness Logo">
-    </div>
-    <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span> 
-    </div>
-</header>
+        <div class="logo">
+            <img src="../assets/tirra-logo.png" alt="Tirra Wellness Logo" id="logo-img">
+        </div>
+        <button class="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
 
     <main>
-        
         <section class="hero">
             <div class="hero-overlay">
                 <div class="hero-content">
@@ -35,220 +43,193 @@
             </div>
         </section>
 
-        
         <section class="intro-text">
             <h2>PROGRAME</h2>
             <p>O experiență de antrenament transformatoare, unde aparatura de ultimă generație întâlnește expertiza profesională într-un cadru rafinat.</p>
         </section>
 
-        
         <section class="services">
-    
-    <div class="service-card">
-        <div class="card-header">
-            <h3>Personal Training 1-on-1</h3>
-            <span class="price">180 RON</span>
-        </div>
-        <p class="duration">60 MIN</p>
-        <p class="description">Antrenament construit pe obiectivele tale, cu un coach dedicat.</p>
-    </div>
+            <div class="service-card">
+                <div class="card-header">
+                    <h3>Personal Training 1-on-1</h3>
+                    <span class="price">180 RON</span>
+                </div>
+                <p class="duration">60 MIN</p>
+                <p class="description">Antrenament construit pe obiectivele tale, cu un coach dedicat.</p>
+            </div>
 
-    
-    <div class="service-card">
-        <div class="card-header">
-            <h3>Small Group Training</h3>
-            <span class="price">90 RON</span>
-        </div>
-        <p class="duration">60 MIN</p>
-        <p class="description">Maxim 4 persoane. Intensitate înaltă, atenție personalizată.</p>
-    </div>
+            <div class="service-card">
+                <div class="card-header">
+                    <h3>Small Group Training</h3>
+                    <span class="price">90 RON</span>
+                </div>
+                <p class="duration">60 MIN</p>
+                <p class="description">Maxim 4 persoane. Intensitate înaltă, atenție personalizată.</p>
+            </div>
 
-    
-    <div class="service-card">
-        <div class="card-header">
-            <h3>Strength & Conditioning</h3>
-            <span class="price">120 RON</span>
-        </div>
-        <p class="duration">75 MIN</p>
-        <p class="description">Forță, mobilitate și putere — bazat pe principii științifice.</p>
-    </div>
+            <div class="service-card">
+                <div class="card-header">
+                    <h3>Strength & Conditioning</h3>
+                    <span class="price">120 RON</span>
+                </div>
+                <p class="duration">75 MIN</p>
+                <p class="description">Forță, mobilitate și putere — bazat pe principii științifice.</p>
+            </div>
 
-   
+            <div class="service-card">
+                <div class="card-header">
+                    <h3>Recovery & Mobility</h3>
+                    <span class="price">100 RON</span>
+                </div>
+                <p class="duration">45 MIN</p>
+                <p class="description">Stretching ghidat, foam rolling și tehnici de recuperare activă.</p>
+            </div>
 
+            <div class="service-card">
+                <div class="card-header">
+                    <h3>HIIT Express</h3>
+                    <span class="price">70 RON</span>
+                </div>
+                <p class="duration">30 MIN</p>
+                <p class="description">Sesiune intensă de cardio pentru rezultate rapide.</p>
+            </div>
 
-<div class="service-card">
-    <div class="card-header">
-        <h3>Recovery & Mobility</h3>
-        <span class="price">100 RON</span>
-    </div>
-    <p class="duration">45 MIN</p>
-    <p class="description">Stretching ghidat, foam rolling și tehnici de recuperare activă.</p>
-</div>
+            <div class="service-card">
+                <div class="card-header">
+                    <h3>Yoga & Pilates</h3>
+                    <span class="price">85 RON</span>
+                </div>
+                <p class="duration">60 MIN</p>
+                <p class="description">Echilibru între forță, flexibilitate și respirație conștientă.</p>
+            </div>
+        </section>
 
-
-<div class="service-card">
-    <div class="card-header">
-        <h3>HIIT Express</h3>
-        <span class="price">70 RON</span>
-    </div>
-    <p class="duration">30 MIN</p>
-    <p class="description">Sesiune intensă de cardio pentru rezultate rapide.</p>
-</div>
-
-
-<div class="service-card">
-    <div class="card-header">
-        <h3>Yoga & Pilates</h3>
-        <span class="price">85 RON</span>
-    </div>
-    <p class="duration">60 MIN</p>
-    <p class="description">Echilibru între forță, flexibilitate și respirație conștientă.</p>
-</div>
-</section>
-
-        
         <section class="dotari">
-    <span class="label-dotari">DOTĂRI</span>
-    <h2>Echipamente premium.</h2>
+            <span class="label-dotari">DOTĂRI</span>
+            <h2>Echipamente premium.</h2>
+            <div class="dotari-container">
+                <div class="dotari-card">
+                    <img src="../assets/dumbbell.png" alt="Greutăți" class="card-icon">
+                    <h3>Greutăți libere premium</h3>
+                    <p>Selecție de haltere, gantere și kettlebells profesionale, disponibile până la 50 kg</p>
+                </div>
+                <div class="dotari-card">
+                    <img src="../assets/cardio.png" alt="Cardio" class="card-icon">
+                    <h3>Cardio de ultimă generație</h3>
+                    <p>Echipamente cardio de ultimă generație: benzi de alergat, biciclete și eliptice, toate dotate cu monitorizare inteligentă.</p>
+                </div>
+                <div class="dotari-card">
+                    <img src="../assets/gym2.png" alt="Forță" class="card-icon">
+                    <h3>Biomecanică & forță</h3>
+                    <p>Aparate ghidate pentru toate grupele musculare, design ergonomic.</p>
+                </div>
+            </div>
+        </section>
 
-    <div class="dotari-container">
-        
-        <div class="dotari-card">
-            
-            <img src="../assets/dumbbell.png" alt="Greutăți" class="card-icon">
-            <h3>Greutăți libere premium</h3>
-            <p>Selecție de haltere, gantere și kettlebells profesionale, disponibile până la 50 kg</p>
-        </div>
-
-        
-        <div class="dotari-card">
-            <img src="../assets/cardio.png" alt="Cardio" class="card-icon">
-            <h3>Cardio de ultimă generație</h3>
-            <p>Echipamente cardio de ultimă generație: benzi de alergat, biciclete și eliptice, toate dotate cu monitorizare inteligentă.</p>
-        </div>
-
-        
-        <div class="dotari-card">
-            <img src="../assets/gym2.png" alt="Forță" class="card-icon">
-            <h3>Biomecanică & forță</h3>
-            <p>Aparate ghidate pentru toate grupele musculare, design ergonomic.</p>
-        </div>
-    </div>
-</section>
-
-        
         <section class="trainers">
-    <span class="label-echipa">ECHIPA NOASTRĂ</span>
-    <h2>Antrenori certificați.</h2>
-
-    <div class="trainers-container">
-        
-        <div class="trainer-card">
-            <img src="../assets/antrenor 1.png" alt="Andrei Popescu" class="trainer-img">
-            <div class="trainer-info">
-                <h3>Andrei Popescu</h3>
-                <p class="trainer-role">SENIOR PERFORMANCE COACH</p>
-                <p class="trainer-specialties">Body Recomposition, Forță Funcțională, Metabolic Conditioning.</p>
-                <p class="trainer-quote">„Performanța sustenabilă se construiește pe o fundație de precizie tehnică și disciplină mentală.”</p>
+            <span class="label-echipa">ECHIPA NOASTRĂ</span>
+            <h2>Antrenori certificați.</h2>
+            <div class="trainers-container">
+                <div class="trainer-card">
+                    <img src="../assets/antrenor 1.png" alt="Andrei Popescu" class="trainer-img">
+                    <div class="trainer-info">
+                        <h3>Andrei Popescu</h3>
+                        <p class="trainer-role">SENIOR PERFORMANCE COACH</p>
+                        <p class="trainer-specialties">Body Recomposition, Forță Funcțională, Metabolic Conditioning.</p>
+                        <p class="trainer-quote">„Performanța sustenabilă se construiește pe o fundație de precizie tehnică și disciplină mentală.”</p>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <img src="../assets/antrenor 2.png" alt="Elena Radu" class="trainer-img">
+                    <div class="trainer-info">
+                        <h3>ELENA RADU</h3>
+                        <p class="trainer-role">COACH — HIIT & YOGA</p>
+                        <p class="trainer-specialties">Pilates Reformer, Corecție Posturală, Mobilitate & Stretching.</p>
+                        <p class="trainer-quote">„Mișcarea conștientă este fundamentul longevității și calea prin care corpul își regăsește grația naturală.”</p>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        
-        <div class="trainer-card">
-            <img src="../assets/antrenor 2.png" alt="Elena Radu" class="trainer-img">
-            <div class="trainer-info">
-                <h3>ELENA RADU</h3>
-                <p class="trainer-role">COACH — HIIT & YOGA</p>
-                <p class="trainer-specialties">Pilates Reformer, Corecție Posturală, Mobilitate & Stretching.</p>
-                <p class="trainer-quote">„Mișcarea conștientă este fundamentul longevității și calea prin care corpul își regăsește grația naturală.”</p>
-            </div>
-        </div>
-
-        
-    </div>
-</section>
+        </section>
     </main>
 
-    
-<section class="abonamente">
-    <span class="label-white">ABONAMENTE</span>
-    <h2>Investește în performanța ta.</h2>
-    <div class="abonament-placeholder">
-        
-    </div>
-</section>
+    <section class="abonamente">
+        <span class="label-white">ABONAMENTE</span>
+        <h2>Investește în performanța ta.</h2>
+        <div class="abonament-placeholder"></div>
+    </section>
 
-
-<section class="slider-section">
-    <div class="slider-container" id="slider">
-        <img src="../assets/Pagina principala - imagine spa.png" alt="Spa 1" class="slide">
-        <img src="../assets/gym crowded.png" alt="Spa 2" class="slide">
-        <img src="../assets/Piscina interioara.jpeg" alt="Spa 3" class="slide">
-    </div>
-    
-    
-    <button class="arrow prev" onclick="moveSlider(-1)">
-        <img src="../assets/chevron-left.png" alt="Prev"> 
-    </button>
-    <button class="arrow next" onclick="moveSlider(1)">
-        <img src="../assets/chevron-right.png" alt="Next">
-    </button>
-</section>
-
-
-<footer class="final-footer">
-    <div class="footer-content">
-        <h2 class="footer-title">TIRRA WELLNESS</h2>
-        
-        <p class="footer-description">
-            Sanctuarul tău urban pentru spa, fitness și echilibru interior.
-        </p>
-
-        <div class="footer-section">
-            <h4>NAVIGARE</h4>
-            <ul class="footer-links">
-                <li><a href="#">Despre</a></li>
-                <li><a href="#">Servicii</a></li>
-                <li><a href="#">Pachete</a></li>
-                <li><a href="#">Recenzii</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+    <section class="slider-section">
+        <div class="slider-container" id="slider">
+            <img src="../assets/Pagina principala - imagine spa.png" alt="Spa 1" class="slide">
+            <img src="../assets/gym crowded.png" alt="Spa 2" class="slide">
+            <img src="../assets/Piscina interioara.jpeg" alt="Spa 3" class="slide">
         </div>
+        <button class="arrow prev" onclick="moveSlider(-1)">&#10094;</button>
+        <button class="arrow next" onclick="moveSlider(1)">&#10095;</button>
+    </section>
 
-        <div class="footer-section">
-            <h4>URMĂREȘTE-NE</h4>
-            <div class="social-icons">
-                <img src="../assets/instagram-icon.png" alt="Instagram">
-                <img src="../assets/facebook-icon.png" alt="Facebook">
+    <footer class="main-footer">
+        <hr class="footer-divider"> 
+        <div class="footer-content">
+            <h2 class="footer-brand">TIRRA WELLNESS</h2>
+            <p class="footer-desc">Sanctuarul tău urban pentru spa, fitness și echilibru interior.</p>
+
+            <div class="footer-section">
+                <h3 class="footer-heading">NAVIGARE</h3>
+                <ul class="footer-links">
+                    <li><a href="../index.html">Despre</a></li>
+                    <li><a href="spa.html">Servicii</a></li>
+                    <li><a href="#">Pachete</a></li>
+                    <li><a href="#">Recenzii</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
             </div>
+
+            <div class="footer-section">
+                <h3 class="footer-heading">URMĂREȘTE-NE</h3>
+                <div class="social-icons">
+                    <a href="#"><img src="../assets/instagram-icon.png" alt="Instagram"></a>
+                    <a href="#"><img src="../assets/facebook-icon.png" alt="Facebook"></a>
+                </div>
+            </div>
+            <p class="footer-copy">© 2026 Tirra Wellness. Toate drepturile rezervate.</p>
         </div>
+    </footer>
 
-        <p class="copyright">© 2026 Tirra Wellness. Toate drepturile rezervate.</p>
-    </div>
-</footer>
+    <script>
+        let currentIndex = 0;
+        
+        function moveSlider(direction) {
+            const slider = document.getElementById('slider');
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
 
-<script>
-    let currentIndex = 0;
-    function moveSlider(direction) {
-        const slider = document.getElementById('slider');
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
+            currentIndex += direction;
 
-        currentIndex += direction;
+            if (currentIndex >= totalSlides) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = totalSlides - 1;
+            }
 
-        if (currentIndex >= totalSlides) {
-            currentIndex = 0;
-        } else if (currentIndex < 0) {
-            currentIndex = totalSlides - 1;
+            const scrollAmount = slider.clientWidth * currentIndex;
+            slider.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
         }
 
-        const scrollAmount = slider.clientWidth * currentIndex;
-        slider.scrollTo({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
-    }
-</script>
+        const hamburger = document.querySelector('.hamburger-menu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
 
+        hamburger.addEventListener('click', () => {
+            menuOverlay.classList.add('active');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            menuOverlay.classList.remove('active');
+        });
+    </script>
 </body>
 </html>
