@@ -1,1 +1,76 @@
-<h1>ehgdwjueg</h1>
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <title>Tirra Wellness - Home</title>
+        <!-- pentru diacritice: -->
+    <meta charset = "UTF-8"> 
+    <link rel = "stylesheet" href = "css/style.css">
+        <!-- sa fie responsive la diferite marimi ale ecranului: -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonturi: Montserrat (400, 600) și Cormorant Garamond (300 Light, 400 Regular) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header-principal">
+    <div class="logo">
+        <span class="titlu-logo">TIRRA</span>
+        <span class="subtitlu-logo">WELLNESS</span>
+    </div>
+    <button class="buton-hamburger">
+        &#9776; 
+        <!-- 9776 este codul pentru a afisa cele 3 liniute orizontale ale meniului -->
+    </button>
+    <nav class="meniu-navigatie">
+        <ul>
+            <li><a href="index.html">ACASA</a></li>
+            <li><a href="fitness.html">FITNESS</a></li>
+            <li><a href="spa.html">SPA & WELLNESS</a></li>
+            <li><a href="spa.html">TARIFE ȘI ABONAMENTE</a></li>
+            <li><a href="login.html">LOG IN</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Sectiunea Hero (Poza de inceput) -->
+    <section class="hero">
+        <div class="continut-hero">
+            <h1>Echilibru între forță și relaxare</h1>
+            <h2>Descoperă Tirra Wellness</h2>
+            <a href="#rezervari" class="buton-rezervare">Rezervă acum</a>
+            <p>10% reducere la primul abonament</p>
+        </div>
+    </section>
+    <!-- sectiunea despre tirra -->
+    <section class="despre-noi">
+        <h2 class="subtitlu-sectiune">DESPRE TIRRA WELLNESS</h2>
+        <p class="text-sectiune">   Descoperă un spațiu dedicat echilibrului tău fizic și mental. La Tirra Wellness, îmbinăm eleganța terapiilor spa cu facilități moderne de fitness, totul într-un ambient gândit special pentru liniștea ta.</p>
+        <img src="imagini/PiscinaInterioara.jpeg" alt="Piscina interioara Tirra Wellness" class="imagine-despre">
+        <h2 class="subtitlu-sectiune">SERVICIILE NOASTRE</h2>
+        <p class="text-sectiune">   De la terapia care îți reașează corpul, la antrenamentul care îți construiește forța — totul sub același acoperiș.</p>
+    </section>
+
+    <section class="categorii-servicii">
+        <a href="spa.html" class="card-serviciu">
+            <img src="imagini/spaPaginaPrincipala.png" alt="Spa si Wellness Tirra">
+            <div class="text-card">
+                <h3>SPA & WELLNESS</h3>
+            </div>
+        </a>
+        
+        <a href="sala.html" class="card-serviciu">
+            <img src="imagini/salaPaginaPrincipala.png" alt="Sala de Fitness Tirra">
+            <div class="text-card">
+                <h3>SALĂ DE FITNESS</h3>
+            </div>
+        </a>
+    </section>
+    <!-- sectune temporara pentru rezervari -->
+    <section id="rezervari" class="sectiune-rezervari">
+        <h2>Aici va fi partea de rezervări</h2>
+        <p>Conținutul va fi adăugat mai târziu...</p>
+    </section>
+    
+</body>
+</html>

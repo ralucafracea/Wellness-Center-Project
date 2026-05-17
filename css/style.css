@@ -1,0 +1,223 @@
+/* scoatem marginile automate */
+body {
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+.header-principal {
+    display: flex; /*alinierea*/
+    justify-content: space-between; /*imping elementele stanga-dreapta*/
+    align-items: center;
+    padding: 10px 20px; /*sa nu fie elementele chiar in margine 10 sus jos si 20 stanga dreapta*/
+    background-color: #631621; /*visiniu Iulia :* */
+}
+
+/* containerul care tine cele 2 cuvinte din logo*/
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column; /* pune elementele unul sub altul */
+    align-items: center; /* le centreaza perfect unul deasupra celuilalt */
+}
+
+/* cuv principal din logo: TIRRA */
+.titlu-logo {
+    font-size: 28px;        
+    font-weight: bold;
+    letter-spacing: 4px; 
+    color: #F4EFEA; /* cremul Iuliei */
+}
+
+/* cuv secundar din logo: Wellness */
+.subtitlu-logo {
+    font-size: 12px; 
+    letter-spacing: 2px;
+    color: #F4EFEA; /* cremul Iuliei */
+}
+
+.buton-hamburger {
+    font-size: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color:#F4EFEA;
+}
+
+.meniu-navigatie {
+    display: none; /* ascundem meniul */
+}
+
+/* SECTIUNEA HERO */
+
+.hero {
+    width: 100%;
+    aspect-ratio: 3 / 4; /* hero-ul sa fie de aceeasi marime ca poza */
+    /* intunecam poza putin */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+                        url('../imagini/receptieTirra.png');
+    background-size: cover; /* poza sa acopere tot hero-ul */
+    background-position: top center; /* Centrează poza */
+    background-repeat: no-repeat;
+    
+    /* centrare text mijloc poza */
+    display: flex;
+    flex-direction: column; /*sa stea elementele unele sub altele */
+    justify-content: flex-end;; 
+    align-items: center;
+    text-align: center;
+    padding: 20px 20px 50px 20px;
+    box-sizing: border-box; /* asta nu stiu exact ce face */
+}
+
+.continut-hero {
+    color: #F4EFEA; /* cremul nostru */
+}
+
+.continut-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300; /*ca sa fie Cormorant Garamond light*/
+    font-size: 25px;
+    margin-bottom: 15px;
+    letter-spacing: 0px;
+}
+
+.continut-hero h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 35px;
+    line-height: 1.5; /* spatiu intre randuri text */
+}
+
+/* Stilizarea butonului */
+.buton-rezervare {
+    background-color: rgba(99, 22, 33, 0.4); /* visiniul nostru dar transparent */
+    border: 1px solid #631621;
+    color: #F4EFEA;
+    text-decoration: none; /* scoate linia de sub link */
+    padding: 8px 20px;
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: 20px;
+    font-weight: 300; /*ca sa fie Cormorant Garamond light*/
+    letter-spacing: 0px;
+    border-radius: 8px; /* rotunjire colturi */
+}
+.buton-rezervare:hover {
+    background-color: #631621; 
+    cursor: pointer; 
+}
+.continut-hero p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 300; /* light */
+    margin-top: 25px; /* spatiu intre buton si textul asta */
+    margin-bottom: 0; 
+    letter-spacing: 0px; 
+}
+
+/* SECTIUNEA DESPRE NOI */
+
+.despre-noi {
+    background-color: #F4EFEA; 
+    padding: 20px 20px; /* 30px sus-jos, 20px stanga-dreapta */
+    /* text-align: center; centrare continut */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centrare pe ecarn */
+}
+
+/* titluri (DESPRE TIRRA WELLNESS și SERVICIILE NOASTRE) */
+.subtitlu-sectiune {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400; /* regular */
+    font-size: 16px;
+    color: #631621; 
+    letter-spacing: 5px; /* spatiere mare intre litere */
+    margin-bottom: 20px; /* spatiu sub titlu */
+}
+
+.text-sectiune {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #631621; 
+    line-height: 1.6; /* spatiu intre randuri */
+    margin-top: 0;
+    margin-bottom: 0px; /* spatiu sub text */
+    max-width: 800px; /* pana la cat sa se lateasca pe ecrane mari  */
+}
+
+/* img cu piscina */
+.imagine-despre {
+    width: 100%; /* ocuoa toata latimea fara marginile de 20 */
+    border-radius: 4px; /* rotunjire colturi */
+    margin-bottom: 20px; /* spatiu sub poza */
+    margin-top: 20px;
+}
+
+/* --- SECȚIUNEA CATEGORII SERVICII --- */
+
+.categorii-servicii {
+    background-color: #F4EFEA; 
+    padding: 0 20px 60px 20px; /* 0 sus ca am pus la sectiunea interioara margine jos, 60px jos */
+    display: flex;
+    flex-direction: column; /* pune pozele una sub alta */
+    gap: 20px; /* spatiu intre poze */
+}
+
+/* "cardurile" - pozele care sunt butoane */
+.card-serviciu {
+    position: relative; /* ca sa putem pune textul peste */
+    display: block; /* ca sa se poata da click oriunde pe poza */
+    width: 100%;
+    overflow: hidden; /* taie ce depaseste marginile (pt animatie) */
+    border-radius: 4px; /* rotunjire colturi */
+}
+
+/* pozele in sine */
+.card-serviciu img {
+    width: 100%;
+    display: block; /* Elimină marginile ascunse puse de browser sub imagini */
+    transition: transform 0.6s ease; /* Ppentru animatie */
+}
+
+/* container text si partea mai intunecata a imaginii */
+.text-card {
+    position: absolute; /* sa fi epeste poza */
+    bottom: 0; /* pe partea de jos a pozei */
+    left: 0; /* pe partea din stanga a pozei */
+    width: 100%;
+    padding: 40px 20px 20px 20px; 
+    /* gradient negru: */
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    box-sizing: border-box;
+}
+
+/* textele in sine cu "SPA & WELLNESS" / "SALĂ DE FITNESS" */
+.text-card h3 {
+    color: #F4EFEA;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400; /* regular */
+    margin: 0;
+    letter-spacing: 2px;
+    text-decoration: underline; 
+    text-underline-offset: 3px; /*spatiu intre text si linia de subliniat*/
+}
+
+/* zoom in al pozei cand se da click pe "card") */
+.card-serviciu:hover img {
+    transform: scale(1.03); 
+}
+
+/* Stilizare temporară pentru secțiunea de rezervări ca să o poți vedea bine pe ecran */
+.sectiune-rezervari {
+    height: 100vh; /* Îi dăm înălțime mare ca să ai spațiu să vezi scroll-ul */
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #F4EFEA;
+    font-family: 'Montserrat', sans-serif;
+    color: #3d4449;
+}
