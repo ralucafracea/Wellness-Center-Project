@@ -500,10 +500,9 @@ body {
     }
 
     /* tratamente si facilitati */
-   /* tratamente si facilitati (zona generală) */
     .services {
         padding: 80px;
-        background-color: #F4EFEA; /* Fundal deschis pentru facilități */
+        background-color: #F4EFEA;
         color: var(--color-primary);
     }
 
@@ -556,7 +555,7 @@ body {
     }
 
     .included-content {
-        flex: 1; /* Ocupă jumătate */
+        flex: 1; 
         padding: 80px;
         text-align: left;
     }
@@ -613,35 +612,33 @@ body {
     }
 }
 
-/* --- Stiluri pentru meniul de mobil (Full Screen) --- */
 .mobile-nav {
-    display: none; /* Ascuns implicit */
-    position: fixed; /* Oprește ecranul din derulare și se suprapune */
+    display: none;
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; /* 100% din înălțimea ecranului */
-    background-color: var(--color-bg); /* Pagina crem */
-    z-index: 2000; /* Pus peste header care are 1000 */
+    height: 100vh; 
+    background-color: var(--color-bg); 
+    z-index: 2000; 
     flex-direction: column;
-    justify-content: center; /* Centrează linkurile pe verticală */
-    align-items: center; /* Centrează linkurile pe orizontală */
+    justify-content: center; 
+    align-items: center; 
 }
 
-/* Când este activ, folosim flex ca să centrăm conținutul */
 .mobile-nav.active {
-    display: flex; 
+    display: flex !important; 
+        flex-direction: column;
 }
 
-/* Butonul de închidere (X) sus în dreapta */
 .close-menu {
     position: absolute;
     top: 20px;
     right: 25px;
     background: transparent;
     border: none;
-    font-size: 50px; /* Un X mare și ușor de apăsat pe telefon */
-    color: var(--color-primary); /* Culoarea vișinie */
+    font-size: 50px; 
+    color: var(--color-primary); 
     cursor: pointer;
     line-height: 1;
 }
@@ -653,60 +650,92 @@ body {
     text-align: center;
 }
 
-/* Aspectul link-urilor din interior */
 .mobile-nav a {
     color: var(--color-primary);
     text-decoration: none;
-    font-family: var(--font-serif); /* Titluri cu fontul elegant */
-    font-size: 36px; /* Text mare */
+    font-family: var(--font-serif); 
+    font-size: 36px; 
     display: block;
     padding: 20px 0;
 }
 
 @media (min-width: 992px) {
     
-    /* Ascundem butonul hamburger pe laptop */
     .hamburger-menu {
-        display: flex;
+        display: flex; 
+        position: relative;
+       z-index: 9999; 
     }
 
-    /* Afișăm meniul de desktop */
-    .desktop-nav {
+    .mobile-nav {
+        display: flex; 
+        position: fixed; 
+        top: 0;
+        right: 0;
+        left: auto; 
+        width: 350px; 
+        height: 100vh; 
+        background-color: var(--color-primary); 
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 120px 0 50px 0; 
+        z-index: 10000;
+        
+        transform: translateX(100%); 
+        transition: transform 0.4s ease-in-out; 
+        
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15); 
+    }
+
+    .close-menu {
         display: block;
-    }
-
-    .desktop-nav ul {
-        list-style: none;
-        display: flex; /* Le punem pe orizontală */
-        align-items: center;
-        gap: 30px; /* Spațiu între link-uri */
-        margin: 0;
-    }
-
-    .desktop-nav a {
-        text-decoration: none;
-        color: var(--color-bg); /* Text crem pe fundal vișiniu */
-        font-family: var(--font-sans);
-        font-size: 14px;
-        font-weight: 500;
-        letter-spacing: 1px;
-        text-transform: uppercase;
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        background: transparent;
+        border: none;
+        font-size: 45px; 
+        color: var(--color-bg); 
+        cursor: pointer;
+        line-height: 1;
         transition: opacity 0.3s;
     }
-
-    .desktop-nav a:hover {
-        opacity: 0.7;
+    .close-menu:hover {
+        opacity: 0.6;
     }
 
-    /* Stil pentru butonul de rezervă din meniu (opțional) */
-    .btn-reserve {
-        border: 1px solid var(--color-bg);
-        padding: 8px 20px;
-        border-radius: 4px;
-    }
-
-    /* Ne asigurăm că meniul de mobil nu se poate activa pe desktop accidental */
     .mobile-nav.active {
-        display: none !important;
+        transform: translateX(0); 
+    }
+
+    .mobile-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .mobile-nav li {
+        width: 100%;
+    }
+
+    .mobile-nav a {
+        display: block;
+        color: var(--color-bg);
+        font-family: var(--font-sans);
+        font-size: 15px;
+        padding: 18px 40px; 
+        text-align: left; 
+        border-bottom: 1px solid rgba(244, 239, 234, 0.08);
+        transition: background-color 0.3s, padding-left 0.3s;
+    }
+
+    .mobile-nav li:last-child a {
+        border-bottom: none;
+    }
+
+    .mobile-nav a:hover {
+        background-color: rgba(244, 239, 234, 0.05);
+        padding-left: 45px;
     }
 }
