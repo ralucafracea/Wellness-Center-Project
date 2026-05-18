@@ -6,12 +6,21 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
+/* HEADER CU MENIU */
 .header-principal {
     display: flex; /*alinierea*/
     justify-content: space-between; /*imping elementele stanga-dreapta*/
     align-items: center;
     padding: 10px 20px; /*sa nu fie elementele chiar in margine 10 sus jos si 20 stanga dreapta*/
     background-color: #631621; /*visiniu Iulia :* */
+
+    position: fixed;
+    top: 0;        
+    left: 0;     
+    width: 100%; /* sa se intinda pe toata latimea */
+    z-index: 999; /* sa fie peste toate elementele */
+    box-sizing: border-box; /*sa nu se largeasca aiurea din cauza la padding*/
 }
 
 /* containerul care tine cele 2 cuvinte din logo*/
@@ -45,8 +54,69 @@ html {
     color:#F4EFEA;
 }
 
+/* meniul, care se deschide la apasarea butonului hamburger */
 .meniu-navigatie {
-    display: none; /* ascundem meniul */
+    position: fixed; /* Îl scoatem din fluxul paginii și îl fixăm pe ecran */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Ocupă 100% din înălțimea ecranului */
+    background-color: #F4EFEA; /* Fundalul crem din designul tău */
+    z-index: 1000; /* Ne asigurăm că stă PESTE toate celelalte poze/secțiuni */
+    
+    /* Centrarea elementelor pe mijloc */
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 100px;
+    box-sizing: border-box;
+}
+
+/* clasa pentru a aduce meniul pe ecran, apelata de JS */
+.meniu-navigatie.deschis {
+    display: flex;
+}
+
+/* centrare, fara puncte */
+.meniu-navigatie ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.meniu-navigatie li {
+    margin: 40px 0; /* spatiu intre linkuri */
+}
+
+.meniu-navigatie a {
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    color: #631621; 
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.meniu-navigatie a:hover {
+    color: #a87e84; /* Culoare mai deschisă când pui degetul/mouse-ul */
+}
+
+/* butonul x */
+.buton-inchidere {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: transparent;
+    border: none;
+    font-size: 30px;
+    color: #631621;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.buton-inchidere:hover {
+    transform: scale(1.1); /* Se mărește subtil la atingere */
 }
 
 /* SECTIUNEA HERO */
@@ -60,7 +130,8 @@ html {
     background-size: cover; /* poza sa acopere tot hero-ul */
     background-position: top center; /* Centrează poza */
     background-repeat: no-repeat;
-    
+
+    margin-top: 65px;
     /* centrare text mijloc poza */
     display: flex;
     flex-direction: column; /*sa stea elementele unele sub altele */
@@ -157,11 +228,11 @@ html {
     margin-top: 20px;
 }
 
-/* --- SECȚIUNEA CATEGORII SERVICII --- */
+/* SECTIUNEA CATEGORII SERVICII  */
 
 .categorii-servicii {
     background-color: #F4EFEA; 
-    padding: 0 20px 60px 20px; /* 0 sus ca am pus la sectiunea interioara margine jos, 60px jos */
+    padding: 0 20px 20px 20px; /* 0 sus ca am pus la sectiunea interioara margine jos */
     display: flex;
     flex-direction: column; /* pune pozele una sub alta */
     gap: 20px; /* spatiu intre poze */
@@ -212,6 +283,198 @@ html {
     transform: scale(1.03); 
 }
 
+/*  SECTIUNEA PACHETE SI TARIFE  */
+
+.pachete-tarife {
+    background-color: #F4EFEA; 
+    padding: 10px 20px 40px 20px; /*sus dreapta jos stanga*/
+    text-align: center;
+}
+
+.subtitlu-mic {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #631621;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+.titlu-mare {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 32px;
+    color: #631621;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* container care tine cardurile */
+.container-carduri {
+    display: flex;
+    flex-direction: column; /* pe telefon stau unul sub altul */
+    gap: 30px; /* aptiu intre carduri */
+    align-items: center;
+}
+
+/* design card */
+.card-pret {
+    background-color: #FFFFFF; /* alb */
+    width: 100%;
+    max-width: 400px; /* sa nu se lateasca pe ecrane mari */
+    padding: 20px 20px;
+    border-radius: 6px;
+    text-align: left; /* text aliniat la stanga */
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /*umbra neagra in jurul la card*/
+}
+
+/* elemente, cum e durata pachetului */
+.durata-pachet {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: #631621; 
+    letter-spacing: 1px;
+}
+
+.titlu-pachet {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600; /* bold */
+    color: #631621;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* lista beneficii */
+.lista-pachet {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: #631621;
+    line-height: 1.2;
+    padding-left: 20px; 
+    margin-bottom: 20px;
+}
+
+/* pret si buton, zona de jos a cardului gen */
+.footer-card {
+    display: flex;
+    justify-content: space-between; /* pret la stanga, buton la dreapta */
+    align-items: center; /* se aliniaza orizaontal elementele */
+    margin-top: 20px;
+}
+
+.pret-pachet {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #631621;
+}
+
+/* butoanele de rezervare */
+.buton-mic {
+    background-color: #631621;
+    color: #F4EFEA;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.buton-mic:hover {
+    background-color: #4a1018; /* visiniu mai inchis */
+}
+
+/* SECTIUNEA RECENZII */
+
+.recenzii {
+    background-color: #631621; 
+    padding: 60px 20px;
+    text-align: center;
+    color: #F4EFEA; 
+}
+
+.subtitlu-recenzii {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    margin-bottom: 15px;
+}
+
+.titlu-recenzii {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+/* sageti stanga dreapta si textul la mijloc */
+.slider-recenzii {
+    display: flex;
+    justify-content: space-between; /* sagetile sa fie stanga si dreapta */
+    align-items: center;
+    max-width: 800px; /* limitam latimea pe ecrane mari */
+    margin: 0 auto; /* sa fie sliderul centrat */
+}
+
+/* butoane sageti */
+.sageata {
+    background: transparent;
+    border: none;
+    color: #F4EFEA;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.sageata:hover {
+    color: #a87e84; /* isi schimba putin culoarea */
+}
+
+/* textul */
+.container-texte {
+    flex-grow: 1; /* spatiul dintre sageti  */
+    padding: 0 20px;
+}
+
+/* fiecare recenzie */
+.slide-recenzie {
+    display: none; /* le acunde pe toate la inceput */
+    animation: fadeEfect 0.8s ease; /* animatie de aparitie  */
+}
+
+/* pentru recenzia care se vede */
+.slide-recenzie.activa {
+    display: block; 
+}
+
+/* efectul de fade */
+@keyframes fadeEfect {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.text-recenzie {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.autor-recenzie {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* SECTIUNEA REZERVARI */
+
 /* Stilizare temporară pentru secțiunea de rezervări ca să o poți vedea bine pe ecran */
 .sectiune-rezervari {
     height: 100vh; /* Îi dăm înălțime mare ca să ai spațiu să vezi scroll-ul */
@@ -220,4 +483,102 @@ html {
     background-color: #F4EFEA;
     font-family: 'Montserrat', sans-serif;
     color: #3d4449;
+}
+
+
+/* FOOTER */
+
+.main-footer {
+    background-color: #631621;
+    color: #F4EFEA;
+    padding: 0 20px 30px 20px;
+}
+
+/* Linia de separare */
+.footer-divider {
+    border: none;
+    border-top: 1px solid rgba(244, 239, 234, 0.2); 
+    margin: 0 0 40px 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.footer-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+.footer-section {
+    margin-bottom: 35px;
+}
+
+.footer-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Lista de link-uri */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-links a {
+    color: #F4EFEA;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    transition: opacity 0.3s;
+}
+
+.footer-links a:hover {
+    opacity: 0.7; 
+}
+
+/* Iconitele de social media */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons img {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1); 
+}
+
+/* Copyright */
+.footer-copy {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    margin-top: 20px;
+    opacity: 0.8;
 }
