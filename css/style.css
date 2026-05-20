@@ -1,31 +1,41 @@
-/* scoatem marginile automate */
+:root { /*de la Ralu*/
+    --color-primary: #631621; 
+    --color-bg: #F4EFEA; 
+    --color-bg-alt: #EBE5D9; 
+    
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+}
+
 body {
-    margin: 0;
+    margin: 0; /* scoatem marginile automate */
+    overflow-x: hidden; /*fara scroll stanga dreapta*/
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-/* HEADER CU MENIU */
+/* --------------------------- HEADER CU MENIU ------------------------------------------*/
 .header-principal {
     display: flex; /*alinierea*/
     justify-content: space-between; /*imping elementele stanga-dreapta*/
     align-items: center;
     padding: 10px 20px; /*sa nu fie elementele chiar in margine 10 sus jos si 20 stanga dreapta*/
-    background-color: #631621; /*visiniu Iulia :* */
+    background-color: var(--color-primary); /*visiniu Iulia :* */
 
     position: fixed;
     top: 0;        
-    left: 0;     
-    width: 100%; /* sa se intinda pe toata latimea */
+    left: 0;        
+    right: 0;
+    /* width: 100%; sa se intinda pe toata latimea */
     z-index: 999; /* sa fie peste toate elementele */
     box-sizing: border-box; /*sa nu se largeasca aiurea din cauza la padding*/
 }
 
 /* containerul care tine cele 2 cuvinte din logo*/
 .logo {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-sans);
     display: flex;
     flex-direction: column; /* pune elementele unul sub altul */
     align-items: center; /* le centreaza perfect unul deasupra celuilalt */
@@ -33,43 +43,53 @@ html {
 
 /* cuv principal din logo: TIRRA */
 .titlu-logo {
-    font-size: 28px;        
-    font-weight: bold;
+    font-size: 24px;        
+    font-weight: 400;
     letter-spacing: 4px; 
-    color: #F4EFEA; /* cremul Iuliei */
+    color: var(--color-bg); /* cremul Iuliei */
 }
 
 /* cuv secundar din logo: Wellness */
 .subtitlu-logo {
-    font-size: 12px; 
+    font-size: 10px; 
+    font-weight: 300;
     letter-spacing: 2px;
-    color: #F4EFEA; /* cremul Iuliei */
+    color: var(--color-bg); /* cremul Iuliei */
 }
 
 .buton-hamburger {
-    font-size: 32px;
     background: transparent;
     border: none;
     cursor: pointer;
-    color:#F4EFEA;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--color-bg); 
+}
+.buton-hamburger span { 
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: var(--color-bg);
 }
 
-/* meniul, care se deschide la apasarea butonului hamburger */
+/* meniul, se deschide la apasarea butonului hamburger */
 .meniu-navigatie {
     position: fixed; /* Îl scoatem din fluxul paginii și îl fixăm pe ecran */
-    top: 0;
+    top: 60px;
     left: 0;
     width: 100%;
-    height: 100vh; /* Ocupă 100% din înălțimea ecranului */
-    background-color: #F4EFEA; /* Fundalul crem din designul tău */
-    z-index: 1000; /* Ne asigurăm că stă PESTE toate celelalte poze/secțiuni */
+    height: calc(100vh - 60px); /* 100% din inaltimea ecranului fara inaltimea headerului */
+    background-color: var(--color-bg); 
+    z-index: 1000; /* sa stea peste toate */
     
     /* Centrarea elementelor pe mijloc */
     display: none;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center; /*e lista pe mijloc si vertical*/
     align-items: center;
-    padding-top: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     box-sizing: border-box;
 }
 
@@ -87,39 +107,41 @@ html {
 }
 
 .meniu-navigatie li {
-    margin: 40px 0; /* spatiu intre linkuri */
+    margin: 50px 0; /* spatiu intre linkuri */
 }
 
 .meniu-navigatie a {
     text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    color: #631621; 
-    font-size: 16px;
+    font-family: var(--font-sans);
+    color: var(--color-primary); 
+    font-size: 22px;
     transition: 0.3s;
 }
 
 .meniu-navigatie a:hover {
-    color: #a87e84; /* Culoare mai deschisă când pui degetul/mouse-ul */
+    color: #a87e84; /* se deschide culoarea cand pui cursorul */
 }
 
 /* butonul x */
 .buton-inchidere {
-    position: absolute;
-    top: 25px;
-    right: 25px;
+    display:none;
     background: transparent;
+    position: absolute;
     border: none;
+    /* top: 25px;
+    right: 25px; */
     font-size: 30px;
-    color: #631621;
+    color: var(--color-bg);
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.3s; 
+    right: 20px;
 }
 
 .buton-inchidere:hover {
-    transform: scale(1.1); /* Se mărește subtil la atingere */
+    transform: scale(1.1); /* Sse mareste cand pui cursorul */
 }
 
-/* SECTIUNEA HERO */
+/* ------------------------------------ SECTIUNEA HERO ------------------------------------------*/
 
 .hero {
     width: 100%;
@@ -128,10 +150,10 @@ html {
     background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
                         url('../imagini/receptieTirra.png');
     background-size: cover; /* poza sa acopere tot hero-ul */
-    background-position: top center; /* Centrează poza */
+    background-position: top center; 
     background-repeat: no-repeat;
 
-    margin-top: 65px;
+    margin-top: 60px;
     /* centrare text mijloc poza */
     display: flex;
     flex-direction: column; /*sa stea elementele unele sub altele */
@@ -143,11 +165,11 @@ html {
 }
 
 .continut-hero {
-    color: #F4EFEA; /* cremul nostru */
+    color: var(--color-bg); /* cremul nostru */
 }
 
 .continut-hero h1 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-serif);
     font-weight: 300; /*ca sa fie Cormorant Garamond light*/
     font-size: 25px;
     margin-bottom: 15px;
@@ -155,7 +177,7 @@ html {
 }
 
 .continut-hero h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-sans);
     font-weight: 400;
     font-size: 16px;
     margin-bottom: 35px;
@@ -165,22 +187,22 @@ html {
 /* Stilizarea butonului */
 .buton-rezervare {
     background-color: rgba(99, 22, 33, 0.4); /* visiniul nostru dar transparent */
-    border: 1px solid #631621;
-    color: #F4EFEA;
+    border: 1px solid var(--color-primary);
+    color: var(--color-bg);
     text-decoration: none; /* scoate linia de sub link */
     padding: 8px 20px;
-    font-family: 'Cormorant Garamond', serif; 
+    font-family: var(--font-serif); 
     font-size: 20px;
     font-weight: 300; /*ca sa fie Cormorant Garamond light*/
-    letter-spacing: 0px;
+    letter-spacing: 0px; 
     border-radius: 8px; /* rotunjire colturi */
 }
 .buton-rezervare:hover {
-    background-color: #631621; 
+    background-color: var(--color-primary); 
     cursor: pointer; 
 }
 .continut-hero p {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-serif);
     font-size: 16px;
     font-weight: 300; /* light */
     margin-top: 25px; /* spatiu intre buton si textul asta */
@@ -188,10 +210,10 @@ html {
     letter-spacing: 0px; 
 }
 
-/* SECTIUNEA DESPRE NOI */
+/* ------------------------------------ SECTIUNEA DESPRE NOI ---------------------------------*/
 
 .despre-noi {
-    background-color: #F4EFEA; 
+    background-color: var(--color-bg); 
     padding: 20px 20px; /* 30px sus-jos, 20px stanga-dreapta */
     /* text-align: center; centrare continut */
     display: flex;
@@ -201,19 +223,19 @@ html {
 
 /* titluri (DESPRE TIRRA WELLNESS și SERVICIILE NOASTRE) */
 .subtitlu-sectiune {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-serif);
     font-weight: 400; /* regular */
     font-size: 16px;
-    color: #631621; 
+    color: var(--color-primary); 
     letter-spacing: 5px; /* spatiere mare intre litere */
     margin-bottom: 20px; /* spatiu sub titlu */
 }
 
 .text-sectiune {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-sans);
     font-weight: 400;
     font-size: 14px;
-    color: #631621; 
+    color: var(--color-primary); 
     line-height: 1.6; /* spatiu intre randuri */
     margin-top: 0;
     margin-bottom: 0px; /* spatiu sub text */
@@ -228,11 +250,11 @@ html {
     margin-top: 20px;
 }
 
-/* SECTIUNEA CATEGORII SERVICII  */
+/* ------------------------------- SECTIUNEA CATEGORII SERVICII ----------------------------------- */
 
 .categorii-servicii {
-    background-color: #F4EFEA; 
-    padding: 0 20px 20px 20px; /* 0 sus ca am pus la sectiunea interioara margine jos */
+    background-color: var(--color-bg); 
+    padding: 0 0px 20px 0px; /* 0 sus ca am pus la sectiunea interioara margine jos */
     display: flex;
     flex-direction: column; /* pune pozele una sub alta */
     gap: 20px; /* spatiu intre poze */
@@ -244,14 +266,13 @@ html {
     display: block; /* ca sa se poata da click oriunde pe poza */
     width: 100%;
     overflow: hidden; /* taie ce depaseste marginile (pt animatie) */
-    border-radius: 4px; /* rotunjire colturi */
 }
 
 /* pozele in sine */
 .card-serviciu img {
     width: 100%;
     display: block; /* Elimină marginile ascunse puse de browser sub imagini */
-    transition: transform 0.6s ease; /* Ppentru animatie */
+    transition: transform 0.6s ease; /* Pt animatie */
 }
 
 /* container text si partea mai intunecata a imaginii */
@@ -268,8 +289,8 @@ html {
 
 /* textele in sine cu "SPA & WELLNESS" / "SALĂ DE FITNESS" */
 .text-card h3 {
-    color: #F4EFEA;
-    font-family: 'Montserrat', sans-serif;
+    color: var(--color-bg);
+    font-family: var(--font-sans);
     font-size: 14px;
     font-weight: 400; /* regular */
     margin: 0;
@@ -283,28 +304,28 @@ html {
     transform: scale(1.03); 
 }
 
-/*  SECTIUNEA PACHETE SI TARIFE  */
+/* --------------------------------- SECTIUNEA PACHETE SI TARIFE ---------------------------------- */
 
 .pachete-tarife {
-    background-color: #F4EFEA; 
+    background-color: var(--color-bg); 
     padding: 10px 20px 40px 20px; /*sus dreapta jos stanga*/
     text-align: center;
 }
 
 .subtitlu-mic {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-serif);
     font-weight: 400;
     font-size: 14px;
-    color: #631621;
+    color: var(--color-primary);
     letter-spacing: 4px;
     margin-bottom: 10px;
 }
 
 .titlu-mare {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-serif);
     font-weight: 300;
     font-size: 32px;
-    color: #631621;
+    color: var(--color-primary);
     margin-top: 0;
     margin-bottom: 20px;
 }
@@ -331,26 +352,26 @@ html {
 
 /* elemente, cum e durata pachetului */
 .durata-pachet {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-sans);
     font-size: 12px;
-    color: #631621; 
+    color: var(--color-primary); 
     letter-spacing: 1px;
 }
 
 .titlu-pachet {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-sans);
     font-size: 16px;
     font-weight: 600; /* bold */
-    color: #631621;
+    color: var(--color-primary);
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
 /* lista beneficii */
 .lista-pachet {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-sans);
     font-size: 13px;
-    color: #631621;
+    color: var(--color-primary);
     line-height: 1.2;
     padding-left: 20px; 
     margin-bottom: 20px;
@@ -365,17 +386,17 @@ html {
 }
 
 .pret-pachet {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-sans);
     font-size: 16px;
     font-weight: bold;
-    color: #631621;
+    color: var(--color-primary);
 }
 
 /* butoanele de rezervare */
 .buton-mic {
-    background-color: #631621;
-    color: #F4EFEA;
-    font-family: 'Montserrat', sans-serif;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    font-family: var(--font-sans);
     font-size: 13px;
     font-weight: 600;
     text-decoration: none;
@@ -388,17 +409,17 @@ html {
     background-color: #4a1018; /* visiniu mai inchis */
 }
 
-/* SECTIUNEA RECENZII */
+/* --------------------------------------- SECTIUNEA RECENZII --------------------------------*/
 
 .recenzii {
-    background-color: #631621; 
+    background-color: var(--color-primary); 
     padding: 60px 20px;
     text-align: center;
-    color: #F4EFEA; 
+    color: var(--color-bg); 
 }
 
 .subtitlu-recenzii {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-serif);
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 5px;
@@ -406,7 +427,7 @@ html {
 }
 
 .titlu-recenzii {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-serif);
     font-size: 36px;
     font-weight: 300;
     margin-top: 0;
@@ -426,7 +447,7 @@ html {
 .sageata {
     background: transparent;
     border: none;
-    color: #F4EFEA;
+    color: var(--color-bg);
     font-size: 24px;
     cursor: pointer;
     padding: 10px;
@@ -434,7 +455,7 @@ html {
 }
 
 .sageata:hover {
-    color: #a87e84; /* isi schimba putin culoarea */
+    opacity: 0.5;
 }
 
 /* textul */
@@ -461,75 +482,125 @@ html {
 }
 
 .text-recenzie {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-sans);
     font-size: 16px;
     line-height: 1.6;
     margin-bottom: 30px;
 }
 
 .autor-recenzie {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-sans);
     font-size: 14px;
     font-weight: 700;
 }
 
-/* SECTIUNEA REZERVARI */
-
-/* Stilizare temporară pentru secțiunea de rezervări ca să o poți vedea bine pe ecran */
-.sectiune-rezervari {
-    height: 100vh; /* Îi dăm înălțime mare ca să ai spațiu să vezi scroll-ul */
-    padding: 50px 20px;
-    text-align: center;
-    background-color: #F4EFEA;
-    font-family: 'Montserrat', sans-serif;
-    color: #3d4449;
+/* ------------------------------- SECTIUNEA CONTACT ------------------------------------ */
+.sectiune-contact {
+    background-color: var(--color-bg-alt);
+    color: var(--color-primary);
+    padding: 40px 20px;
 }
 
+.titlu-contact {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 5px;
+    
+    text-decoration: underline;
+    text-underline-offset: 2px; /* distanta linie-scris */
+    text-decoration-thickness: 1px; /* face linia finuta */
+    
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.titlu-contact a {
+    color: inherit; /* ia culoarea visinie de la h2 */
+    text-decoration: none; /*  fara linia albastra urata */
+}
 
-/* FOOTER */
+/* container principal: */
+.lista-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* spatiu intre elemente */
+    max-width: 100%; /* Îi permitem containerului să ocupe toată lățimea disponibilă */
+    margin: 0; /* Eliminăm centrarea automată (auto) */
+    padding-left: 20px; /* Împinge toată lista spre dreapta, ca să nu fie lipită de marginea ecranului */
+    box-sizing: border-box; /* Ne asigurăm că padding-ul nu creează scroll orizontal */
+}
+
+.element-contact {
+    display: flex;
+    align-items: center; /* aliniere iconita si text pe verticala */
+    gap: 20px; /* spatiu intre icon si text */
+}
+
+.icon-contact {
+    width: 40px; /* marime icon */
+    height: auto;
+}
+
+.text-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* spatiu intre "telefon" si numatul de tel */
+}
+
+.eticheta-contact {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.valoare-contact {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* ----------------------------- FOOTER ----------------------------------- */
 
 .main-footer {
-    background-color: #631621;
-    color: #F4EFEA;
-    padding: 0 20px 30px 20px;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    padding: 0 30px 30px 30px;
 }
 
-/* Linia de separare */
-.footer-divider {
-    border: none;
-    border-top: 1px solid rgba(244, 239, 234, 0.2); 
-    margin: 0 0 40px 0;
-}
 
 .footer-content {
     display: flex;
     flex-direction: column;
 }
 
-.footer-brand {
-    font-family: 'Cormorant Garamond', serif;
+/* titlu mare */
+.footer-brand { 
+    font-family: var(--font-serif);
     font-weight: 400;
-    font-size: 26px;
+    font-size: 32px;
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     letter-spacing: 1px;
 }
 
+
 .footer-desc {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-sans);
     font-weight: 400;
     font-size: 14px;
     line-height: 1.6;
-    margin-bottom: 35px;
+    margin-bottom: 25px;
 }
 
 .footer-section {
-    margin-bottom: 35px;
+    margin-bottom: 20px;
 }
 
 .footer-heading {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-family: var(--font-sans);
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 2px;
     margin-bottom: 15px;
@@ -546,9 +617,9 @@ html {
 }
 
 .footer-links a {
-    color: #F4EFEA;
+    color: var(--color-bg);
     text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-sans);
     font-weight: 400;
     font-size: 13px;
     transition: opacity 0.3s;
@@ -577,8 +648,8 @@ html {
 /* Copyright */
 .footer-copy {
     text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
+    font-family: var(--font-sans);
+    font-size: 12px;
     margin-top: 20px;
     opacity: 0.8;
 }

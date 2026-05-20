@@ -19,17 +19,18 @@
         <span class="subtitlu-logo">WELLNESS</span>
     </div>
     <button class="buton-hamburger">
-        &#9776; 
-        <!-- 9776 este codul pentru a afisa cele 3 liniute orizontale ale meniului -->
+        <span></span>
+        <span></span>
+        <span></span>
     </button>
-    <nav class="meniu-navigatie">
-        <button class="buton-inchidere">&#10005;</button>   
+    <button class="buton-inchidere">&#10005;</button>  
+    <nav class="meniu-navigatie"> 
         <ul>
             <li><a href="index.html">ACASĂ</a></li>
             <li><a href="pages/spa.html">SPA & WELLNESS</a></li>
             <li><a href="pages/sala.html">FITNESS</a></li>
-            <li><a href="index.html#rezervari">REZERVĂRI</a></li>
-            <li><a href="index.html#rezervari">CONTACT</a></li>
+            <li><a href="pages/rezervari.html">REZERVĂRI</a></li>
+            <li><a href="pages/contact.html">CONTACT</a></li>
             <li><a href="pages/login.html">CONECTEAZĂ-TE</a></li>
         </ul>
     </nav>
@@ -40,7 +41,7 @@
         <div class="continut-hero">
             <h1>Echilibru între forță și relaxare</h1>
             <h2>Descoperă Tirra Wellness</h2>
-            <a href="#rezervari" class="buton-rezervare">Rezervă acum</a>
+            <a href="pages/rezervari.html" class="buton-rezervare">Rezervă acum</a>
             <p>10% reducere la primul abonament</p>
         </div>
     </section>
@@ -86,7 +87,7 @@
                 </ul>
                 <div class="footer-card">
                     <span class="pret-pachet">350 RON</span>
-                    <a href="#rezervari" class="buton-mic">Rezervă</a>
+                    <a href="pages/rezervari.html" class="buton-mic">Rezervă</a>
                 </div>
             </div>
 
@@ -101,7 +102,7 @@
                 </ul>
                 <div class="footer-card">
                     <span class="pret-pachet">300 RON</span>
-                    <a href="#rezervari" class="buton-mic">Rezervă</a>
+                    <a href="pages/rezervari.html" class="buton-mic">Rezervă</a>
                 </div>
             </div>
 
@@ -135,16 +136,48 @@
             <!-- 10095 cod pt simbolul sageata dreapta -->
         </div>
     </section>
-    
-    <!-- sectune temporara pentru rezervari -->
-    <section id="rezervari" class="sectiune-rezervari">
-        <h2>Aici va fi partea de rezervări</h2>
-        <p>Conținutul va fi adăugat mai târziu...</p>
+
+    <section id="contact" class="sectiune-contact">
+        <h2 class="titlu-contact">
+            <a href="pages/contact.html">CONTACT</a>
+        </h2>
+
+        <div class="lista-contact">
+            <div class="element-contact">
+                <img src="imagini/SimbolLocatie.jpg" alt="Locatie" class="icon-contact">
+                <div class="text-contact">
+                    <span class="eticheta-contact">LOCAȚIE</span>
+                    <span class="valoare-contact">Strada Wellness 12, București</span>
+                </div>
+            </div>
+
+            <div class="element-contact">
+                <img src="imagini/SimbolTelefon.jpg" alt="Telefon" class="icon-contact">
+                <div class="text-contact">
+                    <span class="eticheta-contact">TELEFON</span>
+                    <span class="valoare-contact">+40 700 000 000</span>
+                </div>
+            </div>
+
+            <div class="element-contact">
+                <img src="imagini/SimbolMail.jpg" alt="Email" class="icon-contact">
+                <div class="text-contact">
+                    <span class="eticheta-contact">EMAIL</span>
+                    <span class="valoare-contact">rezervari@tirrawellness.ro</span>
+                </div>
+            </div>
+
+            <div class="element-contact">
+                <img src="imagini/SimbolCeas.jpg" alt="Program" class="icon-contact">
+                <div class="text-contact">
+                    <span class="eticheta-contact">PROGRAM</span>
+                    <span class="valoare-contact">Luni &mdash; Duminică . 8:00 &mdash; 22:00</span>
+                </div>
+            </div>
+        </div>
     </section>
 
-
     <footer class="main-footer">
-        <hr class="footer-divider">
 
         <div class="footer-content">
             
@@ -156,12 +189,12 @@
             <div class="footer-section">
                 <h3 class="footer-heading">NAVIGARE</h3>
                 <ul class="footer-links">
-                    <li><a href="index.html">ACASĂ</a></li>
-                    <li><a href="pages/spa.html">SPA & WELLNESS</a></li>
-                    <li><a href="pages/sala.html">FITNESS</a></li>
-                    <li><a href="rezervari.html">REZERVĂRI</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
-                    <li><a href="login.html">CONECTEAZĂ-TE</a></li>
+                    <li><a href="index.html">Acasă</a></li>
+                    <li><a href="pages/spa.html">Spa & Wellness</a></li>
+                    <li><a href="pages/sala.html">Fitness</a></li>
+                    <li><a href="pages/rezervari.html">Rezervări</a></li>
+                    <li><a href="pages/contact.html">Contact</a></li>
+                    <li><a href="pages/login.html">Conectează-te</a></li>
                 </ul>
             </div>
 
@@ -179,7 +212,7 @@
 
     <script>
 
-        // LOGICA PENTRU RECENZII
+        // --------------------------------LOGICA PENTRU RECENZII---------------------------
         let indexCurent = 0; // incepem cu prima recenzie
         const slideuri = document.querySelectorAll('.slide-recenzie');
         const btnStanga = document.querySelector('.sageata-stanga');
@@ -209,7 +242,7 @@
         // sa apara prima recenzie by default:
         arataRecenzia(indexCurent);
 
-        // LOGICA PENTRU MENIU
+        // -------------------------- LOGICA PENTRU MENIU --------------------------------
         const meniuNavigatie = document.querySelector('.meniu-navigatie');
         const btnHamburger = document.querySelector('.buton-hamburger');
         const btnInchidere = document.querySelector('.buton-inchidere');
@@ -218,11 +251,15 @@
         // deshide meniu la apasare hamburger
         btnHamburger.addEventListener('click', () => {
             meniuNavigatie.classList.add('deschis');
+            btnHamburger.style.display = 'none';     
+            btnInchidere.style.display = 'block';
         });
 
-        // inchide eniul din butonul X
+        // inchide meniul din butonul X
         btnInchidere.addEventListener('click', () => {
             meniuNavigatie.classList.remove('deschis');
+            btnInchidere.style.display = 'none';     
+            btnHamburger.style.display = 'flex';
         });
 
         // inchide meniul cand dau click pe linkuri
