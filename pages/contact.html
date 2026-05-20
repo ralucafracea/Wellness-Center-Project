@@ -47,26 +47,54 @@
     <section class="contact-page-content">
         <div class="contact-grid">
             
-            <div class="contact-info">
-                <h2 class="section-title">Ne-ar face plăcere să te cunoaștem.</h2>
-                <p class="contact-desc">Ai întrebări despre terapiile noastre sau dorești să programezi o vizită? Echipa Tirra îți stă la dispoziție pentru a-ți crea o experiență perfectă.</p>
+           <div class="contact-info">
+    <h2 class="section-title">Ne-ar face plăcere să te cunoaștem.</h2>
+    <p class="contact-desc">Ai întrebări despre terapiile noastre sau dorești să programezi o vizită? Echipa Tirra îți stă la dispoziție pentru a-ți crea o experiență perfectă.</p>
 
-                <div class="info-block">
-                    <h3>ADRESĂ</h3>
-                    <p>Strada Relaxării Nr. 10, Sibiu, România</p>
-                </div>
-
-                <div class="info-block">
-                    <h3>PROGRAM</h3>
-                    <p>Luni - Vineri: 10:00 - 20:00<br>Sâmbătă - Duminică: 10:00 - 18:00</p>
-                </div>
-
-                <div class="info-block">
-                    <h3>CONTACT</h3>
-                    <p>Tel: +40 700 000 000<br>Email: hello@tirrawellness.ro</p>
-                </div>
+    <div class="contact-details-list">
+        
+        <div class="info-item">
+            <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             </div>
+            <div class="info-text">
+                <h3>LOCAȚIE</h3>
+                <p>Strada Wellness 12, București</p>
+            </div>
+        </div>
 
+        <div class="info-item">
+            <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </div>
+            <div class="info-text">
+                <h3>TELEFON</h3>
+                <p>+40 700 000 000</p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="info-text">
+                <h3>EMAIL</h3>
+                <p>rezervari@tirrawellness.ro</p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <div class="info-text">
+                <h3>PROGRAM</h3>
+                <p>Luni — Duminică . 8:00 — 22:00</p>
+            </div>
+        </div>
+
+    </div>
+</div>
             <div class="contact-form-wrapper">
                 <form class="contact-form">
                     <div class="form-group">
@@ -87,7 +115,16 @@
 
         </div>
     </section>
-
+    <div id="contact-modal" class="modal-overlay">
+        <div class="modal-content-card" style="text-align: center;">
+            <button id="close-contact-modal-btn" class="close-modal">&times;</button>
+            
+            <h3 class="modal-title" style="color: var(--color-primary);">Îți mulțumim!</h3>
+            <p class="modal-desc">Mesajul tău a fost trimis cu succes către echipa Tirra Wellness. Te vom contacta în cel mai scurt timp.</p>
+            
+            <button id="btn-inchide-contact" class="btn-primary btn-pill" style="margin-top: 20px;">Înapoi la site</button>
+        </div>
+    </div>
 <footer class="main-footer">
         <hr class="footer-divider">
 
@@ -124,5 +161,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/spa.js"></script>
+    <script src="../js/contact.js"></script>
 </body>
 </html>

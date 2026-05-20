@@ -62,14 +62,18 @@
                 </div>
 
                 <div class="form-group-labeled">
-                    <label>PACHET DORIT</label>
-                    <select required>
-                        <option value="" disabled selected></option>
-                        <option value="suedez">Masaj suedez de relaxare</option>
-                        <option value="terapeutic">Masaj terapeutic profund</option>
-                        <option value="pietre">Masaj cu pietre vulcanice</option>
-                        <option value="aroma">Aromaterapie senzorială</option>
-                        <option value="ritual">Ritual corp complet</option>
+                    <label>SERVICIU DORIT *</label>
+                    <select id="categorie-select" required>
+                        <option value="" disabled selected>Alege serviciul</option>
+                        <option value="spa">Spa & Wellness</option>
+                        <option value="sala">Fitness</option>
+                    </select>
+                </div>
+
+                <div class="form-group-labeled">
+                    <label>PACHET / ABONAMENT *</label>
+                    <select id="pachet-select" required disabled>
+                        <option value="" disabled selected>Alege pachetul dorit</option>
                     </select>
                 </div>
 
@@ -82,7 +86,45 @@
             </form>
         </div>
     </section>
+<div id="payment-modal" class="modal-overlay">
+        <div class="modal-content-card">
+            <button id="close-modal-btn" class="close-modal">&times;</button>
+            
+            <div id="modal-alegere" class="text-center">
+                <h3 class="modal-title">Confirmare</h3>
+                <p class="modal-desc">Doriți să achitați cu cardul acum sau cash la locație?</p>
+                <div class="modal-buttons">
+                    <button id="btn-card" class="btn-primary btn-pill">Plătesc cu cardul acum</button>
+                    <button id="btn-cash" class="btn-secondary btn-pill">Cash la locație</button>
+                </div>
+            </div>
 
+            <div id="modal-card-form" style="display: none;">
+                <h3 class="modal-title">Detalii Card</h3>
+                <div class="form-group-labeled" style="margin-bottom: 20px;">
+                    <label>NUMĂR CARD</label>
+                    <input type="text" placeholder="0000 0000 0000 0000" maxlength="19">
+                </div>
+                <div style="display: flex; gap: 20px; margin-bottom: 25px;">
+                    <div class="form-group-labeled" style="flex: 1;">
+                        <label>EXPIRARE</label>
+                        <input type="text" placeholder="LL/AA" maxlength="5">
+                    </div>
+                    <div class="form-group-labeled" style="flex: 1;">
+                        <label>CVV</label>
+                        <input type="text" placeholder="123" maxlength="3">
+                    </div>
+                </div>
+                <button id="btn-plateste" class="btn-primary btn-pill" style="width: 100%;">Confirmă Plata</button>
+            </div>
+
+            <div id="modal-succes" class="text-center" style="display: none;">
+                <h3 class="modal-title" style="color: var(--color-primary);">Vă așteptăm!</h3>
+                <p class="modal-desc" id="mesaj-text-succes">Rezervarea dumneavoastră a fost înregistrată cu succes. Detaliile au fost trimise pe adresa de email.</p>
+                <button id="btn-inchide-final" class="btn-primary btn-pill" style="margin-top: 20px;">Înapoi la site</button>
+            </div>
+        </div>
+    </div>
     <footer class="main-footer">
         <hr class="footer-divider">
         <div class="footer-content">
@@ -114,5 +156,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/spa.js"></script>
+    <script src="../js/rezervari.js"></script>
+
 </body>
 </html>

@@ -25,17 +25,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Gestionarea formularului de contact
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Previne reîncărcarea paginii
-            
-            // Afișăm un mesaj frumos pentru utilizator
-            alert('Îți mulțumim! Mesajul tău a fost trimis cu succes către Tirra Wellness.');
-            
-            // Golim formularul după trimitere
-            contactForm.reset();
-        });
-    }
+
 });
