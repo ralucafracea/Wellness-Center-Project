@@ -17,117 +17,364 @@
 }
 
 html, body {
-    width: 100%;
-    overflow-x: hidden; 
+    width: 100%; 
     background-color: var(--crem);
     font-family: var(--font-corp);
     color: #333;
-    padding-top: 70px; 
+    padding-top: 0px; 
 }
 
-/* HEADER GLOBAL SYNCHRONIZED */
-.main-header {
-    background-color: var(--visiniu);
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
+html {
+    overflow-x: clip;
+}
+
+
+.header-principal {
+
+    display: flex; 
+
+    justify-content: space-between; 
+
     align-items: center;
+
+    padding: 10px 20px; 
+
+    background-color: var(--color-primary); 
+
+
+
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+
+    top: 0;        
+
+    left: 0;        
+
+    right: 0;
+
+    
+
+    z-index: 999; 
+
+    box-sizing: border-box; 
+
 }
 
-#logo-img {
-    height: 70px;
-    width: auto;
-    display: block;
-}
 
-.hamburger-menu {
-    background: transparent;
-    border: none;
-    cursor: pointer;
+
+
+
+.logo {
+
+    font-family: var(--font-sans);
+
     display: flex;
+
+    flex-direction: column; 
+
+    align-items: center; 
+
+}
+
+
+
+
+
+.titlu-logo {
+
+    font-size: 24px;        
+
+    font-weight: 400;
+
+    letter-spacing: 4px; 
+
+    color: var(--color-bg); 
+
+}
+
+
+
+
+
+.subtitlu-logo {
+
+    font-size: 10px; 
+
+    font-weight: 300;
+
+    letter-spacing: 2px;
+
+    color: var(--color-bg); 
+
+}
+
+
+
+.buton-hamburger {
+
+    background: transparent;
+
+    border: none;
+
+    cursor: pointer;
+
+    display: flex;
+
     flex-direction: column;
+
     gap: 6px;
+
+    color: var(--color-bg); 
+
 }
 
-.hamburger-menu span {
+.buton-hamburger span { 
+
     display: block;
+
     width: 30px;
+
     height: 2px;
-    background-color: var(--crem);
-    transition: 0.3s;
+
+    background-color: var(--color-bg);
+
 }
 
-/* HERO */
+
+
+
+
+.meniu-navigatie {
+
+    position: fixed; 
+
+    top: 60px;
+
+    left: 0;
+
+    width: 100%;
+
+    height: calc(100vh - 60px); 
+
+    background-color: var(--color-bg); 
+
+    z-index: 1000; 
+
+    
+
+    
+
+    display: none;
+
+    flex-direction: column;
+
+    justify-content: center; 
+
+    align-items: center;
+
+    padding-top: 20px;
+
+    padding-bottom: 20px;
+
+    box-sizing: border-box;
+
+}
+
+
+
+
+
+.meniu-navigatie.deschis {
+
+    display: flex;
+
+}
+
+
+
+
+
+.meniu-navigatie ul {
+
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0;
+
+    text-align: center;
+
+}
+
+
+
+.meniu-navigatie li {
+
+    margin: 50px 0; 
+
+}
+
+
+
+.meniu-navigatie a {
+
+    text-decoration: none;
+
+    font-family: var(--font-sans);
+
+    color: var(--color-primary); 
+
+    font-size: 22px;
+
+    transition: 0.3s;
+
+}
+
+
+
+.meniu-navigatie a:hover {
+
+    color: #a87e84; 
+
+}
+
+
+
+
+
+.buton-inchidere {
+
+    display:none;
+
+    background: transparent;
+
+    position: absolute;
+
+    border: none;
+
+    font-size: 30px;
+
+    color: var(--color-bg);
+
+    cursor: pointer;
+
+    transition: 0.3s; 
+
+    right: 20px;
+
+}
+
+
+
+.buton-inchidere:hover {
+
+    transform: scale(1.1); 
+
+}
+
+
 .hero {
-    height: 80vh;
-    background: url('../assets/Gemini_Generated_Image_u25nbsu25nbsu25n.png') center/cover no-repeat;
+    min-height: 300px; 
+    height: 55vw;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.6) 100%), url('../assets/Gemini_Generated_Image_u25nbsu25nbsu25n.png') center/cover no-repeat;
     position: relative;
     width: 100%;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(244, 239, 234, 0.4), rgba(244, 239, 234, 0.6));
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-}
-
-.hero h1 {
-    font-family: var(--font-titlu);
-    font-size: clamp(2.5rem, 8vw, 3.5rem); 
-    color: var(--visiniu);
-    font-weight: 300;
-}
-
-.btn-book {
-    background: black;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    margin-top: 20px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    cursor: pointer;
-}
-
-/* INTRO TEXT */
-.intro-text {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.intro-text h2 {
-    font-family: var(--font-titlu);
-    color: var(--visiniu);
-    margin-bottom: 15px;
-}
-
-/* SERVICII */
-.services {
+    align-items: flex-end; 
     padding: 40px 20px;
+    margin-top: 60px;
+}
+
+.hero-content-bottom {
+    text-align: left;
+}
+
+.hero-subtitle {
+    font-family: var(--font-sans);
+    color: white;
+    font-weight: 700;
+    letter-spacing: 5px;
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-family: var(--font-titlu);
+    color: white;
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
+
+.philosophy {
+    padding: 37px 20px 10px;
+    background-color: var(--crem);
+    text-align: left;
+}
+
+.section-tag {
+    font-family: var(--font-sans);
+    color: var(--visiniu);
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.section-title {
+    font-family: var(--font-titlu);
+    color: var(--visiniu);
+    font-size: 28px; 
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 25px;
+}
+
+.section-text p {
+    font-family: var(--font-sans);
+    color: var(--visiniu);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+
+.services {
+    background-color: #EBE5D9; 
+    padding: 35px 45px;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 35px; 
     width: 100%;
 }
 
+
+.services-header {
+    text-align: center;
+    margin-bottom: 0px; 
+}
+
+.services-header .section-tag {
+    text-align: center;
+    font-size: 17px; 
+    letter-spacing: 2px;
+    margin-bottom: 25px; 
+}
+
+
+.services-header .section-title {
+    text-align: center;
+    font-size: 34px; 
+    margin-bottom: 0; 
+    line-height: 1.2;
+}
+
+
+
 .service-card {
-    background: #fdfaf7;
-    padding: 35px 25px;
+    background-color: #F4EFEA; 
+    padding: 28px 25px 40px;
     border-radius: 4px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     text-align: left;
@@ -156,44 +403,46 @@ html, body {
 }
 
 .duration {
-    font-size: 0.75rem;
+    font-size: 0.80rem;
     color: var(--visiniu);
-    opacity: 0.8;
     margin-bottom: 25px;
+    margin-top: 40px;
 }
 
 .description {
-    font-size: 0.85rem;
-    line-height: 1.6;
-    color: #4a4a4a;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    color: var(--visiniu);
 }
 
 /* DOTĂRI */
 .dotari {
-    padding: 60px 20px;
+    background-color: #F4EFEA;
+    padding: 60px 35px;
     text-align: center;
 }
 
 .label-dotari {
     display: block;
     color: var(--visiniu);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     letter-spacing: 2px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     text-transform: uppercase;
 }
 
 .dotari h2 {
     font-family: var(--font-titlu);
     color: var(--visiniu);
-    font-size: 2.2rem;
+    font-size: 1.9rem;
+    font-weight: 300;
     margin-bottom: 40px;
 }
 
 .dotari-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
     width: 100%;
     max-width: 400px; 
     margin: 0 auto;
@@ -202,20 +451,20 @@ html, body {
 .dotari-card {
     background-color: var(--visiniu);
     color: white;
-    padding: 40px 30px;
-    border-radius: 8px;
+    padding: 40px 25px 40px 20px;
+    border-radius: 4px;
     text-align: left;
 }
 
 .card-icon {
-    width: 50px;
+    width: 70px;
     margin-bottom: 25px;
 }
 
 .dotari-card h3 {
-    font-size: 1.4rem;
+    font-size: 1 rem;
     font-weight: 700;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .dotari-card p {
@@ -226,38 +475,40 @@ html, body {
 
 /* ANTRENORI */
 .trainers {
-    padding: 60px 20px;
+    padding: 40px 50px 60px;
     text-align: center;
+    background-color:#EBE5D9;
 }
 
 .label-echipa {
     display: block;
     color: var(--visiniu);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .trainers h2 {
     font-family: var(--font-titlu);
     color: var(--visiniu);
-    font-size: 2.2rem;
-    margin-bottom: 40px;
+    font-size: 2.1rem;
+    margin-bottom: 50px;
+    font-weight: 250;
 }
 
 .trainers-container {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 40px;
     width: 100%;
     max-width: 450px;
     margin: 0 auto;
 }
 
 .trainer-card {
-    background-color: #fdfaf7;
-    border-radius: 8px;
+    background-color: #F4EFEA;
+    border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: left;
@@ -271,70 +522,73 @@ html, body {
 }
 
 .trainer-info {
-    padding: 30px 25px;
+    padding: 20px 25px 15px 15px;
 }
 
 .trainer-info h3 {
     color: var(--visiniu);
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .trainer-role {
     color: var(--visiniu);
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    opacity: 0.7;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    opacity: 1;
     margin-bottom: 25px;
     text-transform: uppercase;
 }
 
 .trainer-specialties {
-    font-size: 0.85rem;
-    line-height: 1.5;
-    color: #555;
-    margin-bottom: 20px;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    color: var(--visiniu);
+    margin-bottom: 10px;
 }
 
 .trainer-quote {
     font-size: 0.85rem;
-    line-height: 1.6;
-    color: #444;
-    border-top: 1px solid rgba(0,0,0,0.05);
-    padding-top: 15px;
+    line-height: 1.3;
+    color: var(--visiniu);
+    border-top: none;
+    padding-top: 0px;
 }
 
 /* ABONAMENTE */
 .abonamente {
     background-color: var(--visiniu);
-    padding: 60px 20px;
+    padding: 35px 20px 60px;
     text-align: center;
     color: white;
 }
 
 .label-white {
     display: block;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    opacity: 0.9;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    letter-spacing: 1.2px;
+    margin-bottom: 25px;
+    opacity: 1;
+    text-transform: uppercase;
 }
 
 .abonamente h2 {
     font-family: var(--font-titlu);
     color: white;
-    font-size: 2rem;
-    margin-bottom: 40px;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 200;
 }
 
 .abonament-placeholder {
     width: 100%;
-    max-width: 280px;
-    height: 350px;
+    max-width: 300px;
+    height: 320px;
     background-color: #fdfaf7;
     margin: 0 auto;
-    border-radius: 4px;
+    border-radius: 0;
 }
 
 /* SLIDER */
@@ -353,30 +607,35 @@ html, body {
 
 .slide {
     min-width: 100%;
-    height: 450px; 
+    height: 250px; 
     object-fit: cover;
 }
 
 .arrow {
+    
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: #ffffff;
-    color: var(--visiniu);
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     z-index: 10;
-    line-height: 1;
+    
+    
+    background: transparent; 
+    border: none;
+    color: var(--crem); 
+    font-size: 30px; 
+    cursor: pointer;
+    padding: 10px;
+    transition: 0.3s; 
+    
+    
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5); 
 }
+
+
+.arrow:hover {
+    opacity: 0.5;
+}
+
 
 .prev { 
     left: 15px; 
@@ -386,11 +645,12 @@ html, body {
     right: 15px; 
 }
 
-/* FOOTER GLOBAL SYNCHRONIZED */
+
 .main-footer {
     background-color: var(--visiniu);
     color: white;
-    padding: 0 20px 30px 20px;
+    padding: 40px 20px 30px 20px; 
+    overflow: visible; 
 }
 
 .footer-divider {
@@ -402,6 +662,8 @@ html, body {
 .footer-content {
     display: flex;
     flex-direction: column;
+    height: auto;        
+    overflow: visible;  
 }
 
 .footer-brand {
@@ -412,6 +674,11 @@ html, body {
     margin-bottom: 25px;
     letter-spacing: 1px;
 }
+
+.footer-brand-col {
+    margin-bottom: 35px;
+}
+
 
 .footer-desc {
     font-family: var(--font-corp);
@@ -426,7 +693,6 @@ html, body {
 
 .footer-heading {
     font-family: var(--font-corp);
-    parent-weight: 600;
     font-size: 12px;
     letter-spacing: 2px;
     margin-bottom: 15px;
@@ -480,7 +746,7 @@ html, body {
     opacity: 0.8;
 }
 
-/* MENIU OVERLAY FULLSCREEN */
+
 .menu-overlay {
     position: fixed;
     top: 0;
@@ -533,7 +799,7 @@ html, body {
     opacity: 0.6;
 }
 
-/* MEDIA QUERIES RESPONSIVITATE */
+
 @media (min-width: 768px) {
     .dotari-container, .trainers-container {
         flex-direction: row;

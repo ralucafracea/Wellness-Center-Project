@@ -9,46 +9,52 @@
 </head>
 <body>
 
-    <div class="menu-overlay" id="menuOverlay">
-        <button class="close-btn" id="closeMenuBtn">&times;</button>
-        <nav class="overlay-nav">
-            <a href="../index.html">ACASĂ</a>
-            <a href="spa.html">SPA & WELLNESS</a>
-            <a href="sala.html">FITNESS</a>
-            <a href="#">REZERVĂRI</a>
-            <a href="#">CONTACT</a>
-            <a href="#">CONECTEAZĂ-TE</a>
-        </nav>
-    </div>
-
-    <header class="main-header">
+    <header class="header-principal">
         <div class="logo">
-            <img src="../assets/tirra-logo.png" alt="Tirra Wellness Logo" id="logo-img">
+            <span class="titlu-logo">TIRRA</span>
+            <span class="subtitlu-logo">WELLNESS</span>
         </div>
-        <button class="hamburger-menu">
+        <button class="buton-hamburger">
             <span></span>
             <span></span>
             <span></span>
         </button>
+        <button class="buton-inchidere">&#10005;</button>  
+        <nav class="meniu-navigatie"> 
+            <ul>
+                <li><a href="../index.html">ACASĂ</a></li>
+                <li><a href="spa.html">SPA & WELLNESS</a></li>
+                <li><a href="sala.html">FITNESS</a></li>
+                <li><a href="rezervari.html">REZERVĂRI</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="login.html">CONECTEAZĂ-TE</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
         <section class="hero">
-            <div class="hero-overlay">
-                <div class="hero-content">
-                    <h1>Fitness</h1>
-                    <p>Echilibru între forță și relaxare</p>
-                    <button class="btn-book">Rezervă acum</button>
-                </div>
+            <div class="hero-content-bottom">
+                <p class="hero-subtitle">SALĂ DE FITNESS</p>
+                <h1 class="hero-title">Forță, formă și echilibru</h1>
             </div>
         </section>
 
-        <section class="intro-text">
-            <h2>PROGRAME</h2>
-            <p>O experiență de antrenament transformatoare, unde aparatura de ultimă generație întâlnește expertiza profesională într-un cadru rafinat.</p>
+        <section class="philosophy">
+            <p class="section-tag">FILOSOFIA FITNESS</p>
+            <h2 class="section-title">Performanță și echilibru în fiecare antrenament</h2>
+            <div class="section-text">
+                <p>Redescoperiți vitalitatea și forța corpului dumneavoastră în spațiul nostru de fitness exclusivist.</p>
+                <p>Vă oferim un mediu rafinat, dotat cu echipamente de ultimă generație, conceput special pentru a vă ajuta să vă atingeți obiectivele și să vă mențineți echilibrul fizic într-un cadru definit prin excelență și design modern.</p>
+            </div>
         </section>
 
         <section class="services">
+            <div class="services-header">
+                <p class="section-tag">PROGRAME</p>
+                <h2 class="section-title">Antrenamente pentru orice obiectiv.</h2>
+            </div>
+
             <div class="service-card">
                 <div class="card-header">
                     <h3>Personal Training 1-on-1</h3>
@@ -56,15 +62,6 @@
                 </div>
                 <p class="duration">60 MIN</p>
                 <p class="description">Antrenament construit pe obiectivele tale, cu un coach dedicat.</p>
-            </div>
-
-            <div class="service-card">
-                <div class="card-header">
-                    <h3>Small Group Training</h3>
-                    <span class="price">90 RON</span>
-                </div>
-                <p class="duration">60 MIN</p>
-                <p class="description">Maxim 4 persoane. Intensitate înaltă, atenție personalizată.</p>
             </div>
 
             <div class="service-card">
@@ -123,6 +120,17 @@
                     <h3>Biomecanică & forță</h3>
                     <p>Aparate ghidate pentru toate grupele musculare, design ergonomic.</p>
                 </div>
+                <div class="dotari-card">
+            <img src="../assets/cardio-logo.svg" alt="Studio funcțional" class="card-icon">
+            <h3>Studio funcțional</h3>
+            <p>Accesorii de antrenament funcțional și dispozitive de masaj prin percuție pentru refacerea accelerată a fibrelor musculare.</p>
+        </div>
+
+        <div class="dotari-card">
+            <img src="../assets/apple-logo.svg" alt="Bar nutrițional" class="card-icon">
+            <h3>Bar nutrițional</h3>
+            <p>Smoothie-uri proteice, infuzii și gustări sănătoase.</p>
+        </div>
             </div>
         </section>
 
@@ -148,6 +156,15 @@
                         <p class="trainer-quote">„Mișcarea conștientă este fundamentul longevității și calea prin care corpul își regăsește grația naturală.”</p>
                     </div>
                 </div>
+                <div class="trainer-card">
+                    <img src="../assets/antrenor 3.png" alt="Mihai Dumitrescu" class="trainer-img">
+                    <div class="trainer-info">
+                        <h3>MIHAI DUMITRESCU</h3>
+                        <p class="trainer-role">BODY TRANSFORMATION EXPERT</p>
+                        <p class="trainer-specialties">Hipertrofie Musculară, Nutriție Sportivă, Protocoale de Longevitate.</p>
+                        <p class="trainer-quote">„Integrăm știința în antrenamentul de zi cu zi pentru a sculpta un corp puternic, sănătos și echilibrat.”</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -160,28 +177,30 @@
 
     <section class="slider-section">
         <div class="slider-container" id="slider">
-            <img src="../assets/Pagina principala - imagine spa.png" alt="Spa 1" class="slide">
-            <img src="../assets/gym crowded.png" alt="Spa 2" class="slide">
-            <img src="../assets/Piscina interioara.jpeg" alt="Spa 3" class="slide">
+            <img src="../assets/Piscina interioara.jpeg" alt="Piscina interioara" class="slide">
+            <img src="../assets/Pagina spa - imagine principala.png" alt="Spa" class="slide">
         </div>
         <button class="arrow prev" onclick="moveSlider(-1)">&#10094;</button>
         <button class="arrow next" onclick="moveSlider(1)">&#10095;</button>
     </section>
 
     <footer class="main-footer">
-        <hr class="footer-divider"> 
         <div class="footer-content">
-            <h2 class="footer-brand">TIRRA WELLNESS</h2>
-            <p class="footer-desc">Sanctuarul tău urban pentru spa, fitness și echilibru interior.</p>
+            
+            <div class="footer-brand-col">
+                <h2 class="footer-brand">TIRRA WELLNESS</h2>
+                <p class="footer-desc">Sanctuarul tău urban pentru spa, fitness și echilibru interior.</p>
+            </div>
 
             <div class="footer-section">
                 <h3 class="footer-heading">NAVIGARE</h3>
                 <ul class="footer-links">
-                    <li><a href="../index.html">Despre</a></li>
-                    <li><a href="spa.html">Servicii</a></li>
-                    <li><a href="#">Pachete</a></li>
-                    <li><a href="#">Recenzii</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="../index.html">Acasă</a></li>
+                    <li><a href="spa.html">Spa & Wellness</a></li>
+                    <li><a href="sala.html">Fitness</a></li>
+                    <li><a href="rezervari.html">Rezervări</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Conectează-te</a></li>
                 </ul>
             </div>
 
@@ -192,44 +211,64 @@
                     <a href="#"><img src="../assets/facebook-icon.png" alt="Facebook"></a>
                 </div>
             </div>
-            <p class="footer-copy">© 2026 Tirra Wellness. Toate drepturile rezervate.</p>
+
+            <p class="footer-copy">&copy; 2026 Tirra Wellness. Toate drepturile rezervate.</p>
+            
         </div>
     </footer>
 
     <script>
-        let currentIndex = 0;
-        
-        function moveSlider(direction) {
-            const slider = document.getElementById('slider');
-            const slides = document.querySelectorAll('.slide');
-            const totalSlides = slides.length;
+   
+    let currentIndex = 0;
+    
+    function moveSlider(direction) {
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
 
-            currentIndex += direction;
+        currentIndex += direction;
 
-            if (currentIndex >= totalSlides) {
-                currentIndex = 0;
-            } else if (currentIndex < 0) {
-                currentIndex = totalSlides - 1;
-            }
-
-            const scrollAmount = slider.clientWidth * currentIndex;
-            slider.scrollTo({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
+        if (currentIndex >= totalSlides) {
+            currentIndex = 0;
+        } else if (currentIndex < 0) {
+            currentIndex = totalSlides - 1;
         }
 
-        const hamburger = document.querySelector('.hamburger-menu');
-        const menuOverlay = document.getElementById('menuOverlay');
-        const closeMenuBtn = document.getElementById('closeMenuBtn');
-
-        hamburger.addEventListener('click', () => {
-            menuOverlay.classList.add('active');
+        const scrollAmount = slider.clientWidth * currentIndex;
+        slider.scrollTo({
+            left: scrollAmount,
+            behavior: 'smooth'
         });
+    }
 
-        closeMenuBtn.addEventListener('click', () => {
-            menuOverlay.classList.remove('active');
+    
+    const meniuNavigatie = document.querySelector('.meniu-navigatie');
+    const btnHamburger = document.querySelector('.buton-hamburger');
+    const btnInchidere = document.querySelector('.buton-inchidere');
+    const linkuriMeniu = document.querySelectorAll('.meniu-navigatie a');
+
+    
+    btnHamburger.addEventListener('click', () => {
+        meniuNavigatie.classList.add('deschis');
+        btnHamburger.style.display = 'none';     
+        btnInchidere.style.display = 'block';
+    });
+
+    
+    btnInchidere.addEventListener('click', () => {
+        meniuNavigatie.classList.remove('deschis');
+        btnInchidere.style.display = 'none';     
+        btnHamburger.style.display = 'flex';
+    });
+
+    
+    linkuriMeniu.forEach(link => {
+        link.addEventListener('click', () => {
+            meniuNavigatie.classList.remove('deschis');
+            btnInchidere.style.display = 'none';     
+            btnHamburger.style.display = 'flex';
         });
-    </script>
+    });
+</script>
 </body>
 </html>
