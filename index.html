@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <title>Tirra Wellness - Home</title>
+        <!-- pentru diacritice: -->
+    <meta charset = "UTF-8"> 
+    <link rel = "stylesheet" href = "css/style.css">
+        <!-- sa fie responsive la diferite marimi ale ecranului: -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonturi: Montserrat (400, 600) și Cormorant Garamond (300 Light, 400 Regular) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header-principal">
+    <div class="logo">
+        <span class="titlu-logo">TIRRA</span>
+        <span class="subtitlu-logo">WELLNESS</span>
+    </div>
+    <button class="buton-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <button class="buton-inchidere">&#10005;</button>  
+    <nav class="meniu-navigatie"> 
+        <ul>
+            <li><a href="index.html">ACASĂ</a></li>
+            <li><a href="pages/spa.html">SPA & WELLNESS</a></li>
+            <li><a href="pages/sala.html">FITNESS</a></li>
+            <li><a href="pages/rezervari.html">REZERVĂRI</a></li>
+            <li><a href="pages/contact.html">CONTACT</a></li>
+            <li><a href="pages/login.html">CONECTEAZĂ-TE</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Sectiunea Hero (Poza de inceput) -->
+    <section class="hero">
+        <div class="continut-hero">
+            <h1>Echilibru între forță și relaxare</h1>
+            <h2>Descoperă Tirra Wellness</h2>
+            <a href="pages/rezervari.html" class="buton-rezervare">Rezervă acum</a>
+            <p>10% reducere la primul abonament</p>
+        </div>
+    </section>
+    <!-- sectiunea despre tirra -->
+    <section class="despre-noi">
+        <h2 class="subtitlu-sectiune">DESPRE TIRRA WELLNESS</h2>
+        <p class="text-sectiune">   Descoperă un spațiu dedicat echilibrului tău fizic și mental. La Tirra Wellness, îmbinăm eleganța terapiilor spa cu facilități moderne de fitness, totul într-un ambient gândit special pentru liniștea ta.</p>
+        <img src="imagini/PiscinaInterioara.jpeg" alt="Piscina interioara Tirra Wellness" class="imagine-despre">
+        <h2 class="subtitlu-sectiune">SERVICIILE NOASTRE</h2>
+        <p class="text-sectiune">De la terapia care îți reașează corpul, la antrenamentul care îți construiește forța — totul sub același acoperiș.</p>
+    </section>
+
+    <section class="categorii-servicii">
+        <a href="pages/spa.html" class="card-serviciu">
+            <img src="imagini/spaPaginaPrincipala.png" alt="Spa si Wellness Tirra">
+            <div class="text-card">
+                <h3>SPA & WELLNESS</h3>
+            </div>
+        </a>
+        
+        <a href="pages/sala.html" class="card-serviciu">
+            <img src="imagini/salaPaginaPrincipala.png" alt="Sala de Fitness Tirra">
+            <div class="text-card">
+                <h3>SALĂ DE FITNESS</h3>
+            </div>
+        </a>
+    </section>
+
+    <section class="pachete-tarife">
+        <h4 class="subtitlu-mic">PACHETE & TARIFE</h4>
+        <h2 class="titlu-mare">Alege-ți ritualul.</h2>
+
+        <div class="container-carduri">
+            
+            <div class="card-pret">
+                <span class="durata-pachet">90 MIN</span>
+                <h3 class="titlu-pachet">RITUAL DE RELAXARE</h3>
+                <ul class="lista-pachet">
+                    <li>Masaj terapeutic la alegere (60 min)</li>
+                    <li>Acces nelimitat în zona de relaxare</li>
+                    <li>Terapie prin arome și ceaiuri detox</li>
+                    <li>Halat și papuci spa incluși</li>
+                </ul>
+                <div class="footer-card">
+                    <span class="pret-pachet">350 RON</span>
+                    <a href="pages/rezervari.html" class="buton-mic">Rezervă</a>
+                </div>
+            </div>
+
+            <div class="card-pret">
+                <span class="durata-pachet">120 MIN</span>
+                <h3 class="titlu-pachet">PACHET VITALITATE</h3>
+                <ul class="lista-pachet">
+                    <li>Antrenament personalizat (60 min)</li>
+                    <li>Masaj recuperare musculară</li>
+                    <li>Acces complet facilități fitness</li>
+                    <li>Plan nutrițional personalizat</li>
+                </ul>
+                <div class="footer-card">
+                    <span class="pret-pachet">300 RON</span>
+                    <a href="pages/rezervari.html" class="buton-mic">Rezervă</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="recenzii">
+        <h4 class="subtitlu-recenzii">RECENZII</h4>
+        <h2 class="titlu-recenzii">Ce spun clienții noștri.</h2>
+
+        <div class="slider-recenzii">
+            
+            <button class="sageata sageata-stanga" onclick="schimbaRecenzia(-1)">&#10094;</button>
+            <!-- 10094 cod pentru sageata stanga -->
+            <div class="container-texte">
+                <div class="slide-recenzie activa">
+                    <p class="text-recenzie">"O experiență de relaxare totală. Atmosfera, curățenia și masajul au fost pur și simplu la superlativ."</p>
+                    <p class="autor-recenzie">- MARIA S.</p>
+                </div>
+                <div class="slide-recenzie">
+                    <p class="text-recenzie">"Pachetul de vitalitate mi-a schimbat complet rutina. Antrenorii sunt profesioniști și atenți la detalii."</p>
+                    <p class="autor-recenzie">- ANDREI M.</p>
+                </div>
+                <div class="slide-recenzie">
+                    <p class="text-recenzie">"Un adevărat refugiu în mijlocul orașului. Spa-ul este impecabil, recomand cu toată încrederea!"</p>
+                    <p class="autor-recenzie">- ELENA P.</p>
+                </div>
+            </div>
+
+            <button class="sageata sageata-dreapta" onclick="schimbaRecenzia(1)">&#10095;</button>
+            <!-- 10095 cod pt simbolul sageata dreapta -->
+        </div>
+    </section>
+
+    <section id="contact" class="sectiune-contact">
+        <h2 class="titlu-contact">
+            <a href="pages/contact.html">CONTACT</a>
+        </h2>
+
+        <div class="lista-contact">
+            <div class="element-contact">
+                <img src="imagini/SimbolLocatie.jpg" alt="Locatie" class="icon-contact">
+                <div class="text-contact">
+                    <span class="eticheta-contact">LOCAȚIE</span>
+                    <span class="valoare-contact">Strada Wellness 12, București</span>
+                </div>
+            </div>
+
+            <div class="element-contact">
+                <img src="imagini/SimbolTelefon.jpg" alt="Telefon" class="icon-contact">
+                <div class="text-contact">
+                    <span class="eticheta-contact">TELEFON</span>
+                    <span class="valoare-contact">+40 700 000 000</span>
+                </div>
+            </div>
+
+            <div class="element-contact">
+                <img src="imagini/SimbolMail.jpg" alt="Email" class="icon-contact">
+                <div class="text-contact">
+                    <span class="eticheta-contact">EMAIL</span>
+                    <span class="valoare-contact">rezervari@tirrawellness.ro</span>
+                </div>
+            </div>
+
+            <div class="element-contact">
+                <img src="imagini/SimbolCeas.jpg" alt="Program" class="icon-contact">
+                <div class="text-contact">
+                    <span class="eticheta-contact">PROGRAM</span>
+                    <span class="valoare-contact">Luni &mdash; Duminică . 8:00 &mdash; 22:00</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+
+        <div class="footer-content">
+            
+            <div class="footer-brand-col">
+                <h2 class="footer-brand">TIRRA WELLNESS</h2>
+                <p class="footer-desc">Sanctuarul tău urban pentru spa, fitness și echilibru interior.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-heading">NAVIGARE</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Acasă</a></li>
+                    <li><a href="pages/spa.html">Spa & Wellness</a></li>
+                    <li><a href="pages/sala.html">Fitness</a></li>
+                    <li><a href="pages/rezervari.html">Rezervări</a></li>
+                    <li><a href="pages/contact.html">Contact</a></li>
+                    <li><a href="pages/login.html">Conectează-te</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-heading">URMĂREȘTE-NE</h3>
+                <div class="social-icons">
+                    <a href="#"><img src="assets/instagram-icon.png" alt="Instagram"></a>
+                    <a href="#"><img src="assets/facebook-icon.png" alt="Facebook"></a>
+                </div>
+            </div>
+
+            <p class="footer-copy">&copy; 2026 Tirra Wellness. Toate drepturile rezervate.</p>
+        </div>
+    </footer>
+
+    <script>
+
+        // --------------------------------LOGICA PENTRU RECENZII---------------------------
+        let indexCurent = 0; // incepem cu prima recenzie
+        const slideuri = document.querySelectorAll('.slide-recenzie');
+        const btnStanga = document.querySelector('.sageata-stanga');
+        const btnDreapta = document.querySelector('.sageata-dreapta');
+
+        function arataRecenzia(index) {
+            slideuri.forEach(slide => slide.classList.remove('activa'));
+            slideuri[index].classList.add('activa');
+            // sageata stanga, care dispare daca suntem la prima recenzie:
+            if (index === 0) {
+                btnStanga.style.visibility = 'hidden';
+            } else {
+                btnStanga.style.visibility = 'visible';
+            }
+            // sageata dreapta, dispare daca suntem la ultima recenzie:
+            if (index === (slideuri.length - 1)) {
+                btnDreapta.style.visibility = 'hidden';
+            } else {
+                btnDreapta.style.visibility = 'visible';
+            }
+        }
+        // cand apesi pe o sageata sa apeleaza functia asta:
+        function schimbaRecenzia(directie) {
+            indexCurent += directie;
+            arataRecenzia(indexCurent);
+        }
+        // sa apara prima recenzie by default:
+        arataRecenzia(indexCurent);
+
+        // -------------------------- LOGICA PENTRU MENIU --------------------------------
+        const meniuNavigatie = document.querySelector('.meniu-navigatie');
+        const btnHamburger = document.querySelector('.buton-hamburger');
+        const btnInchidere = document.querySelector('.buton-inchidere');
+        const linkuriMeniu = document.querySelectorAll('.meniu-navigatie a');
+
+        // deshide meniu la apasare hamburger
+        btnHamburger.addEventListener('click', () => {
+            meniuNavigatie.classList.add('deschis');
+            btnHamburger.style.display = 'none';     
+            btnInchidere.style.display = 'block';
+        });
+
+        // inchide meniul din butonul X
+        btnInchidere.addEventListener('click', () => {
+            meniuNavigatie.classList.remove('deschis');
+            btnInchidere.style.display = 'none';     
+            btnHamburger.style.display = 'flex';
+        });
+
+        // inchide meniul cand dau click pe linkuri
+        linkuriMeniu.forEach(link => {
+            link.addEventListener('click', () => {
+                meniuNavigatie.classList.remove('deschis');
+            });
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>
