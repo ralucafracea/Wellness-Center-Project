@@ -273,37 +273,47 @@ html {
 
 
 .hero {
-    min-height: 300px; 
-    height: 55vw;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.6) 100%), url('../assets/Gemini_Generated_Image_u25nbsu25nbsu25n.png') center/cover no-repeat;
-    position: relative;
-    width: 100%;
+    background-image: 
+        linear-gradient(rgba(244, 239, 234, 0.15), rgba(244, 239, 234, 0.15)),
+        url('../assets/Gemini_Generated_Image_3189uc3189uc3189_cleanup.png');
+    
+    
+    background-size: 100%;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    
+    height: 45vh;
     display: flex;
-    align-items: flex-end; 
-    padding: 40px 20px;
+    align-items: flex-end;
+    padding: 30px 20px; 
+    box-sizing: border-box;
     margin-top: 60px;
+    padding: 30px 20px 30px 20px;
 }
 
 .hero-content-bottom {
     text-align: left;
+    width: 100%; 
 }
 
 .hero-subtitle {
     font-family: var(--font-sans);
-    color: white;
-    font-weight: 700;
+    color: #F4EFEA;
+    font-weight: 550;
     letter-spacing: 5px;
-    font-size: 0.95rem;
-    margin-bottom: 5px;
-    text-transform: uppercase;
+    font-size: 0.80rem;
+    margin-bottom: 15px;
+    text-transform: uppercase; 
+    
 }
 
 .hero-title {
     font-family: var(--font-titlu);
-    color: white;
+    color: #F4EFEA;
     font-weight: 300;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     line-height: 1.2;
+   
 }
 
 .philosophy {
@@ -451,7 +461,7 @@ html {
 .dotari-card {
     background-color: var(--visiniu);
     color: white;
-    padding: 40px 25px 40px 20px;
+    padding: 25px 25px 40px 20px;
     border-radius: 4px;
     text-align: left;
 }
