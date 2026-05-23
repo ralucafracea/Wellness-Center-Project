@@ -244,7 +244,7 @@ html {
 
 /* img cu piscina */
 .imagine-despre {
-    width: 100%; /* ocuoa toata latimea fara marginile de 20 */
+    width: 90%; /* ocupa 90 din latime fara marginile de 20 */
     border-radius: 4px; /* rotunjire colturi */
     margin-bottom: 20px; /* spatiu sub poza */
     margin-top: 20px;
