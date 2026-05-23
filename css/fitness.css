@@ -3,7 +3,6 @@
     --crem: #F4EFEA;
     --font-titlu: 'Cormorant Garamond', serif;
     --font-corp: 'Montserrat', sans-serif;
-
     --color-primary: #631621;
     --color-bg: #F4EFEA;
     --font-serif: 'Cormorant Garamond', serif;
@@ -17,283 +16,147 @@
 }
 
 html, body {
-    width: 100%; 
+    width: 100%;
     background-color: var(--crem);
     font-family: var(--font-corp);
     color: #333;
-    padding-top: 0px; 
+    padding-top: 0px;
 }
 
 html {
     overflow-x: clip;
 }
 
-
 .header-principal {
-
-    display: flex; 
-
-    justify-content: space-between; 
-
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-
-    padding: 10px 20px; 
-
-    background-color: var(--color-primary); 
-
-
-
+    padding: 10px 20px;
+    background-color: var(--color-primary);
     position: fixed;
-
-    top: 0;        
-
-    left: 0;        
-
+    top: 0;
+    left: 0;
     right: 0;
-
-    
-
-    z-index: 999; 
-
-    box-sizing: border-box; 
-
+    z-index: 999;
+    box-sizing: border-box;
 }
-
-
-
-
 
 .logo {
-
     font-family: var(--font-sans);
-
     display: flex;
-
-    flex-direction: column; 
-
-    align-items: center; 
-
+    flex-direction: column;
+    align-items: center;
 }
-
-
-
-
 
 .titlu-logo {
-
-    font-size: 24px;        
-
+    font-size: 24px;
     font-weight: 400;
-
-    letter-spacing: 4px; 
-
-    color: var(--color-bg); 
-
+    letter-spacing: 4px;
+    color: var(--color-bg);
 }
-
-
-
-
 
 .subtitlu-logo {
-
-    font-size: 10px; 
-
+    font-size: 10px;
     font-weight: 300;
-
     letter-spacing: 2px;
-
-    color: var(--color-bg); 
-
+    color: var(--color-bg);
 }
-
-
 
 .buton-hamburger {
-
     background: transparent;
-
     border: none;
-
     cursor: pointer;
-
     display: flex;
-
     flex-direction: column;
-
     gap: 6px;
-
-    color: var(--color-bg); 
-
+    color: var(--color-bg);
 }
 
-.buton-hamburger span { 
-
+.buton-hamburger span {
     display: block;
-
     width: 30px;
-
     height: 2px;
-
     background-color: var(--color-bg);
-
 }
-
-
-
-
 
 .meniu-navigatie {
-
-    position: fixed; 
-
+    position: fixed;
     top: 60px;
-
     left: 0;
-
     width: 100%;
-
-    height: calc(100vh - 60px); 
-
-    background-color: var(--color-bg); 
-
-    z-index: 1000; 
-
-    
-
-    
-
+    height: calc(100vh - 60px);
+    background-color: var(--color-bg);
+    z-index: 1000;
     display: none;
-
     flex-direction: column;
-
-    justify-content: center; 
-
+    justify-content: center;
     align-items: center;
-
     padding-top: 20px;
-
     padding-bottom: 20px;
-
     box-sizing: border-box;
-
 }
-
-
-
-
 
 .meniu-navigatie.deschis {
-
     display: flex;
-
 }
-
-
-
-
 
 .meniu-navigatie ul {
-
     list-style: none;
-
     padding: 0;
-
     margin: 0;
-
     text-align: center;
-
 }
-
-
 
 .meniu-navigatie li {
-
-    margin: 50px 0; 
-
+    margin: 50px 0;
 }
-
-
 
 .meniu-navigatie a {
-
     text-decoration: none;
-
     font-family: var(--font-sans);
-
-    color: var(--color-primary); 
-
+    color: var(--color-primary);
     font-size: 22px;
-
     transition: 0.3s;
-
 }
-
-
 
 .meniu-navigatie a:hover {
-
-    color: #a87e84; 
-
+    color: #a87e84;
 }
-
-
-
-
 
 .buton-inchidere {
-
-    display:none;
-
+    display: none;
     background: transparent;
-
     position: absolute;
-
     border: none;
-
     font-size: 30px;
-
     color: var(--color-bg);
-
     cursor: pointer;
-
-    transition: 0.3s; 
-
+    transition: 0.3s;
     right: 20px;
-
 }
-
-
 
 .buton-inchidere:hover {
-
-    transform: scale(1.1); 
-
+    transform: scale(1.1);
 }
 
-
 .hero {
-    background-image: 
+    background-image:
         linear-gradient(rgba(244, 239, 234, 0.15), rgba(244, 239, 234, 0.15)),
         url('../assets/Gemini_Generated_Image_3189uc3189uc3189_cleanup.png');
-    
-    
     background-size: 100%;
     background-position: center bottom;
     background-repeat: no-repeat;
-    
     height: 45vh;
     display: flex;
     align-items: flex-end;
-    padding: 30px 20px; 
     box-sizing: border-box;
     margin-top: 60px;
-    padding: 30px 20px 30px 20px;
+    padding: 30px 20px 25px 20px;
 }
 
 .hero-content-bottom {
     text-align: left;
-    width: 100%; 
+    width: 100%;
 }
 
 .hero-subtitle {
@@ -301,10 +164,9 @@ html {
     color: #F4EFEA;
     font-weight: 550;
     letter-spacing: 5px;
-    font-size: 0.80rem;
-    margin-bottom: 15px;
-    text-transform: uppercase; 
-    
+    font-size: 0.85rem;
+    margin-bottom: 3px;
+    text-transform: uppercase;
 }
 
 .hero-title {
@@ -313,7 +175,6 @@ html {
     font-weight: 300;
     font-size: 1.4rem;
     line-height: 1.2;
-   
 }
 
 .philosophy {
@@ -334,7 +195,7 @@ html {
 .section-title {
     font-family: var(--font-titlu);
     color: var(--visiniu);
-    font-size: 28px; 
+    font-size: 28px;
     font-weight: 400;
     line-height: 1.3;
     margin-bottom: 25px;
@@ -349,41 +210,36 @@ html {
     font-weight: 400;
 }
 
-
 .services {
-    background-color: #EBE5D9; 
+    background-color: #EBE5D9;
     padding: 35px 45px;
     display: flex;
     flex-direction: column;
-    gap: 35px; 
+    gap: 35px;
     width: 100%;
 }
 
-
 .services-header {
     text-align: center;
-    margin-bottom: 0px; 
+    margin-bottom: 0px;
 }
 
 .services-header .section-tag {
     text-align: center;
-    font-size: 17px; 
+    font-size: 17px;
     letter-spacing: 2px;
-    margin-bottom: 25px; 
+    margin-bottom: 25px;
 }
-
 
 .services-header .section-title {
     text-align: center;
-    font-size: 34px; 
-    margin-bottom: 0; 
+    font-size: 34px;
+    margin-bottom: 0;
     line-height: 1.2;
 }
 
-
-
 .service-card {
-    background-color: #F4EFEA; 
+    background-color: #F4EFEA;
     padding: 28px 25px 40px;
     border-radius: 4px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
@@ -425,7 +281,6 @@ html {
     color: var(--visiniu);
 }
 
-/* DOTĂRI */
 .dotari {
     background-color: #F4EFEA;
     padding: 60px 35px;
@@ -454,7 +309,7 @@ html {
     flex-direction: column;
     gap: 40px;
     width: 100%;
-    max-width: 400px; 
+    max-width: 400px;
     margin: 0 auto;
 }
 
@@ -472,7 +327,7 @@ html {
 }
 
 .dotari-card h3 {
-    font-size: 1 rem;
+    font-size: 1rem;
     font-weight: 700;
     margin-bottom: 25px;
 }
@@ -483,11 +338,10 @@ html {
     opacity: 0.9;
 }
 
-/* ANTRENORI */
 .trainers {
     padding: 40px 50px 60px;
     text-align: center;
-    background-color:#EBE5D9;
+    background-color: #EBE5D9;
 }
 
 .label-echipa {
@@ -562,11 +416,8 @@ html {
     font-size: 0.85rem;
     line-height: 1.3;
     color: var(--visiniu);
-    border-top: none;
-    padding-top: 0px;
 }
 
-/* ABONAMENTE */
 .abonamente {
     background-color: var(--visiniu);
     padding: 35px 20px 60px;
@@ -580,7 +431,6 @@ html {
     font-size: 0.9rem;
     letter-spacing: 1.2px;
     margin-bottom: 25px;
-    opacity: 1;
     text-transform: uppercase;
 }
 
@@ -601,79 +451,36 @@ html {
     border-radius: 0;
 }
 
-/* SLIDER */
 .slider-section {
     position: relative;
     width: 100%;
     overflow: hidden;
 }
 
-.slider-container {
-    display: flex;
-    scroll-behavior: smooth;
-    width: 100%;
-    overflow-x: hidden;
-}
-
 .slide {
     min-width: 100%;
-    height: 250px; 
+    height: 250px;
     object-fit: cover;
 }
-
-.arrow {
-    
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    
-    
-    background: transparent; 
-    border: none;
-    color: var(--crem); 
-    font-size: 30px; 
-    cursor: pointer;
-    padding: 10px;
-    transition: 0.3s; 
-    
-    
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5); 
-}
-
-
-.arrow:hover {
-    opacity: 0.5;
-}
-
-
-.prev { 
-    left: 15px; 
-}
-
-.next { 
-    right: 15px; 
-}
-
 
 .main-footer {
     background-color: var(--visiniu);
     color: white;
-    padding: 40px 20px 30px 20px; 
-    overflow: visible; 
+    padding: 40px 20px 30px 20px;
+    overflow: visible;
 }
 
 .footer-divider {
     border: none;
-    border-top: 1px solid rgba(244, 239, 234, 0.2); 
+    border-top: 1px solid rgba(244, 239, 234, 0.2);
     margin: 0 0 40px 0;
 }
 
 .footer-content {
     display: flex;
     flex-direction: column;
-    height: auto;        
-    overflow: visible;  
+    height: auto;
+    overflow: visible;
 }
 
 .footer-brand {
@@ -688,7 +495,6 @@ html {
 .footer-brand-col {
     margin-bottom: 35px;
 }
-
 
 .footer-desc {
     font-family: var(--font-corp);
@@ -739,7 +545,7 @@ html {
 }
 
 .social-icons img {
-    width: 35px; 
+    width: 35px;
     height: 35px;
     transition: transform 0.3s ease;
 }
@@ -756,7 +562,6 @@ html {
     opacity: 0.8;
 }
 
-
 .menu-overlay {
     position: fixed;
     top: 0;
@@ -764,8 +569,8 @@ html {
     width: 100%;
     height: 100vh;
     background-color: var(--crem);
-    z-index: 2000; 
-    display: none; 
+    z-index: 2000;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -808,7 +613,6 @@ html {
 .overlay-nav a:hover {
     opacity: 0.6;
 }
-
 
 @media (min-width: 768px) {
     .dotari-container, .trainers-container {
