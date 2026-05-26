@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. DEFINIRE VARIABILE ȘI RESET GLOBALE
-   ========================================================================== */
+/* Definire variabile */
 :root {
     --color-primary: #631621; 
     --color-bg: #F4EFEA; 
@@ -22,22 +20,40 @@ body {
     font-family: var(--font-sans);
 }
 
-/* ==========================================================================
-   2. HEADER & NAVIGATION (Meniu Mobil Implicit)
-   ========================================================================== */
+/* 1. Header */
 .main-header {
-    background-color: var(--color-primary);
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
+    display: flex; 
+    justify-content: space-between; 
     align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    padding: 10px 20px; 
+    background-color: var(--color-primary); 
+    position: fixed;
+    top: 0;        
+    left: 0;        
+    right: 0;
+    z-index: 999; 
+    box-sizing: border-box;
 }
 
-#logo-img {
-    height: 70px;
+.logo {
+    font-family: var(--font-sans);
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.titlu-logo {
+    font-size: 24px;        
+    font-weight: 400;
+    letter-spacing: 4px; 
+    color: var(--color-bg); 
+}
+
+.subtitlu-logo {
+    font-size: 10px; 
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: var(--color-bg); 
 }
 
 .hamburger-menu {
@@ -47,6 +63,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    color: var(--color-bg);
 }
 
 .hamburger-menu span {
@@ -57,66 +74,75 @@ body {
 }
 
 .mobile-nav {
-    display: none;
     position: fixed; 
-    top: 0;
+    top: 0;                  
     left: 0;
     width: 100%;
-    height: 100vh; 
+    height: 100vh;            
     background-color: var(--color-bg); 
-    z-index: 2000; 
+    z-index: 2000;         
+    display: none;
     flex-direction: column;
-    justify-content: flex-start; 
-    padding-top: 120px;
-    align-items: center; 
+    justify-content: center; 
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
 }
 
 .mobile-nav.active {
-    display: flex !important; 
-}
-
-.close-menu {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    background: transparent;
-    border: none;
-    font-size: 50px; 
-    color: var(--color-primary); 
-    cursor: pointer;
-    line-height: 1;
+    display: flex;
 }
 
 .mobile-nav ul {
     list-style: none;
     padding: 0;
-    margin: 0 auto; 
-    width: 80%; 
-    max-width: 350px;
-    text-align: center; 
+    margin: 0;
+    text-align: center;
+}
+
+.mobile-nav li {
+    margin: 40px 0; 
 }
 
 .mobile-nav a {
-    color: var(--color-primary);
     text-decoration: none;
-    font-family: var(--font-serif);
-    font-size: 28px; 
-    display: block;
-    padding: 15px 0; 
-    letter-spacing: 2px; 
+    font-family: var(--font-sans);
+    color: var(--color-primary); 
+    font-size: 22px;
+    transition: 0.3s;
 }
 
-/* ==========================================================================
-   3. SECȚIUNI GENERALE (Hero, Servicii, Pași, Carusel)
-   ========================================================================== */
-/* --- Hero --- */
+.mobile-nav a:hover {
+    color: #a87e84; 
+}
+
+.buton-inchidere {
+    display: none;
+    background: transparent;
+    position: fixed;         
+    border: none;
+    font-size: 35px; 
+    color: var(--color-primary); 
+    cursor: pointer;
+    transition: 0.3s; 
+    top: 15px;                
+    right: 20px;
+    z-index: 2001;         
+}
+
+.buton-inchidere:hover {
+    transform: scale(1.1); 
+}
+
+/*2.Hero */
 .hero {
     background-image: 
         linear-gradient(rgba(244, 239, 234, 0.15), rgba(244, 239, 234, 0.15)),
         url('../assets/spa-masaj.png');
-    background-size: 180%;
-    background-position: 40% center;
-    height: 45vh;
+    background-size:cover;
+    background-position:25% center;
+    height: 55vh;
     display: flex;
     align-items: flex-end;
     padding: 30px 20px;
@@ -140,11 +166,41 @@ body {
     font-size: 22px;
 }
 
-/* --- Tratamente & Facilități --- */
-.services {
+/* 3.Descriere spa */
+.philosophy {
     padding: 50px 20px;
 }
 
+.section-tag {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: var(--color-primary);
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 28px; 
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 25px;
+}
+
+.section-text p {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* 4.Tratamente si facilitati*/
+.services {
+    padding: 50px 20px;
+
+}
+
+/* fundal tratamente */
 .treatments-bg {
     background-color: var(--color-bg-alt); 
 }
@@ -152,6 +208,7 @@ body {
 .services-header {
     text-align: center;
     margin-bottom: 30px;
+    
 }
 
 .center-text {
@@ -166,6 +223,7 @@ body {
     gap: 25px;
 }
 
+/* carduri statice */
 .static-card {
     background-color: var(--color-bg);
     padding: 25px;
@@ -176,6 +234,7 @@ body {
     justify-content: center;
 }
 
+/* carduri flip */
 .flip-card {
     background-color: transparent;
     width: 100%;
@@ -277,7 +336,7 @@ body {
     line-height: 1.5;
 }
 
-/* --- Ritualul Tău (Pași) --- */
+/* 5.Ritualul tau */
 .visit-steps {
     padding: 50px 20px;
 }
@@ -319,14 +378,13 @@ body {
     padding: 12px 35px;
     border-radius: 6px;
     transition: opacity 0.3s ease;
-    border: none;
 }
 
 .btn-primary:hover {
     opacity: 0.85;
 }
 
-/* --- Carusel --- */
+/* 6.Carusel*/
 .included-section {
     background-color: var(--color-primary);
     padding-top: 60px;
@@ -336,6 +394,7 @@ body {
     padding: 0 20px 40px 20px;
     text-align: center; 
 }
+
 
 .alt-tag {
     color: var(--color-bg);
@@ -367,55 +426,448 @@ body {
     object-fit: cover; 
 }
 
-/* ==========================================================================
-   4. FILOSOFIA SPA (Separare Strictă Mobil / Desktop)
-   ========================================================================== */
-.desktop-only {
-    display: none; 
+/* 7.Footer*/
+.main-footer {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    padding-top: 50px;    
+    padding-bottom: 40px; 
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
-.philosophy {
-    padding: 50px 20px;
-    text-align: center;
-    background-color: #F4EFEA; 
-    color: var(--color-primary);
+
+/* Linia de separare */
+.footer-divider {
+    border: none;
+    border-top: 1px solid rgba(244, 239, 234, 0.2); 
+    margin: 0 0 40px 0;
 }
 
-.section-tag {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-    color: var(--color-primary);
-    font-weight: 500;
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;  
+    padding-bottom: 40px;   
 }
 
-.section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px; 
+.footer-brand { 
+    font-family: var(--font-serif);
     font-weight: 400;
-    line-height: 1.3;
-    margin-bottom: 25px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 32px;
+    text-align: center;
+    margin-top: 0;      
+    margin-bottom: 20px; 
+    letter-spacing: 1px;
 }
 
-.section-text p {
-    font-family: 'Montserrat', sans-serif;
+.footer-desc {
+    font-family: var(--font-sans);
+    font-weight: 400;
     font-size: 14px;
     line-height: 1.6;
-    margin-bottom: 15px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center; 
+    margin-bottom: 35px; 
 }
 
+.footer-section {
+    margin-bottom: 35px;  
+    text-align: center; 
+}
+
+.footer-copy {
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    opacity: 0.8;
+}
+
+.footer-heading {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Lista de link-uri */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-links a {
+    color: var(--color-bg);
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    transition: opacity 0.3s;
+}
+
+.footer-links a:hover {
+    opacity: 0.7; 
+}
+
+/* Iconitele de social media */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons img {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1); 
+}
+
+
+/* 8.Desktop version*/
+
+
+    
+@media (min-width: 992px) {
+    
+    /*HERO */
+    .hero {
+        background-size: 110%; 
+        background-position: 90% 37%; 
+        height: 70vh; 
+        padding: 100px 80px;
+        display: flex;
+        justify-content: flex-end; 
+        align-items: flex-start; 
+    }
+
+    .hero-content {
+        max-width: 600px; 
+        text-align: right; 
+        text-shadow: 2px 2px 8px rgb(246, 231, 231);
+    }
+
+    .hero-title {
+        font-size: 56px; 
+        color:#631621;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+        color:#631621;
+    }
+
+    /*FILOSOFIA SPA*/
+    .philosophy {
+        padding: 80px;
+        text-align: center;
+        background-color: #F4EFEA; 
+        color: var(--color-primary);
+    }
+
+    .section-title {
+        font-size: 42px;
+        max-width: 600px;
+        margin: 0 auto 30px auto;
+    }
+
+    .section-tag {
+        font-family: var(--font-sans);
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        color: var(--color-primary); 
+    }
+
+    .section-text p {
+        max-width: 700px;
+        margin: 0 auto 15px auto;
+        font-size: 16px;
+    }
+
+    /*TRATAMENTE SI FACILITATI*/
+    .services {
+        padding: 80px;
+        background-color: #F4EFEA;
+        color: var(--color-primary);
+    }
+
+    .treatments-bg {
+        background-color: #EBE5D9; 
+    }
+
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    /*RITUALUL TAU*/
+    .visit-steps { 
+        padding: 80px;
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #F4EFEA; 
+        color: var(--color-primary);
+    }
+
+    .steps-list li {
+        font-size: 20px;
+    }
+
+    /*CARUSEL*/
+    .included-section {
+        display: flex; 
+        align-items: center;
+        padding-top: 0; 
+    }
+
+    .included-content {
+        flex: 1; 
+        padding: 80px;
+        text-align: left;
+    }
+
+    .included-list {
+        margin: 30px 0 0 0;
+        font-size: 16px;
+    }
+
+    #spaCarousel {
+        flex: 1.5; 
+    }
+
+    .carousel-item img {
+        height: 500px; 
+        width: 100%;
+        object-fit: cover; 
+        object-position: center; 
+    }
+
+    /*FOOTER*/
+    .main-footer {
+        padding: 0 80px 30px 80px;
+    }
+
+    .footer-content {
+        flex-direction: row; 
+        flex-wrap: wrap; 
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-brand-col {
+        max-width: 350px;
+        text-align: left;
+    }
+
+    .footer-brand {
+        text-align: left;
+        margin-bottom: 15px; 
+    }
+
+    .footer-desc {
+        max-width: 100%; 
+    }
+
+    .footer-copy {
+        width: 100%;
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(244, 239, 234, 0.2);
+    }
+
+    /*MENIU DESKTOP */
+    .hamburger-menu {
+        display: flex; 
+        position: relative;
+        z-index: 9999; 
+    }
+
+    .mobile-nav {
+        display: flex; 
+        position: fixed; 
+        top: 0;
+        right: 0;
+        left: auto; 
+        width: 350px; 
+        height: 100vh; 
+        background-color: var(--color-primary); 
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 120px 0 50px 0; 
+        z-index: 10000;
+        
+        transform: translateX(100%); 
+        transition: transform 0.4s ease-in-out; 
+        
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15); 
+    }
+
+    .close-menu {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        background: transparent;
+        border: none;
+        font-size: 45px; 
+        color: var(--color-bg); 
+        cursor: pointer;
+        line-height: 1;
+        transition: opacity 0.3s;
+    }
+    
+    .close-menu:hover {
+        opacity: 0.6;
+    }
+
+    .mobile-nav.active {
+        transform: translateX(0); 
+    }
+
+    .mobile-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .mobile-nav li {
+        width: 100%;
+    }
+
+    .mobile-nav a {
+        display: block;
+        color: var(--color-bg);
+        font-family: var(--font-sans);
+        font-size: 15px;
+        padding: 18px 40px; 
+        text-align: left; 
+        border-bottom: 1px solid rgba(244, 239, 234, 0.08);
+        transition: background-color 0.3s, padding-left 0.3s;
+    }
+
+    .mobile-nav li:last-child a {
+        border-bottom: none;
+    }
+
+    .mobile-nav a:hover {
+        background-color: rgba(244, 239, 234, 0.05);
+        padding-left: 45px;
+    }
+
+    /*PAGINA REZERVARI Desktop*/
+    .rezervari-page-content {
+        padding-top: 140px; 
+        padding-bottom: 100px;
+        padding-left: 80px;
+        padding-right: 80px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;      
+        gap: 80px;
+        width: 100vw;   
+        max-width: 100%;      
+        margin: 0;      
+        background-color: var(--color-bg-alt); 
+        box-sizing: border-box;
+    }
+
+    .rezervari-header-text {
+        flex: 1;
+        margin-bottom: 0;
+        max-width: 450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .rezervari-header-text .section-title {
+        font-size: 56px;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .rezervari-desc {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .rezervari-form-card {
+        flex: 1.2;
+        padding: 50px 60px;
+        max-width: 600px;
+        width: 100%;
+        background-color: var(--color-bg);
+    }
+
+    /*PAGINA CONTACT Desktop*/
+
+    .contact-hero {
+        height: 60vh !important;
+        background-size: cover !important;
+        background-position: center 40% !important;
+        
+        display: flex;
+        align-items: center !important; 
+        padding-left: 80px !important; 
+        padding-bottom: 0 !important; 
+    }
+
+    .contact-grid {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 80px;
+        max-width: 1200px;
+        margin: 60px auto 100px auto;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .contact-info {
+        flex: 1;                      
+        max-width: 450px;
+        text-align: left;
+    }
+    .contact-form-wrapper {
+        flex: 1.2;
+        max-width: 600px;
+        width: 100%;
+    }
+}
+
+
 /* ==========================================================================
-   5. PAGINA DE REZERVĂRI & MODAL PLATĂ
+   PAGINA DE REZERVĂRI & MODAL PLATĂ
    ========================================================================== */
 .rezervari-page-content {
-    padding: 60px 20px;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
     background-color: var(--color-bg-alt);
     color: var(--color-primary);
     width: 100%;
@@ -438,7 +890,7 @@ body {
 }
 
 .rezervari-form-card {
-    background-color: var(--color-bg); 
+    background-color: var(--color-bg);
     border-radius: 20px;
     padding: 40px 25px;
     box-shadow: 0 10px 30px rgba(99, 22, 33, 0.08);
@@ -498,13 +950,13 @@ body {
 .form-group-labeled input::placeholder,
 .form-group-labeled textarea::placeholder {
     color: rgba(99, 22, 33, 0.7);
-    font-style: normal; 
+    font-style: normal;
 }
 
 .btn-pill {
     background-color: var(--color-primary);
     color: var(--color-bg);
-    border-radius: 40px; 
+    border-radius: 40px;
     padding: 15px;
     width: 100%;
     font-family: var(--font-serif);
@@ -519,15 +971,18 @@ body {
     opacity: 0.85;
 }
 
-/* --- Pop-up Modal --- */
+/* Pop-up Mărimi Modal Plată  */
 .modal-overlay {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); 
-    display: none; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
     justify-content: center;
     align-items: center;
-    z-index: 9999; 
+    z-index: 9999;
     padding: 20px;
 }
 
@@ -538,14 +993,16 @@ body {
     padding: 40px 30px;
     border-radius: 20px;
     position: relative;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
 .close-modal {
     position: absolute;
-    top: 15px; right: 20px;
+    top: 15px;
+    right: 20px;
     font-size: 30px;
-    background: none; border: none;
+    background: none;
+    border: none;
     color: var(--color-primary);
     cursor: pointer;
 }
@@ -575,13 +1032,14 @@ body {
     color: var(--color-primary);
     border: 2px solid var(--color-primary);
 }
-.btn-secondary:hover { 
-    background-color: var(--color-primary); 
-    color: var(--color-bg); 
+
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
 }
 
 /* ==========================================================================
-   6. PAGINA DE CONTACT & IMAGINI ICONIȚE
+   PAGINA DE CONTACT
    ========================================================================== */
 .contact-page-content {
     padding: 60px 20px;
@@ -604,7 +1062,6 @@ body {
     margin-bottom: 40px;
 }
 
-/* --- Structură Iconițe Imagini (28px fixe) --- */
 .contact-details-list {
     margin-top: 40px;
     display: flex;
@@ -650,19 +1107,18 @@ body {
     margin: 0;
 }
 
-/* --- Formular Contact Implicit --- */
 .contact-form {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-.form-group input, 
+.form-group input,
 .form-group textarea {
     width: 100%;
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(99, 22, 33, 0.3); 
+    border-bottom: 1px solid rgba(99, 22, 33, 0.3);
     padding: 10px 0;
     font-family: var(--font-sans);
     font-size: 15px;
@@ -670,13 +1126,13 @@ body {
     transition: border-color 0.3s;
 }
 
-.form-group input:focus, 
+.form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-bottom: 1px solid var(--color-primary); 
+    border-bottom: 1px solid var(--color-primary);
 }
 
-.form-group input::placeholder, 
+.form-group input::placeholder,
 .form-group textarea::placeholder {
     color: rgba(99, 22, 33, 0.5);
     font-family: var(--font-serif);
@@ -691,16 +1147,13 @@ body {
     margin-top: 10px;
 }
 
-/* --- Suprascrieri vizuale specifice Banner Contact --- */
 .contact-hero {
     height: 40vh;
-    background-image: 
-        linear-gradient(rgba(244, 239, 234, 0.15), rgba(244, 239, 234, 0.15)),
-        url('../assets/cladire.png'); 
+    background-image: linear-gradient(rgba(244, 239, 234, 0.15), rgba(244, 239, 234, 0.15)), url('../assets/cladire.png');
     background-size: cover;
     background-position: center;
     display: flex;
-    justify-content: flex-start !important; 
+    justify-content: flex-start !important;
     align-items: flex-end !important;
     padding: 0 20px 40px 20px !important;
 }
@@ -712,315 +1165,6 @@ body {
 }
 
 .contact-hero .hero-title {
-    font-size: 40px !important; 
-    margin-bottom: 5px; 
-}
-
-/* ==========================================================================
-   7. FOOTER GLOBAL (Mobil Implicit)
-   ========================================================================== */
-.main-footer {
-    background-color: var(--color-primary);
-    color: var(--color-bg);
-    padding: 0 20px 30px 20px;
-}
-
-.footer-divider {
-    border: none;
-    border-top: 1px solid rgba(244, 239, 234, 0.2); 
-    margin: 0 0 40px 0;
-}
-
-.footer-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-brand {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    font-size: 26px;
-    text-align: center;
-    margin-bottom: 25px;
-    letter-spacing: 1px;
-}
-
-.footer-desc {
-    font-family: var(--font-sans);
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 35px;
-}
-
-.footer-section {
-    margin-bottom: 35px;
-}
-
-.footer-heading {
-    font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-}
-
-.footer-links {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.footer-links a {
-    color: var(--color-bg);
-    text-decoration: none;
-    font-family: var(--font-sans);
-    font-size: 13px;
-    transition: opacity 0.3s;
-}
-
-.footer-links a:hover {
-    opacity: 0.7; 
-}
-
-.social-icons {
-    display: flex;
-    gap: 15px;
-}
-
-.social-icons img {
-    width: 35px;
-    height: 35px;
-    transition: transform 0.3s ease;
-}
-
-.social-icons img:hover {
-    transform: scale(1.1); 
-}
-
-.footer-copy {
-    text-align: center;
-    font-family: var(--font-sans);
-    font-size: 10px;
-    margin-top: 20px;
-    opacity: 0.8;
-}
-
-/* ==========================================================================
-   8. COMPORTAMENT DESKTOP (Peste 992px)
-   ========================================================================== */
-@media (min-width: 992px) {
-    
-    /* --- Meniu Desktop Culisant --- */
-    .hamburger-menu {
-        display: flex; 
-        position: relative;
-        z-index: 9999; 
-    }
-
-    .mobile-nav {
-        display: flex; 
-        position: fixed; 
-        top: 0; right: 0; left: auto; 
-        width: 350px; 
-        height: 100vh; 
-        background-color: var(--color-primary); 
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: 120px 0 50px 0; 
-        z-index: 10000;
-        transform: translateX(100%); 
-        transition: transform 0.4s ease-in-out; 
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15); 
-    }
-
-    .close-menu {
-        display: block;
-        position: absolute;
-        top: 20px; right: 25px;
-        background: transparent; border: none;
-        font-size: 45px; 
-        color: var(--color-bg); 
-        cursor: pointer;
-        line-height: 1;
-        transition: opacity 0.3s;
-    }
-    
-    .close-menu:hover { opacity: 0.6; }
-    .mobile-nav.active { transform: translateX(0); }
-    .mobile-nav ul { list-style: none; padding: 0; margin: 0; width: 100%; max-width: 100%; }
-    .mobile-nav li { width: 100%; }
-
-    .mobile-nav a {
-        display: block;
-        color: var(--color-bg);
-        font-family: var(--font-sans);
-        font-size: 15px;
-        padding: 18px 40px; 
-        text-align: left; 
-        border-bottom: 1px solid rgba(244, 239, 234, 0.08);
-        transition: background-color 0.3s, padding-left 0.3s;
-        letter-spacing: 1px;
-    }
-
-    .mobile-nav li:last-child a { border-bottom: none; }
-    .mobile-nav a:hover { background-color: rgba(244, 239, 234, 0.05); padding-left: 45px; }
-
-    /* --- Hero Desktop --- */
-    .hero {
-        background-size: 110%; 
-        background-position: 90% 37%; 
-        height: 70vh; 
-        padding: 100px 80px;
-        display: flex;
-        justify-content: flex-end; 
-        align-items: flex-start; 
-    }
-
-    .hero-content {
-        max-width: 600px; 
-        text-align: right; 
-        text-shadow: 2px 2px 8px rgb(246, 231, 231);
-    }
-
-    .hero-title { font-size: 56px; color:#631621; }
-    .hero-subtitle { font-size: 18px; color:#631621; }
-
-    /* --- Filosofia Spa (2 Coloane Desktop) --- */
-    .desktop-only {
-        display: inline; 
-    }
-
-    .philosophy {
-        padding: 80px;
-    }
-
-    .philosophy-split {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 60px; 
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .section-title {
-        font-size: 42px;
-        margin: 0; 
-        text-align: left;
-        flex: 1.4; 
-        max-width: 100%;
-        line-height: 1.2; 
-    }
-
-    .section-text {
-        flex: 1; 
-    }
-
-    .section-text p {
-        font-size: 16px;
-        margin: 0 0 15px 0; 
-        text-align: left;
-        max-width: 100%;
-    }
-
-    /* --- Servicii Desktop --- */
-    .services {
-        padding: 80px;
-        background-color: #F4EFEA;
-        color: var(--color-primary);
-    }
-
-    .treatments-bg { background-color: #EBE5D9; }
-
-    .cards-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-        gap: 40px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-
-    /* --- Pași Ritual Desktop --- */
-    .visit-steps { 
-        padding: 80px;
-        max-width: 800px;
-        margin: 0 auto;
-        background-color: #F4EFEA; 
-        color: var(--color-primary);
-    }
-
-    .steps-list li { font-size: 20px; }
-
-    /* --- Carusel Desktop --- */
-    .included-section { display: flex; align-items: center; padding-top: 0; }
-    .included-content { flex: 1; padding: 80px; text-align: left; }
-    .included-list { margin: 30px 0 0 0; font-size: 16px; }
-    #spaCarousel { flex: 1.5; }
-    .carousel-item img { height: 500px; width: 100%; object-fit: cover; object-position: center; }
-
-    /* --- Pagina Contact Desktop --- */
-    .contact-hero {
-        height: 45vh;
-        align-items: center !important; 
-        padding-left: 80px !important; 
-        padding-bottom: 0 !important; 
-        background-position: center 40% !important;
-    }
-
-    .contact-grid {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 80px;
-    }
-
-    .contact-info, .contact-form-wrapper {
-        flex: 1;
-    }
-
-    /* --- Pagina Rezervări Desktop --- */
-    .rezervari-page-content {
-        padding: 100px 50px; 
-        display: flex;
-        flex-direction: row;
-        justify-content: center; 
-        gap: 80px;
-        align-items: center; 
-    }
-
-    .rezervari-header-text {
-        flex: 1;
-        margin-bottom: 0;
-        max-width: 450px; 
-    }
-
-    .rezervari-header-text .section-title { font-size: 56px; }
-
-    .rezervari-form-card {
-        flex: 1.2;
-        padding: 50px 60px;
-        max-width: 550px; 
-        width: 100%;
-    }
-
-    /* --- Footer Desktop --- */
-    .main-footer { padding: 0 80px 30px 80px; }
-    .footer-content {
-        flex-direction: row; 
-        flex-wrap: wrap; 
-        justify-content: space-between;
-        align-items: flex-start;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    .footer-brand-col { max-width: 350px; text-align: left; }
-    .footer-brand { text-align: left; margin-bottom: 15px; }
-    .footer-desc { max-width: 100%; }
-    .footer-copy { width: 100%; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(244, 239, 234, 0.2); }
+    font-size: 40px !important;
+    margin-bottom: 5px;
 }
