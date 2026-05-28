@@ -1,0 +1,25 @@
+{
+  "name": "wellness-center-project",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/ralucafracea/Wellness-Center-Project#readme",
+  "bugs": {
+    "url": "https://github.com/ralucafracea/Wellness-Center-Project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ralucafracea/Wellness-Center-Project.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@simonsmith/cypress-image-snapshot": "^10.0.4",
+    "cypress": "^15.15.0"
+  }
+}
