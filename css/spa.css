@@ -16,24 +16,44 @@
 
 body {
     background-color: var(--color-bg);
-    color: var(--color-primary); /* Tot textul moștenește vișiniul automat */
+    color: var(--color-primary); 
     font-family: var(--font-sans);
 }
 
 /* 1. Header */
 .main-header {
-    background-color: var(--color-primary);
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
+    display: flex; 
+    justify-content: space-between; 
     align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    padding: 10px 20px; 
+    background-color: var(--color-primary); 
+    position: fixed;
+    top: 0;        
+    left: 0;        
+    right: 0;
+    z-index: 999; 
+    box-sizing: border-box;
 }
 
-#logo-img {
-    height: 70px;
+.logo {
+    font-family: var(--font-sans);
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.titlu-logo {
+    font-size: 24px;        
+    font-weight: 400;
+    letter-spacing: 4px; 
+    color: var(--color-bg); 
+}
+
+.subtitlu-logo {
+    font-size: 10px; 
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: var(--color-bg); 
 }
 
 .hamburger-menu {
@@ -43,6 +63,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    color: var(--color-bg);
 }
 
 .hamburger-menu span {
@@ -52,14 +73,76 @@ body {
     background-color: var(--color-bg);
 }
 
+.mobile-nav {
+    position: fixed; 
+    top: 0;                  
+    left: 0;
+    width: 100%;
+    height: 100vh;            
+    background-color: var(--color-bg); 
+    z-index: 2000;         
+    display: none;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.mobile-nav.active {
+    display: flex;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.mobile-nav li {
+    margin: 40px 0; 
+}
+
+.mobile-nav a {
+    text-decoration: none;
+    font-family: var(--font-sans);
+    color: var(--color-primary); 
+    font-size: 22px;
+    transition: 0.3s;
+}
+
+.mobile-nav a:hover {
+    color: #a87e84; 
+}
+
+.buton-inchidere {
+    display: none;
+    background: transparent;
+    position: fixed;         
+    border: none;
+    font-size: 35px; 
+    color: var(--color-primary); 
+    cursor: pointer;
+    transition: 0.3s; 
+    top: 15px;                
+    right: 20px;
+    z-index: 2001;         
+}
+
+.buton-inchidere:hover {
+    transform: scale(1.1); 
+}
+
 /*2.Hero */
 .hero {
     background-image: 
         linear-gradient(rgba(244, 239, 234, 0.15), rgba(244, 239, 234, 0.15)),
         url('../assets/spa-masaj.png');
-    background-size:180%;
-    background-position:40% center;
-    height: 45vh;
+    background-size:cover;
+    background-position:25% center;
+    height: 55vh;
     display: flex;
     align-items: flex-end;
     padding: 30px 20px;
@@ -338,7 +421,6 @@ body {
     margin-bottom: 8px;
 }
 
-/* Setări extra pentru ca imaginile din carusel să arate bine pe telefon */
 .carousel-item img {
     height: 250px;
     object-fit: cover; 
@@ -348,8 +430,12 @@ body {
 .main-footer {
     background-color: var(--color-primary);
     color: var(--color-bg);
-    padding: 0 20px 30px 20px;
+    padding-top: 50px;    
+    padding-bottom: 40px; 
+    padding-left: 30px;
+    padding-right: 30px;
 }
+
 
 /* Linia de separare */
 .footer-divider {
@@ -361,26 +447,41 @@ body {
 .footer-content {
     display: flex;
     flex-direction: column;
+    padding-top: 60px;  
+    padding-bottom: 40px;   
 }
 
-.footer-brand {
+.footer-brand { 
     font-family: var(--font-serif);
     font-weight: 400;
-    font-size: 26px;
+    font-size: 32px;
     text-align: center;
-    margin-bottom: 25px;
+    margin-top: 0;      
+    margin-bottom: 20px; 
     letter-spacing: 1px;
 }
 
 .footer-desc {
     font-family: var(--font-sans);
+    font-weight: 400;
     font-size: 14px;
     line-height: 1.6;
-    margin-bottom: 35px;
+    text-align: center; 
+    margin-bottom: 35px; 
 }
 
 .footer-section {
-    margin-bottom: 35px;
+    margin-bottom: 35px;  
+    text-align: center; 
+}
+
+.footer-copy {
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    opacity: 0.8;
 }
 
 .footer-heading {
@@ -429,63 +530,7 @@ body {
     transform: scale(1.1); 
 }
 
-/* Copyright */
-.footer-copy {
-    text-align: center;
-    font-family: var(--font-sans);
-    font-size: 10px;
-    margin-top: 20px;
-    opacity: 0.8;
-}
 
-
-.mobile-nav {
-    display: none;
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh; 
-    background-color: var(--color-bg); 
-    z-index: 2000; 
-    flex-direction: column;
-    justify-content: flex-start; 
-    padding-top: 120px;
-    align-items: center; 
-}
-
-.mobile-nav.active {
-    display: flex !important; 
-    flex-direction: column;
-}
-
-.close-menu {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    background: transparent;
-    border: none;
-    font-size: 50px; 
-    color: var(--color-primary); 
-    cursor: pointer;
-    line-height: 1;
-}
-
-.mobile-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-}
-
-.mobile-nav a {
-    color: var(--color-primary);
-    text-decoration: none;
-    font-family: var(--font-serif); 
-    font-size: 20px; 
-    display: block;
-    padding: 15px 0;
-}
 /* 8.Desktop version*/
 
 
@@ -666,7 +711,7 @@ body {
         flex-direction: column;
         justify-content: flex-start;
         padding: 120px 0 50px 0; 
-        z-index: 10000; /* L-am ridicat ca să acopere hamburgerul */
+        z-index: 10000;
         
         transform: translateX(100%); 
         transition: transform 0.4s ease-in-out; 
@@ -726,4 +771,400 @@ body {
         background-color: rgba(244, 239, 234, 0.05);
         padding-left: 45px;
     }
+
+    /*PAGINA REZERVARI Desktop*/
+    .rezervari-page-content {
+        padding-top: 140px; 
+        padding-bottom: 100px;
+        padding-left: 80px;
+        padding-right: 80px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;      
+        gap: 80px;
+        width: 100vw;   
+        max-width: 100%;      
+        margin: 0;      
+        background-color: var(--color-bg-alt); 
+        box-sizing: border-box;
+    }
+
+    .rezervari-header-text {
+        flex: 1;
+        margin-bottom: 0;
+        max-width: 450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .rezervari-header-text .section-title {
+        font-size: 56px;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .rezervari-desc {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .rezervari-form-card {
+        flex: 1.2;
+        padding: 50px 60px;
+        max-width: 600px;
+        width: 100%;
+        background-color: var(--color-bg);
+    }
+
+    /*PAGINA CONTACT Desktop*/
+
+    .contact-hero {
+        height: 60vh !important;
+        background-size: cover !important;
+        background-position: center 40% !important;
+        
+        display: flex;
+        align-items: center !important; 
+        padding-left: 80px !important; 
+        padding-bottom: 0 !important; 
+    }
+
+    .contact-grid {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 80px;
+        max-width: 1200px;
+        margin: 60px auto 100px auto;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .contact-info {
+        flex: 1;                      
+        max-width: 450px;
+        text-align: left;
+    }
+    .contact-form-wrapper {
+        flex: 1.2;
+        max-width: 600px;
+        width: 100%;
+    }
+}
+
+
+/* ==========================================================================
+   PAGINA DE REZERVĂRI & MODAL PLATĂ
+   ========================================================================== */
+.rezervari-page-content {
+    padding-top: 120px;
+    padding-bottom: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: var(--color-bg-alt);
+    color: var(--color-primary);
+    width: 100%;
+}
+
+.rezervari-header-text {
+    margin-bottom: 40px;
+}
+
+.rezervari-header-text .section-title {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.rezervari-desc {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 400px;
+}
+
+.rezervari-form-card {
+    background-color: var(--color-bg);
+    border-radius: 20px;
+    padding: 40px 25px;
+    box-shadow: 0 10px 30px rgba(99, 22, 33, 0.08);
+}
+
+.rezervari-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group-labeled {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-labeled label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+.form-group-labeled input,
+.form-group-labeled select,
+.form-group-labeled textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(99, 22, 33, 0.2);
+    padding: 8px 0;
+    font-family: var(--font-serif);
+    font-size: 18px;
+    color: var(--color-primary);
+    transition: border-color 0.3s;
+}
+
+.form-group-labeled select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23631621' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+.form-group-labeled input:focus,
+.form-group-labeled select:focus,
+.form-group-labeled textarea:focus {
+    outline: none;
+    border-bottom: 1px solid var(--color-primary);
+}
+
+.form-group-labeled input::placeholder,
+.form-group-labeled textarea::placeholder {
+    color: rgba(99, 22, 33, 0.7);
+    font-style: normal;
+}
+
+.btn-pill {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    border-radius: 40px;
+    padding: 15px;
+    width: 100%;
+    font-family: var(--font-serif);
+    font-size: 20px;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-pill:hover {
+    opacity: 0.85;
+}
+
+/* Pop-up Mărimi Modal Plată  */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.modal-content-card {
+    background-color: var(--color-bg);
+    width: 100%;
+    max-width: 450px;
+    padding: 40px 30px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+.modal-title {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: var(--color-primary);
+}
+
+.modal-desc {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    margin-bottom: 25px;
+    color: var(--color-primary);
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+}
+
+/* ==========================================================================
+   PAGINA DE CONTACT
+   ========================================================================== */
+.contact-page-content {
+    padding: 60px 20px;
+    background-color: var(--color-bg);
+    color: var(--color-primary);
+}
+
+.contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-desc {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.contact-details-list {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.info-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.info-text h3 {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin: 0 0 5px 0;
+    font-weight: 500;
+}
+
+.info-text p {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(99, 22, 33, 0.3);
+    padding: 10px 0;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    color: var(--color-primary);
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-bottom: 1px solid var(--color-primary);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(99, 22, 33, 0.5);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 18px;
+}
+
+.contact-form .btn-primary {
+    border: none;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+.contact-hero {
+    height: 40vh;
+    background-image: linear-gradient(rgba(244, 239, 234, 0.15), rgba(244, 239, 234, 0.15)), url('../assets/cladire.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: flex-start !important;
+    align-items: flex-end !important;
+    padding: 0 20px 40px 20px !important;
+}
+
+.contact-hero .hero-content {
+    text-align: left !important;
+    max-width: 600px !important;
+    margin: 0 !important;
+}
+
+.contact-hero .hero-title {
+    font-size: 40px !important;
+    margin-bottom: 5px;
 }
