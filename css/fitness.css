@@ -240,7 +240,7 @@ html {
 
 .service-card {
     background-color: #F4EFEA;
-    padding: 23px 25px 30px;
+    padding: 23px 25px 25px;
     border-radius: 4px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     text-align: left;
