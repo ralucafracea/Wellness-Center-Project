@@ -39,76 +39,88 @@
 
     <section class="hero contact-hero">
         <div class="hero-content">
-            <h1 class="hero-title">Contact</h1>
-            <p class="hero-subtitle" style="margin-top: 15px;">SUNTEM AICI PENTRU TINE</p>
+            <h1 class="hero-title">CONTACT</h1>
+            <p class="hero-subtitle" style="margin-top: 15px;">Suntem aici pentru tine</p>
         </div>
     </section>
 
     <section class="contact-page-content">
         <div class="contact-grid">
             
-<div class="contact-info">
-    <h2 class="section-title">Ne-ar face plăcere să te cunoaștem</h2>
-    <p class="contact-desc">Ai întrebări despre terapiile noastre sau dorești să programezi o vizită? Echipa Tirra îți stă la dispoziție pentru a-ți crea o experiență perfectă.</p>
+            <div class="contact-info">
+                <h2 class="section-title">Ne-ar face plăcere să te cunoaștem</h2>
+                <p class="contact-desc">Ai întrebări despre terapiile noastre sau dorești să programezi o vizită? Echipa Tirra îți stă la dispoziție pentru a-ți crea o experiență perfectă.</p>
 
-    <div class="contact-details-list">
-        
-        <div class="info-item">
-            <div class="info-icon">
-                <img src="../assets/SimbolLocatie.jpg" alt="Locație">
-            </div>
-            <div class="info-text">
-                <h3>LOCAȚIE</h3>
-                <p>Strada Wellness 12, București</p>
-            </div>
-        </div>
+                <div class="contact-details-list">
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <img src="../assets/SimbolLocatie.jpg" alt="Locație">
+                        </div>
+                        <div class="info-text">
+                            <h3>LOCAȚIE</h3>
+                            <p>Strada Wellness 12, București</p>
+                        </div>
+                    </div>
 
-        <div class="info-item">
-            <div class="info-icon">
-                <img src="../assets/SimbolTelefon.jpg" alt="Telefon">
-            </div>
-            <div class="info-text">
-                <h3>TELEFON</h3>
-                <p>+40 700 000 000</p>
-            </div>
-        </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <img src="../assets/SimbolTelefon.jpg" alt="Telefon">
+                        </div>
+                        <div class="info-text">
+                            <h3>TELEFON</h3>
+                            <p>+40 700 000 000</p>
+                        </div>
+                    </div>
 
-        <div class="info-item">
-            <div class="info-icon">
-                <img src="../assets/SimbolMail.jpg" alt="Email">
-            </div>
-            <div class="info-text">
-                <h3>EMAIL</h3>
-                <p>rezervari@tirrawellness.ro</p>
-            </div>
-        </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <img src="../assets/SimbolMail.jpg" alt="Email">
+                        </div>
+                        <div class="info-text">
+                            <h3>EMAIL</h3>
+                            <p>rezervari@tirrawellness.ro</p>
+                        </div>
+                    </div>
 
-        <div class="info-item">
-            <div class="info-icon">
-                <img src="../assets/SimbolCeas.jpg" alt="Program">
-            </div>
-            <div class="info-text">
-                <h3>PROGRAM</h3>
-                <p>Luni — Duminică . 8:00 — 22:00</p>
-            </div>
-        </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <img src="../assets/SimbolCeas.jpg" alt="Program">
+                        </div>
+                        <div class="info-text">
+                            <h3>PROGRAM</h3>
+                            <p>Luni — Duminică . 8:00 — 22:00</p>
+                        </div>
+                    </div>
 
-    </div>
-</div>
+                </div>
+            </div>
+
             <div class="contact-form-wrapper">
-                <form class="contact-form">
+                <form class="contact-form" novalidate>
                     <div class="form-group">
-                        <input type="text" placeholder="Numele tău complet" required>
+                        <label for="contact-name">NUMELE TĂU</label>
+                        <input type="text" id="contact-name" placeholder="Numele tău complet" required>
                     </div>
+                    
                     <div class="form-group">
-                        <input type="email" placeholder="Adresa de email" required>
-                    </div>
+                        <label for="contact-email">EMAIL</label>
+                        <input type="email" id="contact-email" placeholder="email@example.com" required>
+                        <span class="eroare-email" style="display: none;">
+                            &#9888; Enter an email address like example@mysite.com.
+                        </span>
+                    </div>                
+                    
                     <div class="form-group">
-                        <input type="text" placeholder="Subiectul mesajului">
+                        <label for="contact-subject">SUBIECTUL MESAJULUI</label>
+                        <input type="text" id="contact-subject" placeholder="Despre ce dorești să ne scrii">
                     </div>
+                    
                     <div class="form-group">
-                        <textarea placeholder="Mesajul tău..." rows="5" required></textarea>
+                        <label for="contact-message">MESAJUL TĂU</label>
+                        <textarea id="contact-message" placeholder="Spune-ne mai multe detalii..." rows="4" required></textarea>
                     </div>
+                    
                     <button type="submit" class="btn-primary">Trimite mesajul</button>
                 </form>
             </div>
