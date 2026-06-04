@@ -144,7 +144,7 @@ html {
         linear-gradient(rgba(244, 239, 234, 0.15), rgba(244, 239, 234, 0.15)),
         url('../assets/Gemini_Generated_Image_3189uc3189uc3189_cleanup.png');
     background-size: 100%;
-    background-position: center bottom;
+    background-position: center 30%;
     background-repeat: no-repeat;
     height: 45vh;
     display: flex;
