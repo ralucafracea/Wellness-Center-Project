@@ -447,7 +447,7 @@ body {
     /* DIMENSIUNE COLEGĂ: exact 32px */
     font-size: 32px !important;
     /* ADAPTARE DESIGN: mutat de la center la left ca să nu mai stea pe mijloc */
-    text-align: left !important; 
+    text-align: center!important; 
     margin-top: 40px !important; /* Adăugat spațiu sus în interiorul containerului */
     /* DIMENSIUNE COLEGĂ: exact 20px sub titlu */
     margin-bottom: 20px !important;
@@ -529,7 +529,7 @@ body {
 
 /* Copyright */
 .footer-copy {
-    text-align: left !important; /* Aliniat la stânga conform noului flux de design din imagine */
+    text-align: center !important; /* Aliniat la stânga conform noului flux de design din imagine */
     font-family: var(--font-sans);
     /* DIMENSIUNE COLEGĂ: exact 12px și 20px spațiu deasupra */
     font-size: 12px !important;
