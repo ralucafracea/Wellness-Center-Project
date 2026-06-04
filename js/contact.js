@@ -4,21 +4,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileNav = document.getElementById('mobile-nav');
     const closeBtn = document.querySelector('.buton-inchidere'); 
 
-    if (hamburger && mobileNav) {
-        hamburger.addEventListener('click', () => {
-            mobileNav.classList.add('active');
-            if (closeBtn) {
-                closeBtn.style.display = 'block';
-                closeBtn.style.color = '#631621';
-                closeBtn.style.zIndex = '2001';
-            }
+    if(hamburger && mobileNav && closeBtn) {
+        hamburger.addEventListener('click', function() {
+            mobileNav.classList.add('active'); // Deschidem meniul
+            hamburger.style.display = 'none';  // Ascundem liniuțele
+            closeBtn.style.display = 'block';  // Afișăm X-ul
         });
     }
 
-    if (closeBtn && mobileNav) {
-        closeBtn.addEventListener('click', () => {
-            mobileNav.classList.remove('active');
-            closeBtn.style.display = 'none';
+    // 2. Când apeși pe X
+    if(closeBtn && mobileNav && hamburger) {
+        closeBtn.addEventListener('click', function() {
+            mobileNav.classList.remove('active'); // Ascundem meniul
+            closeBtn.style.display = 'none';      // Ascundem X-ul
+            hamburger.style.display = 'flex';     // Aducem liniuțele înapoi
         });
     }
 

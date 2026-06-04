@@ -21,20 +21,27 @@ body {
 }
 
 /* 1. Header */
+/* ==========================================================================
+   HEADER ȘI MENIU MOBIL (Clasele originale + logica corectată)
+   ========================================================================== */
+
 .main-header {
     display: flex; 
     justify-content: space-between; 
     align-items: center;
     padding: 10px 20px; 
     background-color: var(--color-primary); 
+
     position: fixed;
     top: 0;        
     left: 0;        
     right: 0;
-    z-index: 999; 
-    box-sizing: border-box;
+    z-index: 1010; /* Ridicat peste meniu */
+    box-sizing: border-box; 
+    height: 60px; /* Înălțime fixă pentru a potrivi meniul sub el */
 }
 
+/* Containerul logo-ului */
 .logo {
     font-family: var(--font-sans);
     display: flex;
@@ -56,6 +63,7 @@ body {
     color: var(--color-bg); 
 }
 
+/* Cele 3 liniuțe */
 .hamburger-menu {
     background: transparent;
     border: none;
@@ -63,25 +71,29 @@ body {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    color: var(--color-bg);
+    color: var(--color-bg); 
+    padding: 0;
+    margin: 0;
 }
 
-.hamburger-menu span {
+.hamburger-menu span { 
     display: block;
     width: 30px;
     height: 2px;
     background-color: var(--color-bg);
 }
 
+/* Meniul de navigație ascuns */
 .mobile-nav {
     position: fixed; 
-    top: 0;                  
+    top: 60px;
     left: 0;
     width: 100%;
-    height: 100vh;            
+    height: calc(100vh - 60px); 
     background-color: var(--color-bg); 
-    z-index: 2000;         
-    display: none;
+    z-index: 1000; 
+    
+    display: none; /* Ascuns implicit */
     flex-direction: column;
     justify-content: center; 
     align-items: center;
@@ -90,10 +102,12 @@ body {
     box-sizing: border-box;
 }
 
+/* Clasa adăugată de JS pentru a-l deschide */
 .mobile-nav.active {
     display: flex;
 }
 
+/* Linkurile din meniu */
 .mobile-nav ul {
     list-style: none;
     padding: 0;
@@ -102,7 +116,7 @@ body {
 }
 
 .mobile-nav li {
-    margin: 40px 0; 
+    margin: 50px 0; 
 }
 
 .mobile-nav a {
@@ -117,18 +131,19 @@ body {
     color: #a87e84; 
 }
 
+/* Butonul X pentru închidere */
 .buton-inchidere {
-    display: none;
+    display: none; /* Îl ținem ascuns la început! */
     background: transparent;
-    position: fixed;         
+    position: absolute;
     border: none;
-    font-size: 35px; 
-    color: var(--color-primary); 
+    top: 5px; /* Îl aliniem sus, ca să pice exact pe locul liniilor */
+    right: 20px;
+    font-size: 35px; /* Puțin mai mare ca să fie ușor de apăsat */
+    color: var(--color-bg); /* Crem, ca să se vadă perfect pe headerul vișiniu */
     cursor: pointer;
     transition: 0.3s; 
-    top: 15px;                
-    right: 20px;
-    z-index: 2001;         
+    z-index: 1015; /* Să fim siguri că stă deasupra tuturor */
 }
 
 .buton-inchidere:hover {
