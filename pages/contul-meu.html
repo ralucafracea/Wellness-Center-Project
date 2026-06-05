@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contul Meu - Tirra Wellness</title>
+    <link rel="stylesheet" href="../css/style.css"> 
+    <link rel="stylesheet" href="../css/contul-meu.css">
+    <!-- Fonturi: Montserrat (400, 600) și Cormorant Garamond (300 Light, 400 Regular) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header-principal">
+    <div class="logo">
+        <span class="titlu-logo">TIRRA</span>
+        <span class="subtitlu-logo">WELLNESS</span>
+    </div>
+    <button class="buton-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <button class="buton-inchidere">&#10005;</button>  
+    <nav class="meniu-navigatie"> 
+        <ul>
+            <li><a href="../index.html">ACASĂ</a></li>
+            <li><a href="spa.html">SPA & WELLNESS</a></li>
+            <li><a href="sala.html">FITNESS</a></li>
+            <li><a href="rezervari.html">REZERVĂRI</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="contul-meu.html">CONTUL MEU</a></li>
+        </ul>
+    </nav>
+    </header>
+
+    <main class="container-cont">
+        <div class="antet-cont">
+            <h1 class="titlu-cont">Bună, Iulia!</h1>
+            <a href="#" class="link-deconectare">Deconectare</a>
+        </div>
+
+        <div class="meniu-taburi">
+            <button class="buton-tab activ" id="btn-programari">Programările mele</button>
+            <button class="buton-tab" id="btn-abonamente">Abonamente active</button>
+        </div>
+
+        <div id="sectiune-programari" class="continut-tab activ">
+            
+            <div class="card-item">
+                <div class="card-header">
+                    <h3 class="card-titlu">Masaj Terapeutic</h3>
+                    <span class="badge-status">Confirmat</span>
+                </div>
+                <div class="card-body">
+                    <div class="detaliu-rand">
+                        <span class="detaliu-label">DATA</span>
+                        <span class="detaliu-valoare">15 Iunie 2026</span>
+                    </div>
+                    <div class="detaliu-rand">
+                        <span class="detaliu-label">ORA</span>
+                        <span class="detaliu-valoare">14:00 - 15:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-header">
+                    <h3 class="card-titlu">Tratament Facial</h3>
+                    <span class="badge-status">În așteptare</span>
+                </div>
+                <div class="card-body">
+                    <div class="detaliu-rand">
+                        <span class="detaliu-label">DATA</span>
+                        <span class="detaliu-valoare">22 Iunie 2026</span>
+                    </div>
+                    <div class="detaliu-rand">
+                        <span class="detaliu-label">ORA</span>
+                        <span class="detaliu-valoare">10:30 - 11:30</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="sectiune-abonamente" class="continut-tab" style="display: none;">
+            
+            <div class="card-item">
+                <div class="card-header">
+                    <h3 class="card-titlu">Abonament Sală Fitness</h3>
+                    <span class="badge-status">Activ</span>
+                </div>
+                <div class="card-body">
+                    <div class="detaliu-rand">
+                        <span class="detaliu-label">VALABIL PÂNĂ LA</span>
+                        <span class="detaliu-valoare">05 Iulie 2026</span>
+                    </div>
+                    <div class="detaliu-rand">
+                        <span class="detaliu-label">TIP</span>
+                        <span class="detaliu-valoare">Acces Nelimitat</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="main-footer">
+
+        <div class="footer-content">
+            
+            <div class="footer-brand-col">
+                <h2 class="footer-brand">TIRRA WELLNESS</h2>
+                <p class="footer-desc">Sanctuarul tău urban pentru spa, fitness și echilibru interior.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-heading">NAVIGARE</h3>
+                <ul class="footer-links">
+                    <li><a href="../index.html">Acasă</a></li>
+                    <li><a href="spa.html">Spa & Wellness</a></li>
+                    <li><a href="sala.html">Fitness</a></li>
+                    <li><a href="rezervari.html">Rezervări</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contul-meu.html">Contul Meu</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-heading">URMĂREȘTE-NE</h3>
+                <div class="social-icons">
+                    <a href="#"><img src="../assets/instagram-icon.png" alt="Instagram"></a>
+                    <a href="#"><img src="../assets/facebook-icon.png" alt="Facebook"></a>
+                </div>
+            </div>
+
+            <p class="footer-copy">&copy; 2026 Tirra Wellness. Toate drepturile rezervate.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Logica simplă de comutare între tab-uri
+        const btnProgramari = document.getElementById('btn-programari');
+        const btnAbonamente = document.getElementById('btn-abonamente');
+        const sectiuneProgramari = document.getElementById('sectiune-programari');
+        const sectiuneAbonamente = document.getElementById('sectiune-abonamente');
+
+        btnProgramari.addEventListener('click', () => {
+            // Arătăm programările
+            sectiuneProgramari.style.display = 'block';
+            sectiuneAbonamente.style.display = 'none';
+            // Schimbăm aspectul butonului activ
+            btnProgramari.classList.add('activ');
+            btnAbonamente.classList.remove('activ');
+        });
+
+        btnAbonamente.addEventListener('click', () => {
+            // Arătăm abonamentele
+            sectiuneAbonamente.style.display = 'block';
+            sectiuneProgramari.style.display = 'none';
+            // Schimbăm aspectul butonului activ
+            btnAbonamente.classList.add('activ');
+            btnProgramari.classList.remove('activ');
+        });
+
+         // -------------------------- LOGICA PENTRU MENIU --------------------------------
+        const meniuNavigatie = document.querySelector('.meniu-navigatie');
+        const btnHamburger = document.querySelector('.buton-hamburger');
+        const btnInchidere = document.querySelector('.buton-inchidere');
+        const linkuriMeniu = document.querySelectorAll('.meniu-navigatie a');
+
+        // deshide meniu la apasare hamburger
+        btnHamburger.addEventListener('click', () => {
+            meniuNavigatie.classList.add('deschis');
+            btnHamburger.style.display = 'none';     
+            btnInchidere.style.display = 'block';
+        });
+
+        // inchide meniul din butonul X
+        btnInchidere.addEventListener('click', () => {
+            meniuNavigatie.classList.remove('deschis');
+            btnInchidere.style.display = 'none';     
+            btnHamburger.style.display = 'flex';
+        });
+
+        // inchide meniul cand dau click pe linkuri
+        linkuriMeniu.forEach(link => {
+            link.addEventListener('click', () => {
+                meniuNavigatie.classList.remove('deschis');
+            });
+        });
+    </script>
+</body>
+</html>

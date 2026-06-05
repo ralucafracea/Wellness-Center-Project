@@ -1,0 +1,155 @@
+body {
+    background-color: var(--color-bg); 
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------------------------------------------- PAGINA -------------------------------------------- */
+/* Containerul principal al paginii (se presupune că header-ul fix are 65px) */
+.container-cont {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 100px 24px 60px 24px; /* Spațiu sus ca să nu intre sub header */
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+/* Antet: Bună, Nume! și Deconectare */
+.antet-cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+}
+
+.titlu-cont {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.link-deconectare {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    opacity: 0.7;
+}
+
+/* ---------------- TAB-URI ---------------- */
+.meniu-taburi {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid rgba(99, 22, 33, 0.2); /* O linie fină vișinie transparentă */
+    margin-bottom: 30px;
+}
+
+.buton-tab {
+    background: transparent;
+    border: none;
+    padding: 10px 0;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-primary);
+    opacity: 0.5;
+    cursor: pointer;
+    position: relative; /* Pentru a putea trasa linia activă dedesubt */
+    transition: 0.3s;
+}
+
+/* Cum arată tab-ul selectat */
+.buton-tab.activ {
+    opacity: 1;
+}
+
+/* Linia vișinie care apare sub tab-ul selectat */
+.buton-tab.activ::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-primary);
+}
+
+/* ---------------- CARDURILE ---------------- */
+.continut-tab {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.card-item {
+    background-color: #FFFFFF; /* Cremul secundar */
+    border-radius: 4px; /* Rotunjire fină ca la butoane */
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03); /* O umbră extrem de discretă */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card-titlu {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.badge-status {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    padding: 4px 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.detaliu-rand {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.detaliu-rand:last-child {
+    margin-bottom: 0;
+}
+
+.detaliu-label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: var(--color-primary);
+    opacity: 0.6;
+}
+
+.detaliu-valoare {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+/* Animație subtilă de apariție la schimbarea tab-urilor */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
