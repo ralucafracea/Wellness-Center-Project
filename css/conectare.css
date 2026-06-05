@@ -1,0 +1,315 @@
+:root { /*de la Ralu*/
+    --color-primary: #631621; 
+    --color-bg: #F4EFEA; 
+    --color-bg-alt: #EBE5D9; 
+    
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--color-bg); /* Fundalul crem general */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.header-principal {
+    display: flex; /*alinierea*/
+    justify-content: space-between; /*imping elementele stanga-dreapta*/
+    align-items: center;
+    padding: 10px 20px; /*sa nu fie elementele chiar in margine 10 sus jos si 20 stanga dreapta*/
+    background-color: var(--color-primary); /*visiniu Iulia :* */
+
+    position: fixed;
+    top: 0;        
+    left: 0;        
+    right: 0;
+    /* width: 100%; sa se intinda pe toata latimea */
+    z-index: 999; /* sa fie peste toate elementele */
+    box-sizing: border-box; /*sa nu se largeasca aiurea din cauza la padding*/
+}
+
+/* containerul care tine cele 2 cuvinte din logo*/
+.logo {
+    font-family: var(--font-sans);
+    display: flex;
+    flex-direction: column; /* pune elementele unul sub altul */
+    align-items: center; /* le centreaza perfect unul deasupra celuilalt */
+}
+
+/* cuv principal din logo: TIRRA */
+.titlu-logo {
+    font-size: 24px;        
+    font-weight: 400;
+    letter-spacing: 4px; 
+    color: var(--color-bg); /* cremul Iuliei */
+}
+
+/* cuv secundar din logo: Wellness */
+.subtitlu-logo {
+    font-size: 10px; 
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: var(--color-bg); /* cremul Iuliei */
+}
+
+.buton-hamburger {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--color-bg); 
+}
+.buton-hamburger span { 
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: var(--color-bg);
+}
+
+/* meniul, se deschide la apasarea butonului hamburger */
+.meniu-navigatie {
+    position: fixed; /* Îl scoatem din fluxul paginii și îl fixăm pe ecran */
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px); /* 100% din inaltimea ecranului fara inaltimea headerului */
+    background-color: var(--color-bg); 
+    z-index: 1000; /* sa stea peste toate */
+    
+    /* Centrarea elementelor pe mijloc */
+    display: none;
+    flex-direction: column;
+    justify-content: center; /*e lista pe mijloc si vertical*/
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* clasa pentru a aduce meniul pe ecran, apelata de JS */
+.meniu-navigatie.deschis {
+    display: flex;
+}
+
+/* centrare, fara puncte */
+.meniu-navigatie ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.meniu-navigatie li {
+    margin: 50px 0; /* spatiu intre linkuri */
+}
+
+.meniu-navigatie a {
+    text-decoration: none;
+    font-family: var(--font-sans);
+    color: var(--color-primary); 
+    font-size: 22px;
+    transition: 0.3s;
+}
+
+.meniu-navigatie a:hover {
+    color: #a87e84; /* se deschide culoarea cand pui cursorul */
+}
+
+/* butonul x */
+.buton-inchidere {
+    display:none;
+    background: transparent;
+    position: absolute;
+    border: none;
+    /* top: 25px;
+    right: 25px; */
+    font-size: 30px;
+    color: var(--color-bg);
+    cursor: pointer;
+    transition: 0.3s; 
+    right: 20px;
+}
+
+.buton-inchidere:hover {
+    transform: scale(1.1); /* Sse mareste cand pui cursorul */
+}
+
+/* Containerul centrat pe ecran */
+.container-autentificare {
+    width: 100%;
+    max-width: 420px; /* Împiedică lărgirea exagerată pe ecrane mari */
+    padding: 40px 24px;
+    box-sizing: border-box;
+}
+
+.box-formular {
+    width: 100%;
+}
+
+.subtitlu-mic-login {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.titlu-autentificare {
+    font-family: var(--font-serif);
+    font-size: 38px;
+    font-weight: 300; /* Stilul Cormorant Light */
+    color: var(--color-primary);
+    margin: 0 0 15px 0;
+}
+
+.descriere-autentificare {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-primary);
+    opacity: 0.8;
+    line-height: 1.5;
+    margin-bottom: 35px;
+}
+
+/* Butonul Google */
+.buton-google {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    color: #2b2b2b;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 400;
+    padding: 12px;
+    border-radius: 4px; /* Uniformizat cu stilul site-ului */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buton-google:hover {
+    background-color: var(--color-bg-alt); /* Cremul alternativ la hover */
+}
+
+.icon-google {
+    width: 18px;
+    height: 18px;
+}
+
+/* Linia despartitoare SAU */
+.separator-text {
+    position: relative;
+    text-align: center;
+    margin: 35px 0;
+}
+
+.separator-text::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.separator-text span {
+    position: relative;
+    z-index: 2;
+    background-color: var(--color-bg);
+    padding: 0 15px;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--color-primary);
+    opacity: 0.6;
+}
+
+/* Stiluri casete text (Formular) */
+.grup-input {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.eticheta-input {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: var(--color-primary);
+}
+
+.grup-input input {
+    background-color: var(--color-bg-alt); /* Cremul mai închis din schiță */
+    border: none;
+    padding: 16px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--color-primary);
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.grup-input input::placeholder {
+    color: var(--color-primary);
+    opacity: 0.4;
+}
+
+.grup-input input:focus {
+    outline: 1px solid var(--color-primary); /* Un mic contur elegant la scriere */
+}
+
+/* Butonul Vișiniu Principal */
+.buton-principal-autentificare {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    border: none;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    padding: 16px;
+    border-radius: 4px; /* MODIFICAT: Colțuri fin rotunjite în tema site-ului */
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.buton-principal-autentificare:hover {
+    background-color: #4a1018; /* Nuanță mai închisă la hover */
+}
+
+/* Link-ul de jos */
+.link-schimbare {
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--color-primary);
+    margin-top: 35px;
+    opacity: 0.9;
+}
+
+.link-schimbare a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 500;
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conectare - Tirra Wellness</title>
+    <link rel="stylesheet" href="../css/conectare.css">
+</head>
+<body>
+
+    <header class="header-principal">
+    <div class="logo">
+        <span class="titlu-logo">TIRRA</span>
+        <span class="subtitlu-logo">WELLNESS</span>
+    </div>
+    <button class="buton-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <button class="buton-inchidere">&#10005;</button>  
+    <nav class="meniu-navigatie"> 
+        <ul>
+            <li><a href="../index.html">ACASĂ</a></li>
+            <li><a href="spa.html">SPA & WELLNESS</a></li>
+            <li><a href="sala.html">FITNESS</a></li>
+            <li><a href="rezervari.html">REZERVĂRI</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="conectare.html">CONECTEAZĂ-TE</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <div class="container-autentificare">
+        
+        <div id="box-login" class="box-formular">
+            <span class="subtitlu-mic-login">BINE AI REVENIT</span>
+            <h1 class="titlu-autentificare">Autentifică-te</h1>
+            <p class="descriere-autentificare">Accesează-ți contul cu emailul și parola.</p>
+
+            <button class="buton-google">
+                <img src="imagini/google-icon.png" alt="Google" class="icon-google">
+                Continuă cu Google
+            </button>
+
+            <div class="separator-text">
+                <span>SAU</span>
+            </div>
+
+            <form>
+                <div class="grup-input">
+                    <label class="eticheta-input">EMAIL</label>
+                    <input type="email" placeholder="nume@email.com" required>
+                </div>
+
+                <div class="grup-input">
+                    <label class="eticheta-input">PAROLĂ</label>
+                    <input type="password" placeholder="Minim 6 caractere" required>
+                </div>
+
+                <button type="submit" class="buton-principal-autentificare">AUTENTIFICĂ-TE</button>
+            </form>
+
+            <p class="link-schimbare">Nu ai cont? <a href="#" id="mergi-la-register">Creează unul</a></p>
+        </div>
+
+        <div id="box-register" class="box-formular" style="display: none;">
+            <h1 class="titlu-autentificare">Creează un cont</h1>
+            <p class="descriere-autentificare">Înregistrează-te pentru a-ți gestiona experiența Tirra.</p>
+
+            <button class="buton-google">
+                <img src="imagini/google-icon.png" alt="Google" class="icon-google">
+                Continuă cu Google
+            </button>
+
+            <div class="separator-text">
+                <span>SAU</span>
+            </div>
+
+            <form>
+                <div class="grup-input">
+                    <label class="eticheta-input">EMAIL</label>
+                    <input type="email" placeholder="nume@email.com" required>
+                </div>
+
+                <div class="grup-input">
+                    <label class="eticheta-input">PAROLĂ</label>
+                    <input type="password" placeholder="Minim 6 caractere" required>
+                </div>
+
+                <button type="submit" class="buton-principal-autentificare">CREEAZĂ CONT</button>
+            </form>
+
+            <p class="link-schimbare">Ai deja un cont? <a href="#" id="mergi-la-login">Autentifică-te</a></p>
+        </div>
+
+    </div>
+
+    <script>
+        const boxLogin = document.getElementById('box-login');
+        const boxRegister = document.getElementById('box-register');
+        const laRegister = document.getElementById('mergi-la-register');
+        const laLogin = document.getElementById('mergi-la-login');
+
+        laRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            boxLogin.style.display = 'none';
+            boxRegister.style.display = 'block';
+        });
+
+        laLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            boxRegister.style.display = 'none';
+            boxLogin.style.display = 'block';
+        });
+        // -------------------------- LOGICA PENTRU MENIU --------------------------------
+        const meniuNavigatie = document.querySelector('.meniu-navigatie');
+        const btnHamburger = document.querySelector('.buton-hamburger');
+        const btnInchidere = document.querySelector('.buton-inchidere');
+        const linkuriMeniu = document.querySelectorAll('.meniu-navigatie a');
+
+        // deshide meniu la apasare hamburger
+        btnHamburger.addEventListener('click', () => {
+            meniuNavigatie.classList.add('deschis');
+            btnHamburger.style.display = 'none';     
+            btnInchidere.style.display = 'block';
+        });
+
+        // inchide meniul din butonul X
+        btnInchidere.addEventListener('click', () => {
+            meniuNavigatie.classList.remove('deschis');
+            btnInchidere.style.display = 'none';     
+            btnHamburger.style.display = 'flex';
+        });
+
+        // inchide meniul cand dau click pe linkuri
+        linkuriMeniu.forEach(link => {
+            link.addEventListener('click', () => {
+                meniuNavigatie.classList.remove('deschis');
+            });
+        });
+    </script>
+</body>
+</html>
