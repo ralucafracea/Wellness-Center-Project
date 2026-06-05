@@ -1,0 +1,635 @@
+:root {
+    --visiniu: #631621;
+    --crem: #F4EFEA;
+    --font-titlu: 'Cormorant Garamond', serif;
+    --font-corp: 'Montserrat', sans-serif;
+    --color-primary: #631621;
+    --color-bg: #F4EFEA;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    background-color: var(--crem);
+    font-family: var(--font-corp);
+    color: #333;
+    padding-top: 0px;
+}
+
+html {
+    overflow-x: clip;
+}
+
+.header-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-family: var(--font-sans);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titlu-logo {
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: var(--color-bg);
+}
+
+.subtitlu-logo {
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: var(--color-bg);
+}
+
+.buton-hamburger {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--color-bg);
+}
+
+.buton-hamburger span {
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: var(--color-bg);
+}
+
+.meniu-navigatie {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background-color: var(--color-bg);
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.meniu-navigatie.deschis {
+    display: flex;
+}
+
+.meniu-navigatie ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.meniu-navigatie li {
+    margin: 50px 0;
+}
+
+.meniu-navigatie a {
+    text-decoration: none;
+    font-family: var(--font-sans);
+    color: var(--color-primary);
+    font-size: 22px;
+    transition: 0.3s;
+}
+
+.meniu-navigatie a:hover {
+    color: #a87e84;
+}
+
+.buton-inchidere {
+    display: none;
+    background: transparent;
+    position: absolute;
+    border: none;
+    font-size: 30px;
+    color: var(--color-bg);
+    cursor: pointer;
+    transition: 0.3s;
+    right: 20px;
+}
+
+.buton-inchidere:hover {
+    transform: scale(1.1);
+}
+
+.hero {
+    background-image:
+        linear-gradient(rgba(244, 239, 234, 0.15), rgba(244, 239, 234, 0.15)),
+        url('../assets/Gemini_Generated_Image_3189uc3189uc3189_cleanup.png');
+    background-size: 100%;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+    height: 45vh;
+    display: flex;
+    align-items: flex-end;
+    box-sizing: border-box;
+    margin-top: 60px;
+    padding: 30px 20px 25px 20px;
+}
+
+.hero-content-bottom {
+    text-align: left;
+    width: 100%;
+}
+
+.hero-subtitle {
+    font-family: var(--font-sans);
+    color: #F4EFEA;
+    font-weight: 550;
+    letter-spacing: 5px;
+    font-size: 0.85rem;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-family: var(--font-titlu);
+    color: #F4EFEA;
+    font-weight: 300;
+    font-size: 1.4rem;
+    line-height: 1.2;
+}
+
+.philosophy {
+    padding: 37px 20px 10px;
+    background-color: var(--crem);
+    text-align: left;
+}
+
+.section-tag {
+    font-family: var(--font-sans);
+    color: var(--visiniu);
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.section-title {
+    font-family: var(--font-titlu);
+    color: var(--visiniu);
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 25px;
+}
+
+.section-text p {
+    font-family: var(--font-sans);
+    color: var(--visiniu);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.services {
+    background-color: #EBE5D9;
+    padding: 35px 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+}
+
+.services-header {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.services-header .section-tag {
+    text-align: center;
+    font-size: 17px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.services-header .section-title {
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+
+.service-card {
+    background-color: #F4EFEA;
+    padding: 23px 25px 25px;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    width: 100%;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.service-card h3 {
+    font-family: var(--font-corp);
+    color: var(--visiniu);
+    font-size: 1.2rem;
+    font-weight: 400;
+    max-width: 70%;
+    margin-bottom: 0px;
+    margin-right: 60px;
+    line-height: 1.2;
+    min-height: 2.9rem;
+}
+
+.price {
+    color: var(--visiniu);
+    font-size: 0.85rem;
+    white-space: nowrap;
+    padding-right: 10px;
+}
+
+.duration {
+    font-size: 0.80rem;
+    color: var(--visiniu);
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
+
+.description {
+    font-size: 0.82rem;
+    line-height: 1.3;
+    color: var(--visiniu);
+}
+
+.dotari {
+    background-color: #F4EFEA;
+    padding: 60px 35px;
+    text-align: center;
+}
+
+.label-dotari {
+    display: block;
+    color: var(--visiniu);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.dotari h2 {
+    font-family: var(--font-titlu);
+    color: var(--visiniu);
+    font-size: 1.9rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.dotari-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.dotari-card {
+    background-color: var(--visiniu);
+    color: white;
+    padding: 25px 25px 40px 20px;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.card-icon {
+    width: 70px;
+    margin-bottom: 25px;
+}
+
+.dotari-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.dotari-card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+.trainers {
+    padding: 40px 50px 60px;
+    text-align: center;
+    background-color: #EBE5D9;
+}
+
+.label-echipa {
+    display: block;
+    color: var(--visiniu);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.trainers h2 {
+    font-family: var(--font-titlu);
+    color: var(--visiniu);
+    font-size: 2.1rem;
+    margin-bottom: 50px;
+    font-weight: 250;
+}
+
+.trainers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.trainer-card {
+    background-color: #F4EFEA;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.trainer-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.trainer-info {
+    padding: 20px 25px 15px 15px;
+}
+
+.trainer-info h3 {
+    color: var(--visiniu);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.trainer-role {
+    color: var(--visiniu);
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    opacity: 1;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.trainer-specialties {
+    font-size: 0.75rem;
+    line-height: 1.2;
+    color: var(--visiniu);
+    margin-bottom: 10px;
+}
+
+.trainer-quote {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    color: var(--visiniu);
+}
+
+.abonamente {
+    background-color: var(--visiniu);
+    padding: 35px 20px 60px;
+    text-align: center;
+    color: white;
+}
+
+.label-white {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    letter-spacing: 1.2px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.abonamente h2 {
+    font-family: var(--font-titlu);
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 200;
+}
+
+.abonament-placeholder {
+    width: 100%;
+    max-width: 300px;
+    height: 320px;
+    background-color: #fdfaf7;
+    margin: 0 auto;
+    border-radius: 0;
+}
+
+.slider-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slide {
+    min-width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.main-footer {
+    background-color: var(--visiniu);
+    color: white;
+    padding: 40px 20px 30px 20px;
+    overflow: visible;
+}
+
+.footer-divider {
+    border: none;
+    border-top: 1px solid rgba(244, 239, 234, 0.2);
+    margin: 0 0 40px 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+}
+
+.footer-brand {
+    font-family: var(--font-titlu);
+    font-weight: 400;
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.footer-brand-col {
+    margin-bottom: 35px;
+}
+
+.footer-desc {
+    font-family: var(--font-corp);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+.footer-section {
+    margin-bottom: 35px;
+}
+
+.footer-heading {
+    font-family: var(--font-corp);
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-links li a {
+    color: white;
+    text-decoration: none;
+    font-family: var(--font-corp);
+    font-size: 13px;
+    opacity: 0.9;
+    border-bottom: 1px solid transparent;
+    transition: opacity 0.3s;
+}
+
+.footer-links li a:hover {
+    opacity: 0.7;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icons img {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+.footer-copy {
+    text-align: center;
+    font-family: var(--font-corp);
+    font-size: 10px;
+    margin-top: 20px;
+    opacity: 0.8;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--crem);
+    z-index: 2000;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-overlay.active {
+    display: flex;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: var(--visiniu);
+    cursor: pointer;
+    font-weight: 300;
+}
+
+.overlay-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    text-align: center;
+}
+
+.overlay-nav a {
+    font-family: var(--font-corp);
+    color: var(--visiniu);
+    text-decoration: none;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    font-weight: 400;
+    text-transform: uppercase;
+    transition: opacity 0.3s;
+}
+
+.overlay-nav a:hover {
+    opacity: 0.6;
+}
+
+@media (min-width: 768px) {
+    .dotari-container, .trainers-container {
+        flex-direction: row;
+        max-width: 1200px;
+    }
+    .dotari-card, .trainer-card {
+        flex: 1;
+    }
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}
