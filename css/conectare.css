@@ -140,7 +140,7 @@ body {
 .buton-inchidere:hover {
     transform: scale(1.1); /* Sse mareste cand pui cursorul */
 }
-
+/* ---------------------------------------------AUTENTIFICARE--------------------------------------------- */
 /* Containerul centrat pe ecran */
 .container-autentificare {
     width: 100%;
@@ -179,64 +179,6 @@ body {
     opacity: 0.8;
     line-height: 1.5;
     margin-bottom: 35px;
-}
-
-/* Butonul Google */
-.buton-google {
-    width: 100%;
-    background-color: transparent;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    color: #2b2b2b;
-    font-family: var(--font-sans);
-    font-size: 14px;
-    font-weight: 400;
-    padding: 12px;
-    border-radius: 4px; /* Uniformizat cu stilul site-ului */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.buton-google:hover {
-    background-color: var(--color-bg-alt); /* Cremul alternativ la hover */
-}
-
-.icon-google {
-    width: 18px;
-    height: 18px;
-}
-
-/* Linia despartitoare SAU */
-.separator-text {
-    position: relative;
-    text-align: center;
-    margin: 35px 0;
-}
-
-.separator-text::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background-color: rgba(0, 0, 0, 0.1);
-    z-index: 1;
-}
-
-.separator-text span {
-    position: relative;
-    z-index: 2;
-    background-color: var(--color-bg);
-    padding: 0 15px;
-    font-family: var(--font-sans);
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--color-primary);
-    opacity: 0.6;
 }
 
 /* Stiluri casete text (Formular) */
@@ -312,4 +254,24 @@ body {
     text-decoration: underline;
     text-underline-offset: 3px;
     font-weight: 500;
+}
+
+
+/* --- COD FURAT DE LA RALUCA PENTRU EROARE --- */
+.eroare-email {
+    color: #b32d2d; 
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-top: 6px;
+    /* display: block; am scos asta pt ca e ascuns din html */
+    text-align: left;
+    letter-spacing: 0.5px;
+}
+
+/* Caseta se face roșie când emailul e greșit */
+.grup-input input.input-eroare {
+    outline: 1px solid #b32d2d !important; 
+    /* important ca sa se faca rosie si nu visinie in cazul in care cursorul este pe input (visiniu) */
 }

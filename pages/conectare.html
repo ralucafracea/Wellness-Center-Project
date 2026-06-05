@@ -9,27 +9,27 @@
 <body>
 
     <header class="header-principal">
-    <div class="logo">
-        <span class="titlu-logo">TIRRA</span>
-        <span class="subtitlu-logo">WELLNESS</span>
-    </div>
-    <button class="buton-hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-    <button class="buton-inchidere">&#10005;</button>  
-    <nav class="meniu-navigatie"> 
-        <ul>
-            <li><a href="../index.html">ACASĂ</a></li>
-            <li><a href="spa.html">SPA & WELLNESS</a></li>
-            <li><a href="sala.html">FITNESS</a></li>
-            <li><a href="rezervari.html">REZERVĂRI</a></li>
-            <li><a href="contact.html">CONTACT</a></li>
-            <li><a href="conectare.html">CONECTEAZĂ-TE</a></li>
-        </ul>
-    </nav>
-</header>
+        <div class="logo">
+            <span class="titlu-logo">TIRRA</span>
+            <span class="subtitlu-logo">WELLNESS</span>
+        </div>
+        <button class="buton-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <button class="buton-inchidere">&#10005;</button>  
+        <nav class="meniu-navigatie"> 
+            <ul>
+                <li><a href="../index.html">ACASĂ</a></li>
+                <li><a href="spa.html">SPA & WELLNESS</a></li>
+                <li><a href="sala.html">FITNESS</a></li>
+                <li><a href="rezervari.html">REZERVĂRI</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="conectare.html">CONTUL MEU</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <div class="container-autentificare">
         
@@ -38,19 +38,12 @@
             <h1 class="titlu-autentificare">Autentifică-te</h1>
             <p class="descriere-autentificare">Accesează-ți contul cu emailul și parola.</p>
 
-            <button class="buton-google">
-                <img src="imagini/google-icon.png" alt="Google" class="icon-google">
-                Continuă cu Google
-            </button>
-
-            <div class="separator-text">
-                <span>SAU</span>
-            </div>
-
-            <form>
+            <form id="formular-login" action="contul-meu.html" novalidate> 
+                <!-- novalidate nu lasa browserul sa valideze datele ca apar mesaje urate vizual -->
                 <div class="grup-input">
                     <label class="eticheta-input">EMAIL</label>
-                    <input type="email" placeholder="nume@email.com" required>
+                    <input type="email" id="email-login" placeholder="nume@email.com" required>
+                    <span id="eroare-email-login" class="eroare-email" style="display: none;">&#9888; Introdu o adresă de email validă (ex: nume@email.com).</span>
                 </div>
 
                 <div class="grup-input">
@@ -68,19 +61,11 @@
             <h1 class="titlu-autentificare">Creează un cont</h1>
             <p class="descriere-autentificare">Înregistrează-te pentru a-ți gestiona experiența Tirra.</p>
 
-            <button class="buton-google">
-                <img src="imagini/google-icon.png" alt="Google" class="icon-google">
-                Continuă cu Google
-            </button>
-
-            <div class="separator-text">
-                <span>SAU</span>
-            </div>
-
-            <form>
+            <form id="formular-inregistrare" novalidate>
                 <div class="grup-input">
                     <label class="eticheta-input">EMAIL</label>
-                    <input type="email" placeholder="nume@email.com" required>
+                    <input type="email" id="email-register" placeholder="nume@email.com" required>
+                    <span id="eroare-email-register" class="eroare-email" style="display: none;">&#9888; Introdu o adresă de email validă (ex: nume@email.com).</span>
                 </div>
 
                 <div class="grup-input">
@@ -97,43 +82,110 @@
     </div>
 
     <script>
+        // ----------------------------LOGICA SWITCH INTRE LOGIN SI REGISTER ---------------------------------
+        //logica de validare si alerta este luata de la ralu
         const boxLogin = document.getElementById('box-login');
         const boxRegister = document.getElementById('box-register');
         const laRegister = document.getElementById('mergi-la-register');
         const laLogin = document.getElementById('mergi-la-login');
+        
+        const formLogin = document.getElementById('formular-login');
+        const formInregistrare = document.getElementById('formular-inregistrare');
 
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regula colegei tale
+
+        // Curățăm erorile la încărcarea paginii (pentru butonul Back)
+        window.addEventListener('pageshow', () => {
+            document.getElementById('eroare-email-login').style.display = 'none';
+            document.getElementById('eroare-email-register').style.display = 'none';
+            document.getElementById('email-login').classList.remove('input-eroare');
+            document.getElementById('email-register').classList.remove('input-eroare');
+        });
+
+        // Comutare forms (și ascunderea erorilor)
         laRegister.addEventListener('click', (e) => {
             e.preventDefault();
             boxLogin.style.display = 'none';
             boxRegister.style.display = 'block';
+            
+            document.getElementById('eroare-email-login').style.display = 'none';
+            document.getElementById('email-login').classList.remove('input-eroare');
         });
 
         laLogin.addEventListener('click', (e) => {
             e.preventDefault();
             boxRegister.style.display = 'none';
             boxLogin.style.display = 'block';
+            
+            document.getElementById('eroare-email-register').style.display = 'none';
+            document.getElementById('email-register').classList.remove('input-eroare');
         });
-        // -------------------------- LOGICA PENTRU MENIU --------------------------------
+
+        // ---------------------------- VALIDARE LOGIN ---------------------------------
+        formLogin.addEventListener('submit', (e) => {
+            e.preventDefault(); // Oprim comportamentul nativ din start (logica Ralucăi)
+            
+            const inputEmail = document.getElementById('email-login');
+            const textEroare = document.getElementById('eroare-email-login');
+
+            // VERIFICARE DACA E GRESIT
+            if (!emailRegex.test(inputEmail.value.trim())) {
+                textEroare.style.display = 'block';      
+                inputEmail.classList.add('input-eroare'); 
+                return; // OPRIRE: Blocăm trimiterea mai departe!
+            } else {
+                // Dacă e corect, ascundem erorile
+                textEroare.style.display = 'none';
+                inputEmail.classList.remove('input-eroare');
+                
+                // REDIRECȚIONĂM către pagina de cont
+                window.location.href = 'contul-meu.html';
+            }
+        });
+
+        // ---------------------------- VALIDARE INREGISTRARE --------------------------
+        formInregistrare.addEventListener('submit', (e) => {
+            e.preventDefault(); // Oprim comportamentul nativ din start
+            
+            const inputEmail = document.getElementById('email-register');
+            const textEroare = document.getElementById('eroare-email-register');
+
+            // VERIFICARE DACA E GRESIT
+            if (!emailRegex.test(inputEmail.value.trim())) {
+                textEroare.style.display = 'block';
+                inputEmail.classList.add('input-eroare');
+                return; // OPRIRE
+            } else {
+                // Dacă e corect, ascundem erorile
+                textEroare.style.display = 'none';
+                inputEmail.classList.remove('input-eroare');
+                
+                alert('Contul a fost creat cu succes! Acum te rugăm să te autentifici.'); 
+                boxRegister.style.display = 'none';
+                boxLogin.style.display = 'block';
+                
+                inputEmail.value = ''; // Golim caseta
+            }
+        });
+
+        // ------------------------------- LOGICA PENTRU MENIU --------------------------
         const meniuNavigatie = document.querySelector('.meniu-navigatie');
         const btnHamburger = document.querySelector('.buton-hamburger');
         const btnInchidere = document.querySelector('.buton-inchidere');
         const linkuriMeniu = document.querySelectorAll('.meniu-navigatie a');
 
-        // deshide meniu la apasare hamburger
         btnHamburger.addEventListener('click', () => {
             meniuNavigatie.classList.add('deschis');
             btnHamburger.style.display = 'none';     
             btnInchidere.style.display = 'block';
         });
 
-        // inchide meniul din butonul X
         btnInchidere.addEventListener('click', () => {
             meniuNavigatie.classList.remove('deschis');
             btnInchidere.style.display = 'none';     
             btnHamburger.style.display = 'flex';
         });
 
-        // inchide meniul cand dau click pe linkuri
         linkuriMeniu.forEach(link => {
             link.addEventListener('click', () => {
                 meniuNavigatie.classList.remove('deschis');
