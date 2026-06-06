@@ -10,7 +10,7 @@ describe('Testare Frontend - Pagina Contact (Tirra Wellness)', () => {
 
   it('1. Verifică secțiunea Hero și informațiile de contact', () => {
     // Validăm titlul paginii
-    cy.get('.hero-title').should('have.text', 'Contact');
+    cy.get('.hero-title').should('have.text', 'CONTACT');
     
     // Ne asigurăm că există exact 4 secțiuni cu detalii (Locație, Telefon, Email, Program)
     cy.get('.info-item').should('have.length', 4);
@@ -36,17 +36,16 @@ describe('Testare Frontend - Pagina Contact (Tirra Wellness)', () => {
     // Asigurăm-ne că modalul de succes este ascuns la început
     cy.get('#contact-modal').should('not.be.visible');
 
-    // Completăm câmpurile obligatorii din formular
-    // Cypress simulează un utilizator real care tastează
-    cy.get('input[placeholder="Numele tău complet"]').type('Client Test');
-    cy.get('input[type="email"]').type('client@email.com');
-    cy.get('input[placeholder="Subiectul mesajului"]').type('Întrebare despre rezervări');
-    cy.get('textarea').type('Bună ziua, aș dori să aflu mai multe detalii despre pachetele SPA.');
+    // Completăm câmpurile obligatorii folosind noile ID-uri adăugate de tine în HTML
+    cy.get('#contact-name').type('Client Test');
+    cy.get('#contact-email').type('client@email.com');
+    cy.get('#contact-subject').type('Întrebare despre rezervări');
+    cy.get('#contact-message').type('Bună ziua, aș dori să aflu mai multe detalii despre pachetele SPA.');
 
     // Trimitem formularul apăsând pe butonul de submit
     cy.get('.contact-form button[type="submit"]').click();
 
-    // Verificăm dacă JS-ul tău a blocat reîncărcarea paginii (e.preventDefault) și a afișat modalul
+    // Verificăm dacă JS-ul tău a validat Regex-ul cu succes și a afișat modalul
     cy.get('#contact-modal').should('be.visible');
     cy.get('.modal-title').should('have.text', 'Îți mulțumim!');
 
@@ -57,17 +56,17 @@ describe('Testare Frontend - Pagina Contact (Tirra Wellness)', () => {
     cy.get('#contact-modal').should('not.be.visible');
 
     // Verificăm dacă funcția contactForm.reset() și-a făcut treaba golind câmpurile
-    cy.get('input[type="email"]').should('have.value', '');
-    cy.get('textarea').should('have.value', '');
+    cy.get('#contact-email').should('have.value', '');
+    cy.get('#contact-message').should('have.value', '');
   });
 
   it('3.1 Testează validarea adresei de Email (Scenariu Negativ)', () => {
     // 1. Introducem date corecte în restul formularului
-    cy.get('input[placeholder="Numele tău complet"]').type('Client Test');
-    cy.get('textarea').type('Acesta este un test pentru email greșit.');
+    cy.get('#contact-name').type('Client Test');
+    cy.get('#contact-message').type('Acesta este un test pentru email greșit.');
 
     // 2. Introducem un email INTENȚIONAT GREȘIT (fără @)
-    cy.get('input[type="email"]').type('adresa.fara.arond.com');
+    cy.get('#contact-email').type('adresa.fara.arond.com');
 
     // 3. Încercăm să trimitem formularul
     cy.get('.contact-form button[type="submit"]').click();
@@ -77,7 +76,7 @@ describe('Testare Frontend - Pagina Contact (Tirra Wellness)', () => {
 
     // 5. Validăm că browser-ul a marcat câmpul de email ca fiind invalid
     // Pseudo-clasa ':invalid' este aplicată automat de HTML5 când adresa nu respectă formatul type="email"
-    cy.get('input[type="email"]').should('match', ':invalid');
+    cy.get('#contact-email').should('match', ':invalid');
   });
 
   it('4. Verifică integritatea pictogramelor și a imaginilor', () => {
