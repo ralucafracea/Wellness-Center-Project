@@ -1,0 +1,145 @@
+body {
+    background-color: var(--color-bg); /* Fundalul crem general */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ---------------------------------------------AUTENTIFICARE--------------------------------------------- */
+/* Containerul centrat pe ecran */
+.container-autentificare {
+    width: 100%;
+    max-width: 420px; /* Împiedică lărgirea exagerată pe ecrane mari */
+    padding: 40px 24px;
+    box-sizing: border-box;
+}
+
+.box-formular {
+    width: 100%;
+}
+
+.subtitlu-mic-login {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.titlu-autentificare {
+    font-family: var(--font-serif);
+    font-size: 38px;
+    font-weight: 300; /* Stilul Cormorant Light */
+    color: var(--color-primary);
+    margin: 0 0 15px 0;
+}
+
+.descriere-autentificare {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-primary);
+    opacity: 0.8;
+    line-height: 1.5;
+    margin-bottom: 35px;
+}
+
+/* Stiluri casete text (Formular) */
+.grup-input {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.eticheta-input {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: var(--color-primary);
+}
+
+.grup-input input {
+    background-color: var(--color-bg-alt); /* Cremul mai închis din schiță */
+    border: none;
+    padding: 16px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--color-primary);
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.grup-input input::placeholder {
+    color: var(--color-primary);
+    opacity: 0.4;
+}
+
+.grup-input input:focus {
+    outline: 1px solid var(--color-primary); /* Un mic contur elegant la scriere */
+}
+
+/* Butonul Vișiniu Principal */
+.buton-principal-autentificare {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    border: none;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    padding: 16px;
+    border-radius: 4px; /* MODIFICAT: Colțuri fin rotunjite în tema site-ului */
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.buton-principal-autentificare:hover {
+    background-color: #4a1018; /* Nuanță mai închisă la hover */
+}
+
+/* Link-ul de jos */
+.link-schimbare {
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--color-primary);
+    margin-top: 35px;
+    opacity: 0.9;
+}
+
+.link-schimbare a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 500;
+}
+
+
+/* --- COD FURAT DE LA RALUCA PENTRU EROARE --- */
+.eroare-email {
+    color: #b32d2d; 
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-top: 6px;
+    /* display: block; am scos asta pt ca e ascuns din html */
+    text-align: left;
+    letter-spacing: 0.5px;
+}
+
+/* Caseta se face roșie când emailul e greșit */
+.grup-input input.input-eroare {
+    outline: 1px solid #b32d2d !important; 
+    /* important ca sa se faca rosie si nu visinie in cazul in care cursorul este pe input (visiniu) */
+}
