@@ -139,12 +139,13 @@ html {
     transform: scale(1.1);
 }
 
-.hero {
+/* ===== HERO — prefix fitness- pentru protecție la merge ===== */
+.fitness-hero {
     background-image:
         linear-gradient(rgba(244, 239, 234, 0.15), rgba(244, 239, 234, 0.15)),
         url('../assets/Gemini_Generated_Image_3189uc3189uc3189_cleanup.png');
     background-size: 100%;
-    background-position: center bottom;
+    background-position: 50% 40%;
     background-repeat: no-repeat;
     height: 45vh;
     display: flex;
@@ -154,12 +155,12 @@ html {
     padding: 30px 20px 25px 20px;
 }
 
-.hero-content-bottom {
+.fitness-hero-content-bottom {
     text-align: left;
     width: 100%;
 }
 
-.hero-subtitle {
+.fitness-hero-subtitle {
     font-family: var(--font-sans);
     color: #F4EFEA;
     font-weight: 550;
@@ -169,7 +170,7 @@ html {
     text-transform: uppercase;
 }
 
-.hero-title {
+.fitness-hero-title {
     font-family: var(--font-titlu);
     color: #F4EFEA;
     font-weight: 300;
@@ -177,13 +178,15 @@ html {
     line-height: 1.2;
 }
 
+/* ===== PHILOSOPHY ===== */
 .philosophy {
     padding: 37px 20px 10px;
     background-color: var(--crem);
     text-align: left;
 }
 
-.section-tag {
+/* ===== SECTION TAG & TITLE — prefix fitness- pentru protecție la merge ===== */
+.fitness-section-tag {
     font-family: var(--font-sans);
     color: var(--visiniu);
     font-size: 14px;
@@ -192,7 +195,7 @@ html {
     text-transform: uppercase;
 }
 
-.section-title {
+.fitness-section-title {
     font-family: var(--font-titlu);
     color: var(--visiniu);
     font-size: 28px;
@@ -201,7 +204,7 @@ html {
     margin-bottom: 25px;
 }
 
-.section-text p {
+.fitness-section-text p {
     font-family: var(--font-sans);
     color: var(--visiniu);
     font-size: 15px;
@@ -210,6 +213,7 @@ html {
     font-weight: 400;
 }
 
+/* ===== SERVICES ===== */
 .services {
     background-color: #EBE5D9;
     padding: 35px 45px;
@@ -224,21 +228,22 @@ html {
     margin-bottom: 0px;
 }
 
-.services-header .section-tag {
+.services-header .fitness-section-tag {
     text-align: center;
     font-size: 17px;
     letter-spacing: 2px;
     margin-bottom: 25px;
 }
 
-.services-header .section-title {
+.services-header .fitness-section-title {
     text-align: center;
     font-size: 34px;
     margin-bottom: 0;
     line-height: 1.2;
 }
 
-.service-card {
+/* ===== SERVICE CARD — prefix fitness- pentru protecție la merge ===== */
+.fitness-service-card {
     background-color: #F4EFEA;
     padding: 23px 25px 25px;
     border-radius: 4px;
@@ -247,14 +252,14 @@ html {
     width: 100%;
 }
 
-.card-header {
+.fitness-card-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 10px;
 }
 
-.service-card h3 {
+.fitness-service-card h3 {
     font-family: var(--font-corp);
     color: var(--visiniu);
     font-size: 1.2rem;
@@ -266,26 +271,27 @@ html {
     min-height: 2.9rem;
 }
 
-.price {
+.fitness-price {
     color: var(--visiniu);
     font-size: 0.85rem;
     white-space: nowrap;
     padding-right: 10px;
 }
 
-.duration {
+.fitness-duration {
     font-size: 0.80rem;
     color: var(--visiniu);
     margin-bottom: 25px;
     margin-top: 20px;
 }
 
-.description {
+.fitness-description {
     font-size: 0.82rem;
     line-height: 1.3;
     color: var(--visiniu);
 }
 
+/* ===== DOTARI ===== */
 .dotari {
     background-color: #F4EFEA;
     padding: 60px 35px;
@@ -343,6 +349,7 @@ html {
     opacity: 0.9;
 }
 
+/* ===== TRAINERS ===== */
 .trainers {
     padding: 40px 50px 60px;
     text-align: center;
@@ -423,7 +430,7 @@ html {
     color: var(--visiniu);
 }
 
-
+/* ===== ABONAMENTE ===== */
 .abonamente {
     background-color: var(--visiniu);
     padding: 30px 20px 120px;
@@ -497,7 +504,6 @@ html {
 .abonamente-track {
     display: flex;
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    
 }
 
 .abonament-slide {
@@ -510,18 +516,20 @@ html {
     color: #F4EFEA;
 }
 
+/* ===== SLIDER — prefix fitness- pentru protecție la merge ===== */
 .slider-section {
     position: relative;
     width: 100%;
     overflow: hidden;
 }
 
-.slide {
+.fitness-slide {
     min-width: 100%;
     height: 250px;
     object-fit: cover;
 }
 
+/* ===== FOOTER ===== */
 .main-footer {
     background-color: var(--visiniu);
     color: white;
