@@ -53,7 +53,8 @@
 
                 <div class="grup-input">
                     <label class="eticheta-input">PAROLĂ</label>
-                    <input type="password" placeholder="Minim 6 caractere" required>
+                    <input type="password" id="parola-login" placeholder="Minim 6 caractere" required>
+                    <span id="eroare-parola-login" class="eroare-email" style="display: none;">&#9888; Parola trebuie să aibă minim 6 caractere.</span>
                 </div>
 
                 <button type="submit" class="buton-principal-autentificare">AUTENTIFICĂ-TE</button>
@@ -139,6 +140,11 @@
             // Curățăm erorile de la login dacă renunță și merge la register
             document.getElementById('eroare-email-login').style.display = 'none';
             document.getElementById('email-login').classList.remove('input-eroare');
+            document.getElementById('eroare-parola-login').style.display = 'none';
+            document.getElementById('parola-login').classList.remove('input-eroare');
+
+            document.getElementById('email-login').value = '';
+            document.getElementById('parola-login').value = '';
         });
 
         laLogin.addEventListener('click', (e) => {
@@ -156,6 +162,12 @@
             document.getElementById('telefon-register').classList.remove('input-eroare');
             document.getElementById('email-register').classList.remove('input-eroare');
             document.getElementById('parola-register').classList.remove('input-eroare');
+
+            // NOU: Golim textul scris în căsuțele de register
+            document.getElementById('nume-register').value = '';
+            document.getElementById('telefon-register').value = '';
+            document.getElementById('email-register').value = '';
+            document.getElementById('parola-register').value = '';
         });
 
         // ---------------------------- VALIDARE LOGIN ---------------------------------
@@ -164,20 +176,36 @@
             
             const inputEmail = document.getElementById('email-login');
             const textEroare = document.getElementById('eroare-email-login');
-
+            const inputParola = document.getElementById('parola-login');
+            const errParola = document.getElementById('eroare-parola-login');
+            let areErori = false;
             // VERIFICARE DACA E GRESIT
             if (!emailRegex.test(inputEmail.value.trim())) {
                 textEroare.style.display = 'block';      
                 inputEmail.classList.add('input-eroare'); 
-                return; // OPRIRE
+                areErori = true;
             } else {
                 // Dacă e corect
                 textEroare.style.display = 'none';
                 inputEmail.classList.remove('input-eroare');
-                
-                // REDIRECȚIONĂM către pagina de cont
-                window.location.href = 'contul-meu.html';
             }
+            // 4. Validare Parolă (minim 6 caractere)
+            if (inputParola.value.trim().length < 6) {
+                errParola.style.display = 'block';
+                inputParola.classList.add('input-eroare');
+                areErori = true;
+            } else {
+                errParola.style.display = 'none';
+                inputParola.classList.remove('input-eroare');
+            }
+            if (areErori) {
+                return; 
+            }
+            // REDIRECȚIONĂM către pagina de cont daca totul e ok
+            window.location.href = 'contul-meu.html';
+            
+            inputEmail.value = '';
+            inputParola.value = '';
         });
 
         // ---------------------------- VALIDARE INREGISTRARE (Cele 4 câmpuri) ----------
