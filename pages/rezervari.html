@@ -48,7 +48,7 @@
                 
                 <div class="form-group-labeled">
                     <label>NUME</label>
-                    <input type="text" placeholder="Numele tău" required>
+                    <input type="text" id="contact-name" placeholder="Numele tău" required>
                 </div>
 
                 <div class="form-group-labeled">
@@ -99,6 +99,14 @@
             </form>
         </div>
     </section>
+    <div id="login-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content-card text-center">
+            <button id="close-login-modal-btn" class="close-modal">&times;</button>
+            <h3 class="modal-title" style="color: var(--color-primary);">Autentificare necesară</h3>
+            <p class="modal-desc" style="margin-bottom: 20px;">Pentru a finaliza rezervarea, te rugăm să te conectezi la contul tău.</p>
+            <button id="btn-mergi-login" class="btn-primary btn-pill">Mergi la Login</button>
+        </div>
+    </div>
     <div id="payment-modal" class="modal-overlay">
         
         <div class="modal-content-card">
