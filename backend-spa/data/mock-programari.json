@@ -1,0 +1,43 @@
+[
+  {
+    "nume": "Fracea Raluca",
+    "telefon": "0740380153",
+    "email": "ralucafracea16@gmail.com",
+    "categorie_serviciu": "spa",
+    "pachet_abonament": "aroma",
+    "metoda_plata": "La recepție",
+    "data_creare_rezervare": "2026-06-09T15:03:09.568Z"
+  },
+  {
+    "nume": "Fracea Raluca",
+    "telefon": "0740380153",
+    "email": "ralucafracea16@gmail.com",
+    "categorie_serviciu": "Fitness",
+    "pachet_abonament": "Abonament Fitness - 1 Lună",
+    "metoda_plata": "Online cu cardul",
+    "status_plata": "platita",
+    "data_creare_rezervare": "2026-06-09T15:16:38.679Z"
+  },
+  {
+    "nume": "Fracea Raluca",
+    "telefon": "0987654321",
+    "email": "raluca@husad.com",
+    "categorie_serviciu": "Spa & Wellness",
+    "pachet_abonament": "Masaj cu pietre vulcanice",
+    "metoda_plata": "La recepție",
+    "status_plata": "neplatita",
+    "data_creare_rezervare": "2026-06-09T15:19:37.714Z"
+  },
+  {
+    "nume": "Maria Popescu",
+    "telefon": "0712345678",
+    "email": "maria@test.ro",
+    "categorie_serviciu": "Spa & Wellness",
+    "pachet_abonament": "Masaj suedez de relaxare",
+    "data_rezervare": "2026-06-09",
+    "ora_rezervare": "09:00",
+    "metoda_plata": "La recepție",
+    "status_plata": "neplatita",
+    "data_creare_rezervare": "2026-06-09T15:54:04.219Z"
+  }
+]
