@@ -32,7 +32,7 @@
             <li><a href="sala.html">FITNESS</a></li>
             <li><a href="rezervari.html">REZERVĂRI</a></li>
             <li><a href="contact.html">CONTACT</a></li>
-            <li><a href="login.html">CONECTEAZĂ-TE</a></li>
+            <li><a href="login.html">CONTUL MEU</a></li>
         </ul>
     </nav>
 </header>
@@ -44,7 +44,7 @@
         </div>
 
         <div class="rezervari-form-card">
-            <form class="rezervari-form">
+            <form class="rezervari-form" novalidate>
                 
                 <div class="form-group-labeled">
                     <label>NUME</label>
@@ -52,17 +52,24 @@
                 </div>
 
                 <div class="form-group-labeled">
-                    <label>TELEFON</label>
-                    <input type="tel" placeholder="+ 40 ..." required>
+                    <label for="contact-telefon">TELEFON</label>
+                    <input type="tel" id="contact-telefon" placeholder="07XX XXX XXX" maxlength="10" required>
+                    
+                    <span class="eroare-telefon" style="display: none; color: red; font-size: 12px; margin-top: 5px;">
+                        &#9888; Te rugăm să introduci un număr de telefon valid (10 cifre).
+                    </span>
                 </div>
 
                 <div class="form-group-labeled">
-                    <label>EMAIL *</label>
-                    <input type="email" placeholder="email@example.com" required>
+                    <label>EMAIL</label>
+                    <input type="email" id="contact-email" placeholder="email@example.com" required>
+                        <span class="eroare-email" style="display: none;">
+                            &#9888; Enter an email address like example@mysite.com.
+                        </span>
                 </div>
 
                 <div class="form-group-labeled">
-                    <label>SERVICIU DORIT *</label>
+                    <label>SERVICIU DORIT</label>
                     <select id="categorie-select" required>
                         <option value="" disabled selected>Alege serviciul</option>
                         <option value="spa">Spa & Wellness</option>
@@ -71,58 +78,65 @@
                 </div>
 
                 <div class="form-group-labeled">
-                    <label>PACHET / ABONAMENT *</label>
+                    <label>PACHET / ABONAMENT</label>
                     <select id="pachet-select" required disabled>
                         <option value="" disabled selected>Alege pachetul dorit</option>
                     </select>
                 </div>
 
                 <div class="form-group-labeled">
-                    <label>MESAJ *</label>
+                    <label>MESAJ</label>
                     <textarea placeholder="Spune-ne despre dorințele tale..." rows="3" required></textarea>
                 </div>
 
-                <button type="submit" class="btn-primary btn-pill">Trimite cererea</button>
+                <div class="modal-buttons" style="margin-top: 20px;">
+    
+                    <button type="submit" id="btn-rezerva" class="btn-pill btn-secondary">Rezervă</button>
+                    
+                    <button type="submit" id="btn-cumpara" class="btn-pill">Cumpără online cu cardul</button>
+                    
+                </div>
             </form>
         </div>
     </section>
-<div id="payment-modal" class="modal-overlay">
+    <div id="payment-modal" class="modal-overlay">
+        
         <div class="modal-content-card">
+            
             <button id="close-modal-btn" class="close-modal">&times;</button>
             
-            <div id="modal-alegere" class="text-center">
-                <h3 class="modal-title">Confirmare</h3>
-                <p class="modal-desc">Doriți să achitați cu cardul acum sau cash la locație?</p>
-                <div class="modal-buttons">
-                    <button id="btn-card" class="btn-primary btn-pill">Plătesc cu cardul acum</button>
-                    <button id="btn-cash" class="btn-secondary btn-pill">Cash la locație</button>
-                </div>
-            </div>
-
             <div id="modal-card-form" style="display: none;">
                 <h3 class="modal-title">Detalii Card</h3>
+                    
                 <div class="form-group-labeled" style="margin-bottom: 20px;">
                     <label>NUMĂR CARD</label>
-                    <input type="text" placeholder="0000 0000 0000 0000" maxlength="19">
+                    <input type="text" id="card-numar" placeholder="0000 0000 0000 0000" maxlength="16" autocomplete="off">
+                    <span class="eroare-card" style="display: none; color: red; font-size: 12px; margin-top: 5px;">&#9888; Introdu un număr de card valid (16 cifre).</span>
                 </div>
+                    
                 <div style="display: flex; gap: 20px; margin-bottom: 25px;">
                     <div class="form-group-labeled" style="flex: 1;">
                         <label>EXPIRARE</label>
-                        <input type="text" placeholder="LL/AA" maxlength="5">
+                        <input type="text" id="card-expirare" placeholder="LL/AA" maxlength="5" autocomplete="off">
+                        <span class="eroare-exp" style="display: none; color: red; font-size: 12px; margin-top: 5px;">&#9888; Format incorect (ex: 12/26).</span>
                     </div>
+                        
                     <div class="form-group-labeled" style="flex: 1;">
                         <label>CVV</label>
-                        <input type="text" placeholder="123" maxlength="3">
+                        <input type="text" id="card-cvv" placeholder="123" maxlength="3" autocomplete="off">
+                        <span class="eroare-cvv" style="display: none; color: red; font-size: 12px; margin-top: 5px;">&#9888; CVV incorect (3 cifre).</span>
                     </div>
                 </div>
+                    
                 <button id="btn-plateste" class="btn-primary btn-pill" style="width: 100%;">Confirmă Plata</button>
             </div>
 
             <div id="modal-succes" class="text-center" style="display: none;">
                 <h3 class="modal-title" style="color: var(--color-primary);">Vă așteptăm!</h3>
-                <p class="modal-desc" id="mesaj-text-succes">Rezervarea dumneavoastră a fost înregistrată cu succes. Detaliile au fost trimise pe adresa de email.</p>
+                <p class="modal-desc" id="mesaj-text-succes">Rezervarea dumneavoastră a fost înregistrată cu succes.</p>
                 <button id="btn-inchide-final" class="btn-primary btn-pill" style="margin-top: 20px;">Înapoi la site</button>
             </div>
+
         </div>
     </div>
     <footer class="main-footer">
@@ -142,7 +156,7 @@
                     <li><a href="pages/sala.html">Fitness</a></li>
                     <li><a href="pages/rezervari.html">Rezervări</a></li>
                     <li><a href="pages/contact.html">Contact</a></li>
-                    <li><a href="pages/login.html">Conectează-te</a></li>
+                    <li><a href="pages/login.html">Contul meu</a></li>
                 </ul>
             </div>
 
