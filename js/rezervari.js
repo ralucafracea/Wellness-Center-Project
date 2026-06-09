@@ -113,16 +113,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectCat = document.getElementById('categorie-select');
         const selectPachet = document.getElementById('pachet-select');
 
-        // Luăm textul pe care îl vede clientul (ex: "Masaj suedez"), nu codul
+        // Luăm textul pe care îl vede clientul
         const categorieNume = selectCat.options[selectCat.selectedIndex]?.text || '';
         const pachetNume = selectPachet.options[selectPachet.selectedIndex]?.text || '';
 
+        // Construim pachetul exact pe structura din PDF pentru baza de date
         const dateRezervare = {
             nume: document.getElementById('contact-name').value,
             telefon: inputTelefon.value,
             email: inputEmail.value,
             categorie_serviciu: categorieNume,
             pachet_abonament: pachetNume,
+            data_rezervare: document.getElementById('contact-data').value, // ADAUGAT: Data
+            ora_rezervare: document.getElementById('contact-ora').value,   // ADAUGAT: Ora
             metoda_plata: metodaPlata,
             status_plata: statusPlata, // 'neplatita' sau 'platita'
             data_creare_rezervare: new Date().toISOString()

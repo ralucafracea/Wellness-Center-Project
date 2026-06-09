@@ -27,5 +27,17 @@
     "metoda_plata": "La recepție",
     "status_plata": "neplatita",
     "data_creare_rezervare": "2026-06-09T15:19:37.714Z"
+  },
+  {
+    "nume": "Maria Popescu",
+    "telefon": "0712345678",
+    "email": "maria@test.ro",
+    "categorie_serviciu": "Spa & Wellness",
+    "pachet_abonament": "Masaj suedez de relaxare",
+    "data_rezervare": "2026-06-09",
+    "ora_rezervare": "09:00",
+    "metoda_plata": "La recepție",
+    "status_plata": "neplatita",
+    "data_creare_rezervare": "2026-06-09T15:54:04.219Z"
   }
 ]

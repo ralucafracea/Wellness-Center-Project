@@ -83,6 +83,19 @@
                         <option value="" disabled selected>Alege pachetul dorit</option>
                     </select>
                 </div>
+                <div style="display: flex; gap: 20px;">
+                    <div class="form-group-labeled" style="flex: 1;">
+                        <label>DATA DORITĂ</label>
+                        <input type="date" id="contact-data" required onclick="this.showPicker()">
+                    </div>
+                    <div class="form-group-labeled" style="flex: 1;">
+                        <label>ORA APROXIMATIVĂ</label>
+                        <input type="time" id="contact-ora" required onclick="this.showPicker()">
+                    </div>
+                </div>
+                <p style="font-size: 12px; color: #666; margin-top: -10px; margin-bottom: 20px;">
+                    * Un membru al echipei Tirra te va contacta telefonic pentru a confirma disponibilitatea la data și ora alese.
+                </p>
 
                 <div class="form-group-labeled">
                     <label>MESAJ</label>
