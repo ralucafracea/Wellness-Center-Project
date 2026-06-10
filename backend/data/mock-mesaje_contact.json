@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "nume_expeditor": "Maria Ionescu",
+    "email": "maria@exemplu.ro",
+    "subiect": "Întrebare programare",
+    "mesaj": "Bună ziua, ce produse folosiți pentru tratamentul facial?",
+    "data_trimitere": "2026-06-10"
+  }
+]
