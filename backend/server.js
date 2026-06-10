@@ -78,6 +78,24 @@ app.post('/api/register', (req, res) => {
     }
 });
 
+// --------------------------- RUTE PENTRU PAGINA PRINCIPALA (ACASA) --------------------------------
+const catalogFilePath = path.join(__dirname, 'data', 'mock-catalog_servicii.json');
+// RUTA GET: Aducem doar pachetele din categoria "combinat"
+app.get('/api/pachete-combinate', (req, res) => {
+    try {
+        const catalogRaw = fs.readFileSync(catalogFilePath, 'utf8');
+        const catalog = JSON.parse(catalogRaw);
+
+        // Filtrăm catalogul și păstrăm doar ce ne interesează
+        const pacheteCombinate = catalog.filter(serviciu => serviciu.categorie === 'combinat');
+
+        res.json({ success: true, pachete: pacheteCombinate });
+    } catch (eroare) {
+        console.error("EROARE LA CITIREA PACHETELOR:", eroare);
+        res.status(500).json({ success: false, message: 'Eroare internă a serverului.' });
+    }
+});
+
 // ==============================================================================================================================
 // END TEO
 // ==============================================================================================================================
