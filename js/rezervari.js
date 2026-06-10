@@ -61,6 +61,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 { value: "fitness-3luni", text: "Abonament Fitness - 3 Luni" },
                 { value: "personal-training", text: "Antrenor Personal (10 ședințe)" },
                 { value: "clase-grup", text: "Clase de Grup (Aerobic/Yoga)" }
+            ],
+            combinat:[
+                { value: "ritual-relaxare", text: "Ritual de relaxare" },
+                { value: "pachet-vitalitate", text: "Pachet vitalitate" },
             ]
         };
 
