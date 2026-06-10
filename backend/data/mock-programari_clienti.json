@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "id_utilizator": 1,
+    "id_serviciu": 1,
+    "data_rezervare": "2026-06-15",
+    "ora_rezervare": "14:00:00",
+    "status": "platita"
+  }
+]
