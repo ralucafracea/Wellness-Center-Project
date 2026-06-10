@@ -30,31 +30,57 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 2. Logica la trimiterea formularului (Când se apasă butonul)
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            // Oprim comportamentul nativ al browserului (refresh sau pop-up implicit)
+        contactForm.addEventListener('submit', async (e) => {
+            
+            // MAGIA CARE OPREȘTE REFRESH-UL PAGINII:
             e.preventDefault(); 
 
-            // Expresia regulată (regula care verifică dacă emailul conține @ și un punct după el)
+            // Validarea de email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
             if (inputEmail && textEroare) {
-                // VERIFICARE: Dacă textul introdus NU respectă regula de email valid
                 if (!emailRegex.test(inputEmail.value.trim())) {
-                    
-                    textEroare.style.display = 'block';          // Afișăm textul roșu de eroare
-                    inputEmail.classList.add('input-eroare');   // Facem linia de sub email roșie
-                    
-                    return; // OPRIRE: Blocăm trimiterea mai departe și nu deschidem modalul!
+                    textEroare.style.display = 'block';
+                    inputEmail.classList.add('input-eroare');
+                    return; // Ne oprim aici dacă emailul nu e valid
                 } else {
-                    // Dacă emailul este corect: ascundem erorile (în caz că erau afișate dinainte)
                     textEroare.style.display = 'none';
                     inputEmail.classList.remove('input-eroare');
                 }
             }
 
-            // 3. Dacă a trecut de verificarea de mai sus, deschidem modalul de succes ca în stânga
-            if (contactModal) {
-                contactModal.style.display = 'flex';
+            // Extragem datele cu ID-urile corecte din HTML-ul tău
+            const dateTrimise = {
+                nume: document.getElementById('contact-name').value,
+                email: document.getElementById('contact-email').value,
+                subiect: document.getElementById('contact-subject').value,
+                mesaj: document.getElementById('contact-message').value,
+                data_trimitere: new Date().toISOString()
+            };
+
+            // Trimitem datele către server
+            try {
+                const response = await fetch('http://localhost:3000/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(dateTrimise)
+                });
+
+                if (response.ok) {
+                    console.log("Mesaj salvat în mock-contact.json!");
+                    
+                    // Afișăm pop-up-ul și GATA (nu se va mai închide singur)
+                    if (contactModal) {
+                        contactModal.style.display = 'flex';
+                    }
+                    
+                    // Opțional: golim câmpurile formularului
+                    contactForm.reset(); 
+                } else {
+                    alert("Serverul a răspuns cu eroare.");
+                }
+            } catch (error) {
+                console.error("Eroare:", error);
+                alert("Nu am putut conecta la server. Verifică dacă Node.js rulează.");
             }
         });
     }

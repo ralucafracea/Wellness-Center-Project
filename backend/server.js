@@ -1,15 +1,51 @@
 const express = require('express');
 const cors = require('cors');
-const fs = require('fs'); 
+const fs = require('fs');
 const path = require('path');
 
 const app = express();
-app.use(cors()); 
-app.use(express.json()); 
+app.use(cors());
+app.use(express.json());
 
-const fisierJson = path.join(__dirname, 'data', 'catalog_servicii.json');
+// ============================================================
+// RUTELE COLEGEI — Contact & Programări
+// ============================================================
 
-// RUTA GET - Citește JSON-ul și îl trimite pe net
+// POST /api/contact — salvează un mesaj nou
+app.post('/api/contact', (req, res) => {
+    const mesajNou = req.body;
+
+    const caleFisier = './Data/mock-contact.json';
+    const mesaje = JSON.parse(fs.readFileSync(caleFisier));
+
+    mesaje.push(mesajNou);
+
+    fs.writeFileSync(caleFisier, JSON.stringify(mesaje, null, 2));
+
+    res.status(200).json({ message: "Mesaj salvat cu succes!" });
+});
+
+// POST /api/programari — salvează o programare nouă
+app.post('/api/programari', (req, res) => {
+    const programareNoua = req.body;
+
+    const caleFisier = './Data/mock-programari.json';
+    const programari = JSON.parse(fs.readFileSync(caleFisier));
+
+    programari.push(programareNoua);
+
+    fs.writeFileSync(caleFisier, JSON.stringify(programari, null, 2));
+
+    res.status(200).json({ message: "Programare salvată cu succes!" });
+});
+
+// ============================================================
+// RUTELE MELE — Servicii Fitness
+// ============================================================
+
+const fisierJson = path.join(__dirname, '..', 'data', 'catalog_servicii.json');
+
+// GET /api/servicii — returnează toate serviciile
 app.get('/api/servicii', (req, res) => {
     fs.readFile(fisierJson, 'utf8', (err, date) => {
         if (err) {
@@ -20,9 +56,9 @@ app.get('/api/servicii', (req, res) => {
     });
 });
 
-// RUTA POST - Primește un serviciu nou și îl salvează în fișierul JSON
+// POST /api/servicii — adaugă un serviciu nou
 app.post('/api/servicii', (req, res) => {
-    const serviciuNou = req.body; // Datele trimise din formularul HTML
+    const serviciuNou = req.body;
 
     fs.readFile(fisierJson, 'utf8', (err, date) => {
         if (err) {
@@ -31,29 +67,25 @@ app.post('/api/servicii', (req, res) => {
 
         const listaServicii = JSON.parse(date);
 
-        // Generăm un ID unic (luăm ID-ul ultimului serviciu și adunăm 1)
         const urmatorulId = listaServicii.length > 0 ? listaServicii[listaServicii.length - 1].id + 1 : 1;
         serviciuNou.id = urmatorulId;
 
-        // Transformăm prețul și duratele în numere (din formular vin ca text)
         serviciuNou.pret = Number(serviciuNou.pret);
         serviciuNou.durata_minute = serviciuNou.durata_minute ? Number(serviciuNou.durata_minute) : null;
         serviciuNou.zile_valabilitate = serviciuNou.zile_valabilitate ? Number(serviciuNou.zile_valabilitate) : null;
 
-        // Adăugăm noul serviciu în listă
         listaServicii.push(serviciuNou);
 
-        // Salvăm lista actualizată înapoi în fișierul JSON
         fs.writeFile(fisierJson, JSON.stringify(listaServicii, null, 2), 'utf8', (err) => {
             if (err) {
                 return res.status(500).send("Eroare la salvarea în baza de date.");
             }
-            res.status(201).json(serviciuNou); // Răspundem cu succes
+            res.status(201).json(serviciuNou);
         });
     });
 });
 
-// RUTA DELETE - Șterge un serviciu pe baza ID-ului primit în URL
+// DELETE /api/servicii/:id — șterge un serviciu după ID
 app.delete('/api/servicii/:id', (req, res) => {
     const idDeSters = Number(req.params.id);
 
@@ -69,8 +101,11 @@ app.delete('/api/servicii/:id', (req, res) => {
         });
     });
 });
-// Pornește serverul
+
+// ============================================================
+// PORNIRE SERVER
+// ============================================================
 app.listen(3000, () => {
-    console.log('✅ Serverul backend a pornit cu succes!');
-    console.log('👉 Accesează: http://localhost:3000/api/servicii');
+    console.log('✅ Serverul a pornit cu succes!');
+    console.log('👉 Accesează: http://localhost:3000');
 });
