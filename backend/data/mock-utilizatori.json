@@ -14,5 +14,21 @@
     "parola_criptata": "admin123",
     "telefon": "0700000000",
     "rol": "admin"
+  },
+  {
+    "id": 3,
+    "nume": "Andreea Test",
+    "email": "andreeamatamaria@yahoo.com",
+    "parola_criptata": "parola123",
+    "telefon": "0746538161",
+    "rol": "client"
+  },
+  {
+    "id": 4,
+    "nume": "Utilizator Test",
+    "email": "utilizator@test.ro",
+    "parola_criptata": "parolaSigura123",
+    "telefon": "0712345678",
+    "rol": "client"
   }
 ]
