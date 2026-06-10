@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "nume": "Ion Popescu",
+    "telefon": "0711222333",
+    "email": "ion@test.ro",
+    "parola": "parola123"
+  },
+  {
+    "id": 2,
+    "nume": "Maria Ionescu",
+    "telefon": "0799888777",
+    "email": "maria@test.ro",
+    "parola": "parola456"
+  }
+]
