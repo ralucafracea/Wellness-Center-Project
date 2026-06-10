@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "nume": "Ion Popescu",
+    "email": "ion@test.ro",
+    "parola_criptata": "parola123",
+    "telefon": "0711222333",
+    "rol": "client"
+  },
+  {
+    "id": 2,
+    "nume": "Admin Master",
+    "email": "admin@tirra.ro",
+    "parola_criptata": "admin123",
+    "telefon": "0700000000",
+    "rol": "admin"
+  }
+]

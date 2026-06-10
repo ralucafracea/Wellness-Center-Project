@@ -121,9 +121,16 @@ formLogin.addEventListener('submit', async (e) => {  // async pentru backend
             localStorage.setItem('id_utilizator', date.utilizator.id);
             localStorage.setItem('nume_utilizator', date.utilizator.nume);
             localStorage.setItem('email_utilizator', date.utilizator.email);
+            localStorage.setItem('rol_utilizator', date.utilizator.rol);
 
             alert(date.message); // afisam mesaj de succes (o sa sterg asta dupa ce e totul ok)
-            window.location.href = 'contul-meu.html'; // il trimitem la contul lui
+            if (date.utilizator.rol === 'admin') {
+                // Dacă e șeful, merge pe pagina de admin
+                window.location.href = 'admin.html';
+            } else {
+                // Dacă e client, merge pe pagina "Contul Meu"
+                window.location.href = 'contul-meu.html'; 
+            }
         } else {
             // daca emailul sau parola au fost gresite
             alert(date.message);
