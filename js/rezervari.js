@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // DILEMA 3: REDIRECȚIONAREA CĂTRE "CONTUL MEU" (login.html)
     // ==========================================================================
     function finalizeazaSiRedirectioneaza() {
-        window.location.href = 'login.html'; 
+        window.location.href = 'conectare.html'; 
     }
 
     if (btnCloseModal) btnCloseModal.addEventListener('click', finalizeazaSiRedirectioneaza);
