@@ -20,8 +20,8 @@
             <span></span>
             <span></span>
         </button>
-        <button class="buton-inchidere">&#10005;</button>  
-        <nav class="meniu-navigatie"> 
+        <button class="buton-inchidere">&#10005;</button>
+        <nav class="meniu-navigatie">
             <ul>
                 <li><a href="../index.html">ACASĂ</a></li>
                 <li><a href="spa.html">SPA & WELLNESS</a></li>
@@ -181,74 +181,35 @@
     <section class="abonamente">
         <span class="label-white">ABONAMENTE</span>
         <h2>Investește în performanța ta.</h2>
-
         <div class="slider-abonamente">
-        <div class="abonamente-track">
-
-            <div class="abonament-slide">
-                <div class="abonament-detalii">
-                    <h3 class="titlu-pachet">TIRRA PERFORMANCE</h3>
-                    <p class="pret-pachet">300 RON / lună</p>
-                    <ul class="lista-beneficii">
-                        <li>Acces nelimitat în zona de forță și cardio.</li>
-                        <li>Evaluare inițială compoziție corporală.</li>
-                        <li>Acces la zona de saună uscată pentru relaxare post-antrenament.</li>
-                        <li>Acces vestiare și prosoape incluse.</li>
-                    </ul>
-                </div>
+            <div class="abonamente-track" id="track-abonamente">
+                <!-- Slide-urile sunt generate dinamic din server -->
             </div>
-
-            <div class="abonament-slide">
-                <div class="abonament-detalii">
-                    <h3 class="titlu-pachet">TIRRA VITALITY</h3>
-                    <p class="pret-pachet">500 RON / lună</p>
-                    <ul class="lista-beneficii">
-                        <li>Tot ce este inclus în pachetul Performance.</li>
-                        <li>Acces la zona de Spa & Wellness.</li>
-                        <li>1 invitație Guest Pass gratuită în fiecare lună.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="abonament-slide">
-                <div class="abonament-detalii">
-                    <h3 class="titlu-pachet">TIRRA ELITE</h3>
-                    <p class="pret-pachet">700 RON / lună</p>
-                    <ul class="lista-beneficii">
-                        <li>Toate beneficiile incluse în pachetul Vitality.</li>
-                        <li>2 ședințe lunare cu antrenor personal.</li>
-                        <li>1 masaj terapeutic sau de relaxare (60 min) inclus lunar.</li>
-                    </ul>
-                </div>
-            </div>
-
         </div>
-        
-    </div>
-</section>
+    </section>
 
     <section class="slider-section">
-    <div id="fitnessCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="../assets/Piscina interioara.jpeg" alt="Piscina interioara" class="fitness-slide">
+        <div id="fitnessCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../assets/Piscina interioara.jpeg" alt="Piscina interioara" class="fitness-slide">
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/Pagina spa - imagine principala.png" alt="Spa" class="fitness-slide">
+                </div>
             </div>
-            <div class="carousel-item">
-                <img src="../assets/Pagina spa - imagine principala.png" alt="Spa" class="fitness-slide">
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#fitnessCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#fitnessCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#fitnessCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#fitnessCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
-    </div>
-</section>
+    </section>
 
     <footer class="main-footer">
         <div class="footer-content">
-            
+
             <div class="footer-brand-col">
                 <h2 class="footer-brand">TIRRA WELLNESS</h2>
                 <p class="footer-desc">Sanctuarul tău urban pentru spa, fitness și echilibru interior.</p>
@@ -275,106 +236,143 @@
             </div>
 
             <p class="footer-copy">&copy; 2026 Tirra Wellness. Toate drepturile rezervate.</p>
-            
+
         </div>
     </footer>
 
     <script>
-   
-    let currentIndex = 0;
-  
-    const meniuNavigatie = document.querySelector('.meniu-navigatie');
-    const btnHamburger = document.querySelector('.buton-hamburger');
-    const btnInchidere = document.querySelector('.buton-inchidere');
-    const linkuriMeniu = document.querySelectorAll('.meniu-navigatie a');
+    document.addEventListener('DOMContentLoaded', () => {
 
-    
-    btnHamburger.addEventListener('click', () => {
-        meniuNavigatie.classList.add('deschis');
-        btnHamburger.style.display = 'none';     
-        btnInchidere.style.display = 'block';
-    });
+        // 1. Meniul Hamburger
+        const meniuNavigatie = document.querySelector('.meniu-navigatie');
+        const btnHamburger = document.querySelector('.buton-hamburger');
+        const btnInchidere = document.querySelector('.buton-inchidere');
+        const linkuriMeniu = document.querySelectorAll('.meniu-navigatie a');
 
-    
-    btnInchidere.addEventListener('click', () => {
-        meniuNavigatie.classList.remove('deschis');
-        btnInchidere.style.display = 'none';     
-        btnHamburger.style.display = 'flex';
-    });
+        btnHamburger.addEventListener('click', () => {
+            meniuNavigatie.classList.add('deschis');
+            btnHamburger.style.display = 'none';
+            btnInchidere.style.display = 'block';
+        });
 
-    
-    linkuriMeniu.forEach(link => {
-        link.addEventListener('click', () => {
+        btnInchidere.addEventListener('click', () => {
             meniuNavigatie.classList.remove('deschis');
-            btnInchidere.style.display = 'none';     
+            btnInchidere.style.display = 'none';
             btnHamburger.style.display = 'flex';
         });
-    });
 
-    const track = document.querySelector('.abonamente-track');
-const slides = document.querySelectorAll('.abonament-slide');
-const totalSlide = slides.length;
-let startX = 0;
-let isDragging = false;
-let isAnimating = false;
+        linkuriMeniu.forEach(link => {
+            link.addEventListener('click', () => {
+                meniuNavigatie.classList.remove('deschis');
+                btnInchidere.style.display = 'none';
+                btnHamburger.style.display = 'flex';
+            });
+        });
 
-// Clonează primul și ultimul slide pentru efect infinit
-const primul = slides[0].cloneNode(true);
-const ultimul = slides[totalSlide - 1].cloneNode(true);
-track.appendChild(primul);
-track.insertBefore(ultimul, slides[0]);
+        // 2. Încarcă abonamentele din server și inițializează slider-ul
+        async function incarcaAbonamenteFitness() {
+            try {
+                const response = await fetch('http://localhost:3000/api/servicii');
+                const toateServiciile = await response.json();
+                const serviciiFitness = toateServiciile.filter(s => s.categorie === 'fitness');
 
-// Poziționare inițială fără animație
-let pozitie = 1;
-track.style.transition = 'none';
-track.style.transform = `translateX(-${pozitie * 100}%)`;
+                const track = document.getElementById('track-abonamente');
+                track.innerHTML = '';
 
-function mergiLa(index, animat = true) {
-    if (isAnimating) return;
-    
-    if (animat) {
-        isAnimating = true;
-        track.style.transition = 'transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-    } else {
-        track.style.transition = 'none';
-    }
-    pozitie = index;
-    track.style.transform = `translateX(-${pozitie * 100}%)`;
-}
+                serviciiFitness.forEach(abonament => {
+                    const randuriDescriere = abonament.descriere.split('\n');
+                    const htmlLista = randuriDescriere.map(rand => `<li>${rand}</li>`).join('');
+                    const textPret = abonament.tip_achizitie === 'abonament' ? '/ lună' : '';
 
-track.addEventListener('transitionend', () => {
-    isAnimating = false;
-    
-    // Dacă e pe clona de la sfârșit, sare la primul real
-    if (pozitie === totalSlide + 1) {
-        pozitie = 1;
-        track.style.transition = 'none';
-        track.style.transform = `translateX(-${pozitie * 100}%)`;
-    }
-    
-    // Dacă e pe clona de la început, sare la ultimul real
-    if (pozitie === 0) {
-        pozitie = totalSlide;
-        track.style.transition = 'none';
-        track.style.transform = `translateX(-${pozitie * 100}%)`;
-    }
-});
+                    const slide = document.createElement('div');
+                    slide.className = 'abonament-slide';
+                    slide.innerHTML = `
+                        <div class="abonament-detalii">
+                            <h3 class="titlu-pachet">${abonament.nume}</h3>
+                            <p class="pret-pachet">${abonament.pret} RON ${textPret}</p>
+                            <ul class="lista-beneficii">
+                                ${htmlLista}
+                            </ul>
+                        </div>
+                    `;
+                    track.appendChild(slide);
+                });
 
-track.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-    isDragging = true;
-}, { passive: true });
+                // Inițializează slider-ul DUPĂ ce slide-urile sunt în DOM
+                initiazaSlider();
 
-track.addEventListener('touchend', (e) => {
-    if (!isDragging) return;
-    const diff = startX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) {
-        mergiLa(diff > 0 ? pozitie + 1 : pozitie - 1);
-    }
-    isDragging = false;  
-    
-});
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+            } catch (eroare) {
+                console.error('Eroare la încărcarea pachetelor de fitness:', eroare);
+            }
+        }
+
+        // 3. Logica slider-ului
+        function initiazaSlider() {
+            const track = document.querySelector('.abonamente-track');
+            const slides = document.querySelectorAll('.abonament-slide');
+
+            if (slides.length < 2) return;
+
+            const totalSlide = slides.length;
+            let startX = 0;
+            let isDragging = false;
+            let isAnimating = false;
+            let pozitie = 1;
+
+            const primul = slides[0].cloneNode(true);
+            const ultimul = slides[totalSlide - 1].cloneNode(true);
+            track.appendChild(primul);
+            track.insertBefore(ultimul, slides[0]);
+
+            track.style.transition = 'none';
+            track.style.transform = `translateX(-${pozitie * 100}%)`;
+
+            function mergiLa(index, animat = true) {
+                if (isAnimating) return;
+                if (animat) {
+                    isAnimating = true;
+                    track.style.transition = 'transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                } else {
+                    track.style.transition = 'none';
+                }
+                pozitie = index;
+                track.style.transform = `translateX(-${pozitie * 100}%)`;
+            }
+
+            track.addEventListener('transitionend', () => {
+                isAnimating = false;
+                if (pozitie === totalSlide + 1) {
+                    pozitie = 1;
+                    track.style.transition = 'none';
+                    track.style.transform = `translateX(-${pozitie * 100}%)`;
+                }
+                if (pozitie === 0) {
+                    pozitie = totalSlide;
+                    track.style.transition = 'none';
+                    track.style.transform = `translateX(-${pozitie * 100}%)`;
+                }
+            });
+
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+
+            track.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                const diff = startX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 50) {
+                    mergiLa(diff > 0 ? pozitie + 1 : pozitie - 1);
+                }
+                isDragging = false;
+            });
+        }
+
+        // Pornește totul
+        incarcaAbonamenteFitness();
+
+    }); // închide DOMContentLoaded
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

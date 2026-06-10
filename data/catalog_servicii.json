@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "nume": "TIRRA PERFORMANCE",
+    "descriere": "Acces nelimitat în zona de forță și cardio. Evaluare inițială compoziție corporală. Acces la zona de saună uscată pentru relaxare post-antrenament. Acces vestiare și prosoape incluse.",
+    "pret": 300,
+    "categorie": "fitness",
+    "tip_achizitie": "abonament",
+    "durata_minute": null,
+    "zile_valabilitate": 30
+  },
+  {
+    "id": 2,
+    "nume": "TIRRA VITALITY",
+    "descriere": "Tot ce este inclus în pachetul Performance. Acces la zona de Spa & Wellness. 1 invitație Guest Pass gratuită în fiecare lună.",
+    "pret": 500,
+    "categorie": "fitness",
+    "tip_achizitie": "abonament",
+    "durata_minute": null,
+    "zile_valabilitate": 30
+  },
+  {
+    "id": 3,
+    "nume": "TIRRA ELITE",
+    "descriere": "Toate beneficiile incluse în pachetul Vitality. 2 ședințe lunare cu antrenor personal. 1 masaj terapeutic sau de relaxare (60 min) inclus lunar.",
+    "pret": 700,
+    "categorie": "fitness",
+    "tip_achizitie": "abonament",
+    "durata_minute": null,
+    "zile_valabilitate": 30
+  },
+  {
+    "nume": "Abonament test",
+    "descriere": "descriere",
+    "pret": 999,
+    "categorie": "fitness",
+    "tip_achizitie": "abonament",
+    "durata_minute": null,
+    "zile_valabilitate": 30,
+    "id": 4
+  }
+]
