@@ -11,16 +11,16 @@ const formInregistrare = document.getElementById('formular-inregistrare');
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
 const telefonRegex = /^0[0-9]{9}$/; // Începe cu 0 și are fix 10 cifre
 
-// ---------------------------- CURĂȚARE ERORI (PENTRU BUTONUL BACK) ----------------
+// ---------------------------- GOLIRE ERORI (PT BUTONUL BACK) -----------------------
 window.addEventListener('pageshow', () => {
-    // Ascundem textele roșii
+    // Ascundem textele rosii
     document.getElementById('eroare-email-login').style.display = 'none';
     document.getElementById('eroare-nume-register').style.display = 'none';
     document.getElementById('eroare-telefon-register').style.display = 'none';
     document.getElementById('eroare-email-register').style.display = 'none';
     document.getElementById('eroare-parola-register').style.display = 'none';
     
-    // Scoatem conturul roșu de pe casete
+    // Scoatem conturul rosu de pe casete
     document.getElementById('email-login').classList.remove('input-eroare');
     document.getElementById('nume-register').classList.remove('input-eroare');
     document.getElementById('telefon-register').classList.remove('input-eroare');
@@ -28,13 +28,13 @@ window.addEventListener('pageshow', () => {
     document.getElementById('parola-register').classList.remove('input-eroare');
 });
 
-// ---------------------------- COMUTARE ÎNTRE LOGIN ȘI REGISTER -------------------
+// ---------------------------- COMUTARE INTRE LOGIN SI REGISTER -------------------
 laRegister.addEventListener('click', (e) => {
     e.preventDefault();
     boxLogin.style.display = 'none';
     boxRegister.style.display = 'block';
     
-    // Curățăm erorile de la login dacă renunță și merge la register
+    // golim erorile de la login daca renunta si merge la register
     document.getElementById('eroare-email-login').style.display = 'none';
     document.getElementById('email-login').classList.remove('input-eroare');
     document.getElementById('eroare-parola-login').style.display = 'none';
@@ -49,7 +49,7 @@ laLogin.addEventListener('click', (e) => {
     boxRegister.style.display = 'none';
     boxLogin.style.display = 'block';
     
-    // Curățăm TOATE erorile de la register dacă renunță și merge la login
+    // Curatam TOATE erorile de la register dacă renunta si merge la login
     document.getElementById('eroare-nume-register').style.display = 'none';
     document.getElementById('eroare-telefon-register').style.display = 'none';
     document.getElementById('eroare-email-register').style.display = 'none';
@@ -60,17 +60,16 @@ laLogin.addEventListener('click', (e) => {
     document.getElementById('email-register').classList.remove('input-eroare');
     document.getElementById('parola-register').classList.remove('input-eroare');
 
-    // Golim textul scris în căsuțele de register
+    // Golim textul scris în casutele de register
     document.getElementById('nume-register').value = '';
     document.getElementById('telefon-register').value = '';
     document.getElementById('email-register').value = '';
     document.getElementById('parola-register').value = '';
 });
 
-// ==============================================================================
-// ---------------------------- VALIDARE ȘI TRIMITERE LOGIN ---------------------
-// ==============================================================================
-formLogin.addEventListener('submit', async (e) => { // AM ADĂUGAT 'async' AICI
+
+// ---------------------------- VALIDARE SI TRIMITERE LOGIN ---------------------------------
+formLogin.addEventListener('submit', async (e) => {  // async pentru backend
     e.preventDefault(); 
     
     const inputEmail = document.getElementById('email-login');
@@ -89,7 +88,7 @@ formLogin.addEventListener('submit', async (e) => { // AM ADĂUGAT 'async' AICI
         inputEmail.classList.remove('input-eroare');
     }
     
-    // Validare Parolă
+    // Validare Parola
     if (inputParola.value.trim().length < 6) {
         errParola.style.display = 'block';
         inputParola.classList.add('input-eroare');
@@ -98,13 +97,13 @@ formLogin.addEventListener('submit', async (e) => { // AM ADĂUGAT 'async' AICI
         errParola.style.display = 'none';
         inputParola.classList.remove('input-eroare');
     }
-    
-    // Dacă sunt erori de completare, ne oprim aici
+
+    // Daca sunt erori de completare, ne oprim aici
     if (areErori) {
         return; 
     }
 
-    // --- NOU: COMUNICAREA CU BACKEND-UL (NODE.JS) ---
+    // ------------------------------- COMUNICAREA CU BACKEND-UL (NODE.JS) ------------------------------------
     try {
         const raspuns = await fetch('http://localhost:3000/api/login', {
             method: 'POST',
@@ -118,15 +117,15 @@ formLogin.addEventListener('submit', async (e) => { // AM ADĂUGAT 'async' AICI
         const date = await raspuns.json();
 
         if (date.success) {
-            // Logare reușită! Salvăm datele utilizatorului în memoria browserului
+            // salvam datele utilizatorului in memoria browserului
             localStorage.setItem('id_utilizator', date.utilizator.id);
             localStorage.setItem('nume_utilizator', date.utilizator.nume);
             localStorage.setItem('email_utilizator', date.utilizator.email);
 
-            alert(date.message); // Afișăm mesajul de succes de la server
-            window.location.href = 'contul-meu.html'; // Îl trimitem la contul lui
+            alert(date.message); // afisam mesaj de succes (o sa sterg asta dupa ce e totul ok)
+            window.location.href = 'contul-meu.html'; // il trimitem la contul lui
         } else {
-            // Ceva a fost greșit (email sau parolă)
+            // daca emailul sau parola au fost gresite
             alert(date.message);
         }
     } catch (eroare) {
@@ -135,10 +134,10 @@ formLogin.addEventListener('submit', async (e) => { // AM ADĂUGAT 'async' AICI
     }
 });
 
-// ==============================================================================
-// ---------------------------- VALIDARE ȘI TRIMITERE ÎNREGISTRARE --------------
-// ==============================================================================
-formInregistrare.addEventListener('submit', async (e) => { // AM ADĂUGAT 'async' AICI
+
+// ---------------------------- VALIDARE SI TRIMITERE INREGISTRARE -----------------------------
+
+formInregistrare.addEventListener('submit', async (e) => { // async pt backend
     e.preventDefault(); 
     
     const inputNume = document.getElementById('nume-register');
@@ -152,7 +151,7 @@ formInregistrare.addEventListener('submit', async (e) => { // AM ADĂUGAT 'async
 
     let areErori = false;
 
-    // 1. Validare Nume
+    // Validare Nume
     if (inputNume.value.trim() === '') {
         errNume.style.display = 'block';
         inputNume.classList.add('input-eroare');
@@ -162,7 +161,7 @@ formInregistrare.addEventListener('submit', async (e) => { // AM ADĂUGAT 'async
         inputNume.classList.remove('input-eroare');
     }
 
-    // 2. Validare Telefon
+    // Validare Telefon
     if (!telefonRegex.test(inputTelefon.value.trim())) {
         errTelefon.style.display = 'block';
         inputTelefon.classList.add('input-eroare');
@@ -172,7 +171,7 @@ formInregistrare.addEventListener('submit', async (e) => { // AM ADĂUGAT 'async
         inputTelefon.classList.remove('input-eroare');
     }
 
-    // 3. Validare Email
+    // Validare Email
     if (!emailRegex.test(inputEmail.value.trim())) {
         errEmail.style.display = 'block';
         inputEmail.classList.add('input-eroare');
@@ -182,7 +181,7 @@ formInregistrare.addEventListener('submit', async (e) => { // AM ADĂUGAT 'async
         inputEmail.classList.remove('input-eroare');
     }
 
-    // 4. Validare Parolă
+    // Validare Parolă
     if (inputParola.value.trim().length < 6) {
         errParola.style.display = 'block';
         inputParola.classList.add('input-eroare');
@@ -196,7 +195,7 @@ formInregistrare.addEventListener('submit', async (e) => { // AM ADĂUGAT 'async
         return; 
     }
 
-    // --- NOU: COMUNICAREA CU BACKEND-UL (NODE.JS) PENTRU CREARE CONT ---
+    // ------------------ COMUNICAREA CU BACKEND-UL (NODE.JS) PENTRU CREARE CONT ----------------------
     try {
         const raspuns = await fetch('http://localhost:3000/api/register', {
             method: 'POST',
@@ -224,7 +223,7 @@ formInregistrare.addEventListener('submit', async (e) => { // AM ADĂUGAT 'async
             inputEmail.value = '';
             inputParola.value = '';
         } else {
-            // Eșec (de ex: Email deja folosit)
+            // Esec (de ex: Email deja folosit)
             alert(date.message);
         }
     } catch (eroare) {
@@ -233,7 +232,7 @@ formInregistrare.addEventListener('submit', async (e) => { // AM ADĂUGAT 'async
     }
 });
 
-// ------------------------------- LOGICA PENTRU MENIU (HAMBURGER) ----------------
+// ------------------------------- LOGICA PENTRU MENIU (HAMBURGER) ---------------------
 const meniuNavigatie = document.querySelector('.meniu-navigatie');
 const btnHamburger = document.querySelector('.buton-hamburger');
 const btnInchidere = document.querySelector('.buton-inchidere');

@@ -12,5 +12,12 @@
     "telefon": "0799888777",
     "email": "maria@test.ro",
     "parola": "parola456"
+  },
+  {
+    "id": 3,
+    "nume": "tester teo",
+    "email": "test@test.ro",
+    "telefon": "0987654321",
+    "parola": "123456"
   }
 ]
