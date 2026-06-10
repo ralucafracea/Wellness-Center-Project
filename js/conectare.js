@@ -1,3 +1,17 @@
+
+// ----------------- PROTECTIE: REDIRECTIONARE AUTOMATA DACA ESTE DEJA LOGAT -----------------
+
+const idSesiune = localStorage.getItem('id_utilizator');
+const rolSesiune = localStorage.getItem('rol_utilizator');
+
+if (idSesiune) { // daca gasim un id in memorie
+    if (rolSesiune === 'admin') {
+        window.location.href = 'admin.html'; 
+    } else {
+        window.location.href = 'contul-meu.html'; 
+    }
+}
+
 // ---------------------------- SELECTORI ELEMENTE ---------------------------------
 const boxLogin = document.getElementById('box-login');
 const boxRegister = document.getElementById('box-register');
