@@ -291,6 +291,13 @@ html {
     color: var(--visiniu);
 }
 
+.services-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+}
+
 /* ===== DOTARI ===== */
 .dotari {
     background-color: #F4EFEA;

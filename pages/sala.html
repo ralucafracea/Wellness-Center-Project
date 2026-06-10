@@ -50,98 +50,16 @@
             </div>
         </section>
 
-        <section class="services">
-            <div class="services-header">
-                <p class="fitness-section-tag">PROGRAME</p>
-                <h2 class="fitness-section-title">Antrenamente pentru orice obiectiv.</h2>
-            </div>
+        <section class="services" id="sectiune-servicii-zi">
+    <div class="services-header">
+        <p class="fitness-section-tag">PROGRAME</p>
+        <h2 class="fitness-section-title">Antrenamente pentru orice obiectiv.</h2>
+    </div>
 
-            <div class="fitness-service-card">
-                <div class="fitness-card-header">
-                    <h3>Personal Training 1-on-1</h3>
-                    <span class="fitness-price">180 RON</span>
-                </div>
-                <p class="fitness-duration">60 MIN</p>
-                <p class="fitness-description">Antrenament construit pe obiectivele tale, cu un coach dedicat.</p>
-            </div>
+    <div id="lista-programe-fitness" class="services-container"></div>
+</section>
 
-            <div class="fitness-service-card">
-                <div class="fitness-card-header">
-                    <h3>Small Group Training</h3>
-                    <span class="fitness-price">90 RON</span>
-                </div>
-                <p class="fitness-duration">60 MIN</p>
-                <p class="fitness-description">Maxim 4 persoane. Intensitate înaltă, atenție personalizată.</p>
-            </div>
-
-            <div class="fitness-service-card">
-                <div class="fitness-card-header">
-                    <h3>Strength & Conditioning</h3>
-                    <span class="fitness-price">120 RON</span>
-                </div>
-                <p class="fitness-duration">75 MIN</p>
-                <p class="fitness-description">Forță, mobilitate și putere — bazat pe principii științifice.</p>
-            </div>
-
-            <div class="fitness-service-card">
-                <div class="fitness-card-header">
-                    <h3>Recovery & Mobility</h3>
-                    <span class="fitness-price">100 RON</span>
-                </div>
-                <p class="fitness-duration">45 MIN</p>
-                <p class="fitness-description">Stretching ghidat, foam rolling și tehnici de recuperare activă.</p>
-            </div>
-
-            <div class="fitness-service-card">
-                <div class="fitness-card-header">
-                    <h3>HIIT Express</h3>
-                    <span class="fitness-price">70 RON</span>
-                </div>
-                <p class="fitness-duration">30 MIN</p>
-                <p class="fitness-description">Sesiune intensă de cardio pentru rezultate rapide.</p>
-            </div>
-
-            <div class="fitness-service-card">
-                <div class="fitness-card-header">
-                    <h3>Yoga & Pilates</h3>
-                    <span class="fitness-price">85 RON</span>
-                </div>
-                <p class="fitness-duration">60 MIN</p>
-                <p class="fitness-description">Echilibru între forță, flexibilitate și respirație conștientă.</p>
-            </div>
-        </section>
-
-        <section class="dotari">
-            <span class="label-dotari">DOTĂRI</span>
-            <h2>Echipamente premium.</h2>
-            <div class="dotari-container">
-                <div class="dotari-card">
-                    <img src="../assets/dumbbell-logo.svg" alt="Greutăți" class="card-icon">
-                    <h3>Greutăți libere premium</h3>
-                    <p>Selecție de haltere, gantere și kettlebells profesionale, disponibile până la 50 kg</p>
-                </div>
-                <div class="dotari-card">
-                    <img src="../assets/pulse-logo.svg" alt="Cardio" class="card-icon">
-                    <h3>Cardio de ultimă generație</h3>
-                    <p>Echipamente cardio de ultimă generație: benzi de alergat, biciclete și eliptice, toate dotate cu monitorizare inteligentă.</p>
-                </div>
-                <div class="dotari-card">
-                    <img src="../assets/kettlebell-logo.svg" alt="Forță" class="card-icon">
-                    <h3>Biomecanică & forță</h3>
-                    <p>Aparate ghidate pentru toate grupele musculare, design ergonomic.</p>
-                </div>
-                <div class="dotari-card">
-                    <img src="../assets/cardio-logo.svg" alt="Studio funcțional" class="card-icon">
-                    <h3>Studio funcțional</h3>
-                    <p>Accesorii de antrenament funcțional și dispozitive de masaj prin percuție pentru refacerea accelerată a fibrelor musculare.</p>
-                </div>
-                <div class="dotari-card">
-                    <img src="../assets/apple-logo.svg" alt="Bar nutrițional" class="card-icon">
-                    <h3>Bar nutrițional</h3>
-                    <p>Smoothie-uri proteice, infuzii și gustări sănătoase.</p>
-                </div>
-            </div>
-        </section>
+    </section>
 
         <section class="trainers">
             <span class="label-echipa">ECHIPA NOASTRĂ</span>
@@ -274,7 +192,45 @@
             try {
                 const response = await fetch('http://localhost:3000/api/servicii');
                 const toateServiciile = await response.json();
-                const serviciiFitness = toateServiciile.filter(s => s.categorie === 'fitness');
+
+                const programeFitness = toateServiciile.filter(
+    s =>
+        s.categorie === 'fitness' &&
+        s.tip_achizitie === 'programare'
+);
+
+const containerPrograme = document.getElementById('lista-programe-fitness');
+
+containerPrograme.innerHTML = '';
+
+programeFitness.forEach(program => {
+
+    const card = document.createElement('div');
+
+    card.className = 'fitness-service-card';
+
+    card.innerHTML = `
+        <div class="fitness-card-header">
+            <h3>${program.nume}</h3>
+            <span class="fitness-price">${program.pret} RON</span>
+        </div>
+
+        <p class="fitness-duration">
+            ${program.durata_minute} MIN
+        </p>
+
+        <p class="fitness-description">
+            ${program.descriere}
+        </p>
+    `;
+
+    containerPrograme.appendChild(card);
+
+});
+                const serviciiFitness = toateServiciile.filter(
+    s => s.categorie === 'fitness' &&
+         s.tip_achizitie === 'abonament'
+);
 
                 const track = document.getElementById('track-abonamente');
                 track.innerHTML = '';

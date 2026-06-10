@@ -50,14 +50,15 @@
     <h2>Lista Serviciilor Existente</h2>
     <table class="table table-bordered table-striped" style="max-width: 800px;">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nume</th>
-                <th>Categorie</th>
-                <th>Preț</th>
-                <th>Acțiune</th>
-            </tr>
-        </thead>
+    <tr>
+        <th>ID</th>
+        <th>Nume</th>
+        <th>Categorie</th>
+        <th>Tip Achiziție</th>
+        <th>Preț</th>
+        <th>Acțiune</th>
+    </tr>
+</thead>
         <tbody id="tabel-servicii">
             </tbody>
     </table>
@@ -73,16 +74,19 @@
                 tabel.innerHTML = ''; // Curățăm tabelul înainte de a pune datele noi
 
                 servicii.forEach(serviciu => {
-                    const rand = document.createElement('tr');
-                    rand.innerHTML = `
-                        <td>${serviciu.id}</td>
-                        <td><strong>${serviciu.nume}</strong></td>
-                        <td><span class="badge bg-secondary">${serviciu.categorie}</span></td>
-                        <td>${serviciu.pret} RON</td>
-                        <td><button class="btn btn-danger btn-sm" onclick="stergeServiciu(${serviciu.id})">Șterge</button></td>
-                    `;
-                    tabel.appendChild(rand);
-                });
+    const rand = document.createElement('tr');
+    // Convertește tip_achizitie în text mai prietenos
+    const tipAchizitieText = serviciu.tip_achizitie === 'programare' ? 'Programare' : 'Abonament';
+    rand.innerHTML = `
+        <td>${serviciu.id}</td>
+        <td><strong>${serviciu.nume}</strong></td>
+        <td><span class="badge bg-secondary">${serviciu.categorie}</span></td>
+        <td>${tipAchizitieText}</td>
+        <td>${serviciu.pret} RON</td>
+        <td><button class="btn btn-danger btn-sm" onclick="stergeServiciu(${serviciu.id})">Șterge</button></td>
+    `;
+    tabel.appendChild(rand);
+});
             } catch (eroare) {
                 console.error('Eroare la citire:', eroare);
             }
