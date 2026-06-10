@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (btnMergiLogin) {
         btnMergiLogin.addEventListener('click', () => {
-            window.location.href = 'login.html'; // Redirecționează utilizatorul
+            window.location.href = 'conectare.html'; // Redirecționează utilizatorul
         });
     }
 
