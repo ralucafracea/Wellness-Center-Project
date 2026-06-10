@@ -1,6 +1,6 @@
 // --------------- INCARCARE PACHETE COMBINATE DIN BAZA DE DATE (CATALOG) -------------------------
 
-async function incarcaPacheteAmasa() {
+async function incarcaPacheteAcasa() {
     const container = document.getElementById('container-pachete');
     if (!container) return; // Daca nu suntem pe pagina principala, ne oprim
 
@@ -19,7 +19,7 @@ async function incarcaPacheteAmasa() {
 
             // Generam dinamic fiecare card
             date.pachete.forEach(pachet => {
-                // Dacă e programare afișăm minutele, dacă e abonament afișăm zilele
+                // Daca e programare afisam minutele, dacă e abonament afisam zilele
                 const durataText = pachet.durata_minute ? `${pachet.durata_minute} MIN` : `${pachet.zile_valabilitate} ZILE`;
                 
                 const cardHtml = `
@@ -45,7 +45,7 @@ async function incarcaPacheteAmasa() {
 }
 
 // Apelam functia automat
-incarcaPacheteAmasa();
+incarcaPacheteAcasa();
 
         // --------------------------------LOGICA PENTRU RECENZII---------------------------
         let indexCurent = 0; // incepem cu prima recenzie
