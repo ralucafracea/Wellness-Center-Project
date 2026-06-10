@@ -664,12 +664,18 @@ body {
     }
 
     /*RITUALUL TAU*/
+
+    .inclus-tratament .section-tag,
+    .inclus-tratament .section-title {
+        color: var(--color-bg) !important; 
+    }
     .visit-steps { 
         padding: 80px;
         max-width: 800px;
         margin: 0 auto;
         background-color: #F4EFEA; 
         color: var(--color-primary);
+        
         text-align: center; 
     }
 
