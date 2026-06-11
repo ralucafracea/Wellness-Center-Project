@@ -17,10 +17,18 @@
   },
   {
     "id": 3,
-    "nume": "Teo Tester",
-    "email": "test_nou@tirra.ro",
-    "parola_criptata": "098765",
-    "telefon": "0989898987",
+    "nume": "Andreea Test",
+    "email": "andreeamatamaria@yahoo.com",
+    "parola_criptata": "parola123",
+    "telefon": "0746538161",
+    "rol": "client"
+  },
+  {
+    "id": 4,
+    "nume": "Utilizator Test",
+    "email": "utilizator@test.ro",
+    "parola_criptata": "parolaSigura123",
+    "telefon": "0712345678",
     "rol": "client"
   }
 ]
