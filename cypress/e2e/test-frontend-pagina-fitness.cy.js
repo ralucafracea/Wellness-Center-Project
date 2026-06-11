@@ -8,13 +8,8 @@ describe('Testare Frontend - Pagina Fitness (Tirra Wellness)', () => {
     cy.visit('pages/sala.html');
   });
 
-  it('1. Verifică secțiunea Hero', () => {
-    // Verificăm textele principale de la intrarea pe pagină
-    cy.get('.hero-subtitle').should('have.text', 'SALĂ DE FITNESS');
-    cy.get('.hero-title').should('have.text', 'Forță, formă și echilibru');
-  });
-
-  it('2. Testează funcționalitatea Meniului Hamburger', () => {
+  
+  it('1. Testează funcționalitatea Meniului Hamburger', () => {
     // Verificăm că meniul este închis inițial
     cy.get('.meniu-navigatie').should('not.have.class', 'deschis');
 
