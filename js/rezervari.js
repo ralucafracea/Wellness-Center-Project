@@ -1,23 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // ==========================================================================
-    // AUTO FILL
-    // ==========================================================================
-    const userSalvat = localStorage.getItem('userLogat');
-    if (userSalvat) {
-        const user = JSON.parse(userSalvat);
-        
-        const inputNume = document.getElementById('contact-name');
-        const inputEmail = document.getElementById('contact-email');
-        const inputTelefon = document.getElementById('contact-telefon');
-        
-        if (inputNume && user.nume) inputNume.value = user.nume;
-        if (inputEmail && user.email) inputEmail.value = user.email;
-        if (inputTelefon && user.telefon) inputTelefon.value = user.telefon;
-        
-        console.log("Utilizator recunoscut! Am completat datele pentru:", user.nume);
-    }
+// ==========================================================================
+// AUTO-COMPLETARE FORMULAR DACA UTILIZATORUL ESTE LOGAT 
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const numeClient = localStorage.getItem('nume_utilizator');
+    const emailClient = localStorage.getItem('email_utilizator');
+    const telefonClient = localStorage.getItem('telefon_utilizator');
 
+    if (numeClient && emailClient) {
+        document.getElementById('nume').value = numeClient;
+        document.getElementById('email').value = emailClient;
+        
+        if (telefonClient) {
+            document.getElementById('telefon').value = telefonClient;
+        }
+    }
+})
     // ==========================================================================
     // BARA DE NAVIGARE
     // ==========================================================================
