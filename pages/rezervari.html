@@ -47,7 +47,7 @@
             <form class="rezervari-form" novalidate>
                 
                 <div class="form-group-labeled">
-                    <label>NUME</label>
+                    <label for="contact-name">NUME</label>
                     <input type="text" id="contact-name" placeholder="Numele tău" required>
                 </div>
 
@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="form-group-labeled">
-                    <label>EMAIL</label>
+                    <label for="contact-email">EMAIL</label>
                     <input type="email" id="contact-email" placeholder="email@example.com" required>
                         <span class="eroare-email" style="display: none;">
                             &#9888; Enter an email address like example@mysite.com.
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="form-group-labeled">
-                    <label>SERVICIU DORIT</label>
+                    <label for="categorie-select">SERVICIU DORIT</label>
                     <select id="categorie-select" required>
                         <option value="" disabled selected>Alege serviciul</option>
                         <option value="spa">Spa & Wellness</option>
@@ -79,18 +79,19 @@
                 </div>
 
                 <div class="form-group-labeled">
-                    <label>PACHET / ABONAMENT</label>
+                    <label for="pachet-select">PACHET / ABONAMENT</label>
                     <select id="pachet-select" required disabled>
                         <option value="" disabled selected>Alege pachetul dorit</option>
                     </select>
                 </div>
+                
                 <div style="display: flex; gap: 20px;">
                     <div class="form-group-labeled" style="flex: 1;">
-                        <label>DATA DORITĂ</label>
+                        <label for="contact-data">DATA DORITĂ</label>
                         <input type="date" id="contact-data" required onclick="this.showPicker()">
                     </div>
                     <div class="form-group-labeled" style="flex: 1;">
-                        <label>ORA APROXIMATIVĂ</label>
+                        <label for="contact-ora">ORA APROXIMATIVĂ</label>
                         <input type="time" id="contact-ora" required onclick="this.showPicker()">
                     </div>
                 </div>
@@ -98,10 +99,10 @@
                     * Un membru al echipei Tirra te va contacta telefonic pentru a confirma disponibilitatea la data și ora alese.
                 </p>
 
-                <div class="form-group-labeled">
-                    <label>MESAJ</label>
-                    <textarea placeholder="Spune-ne despre dorințele tale..." rows="3" required></textarea>
-                </div>
+                <!-- <div class="form-group-labeled">
+                    <label for="contact-mesaj">MESAJ</label>
+                    <textarea id="contact-mesaj" placeholder="Spune-ne despre dorințele tale..." rows="3"></textarea>
+                </div> -->
 
                 <div class="modal-buttons" style="margin-top: 20px;">
     

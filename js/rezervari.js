@@ -42,44 +42,63 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ==========================================================================
-    // B. LOGICA PENTRU LISTELE DERULANTE DINAMICE
+    // B. LOGICA PENTRU LISTELE DERULANTE DINAMICE (DIN CATALOGUL BACKEND)
     // ==========================================================================
     const categorieSelect = document.getElementById('categorie-select');
     const pachetSelect = document.getElementById('pachet-select');
 
-    if (categorieSelect && pachetSelect) {
-        const pachete = {
-            spa: [
-                { value: "masaj suedez", text: "Masaj suedez de relaxare" },
-                { value: "masaj terapeutic", text: "Masaj terapeutic profund" },
-                { value: "masaj cu pietre", text: "Masaj cu pietre vulcanice" },
-                { value: "aromaterapie", text: "Aromaterapie senzorială" },
-                { value: "ritual complet", text: "Ritual corp complet" }
-            ],
-            sala: [
-                { value: "fitness-1luna", text: "Abonament Fitness - 1 Lună" },
-                { value: "fitness-3luni", text: "Abonament Fitness - 3 Luni" },
-                { value: "personal-training", text: "Antrenor Personal (10 ședințe)" },
-                { value: "clase-grup", text: "Clase de Grup (Aerobic/Yoga)" }
-            ],
-            combinat:[
-                { value: "ritual-relaxare", text: "Ritual de relaxare" },
-                { value: "pachet-vitalitate", text: "Pachet vitalitate" },
-            ]
-        };
+    // Aici vom stoca dinamic ce primim de la server
+    let pacheteDinamice = {
+        spa: [],
+        sala: [], 
+        combinat: []
+    };
 
+    // Funcția care cere catalogul de la server la încărcarea paginii
+    async function incarcaCatalogulDeServicii() {
+        try {
+            const response = await fetch('http://localhost:3000/api/servicii');
+            if (!response.ok) throw new Error("Nu am putut aduce catalogul.");
+            
+            const catalog = await response.json();
+            
+            // Sortăm fiecare serviciu în sertarul lui
+            catalog.forEach(serviciu => {
+                // În baza ta de date ai categoria "fitness", dar în HTML-ul tău are value="sala"
+                const categorieFrontend = serviciu.categorie === 'fitness' ? 'sala' : serviciu.categorie;
+                
+                if (pacheteDinamice[categorieFrontend]) {
+                    pacheteDinamice[categorieFrontend].push({
+                        value: serviciu.nume, 
+                        text: serviciu.nume // + " - " + serviciu.pret + " RON" (opțional)
+                    });
+                }
+            });
+            console.log("✅ Catalog servicii încărcat dinamic:", pacheteDinamice);
+        } catch (error) {
+            console.error("❌ Eroare la încărcarea serviciilor:", error);
+        }
+    }
+
+    // Apelăm funcția ca să tragă datele din prima secundă
+    incarcaCatalogulDeServicii();
+
+    // Când clientul alege o categorie, populăm pachetele din ce am descărcat
+    if (categorieSelect && pachetSelect) {
         categorieSelect.addEventListener('change', function() {
             const categorieAleasa = this.value;
             pachetSelect.innerHTML = '<option value="" disabled selected>Alege pachetul dorit...</option>';
             
-            if (categorieAleasa && pachete[categorieAleasa]) {
+            if (categorieAleasa && pacheteDinamice[categorieAleasa].length > 0) {
                 pachetSelect.disabled = false; 
-                pachete[categorieAleasa].forEach(function(pachet) {
+                pacheteDinamice[categorieAleasa].forEach(function(pachet) {
                     const optiuneNoua = document.createElement('option');
                     optiuneNoua.value = pachet.value;
-                    optiuneNoua.textContent = pachet.text; // Textul frumos
+                    optiuneNoua.textContent = pachet.text;
                     pachetSelect.appendChild(optiuneNoua);
                 });
+            } else {
+                pachetSelect.disabled = true; // Dacă categoria e goală, închidem lista
             }
         });
     }
@@ -130,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
             pachet_abonament: pachetNume,
             data_rezervare: document.getElementById('contact-data').value, // ADAUGAT: Data
             ora_rezervare: document.getElementById('contact-ora').value,   // ADAUGAT: Ora
+            //mesaj: document.getElementById('contact-mesaj').value,
             metoda_plata: metodaPlata,
             status_plata: statusPlata, // 'neplatita' sau 'platita'
             data_creare_rezervare: new Date().toISOString()

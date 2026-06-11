@@ -25,8 +25,8 @@
   },
   {
     "id": 4,
-    "nume": "Utilizator Test",
-    "email": "utilizator@test.ro",
+    "nume": "Raluca Fracea",
+    "email": "raluca@test.ro",
     "parola_criptata": "parolaSigura123",
     "telefon": "0712345678",
     "rol": "client"

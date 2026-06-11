@@ -398,7 +398,48 @@ body {
 .btn-primary:hover {
     opacity: 0.85;
 }
+.inclus-tratament {
+    background-color: var(--color-primary); /* Fundalul maro/burgundy */
+    color: var(--color-bg);                 /* Scrisul deschis la culoare */
+    padding: 60px 20px;                     /* Spațiu sus/jos și stânga/dreapta */
+    text-align: center;                     /* Centrarea textului */
+}
 
+/* Forțăm și titlurile/etichetele să ia culoarea deschisă, 
+   în caz că au alte culori setate global pe site */
+.inclus-tratament .alt-tag,
+.inclus-tratament .alt-title,
+.inclus-tratament .lista-inclus li {
+    color: var(--color-bg);
+}
+.lista-inclus {
+    list-style: none;
+    padding: 0;
+    /* margin: auto centrează tot blocul listei, dar trebuie să îi dăm o lățime fixă ca să meargă */
+    margin: 30px auto 0; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left; /* Textul din interior rămâne frumos aliniat la stânga */
+}
+
+.lista-inclus li {
+    position: relative;
+    padding-left: 25px; /* Lăsăm loc suficient pentru punct */
+    font-family: var(--font-sans); /* 💥 Forțăm fontul elegant */
+    font-size: 15px; /* Mărim puțin textul să fie lizibil */
+    line-height: 1.4;
+    color: var(--color-bg);
+}
+
+.lista-inclus li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 0; /* Aliniem punctul cu prima linie de text */
+    color: var(--color-bg);
+    font-size: 20px;
+}
 /* 6.Carusel*/
 .included-section {
     background-color: var(--color-primary);
@@ -811,7 +852,7 @@ body {
         width: 350px; 
         bottom:0;
         height: auto; /* Până jos de tot */
-        background-color: var(--color-bg); 
+        background-color: var(--color-primary); 
         flex-direction: column;
         
         /* AICI E SCHIMBAREA: Am șters padding-ul ca să nu mai lase spațiu mort sus și jos */
@@ -844,7 +885,7 @@ body {
     /* 3. AICI SCHIMBĂM: Padding-ul mai mic și fără height forțat */
     .mobile-nav a {
         display: block !important;
-        color: var(--color-primary) !important; 
+        color: var(--color-bg) !important; 
         font-family: var(--font-sans);
         font-size: 15px;
         padding: 15px 0 !important; 
