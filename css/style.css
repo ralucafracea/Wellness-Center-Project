@@ -729,11 +729,15 @@ html {
 
     /* --- SECTIUNEA DESPRE NOI (LAPTOP) --- */
 
+    /* Modificăm layout-ul general al secțiunii pentru a grupa elementele */
     .despre-noi {
-        padding: 60px 40px; /* Mai mult spațiu sus-jos și lateral pe laptop */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        padding: 60px 40px 10px 40px;
+        display: grid;
+        /* TRUCUL AICI: în loc de max-width pe toată secțiunea, limităm lățimea celor 2 coloane */
+        grid-template-columns: minmax(0, 580px) minmax(0, 580px); 
+        justify-content: center;        /* Centrăm coloanele pe mijlocul ecranului */
+        gap: 40px;                      /* Spațiu între text și imagine */
+        align-items: center;            /* Aliniere verticală pe mijloc */
     }
 
     /* 1. Mărim titlul principal (DESPRE TIRRA WELLNESS) */
@@ -742,28 +746,6 @@ html {
         margin-bottom: 10px;  /* Spațiu generos sub el, înainte de conținut */
         align-self: center;   /* Ne asigurăm că rămâne centrat pe mijlocul paginii */
         text-align: center;
-    }
-
-    /* 2. Trucul tehnic: Înfășurăm imaginar textul și poza de deasupra serviciilor.
-       Deoarece în HTML textul și poza sunt elemente directe în .despre-noi, 
-       folosim o tehnică modernă (CSS Grid sau modificăm fluxul) pentru a le pune stânga-dreapta.
-       Pentru a păstra HTML-ul curat, creăm o așezare de tip Grid doar pentru ele. */
-       
-    /* Modificăm layout-ul general al secțiunii pentru a grupa elementele */
-    .despre-noi {
-        padding: 60px 40px 10px 40px;
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* Două coloane egale: stânga (text) și dreapta (poza) */
-        gap: 40px;                      /* Spațiu între text și imagine */
-        align-items: center;            /* Aliniere verticală pe mijloc */
-        max-width: 1200px;              /* Limităm lățimea maximă ca să arate elegant */
-        margin: 0 auto;                 /* Centrăm întreaga secțiune pe ecran */
-    }
-
-    /* Poziționăm elementele în grilă ca să respecte regula ta */
-    
-    /* Titlul "Despre Tirra" ocupă ambele coloane sus */
-    .despre-noi .subtitlu-sectiune:first-of-type {
         grid-column: 1 / span 2; 
     }
 
@@ -798,7 +780,7 @@ html {
     .text-sectiune:last-of-type {
         grid-column: 1 / span 2;
         text-align: center;  /* Rămâne pe mijloc */
-        max-width: 10000px;    /* Îl îngustăm puțin ca să fie mai ușor de citit centrat */
+        max-width: 10000px;  /* Îl îngustăm puțin ca să fie mai ușor de citit centrat */
         margin: 0 auto;
         font-size: 16px;
     }
@@ -809,15 +791,14 @@ html {
         padding: 0px 40px 60px 40px;
         display: flex;          /* Punem elementele pe orizontală */
         flex-direction: row;    /* Aliniere de la stânga la dreapta */
+        justify-content: center;/* Centrăm cardurile pe mijlocul ecranului */
         gap: 30px;              /* Spațiu elegant între cele două imagini */
-        padding: 40px;          /* Spațiere laterală și sus-jos pentru desktop */
-        max-width: 1200px;      /* Aliniem lățimea maximă cu secțiunea de deasupra */
-        margin: 0 auto;         /* Centrăm întreaga secțiune pe mijlocul ecranului */
     }
 
     .card-serviciu {
-        flex: 1;                /* Forțează ambele carduri să fie perfect egale ca lățime (50% - spațiul de gap) */
-        border-radius: 6px;     /* Adăugăm o ușoară rotunjire a colțurilor și pentru cardul principal, nu doar pentru imagine */
+        flex: 1;                /* Forțează ambele carduri să fie perfect egale ca lățime */
+        max-width: 585px;       /* Limităm cardurile să nu crească la infinit pe monitoare wide */
+        border-radius: 6px;     /* Adăugăm o ușoară rotunjire a colțurilor */
         overflow: hidden;       /* Ne asigurăm că imaginea la zoom nu depășește colțurile rotunjite */
     }
 
