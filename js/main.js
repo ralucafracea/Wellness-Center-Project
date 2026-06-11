@@ -1,3 +1,51 @@
+// --------------- INCARCARE PACHETE COMBINATE DIN BAZA DE DATE (CATALOG) -------------------------
+
+async function incarcaPacheteAcasa() {
+    const container = document.getElementById('container-pachete');
+    if (!container) return; // Daca nu suntem pe pagina principala, ne oprim
+
+    try {
+        const raspuns = await fetch('http://localhost:3000/api/pachete-combinate');
+        const date = await raspuns.json();
+
+        if (date.success) {
+            container.innerHTML = ''; // Stergem textul "Se incarca..."
+
+            // Daca nu exista niciun pachet "combinat" in JSON
+            if (date.pachete.length === 0) {
+                container.innerHTML = `<p style="color: var(--color-primary);">Momentan nu avem pachete promoționale.</p>`;
+                return;
+            }
+
+            // Generam dinamic fiecare card
+            date.pachete.forEach(pachet => {
+                // Daca e programare afisam minutele, dacă e abonament afisam zilele
+                const durataText = pachet.durata_minute ? `${pachet.durata_minute} MIN` : `${pachet.zile_valabilitate} ZILE`;
+                
+                const cardHtml = `
+                    <div class="card-pret">
+                        <span class="durata-pachet">${durataText}</span>
+                        <h3 class="titlu-pachet">${pachet.nume.toUpperCase()}</h3>
+                        
+                        <p class="lista-pachet" style="padding-left: 0; line-height: 1.5;">${pachet.descriere}</p>
+                        
+                        <div class="footer-card">
+                            <span class="pret-pachet">${pachet.pret} RON</span>
+                            <a href="pages/rezervari.html" class="buton-mic">Rezervă</a>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cardHtml;
+            });
+        }
+    } catch (eroare) {
+        console.error("Eroare la aducerea pachetelor:", eroare);
+        container.innerHTML = `<p style="color: red;">Nu s-au putut încărca pachetele. Verificați conexiunea.</p>`;
+    }
+}
+
+// Apelam functia automat
+incarcaPacheteAcasa();
 
         // --------------------------------LOGICA PENTRU RECENZII---------------------------
         let indexCurent = 0; // incepem cu prima recenzie
