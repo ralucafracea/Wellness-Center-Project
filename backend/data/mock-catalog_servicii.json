@@ -19,12 +19,11 @@
     "durata_minute": null,
     "zile_valabilitate": 30
   },
-
   {
     "id": 3,
     "nume": "Ritual de Relaxare",
     "descriere": "Masaj terapeutic la alegere, urmat de acces nelimitat în zonele spa și fitness, terapie prin arome și halat spa inclus.",
-    "pret": 350.00,
+    "pret": 350,
     "categorie": "combinat",
     "tip_achizitie": "programare",
     "durata_minute": 90,
@@ -34,7 +33,7 @@
     "id": 4,
     "nume": "Pachet Vitalitate",
     "descriere": "Antrenament personalizat, urmat de masaj de recuperare musculară, acces complet facilități fitness și plan nutrițional personalizat inclus.",
-    "pret": 300.00,
+    "pret": 300,
     "categorie": "combinat",
     "tip_achizitie": "programare",
     "durata_minute": 120,
