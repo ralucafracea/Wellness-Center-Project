@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // ==========================================================================
-    // DILEMA 1: AUTO-FILL DACĂ ESTE LOGAT (Extragem din "memoria" browserului)
+    // AUTO FILL
     // ==========================================================================
     const userSalvat = localStorage.getItem('userLogat');
     if (userSalvat) {
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ==========================================================================
-    // A. BARA DE NAVIGARE SINCRONIZATĂ PENTRU PAGINA DE REZERVĂRI
+    // BARA DE NAVIGARE
     // ==========================================================================
     const hamburger = document.getElementById('hamburger-btn');
     const mobileNav = document.getElementById('mobile-nav');
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ==========================================================================
-    // B. LOGICA PENTRU LISTELE DERULANTE DINAMICE (DIN CATALOGUL BACKEND)
+    // LISTE DERULANTE DINAMICE
     // ==========================================================================
     const categorieSelect = document.getElementById('categorie-select');
     const pachetSelect = document.getElementById('pachet-select');
@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
         combinat: []
     };
 
-    // Funcția care cere catalogul de la server la încărcarea paginii
     async function incarcaCatalogulDeServicii() {
         try {
             const response = await fetch('http://localhost:3000/api/servicii');
@@ -62,28 +61,24 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const catalog = await response.json();
             
-            // Sortăm fiecare serviciu în sertarul lui
             catalog.forEach(serviciu => {
-                // În baza ta de date ai categoria "fitness", dar în HTML-ul tău are value="sala"
                 const categorieFrontend = serviciu.categorie === 'fitness' ? 'sala' : serviciu.categorie;
                 
                 if (pacheteDinamice[categorieFrontend]) {
                     pacheteDinamice[categorieFrontend].push({
                         value: serviciu.nume, 
-                        text: serviciu.nume // + " - " + serviciu.pret + " RON" (opțional)
+                        text: serviciu.nume 
                     });
                 }
             });
-            console.log("✅ Catalog servicii încărcat dinamic:", pacheteDinamice);
+            console.log(" Catalog servicii încărcat dinamic:", pacheteDinamice);
         } catch (error) {
-            console.error("❌ Eroare la încărcarea serviciilor:", error);
+            console.error(" Eroare la încărcarea serviciilor:", error);
         }
     }
 
-    // Apelăm funcția ca să tragă datele din prima secundă
     incarcaCatalogulDeServicii();
 
-    // Când clientul alege o categorie, populăm pachetele din ce am descărcat
     if (categorieSelect && pachetSelect) {
         categorieSelect.addEventListener('change', function() {
             const categorieAleasa = this.value;
@@ -98,13 +93,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     pachetSelect.appendChild(optiuneNoua);
                 });
             } else {
-                pachetSelect.disabled = true; // Dacă categoria e goală, închidem lista
+                pachetSelect.disabled = true;
             }
         });
     }
 
     // ==========================================================================
-    // C. FORMULAR, VALIDARE ȘI TRIMITERE CĂTRE BACKEND
+    // FORMULAR, VALIDARE SI TRIMITERE CATRE BACKEND
     // ==========================================================================
     const rezervariForm = document.querySelector('.rezervari-form'); 
     
@@ -136,22 +131,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectCat = document.getElementById('categorie-select');
         const selectPachet = document.getElementById('pachet-select');
 
-        // Luăm textul pe care îl vede clientul
         const categorieNume = selectCat.options[selectCat.selectedIndex]?.text || '';
         const pachetNume = selectPachet.options[selectPachet.selectedIndex]?.text || '';
 
-        // Construim pachetul exact pe structura din PDF pentru baza de date
+        // Construim pachetul exact pentru baza de date
         const dateRezervare = {
             nume: document.getElementById('contact-name').value,
             telefon: inputTelefon.value,
             email: inputEmail.value,
             categorie_serviciu: categorieNume,
             pachet_abonament: pachetNume,
-            data_rezervare: document.getElementById('contact-data').value, // ADAUGAT: Data
-            ora_rezervare: document.getElementById('contact-ora').value,   // ADAUGAT: Ora
-            //mesaj: document.getElementById('contact-mesaj').value,
+            data_rezervare: document.getElementById('contact-data').value, 
+            ora_rezervare: document.getElementById('contact-ora').value,
             metoda_plata: metodaPlata,
-            status_plata: statusPlata, // 'neplatita' sau 'platita'
+            status_plata: statusPlata,
             data_creare_rezervare: new Date().toISOString()
         };
 
@@ -172,11 +165,11 @@ document.addEventListener('DOMContentLoaded', function() {
         rezervariForm.addEventListener('submit', async (e) => {
             e.preventDefault(); 
             
-            // DILEMA 1: PAZNICUL DE LOGARE. Dacă nu e logat, îl dăm afară!
+            // PAZNICUL DE LOGARE
             if (!localStorage.getItem('userLogat')) {
                 const loginModal = document.getElementById('login-modal');
                 if (loginModal) loginModal.style.display = 'flex';
-                return; // Oprim executarea, formularul nu se trimite!
+                return; 
             }
             
             let formularValid = true; 
@@ -213,7 +206,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (modalOverlay) modalOverlay.style.display = 'flex'; 
 
             if (actiuneAleasa === 'rezerva') {
-                // DILEMA 2: Salvează direct cu status 'neplatita'
                 const salvatCuSucces = await trimiteRezervareaLaServer('La recepție', 'neplatita');
                 
                 if (salvatCuSucces) {
@@ -226,14 +218,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
             } else if (actiuneAleasa === 'cumpara') {
-                // Afișăm formularul de card
                 if (modalSucces) modalSucces.style.display = 'none';
                 if (modalCardForm) modalCardForm.style.display = 'block'; 
             }
         });
     }
 
-    // LOGICA PENTRU PLATA CU CARDUL (Cumpără)
+    // LOGICA PENTRU PLATA CU CARDUL
     const inputCard = document.getElementById('card-numar');
     const textEroareCard = document.querySelector('.eroare-card');
     const inputExp = document.getElementById('card-expirare');
@@ -284,7 +275,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (!cardValid) return;
 
-            // DILEMA 2: Presupunem Happy Path și salvăm cu status 'platita'
             const salvatCuSucces = await trimiteRezervareaLaServer('Online cu cardul', 'platita');
 
             if (salvatCuSucces) {
@@ -298,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ==========================================================================
-    // DILEMA 3: REDIRECȚIONAREA CĂTRE "CONTUL MEU" (login.html)
+    // REDIRECTIONAREA CĂTRE "CONTUL MEU"
     // ==========================================================================
     function finalizeazaSiRedirectioneaza() {
         window.location.href = 'conectare.html'; 
@@ -317,13 +307,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (btnMergiLogin) {
         btnMergiLogin.addEventListener('click', () => {
-            window.location.href = 'conectare.html'; // Redirecționează utilizatorul
+            window.location.href = 'conectare.html'; 
         });
     }
 
     if (closeLoginModalBtn) {
         closeLoginModalBtn.addEventListener('click', () => {
-            loginModal.style.display = 'none'; // Ascunde modalul dacă se apasă X
+            loginModal.style.display = 'none'; 
         });
     }
 });
