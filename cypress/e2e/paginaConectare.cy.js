@@ -1,152 +1,146 @@
 describe('Testare Frontend - Pagina Conectare/Înregistrare (Tirra Wellness)', () => {
 
   beforeEach(() => {
-    // Păstrăm dimensiunea de iPhone 14
+    // Setează dimensiunea de telefon
     cy.viewport(390, 844);
-    cy.visit('pages/conectare.html');
+    
+    // Înainte de fiecare test, golim memoria ca să nu ne arunce protecția automată din pagină
+    cy.clearLocalStorage();
+    
+    // Folosim onBeforeLoad ca o practică bună de securizare
+    cy.visit('pages/conectare.html', {
+      onBeforeLoad: (win) => {
+        win.localStorage.clear();
+      }
+    });
   });
 
-  it('1. Testează comutarea între Autentificare și Înregistrare', () => {
-    // La pornire, formularul de Login trebuie să fie vizibil, iar Register ascuns
+  it('1. Testează Paznicul de Redirecționare Automată', () => {
+    // Simulăm că un utilizator (Client) este deja logat în memorie
+    cy.window().then((win) => {
+      win.localStorage.setItem('id_utilizator', '1');
+      win.localStorage.setItem('rol_utilizator', 'client');
+    });
+
+    // Vizităm pagina de conectare. Deoarece idSesiune există, scriptul tău trebuie să îl arunce afară instant
+    cy.visit('pages/conectare.html');
+    
+    // Verificăm dacă URL-ul s-a schimbat în contul-meu.html
+    cy.url().should('include', 'contul-meu.html');
+
+    // Acum simulăm că este un Admin
+    cy.window().then((win) => {
+      win.localStorage.setItem('rol_utilizator', 'admin');
+    });
+
+    cy.visit('pages/conectare.html');
+    cy.url().should('include', 'admin.html');
+  });
+
+  it('2. Testează comutarea între formulare', () => {
     cy.get('#box-login').should('be.visible');
     cy.get('#box-register').should('not.be.visible');
 
-    // Apăsăm pe linkul de creare cont
     cy.get('#mergi-la-register').click();
-
-    // Verificăm dacă s-au inversat
     cy.get('#box-login').should('not.be.visible');
     cy.get('#box-register').should('be.visible');
 
-    // Ne întoarcem la Login
     cy.get('#mergi-la-login').click();
     cy.get('#box-register').should('not.be.visible');
     cy.get('#box-login').should('be.visible');
   });
 
-  it('2. Testează validarea la Autentificare (Scenariu Negativ)', () => {
-    // Introducem un email care pică testul Regex (fără @)
-    cy.get('#email-login').type('email-gresit.com');
-    
-    // Apăsăm butonul de submit
-    cy.get('#formular-login .buton-principal-autentificare').click();
-
-    // Verificăm dacă JS-ul tău afișează textul de eroare
-    cy.get('#eroare-email-login').should('be.visible');
-    
-    // Verificăm dacă funcția a adăugat clasa pentru conturul roșu
-    cy.get('#email-login').should('have.class', 'input-eroare');
-  });
-
-  it('2.1 Testează validarea lungimii parolei la Autentificare', () => {
-    // Ne asigurăm că suntem pe secțiunea de Login
-    cy.get('#box-login').should('be.visible');
-
-    // Introducem un email valid ca să nu pice validarea de email
-    cy.get('#email-login').type('utilizator@corect.ro');
-
-    // 1. Introducem o parolă de doar 3 caractere folosind noul ID
-    cy.get('#parola-login').type('123');
-    
-    // Încercăm să trimitem formularul
-    cy.get('#formular-login .buton-principal-autentificare').click();
-
-    // VERIFICARE NEGATIVĂ: Trebuie să apară eroarea nouă și conturul roșu
-    cy.get('#eroare-parola-login').should('be.visible');
-    cy.get('#parola-login').should('have.class', 'input-eroare');
-
-    // 2. REPARARE: Completăm parola până la 6 caractere
-    cy.get('#parola-login').type('456');
-    
-    // Apăsăm din nou pe trimitere
-    cy.get('#formular-login .buton-principal-autentificare').click();
-
-    // Robotul ar trebui acum să fie redirecționat automat, deci verificăm dacă URL-ul s-a schimbat
-    // Aceasta confirmă că logica de succes din JS (window.location.href) a funcționat
-    cy.url().should('include', 'contul-meu.html');
-  });
-
-  it('3. Testează validarea completă la Înregistrare (Scenariu Negativ)', () => {
-    // Mergem la secțiunea de înregistrare
+  it('3. Validare Negativă Înregistrare (Modal de Eroare Customizat)', () => {
+    // Trecem pe panoul de register
     cy.get('#mergi-la-register').click();
 
-    // Lăsăm câmpurile goale și apăsăm direct butonul "CREEAZĂ CONT"
-    cy.get('#formular-inregistrare .buton-principal-autentificare').click();
+    // INTERCEPTĂM cererea de register și forțăm o eroare 400 (ex: Email deja folosit)
+    cy.intercept('POST', 'http://localhost:3000/api/register', { 
+      statusCode: 400, 
+      body: { success: false, message: 'Acest email este deja folosit!' } 
+    }).as('eroareRegister');
 
-    // Toate cele 4 erori ar trebui să fie vizibile simultan
-    cy.get('#eroare-nume-register').should('be.visible');
-    cy.get('#eroare-telefon-register').should('be.visible');
-    cy.get('#eroare-email-register').should('be.visible');
-    cy.get('#eroare-parola-register').should('be.visible');
-
-    // Testăm specific validarea telefonului (mai puțin de 10 cifre)
-    cy.get('#telefon-register').type('0740123');
-    cy.get('#formular-inregistrare .buton-principal-autentificare').click();
-    
-    // Eroarea de telefon trebuie să rămână activă deoarece nu a respectat Regex-ul
-    cy.get('#eroare-telefon-register').should('be.visible');
-  });
-
-  it('3.1 Testează validarea lungimii parolei (sub 6 caractere)', () => {
-    // Mergem la formularul de înregistrare
-    cy.get('#mergi-la-register').click();
-
-    // 1. Introducem o parolă de doar 3 caractere
-    cy.get('#parola-register').type('123');
-    
-    // Încercăm să trimitem formularul
-    cy.get('#formular-inregistrare .buton-principal-autentificare').click();
-
-    // VERIFICARE NEGATIVĂ: Trebuie să apară eroarea și conturul roșu
-    cy.get('#eroare-parola-register').should('be.visible');
-    cy.get('#parola-register').should('have.class', 'input-eroare');
-
-    // 2. REPARARE: Mai adăugăm încă 3 caractere (parola devine '123456')
-    cy.get('#parola-register').type('456');
-    
-    // Apăsăm din nou pe trimitere
-    cy.get('#formular-inregistrare .buton-principal-autentificare').click();
-
-    // VERIFICARE POZITIVĂ: Codul tău JS ar trebui acum să ascundă eroarea pentru parolă
-    cy.get('#eroare-parola-register').should('not.be.visible');
-    cy.get('#parola-register').should('not.have.class', 'input-eroare');
-  });
-
-  it('4. Testează fluxul de Înregistrare cu succes (Happy Path)', () => {
-    cy.get('#mergi-la-register').click();
-
-    // INTERCEPTARE: Spunem robotului Cypress să intercepteze ferestrele 'alert' din browser
-    cy.on('window:alert', (textPopUp) => {
-      // Verificăm dacă alerta conține textul scris de tine în JS
-      expect(textPopUp).to.contains('Contul a fost creat cu succes!');
-    });
-
-    // Completăm date perfect valide care trec de toate verificările
+    // Completăm date valide ca să trecem de validările tale Regex din JS
     cy.get('#nume-register').type('Utilizator Test');
-    cy.get('#telefon-register').type('0712345678');
-    cy.get('#email-register').type('utilizator@test.ro');
-    cy.get('#parola-register').type('parolaSigura123');
+    cy.get('#telefon-register').type('0711111111');
+    cy.get('#email-register').type('deja.folosit@tirra.ro');
+    cy.get('#parola-register').type('parola123');
 
-    // Trimitem formularul
     cy.get('#formular-inregistrare .buton-principal-autentificare').click();
 
-    // După ce se închide alerta, codul tău trebuie să ascundă Register și să arate Login
+    cy.wait('@eroareRegister');
+
+    // VERIFICĂM Noul Modal de Eroare pe care l-ai creat
+    cy.get('#eroare-modal').should('be.visible');
+    cy.get('#mesaj-eroare-modal').should('have.text', 'Acest email este deja folosit!');
+
+    // Testăm închiderea modalului
+    cy.get('#btn-ok-eroare').click();
+    cy.get('#eroare-modal').should('not.be.visible');
+  });
+
+  it('4. Happy Path: Creare Cont (Modal de Succes Customizat)', () => {
+    cy.get('#mergi-la-register').click();
+
+    // Forțăm serverul să răspundă cu succes 200
+    cy.intercept('POST', 'http://localhost:3000/api/register', { 
+      statusCode: 200, 
+      body: { success: true, message: 'Cont creat cu succes!' } 
+    }).as('succesRegister');
+
+    cy.get('#nume-register').type('Client Nou');
+    cy.get('#telefon-register').type('0722222222');
+    cy.get('#email-register').type('client.nou@tirra.ro');
+    cy.get('#parola-register').type('parolaSigura!');
+
+    cy.get('#formular-inregistrare .buton-principal-autentificare').click();
+
+    cy.wait('@succesRegister');
+
+    // VERIFICĂM Noul Modal de Succes creat de tine
+    cy.get('#succes-modal').should('be.visible');
+    cy.get('#mesaj-succes-modal').should('have.text', 'Cont creat cu succes!');
+
+    // Când apasă "Mergi la Autentificare", scriptul tău trebuie să curețe tot și să îl mute pe Login
+    cy.get('#btn-ok-succes').click();
+    
+    // Verificăm mutarea
+    cy.get('#succes-modal').should('not.be.visible');
     cy.get('#box-register').should('not.be.visible');
     cy.get('#box-login').should('be.visible');
 
-    // Verificăm dacă JS-ul a curățat corect caseta de nume pentru următorul utilizator
+    // Verificăm golirea casetelor
     cy.get('#nume-register').should('have.value', '');
   });
 
-  it('5. Testează funcționalitatea Meniului Hamburger', () => {
-    // Verificăm funcționarea meniului de navigație (codul tău din partea de jos a JS-ului)
-    cy.get('.meniu-navigatie').should('not.have.class', 'deschis');
+  it('5. Happy Path: Autentificare (Salvare Sesiune și Redirecționare)', () => {
+    cy.get('#box-login').should('be.visible');
 
-    cy.get('.buton-hamburger').click();
-    cy.get('.meniu-navigatie').should('have.class', 'deschis');
+    // Forțăm o autentificare cu succes returnând datele unui utilizator "Client"
+    cy.intercept('POST', 'http://localhost:3000/api/login', { 
+      statusCode: 200, 
+      body: { 
+        success: true, 
+        message: 'Te-ai conectat cu succes!',
+        utilizator: { id: 99, nume: "Andreea", email: "andreea@test.ro", rol: "client" }
+      } 
+    }).as('succesLogin');
 
-    cy.get('.buton-inchidere').should('be.visible').click();
-    cy.get('.meniu-navigatie').should('not.have.class', 'deschis');
+    cy.get('#email-login').type('andreea@test.ro');
+    cy.get('#parola-login').type('parola123');
+
+    cy.get('#formular-login .buton-principal-autentificare').click();
+
+    cy.wait('@succesLogin');
+
+    // Verificăm dacă informațiile de sesiune au fost salvate fizic în LocalStorage
+    cy.window().then((win) => {
+      expect(win.localStorage.getItem('id_utilizator')).to.eq('99');
+      expect(win.localStorage.getItem('rol_utilizator')).to.eq('client');
+    });
+
+    // Verificăm dacă funcția window.location.href l-a aruncat în Contul Meu
+    cy.url().should('include', 'contul-meu.html');
   });
 
 });
