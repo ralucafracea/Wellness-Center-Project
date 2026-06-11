@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+const bcrypt = require('bcrypt'); //pt criptare parole
 
 const app = express();
 app.use(cors());
@@ -17,27 +18,32 @@ const programariClientiFilePath = path.join(__dirname, 'data', 'mock-programari_
 const catalogFilePath = path.join(__dirname, 'data', 'mock-catalog_servicii.json');
 
 // ---------------------------------------- RUTA DE LOGIN ---------------------------------------------
-app.post('/api/login', (req, res) => {
+app.post('/api/login', async(req, res) => {
     try {
         const { email, parola } = req.body; 
 
         const usersRaw = fs.readFileSync(usersFilePath, 'utf8');
         const users = JSON.parse(usersRaw);
 
-        const gasit = users.find(u => u.email === email && u.parola_criptata === parola);
+        const gasit = users.find(u => u.email === email); // prima data cautam dupa mail
 
         if (gasit) {
-            res.json({ 
-                success: true, 
-                message: 'Te-ai conectat cu succes!', 
-                utilizator: { 
-                    id: gasit.id, 
-                    nume: gasit.nume, 
-                    email: gasit.email,
-                    rol: gasit.rol,
-                    telefon: gasit.telefon 
-                } 
-            });
+            const parolaE_Corecta = await bcrypt.compare(parola, gasit.parola_criptata);
+            if (parolaE_Corecta) {
+                res.json({ 
+                    success: true, 
+                    message: 'Te-ai conectat cu succes!', 
+                    utilizator: { 
+                        id: gasit.id, 
+                        nume: gasit.nume, 
+                        email: gasit.email,
+                        rol: gasit.rol,
+                        telefon: gasit.telefon 
+                    } 
+                });
+            } else {
+                res.status(401).json({ success: false, message: 'Email sau parolă incorectă!' });
+            }
         } else {
             res.status(401).json({ success: false, message: 'Email sau parolă incorectă!' });
         }
@@ -48,7 +54,7 @@ app.post('/api/login', (req, res) => {
 });
 
 // -------------------------------------- RUTA DE CREARE CONT (REGISTER) --------------------------------
-app.post('/api/register', (req, res) => {
+app.post('/api/register', async(req, res) => {
     try {
         const { nume, email, telefon, parola } = req.body;
 
@@ -60,13 +66,17 @@ app.post('/api/register', (req, res) => {
             return res.status(400).json({ success: false, message: 'Acest email este deja folosit!' });
         }
 
+        //criptare parola:
+        const saltRounds = 10; // cat de complexa sa fie criptarea
+        const parolaCriptataReal = await bcrypt.hash(parola, saltRounds);
+
         const nouId = users.length > 0 ? users[users.length - 1].id + 1 : 1;
         
         const utilizatorNou = {
             id: nouId,
             nume: nume,
             email: email,
-            parola_criptata: parola, 
+            parola_criptata: parolaCriptataReal, 
             telefon: telefon,
             rol: "client" 
         };
