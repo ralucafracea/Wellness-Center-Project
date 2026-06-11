@@ -6,5 +6,13 @@
     "subiect": "Întrebare programare",
     "mesaj": "Bună ziua, ce produse folosiți pentru tratamentul facial?",
     "data_trimitere": "2026-06-10"
+  },
+  {
+    "nume": "Utilizator E2E",
+    "email": "test.automat@tirra.ro",
+    "subiect": "Testare Integrare Cypress",
+    "mesaj": "Verificăm dacă fetch-ul trimite datele corect în JSON.",
+    "data_trimitere": "2026-06-11T08:34:19.474Z",
+    "id": 2
   }
 ]
