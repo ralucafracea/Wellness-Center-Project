@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
 // ==========================================================================
-// AUTO-COMPLETARE FORMULAR DACA UTILIZATORUL ESTE LOGAT 
+// A. AUTO-COMPLETARE FORMULAR DACA UTILIZATORUL ESTE LOGAT
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
     const numeClient = localStorage.getItem('nume_utilizator');
@@ -9,14 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const telefonClient = localStorage.getItem('telefon_utilizator');
 
     if (numeClient && emailClient) {
-        document.getElementById('nume').value = numeClient;
-        document.getElementById('email').value = emailClient;
+        document.getElementById('contact-name').value = numeClient;
+        document.getElementById('contact-email').value = emailClient;
         
         if (telefonClient) {
-            document.getElementById('telefon').value = telefonClient;
+            document.getElementById('contact-telefon').value = telefonClient;
         }
     }
-})
+});
+
     // ==========================================================================
     // BARA DE NAVIGARE
     // ==========================================================================
