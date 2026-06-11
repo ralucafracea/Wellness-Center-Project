@@ -8,7 +8,78 @@ app.use(cors());
 app.use(express.json());
 
 // ============================================================
-// RUTELE COLEGEI — Contact & Programări
+// 1. RUTELE LUI TEO — Autentificare (Login & Register)
+// ============================================================
+
+const usersFilePath = path.join(__dirname, 'data', 'mock-utilizatori.json');
+
+// POST /api/login — conectare cont
+app.post('/api/login', (req, res) => {
+    try {
+        const { email, parola } = req.body; 
+
+        const usersRaw = fs.readFileSync(usersFilePath, 'utf8');
+        const users = JSON.parse(usersRaw);
+
+        const gasit = users.find(u => u.email === email && u.parola_criptata === parola);
+
+        if (gasit) {
+            res.json({ 
+                success: true, 
+                message: 'Te-ai conectat cu succes!', 
+                utilizator: { 
+                    id: gasit.id, 
+                    nume: gasit.nume, 
+                    email: gasit.email,
+                    rol: gasit.rol 
+                } 
+            });
+        } else {
+            res.status(401).json({ success: false, message: 'Email sau parolă incorectă!' });
+        }
+    } catch (eroare) {
+        console.error("EROARE LA LOGIN:", eroare);
+        res.status(500).json({ success: false, message: 'Eroare internă a serverului.' });
+    }
+});
+
+// POST /api/register — creare cont nou
+app.post('/api/register', (req, res) => {
+    try {
+        const { nume, email, telefon, parola } = req.body;
+
+        const usersRaw = fs.readFileSync(usersFilePath, 'utf8');
+        const users = JSON.parse(usersRaw);
+
+        const emailExista = users.find(u => u.email === email);
+        if (emailExista) {
+            return res.status(400).json({ success: false, message: 'Acest email este deja folosit!' });
+        }
+
+        const nouId = users.length > 0 ? users[users.length - 1].id + 1 : 1;
+        
+        const utilizatorNou = {
+            id: nouId,
+            nume: nume,
+            email: email,
+            parola_criptata: parola, 
+            telefon: telefon,
+            rol: "client" 
+        };
+
+        users.push(utilizatorNou);
+        fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+
+        res.json({ success: true, message: 'Cont creat cu succes!' });
+    } catch (eroare) {
+        console.error("EROARE LA INREGISTRARE:", eroare);
+        res.status(500).json({ success: false, message: 'Eroare internă a serverului.' });
+    }
+});
+
+
+// ============================================================
+// 2. RUTELE COLEGULUI — Contact & Programări
 // ============================================================
 
 // POST /api/contact — salvează un mesaj nou
@@ -39,11 +110,12 @@ app.post('/api/programari', (req, res) => {
     res.status(200).json({ message: "Programare salvată cu succes!" });
 });
 
+
 // ============================================================
-// RUTELE MELE — Servicii Fitness
+// 3. RUTELE TALE — Servicii Fitness & Spa (CRUD Admin)
 // ============================================================
 
-const fisierJson = path.join(__dirname, '..', 'data', 'catalog_servicii.json');
+const fisierJson = path.join(__dirname, 'data', 'mock-catalog_servicii.json');
 
 // GET /api/servicii — returnează toate serviciile
 app.get('/api/servicii', (req, res) => {
@@ -56,7 +128,7 @@ app.get('/api/servicii', (req, res) => {
     });
 });
 
-// POST /api/servicii — adaugă un serviciu nou
+// POST /api/servicii — adaugă un serviciu nou din Admin
 app.post('/api/servicii', (req, res) => {
     const serviciuNou = req.body;
 
@@ -85,7 +157,7 @@ app.post('/api/servicii', (req, res) => {
     });
 });
 
-// DELETE /api/servicii/:id — șterge un serviciu după ID
+// DELETE /api/servicii/:id — șterge un serviciu din Admin
 app.delete('/api/servicii/:id', (req, res) => {
     const idDeSters = Number(req.params.id);
 
@@ -101,6 +173,7 @@ app.delete('/api/servicii/:id', (req, res) => {
         });
     });
 });
+
 
 // ============================================================
 // PORNIRE SERVER

@@ -10,25 +10,25 @@
 </head>
 <body>
 
-    <header class="header-principal">
+    <header class="main-header">
         <div class="logo">
             <span class="titlu-logo">TIRRA</span>
             <span class="subtitlu-logo">WELLNESS</span>
         </div>
-        <button class="buton-hamburger">
+        <button class="hamburger-menu" id="hamburger-btn">
             <span></span>
             <span></span>
             <span></span>
         </button>
-        <button class="buton-inchidere">&#10005;</button>
-        <nav class="meniu-navigatie">
+        <button class="buton-inchidere">&#10005;</button>  
+        <nav class="mobile-nav" id="mobile-nav"> 
             <ul>
                 <li><a href="../index.html">ACASĂ</a></li>
                 <li><a href="spa.html">SPA & WELLNESS</a></li>
                 <li><a href="sala.html">FITNESS</a></li>
                 <li><a href="rezervari.html">REZERVĂRI</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
-                <li><a href="login.html">CONECTEAZĂ-TE</a></li>
+                <li><a href="login.html">CONTUL MEU</a></li>
             </ul>
         </nav>
     </header>
@@ -99,10 +99,13 @@
     <section class="abonamente">
         <span class="label-white">ABONAMENTE</span>
         <h2>Investește în performanța ta.</h2>
+        
+        <button class="arrow-abonament arrow-left" id="btn-prev-abonament">&#10094;</button>
+        <button class="arrow-abonament arrow-right" id="btn-next-abonament">&#10095;</button>
+
         <div class="slider-abonamente">
             <div class="abonamente-track" id="track-abonamente">
-                <!-- Slide-urile sunt generate dinamic din server -->
-            </div>
+                </div>
         </div>
     </section>
 
@@ -161,31 +164,34 @@
     <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-        // 1. Meniul Hamburger
-        const meniuNavigatie = document.querySelector('.meniu-navigatie');
-        const btnHamburger = document.querySelector('.buton-hamburger');
-        const btnInchidere = document.querySelector('.buton-inchidere');
-        const linkuriMeniu = document.querySelectorAll('.meniu-navigatie a');
+        // 1. Meniul Hamburger (Stil SPA)
+        const hamburger = document.getElementById('hamburger-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        const closeBtn = document.querySelector('.buton-inchidere'); 
+        const linkuriMeniu = document.querySelectorAll('.mobile-nav a');
 
-        btnHamburger.addEventListener('click', () => {
-            meniuNavigatie.classList.add('deschis');
-            btnHamburger.style.display = 'none';
-            btnInchidere.style.display = 'block';
-        });
-
-        btnInchidere.addEventListener('click', () => {
-            meniuNavigatie.classList.remove('deschis');
-            btnInchidere.style.display = 'none';
-            btnHamburger.style.display = 'flex';
-        });
-
-        linkuriMeniu.forEach(link => {
-            link.addEventListener('click', () => {
-                meniuNavigatie.classList.remove('deschis');
-                btnInchidere.style.display = 'none';
-                btnHamburger.style.display = 'flex';
+        if(hamburger && mobileNav && closeBtn) {
+            hamburger.addEventListener('click', function() {
+                mobileNav.classList.add('active'); 
+                hamburger.style.display = 'none';  
+                closeBtn.style.display = 'block';  
             });
-        });
+
+            closeBtn.addEventListener('click', function() {
+                mobileNav.classList.remove('active'); 
+                closeBtn.style.display = 'none';      
+                hamburger.style.display = 'flex';     
+            });
+
+            // Opțional: Închide meniul când dai click pe un link
+            linkuriMeniu.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('active');
+                    closeBtn.style.display = 'none';
+                    hamburger.style.display = 'flex';
+                });
+            });
+        }
 
         // 2. Încarcă abonamentele din server și inițializează slider-ul
         async function incarcaAbonamenteFitness() {
@@ -262,53 +268,86 @@ programeFitness.forEach(program => {
             }
         }
 
-        // 3. Logica slider-ului
+        // 3. Logica slider-ului adaptiv infinit (Fără spații goale)
         function initiazaSlider() {
-            const track = document.querySelector('.abonamente-track');
-            const slides = document.querySelectorAll('.abonament-slide');
-
-            if (slides.length < 2) return;
+            const track = document.getElementById('track-abonamente');
+            let slides = Array.from(track.querySelectorAll('.abonament-slide'));
 
             const totalSlide = slides.length;
-            let startX = 0;
-            let isDragging = false;
+            if (totalSlide === 0) return;
+
+            // Avem nevoie de cel puțin 3 clone pentru că pe desktop afișăm 3 carduri vizibile deodată
+            const cloneCount = 3; 
+
+            // 1. Clona elementelor pentru partea din STÂNGA
+            for (let i = 0; i < cloneCount; i++) {
+                const indexToClone = (totalSlide - 1) - (i % totalSlide);
+                const clona = slides[indexToClone].cloneNode(true);
+                clona.classList.add('clona');
+                track.insertBefore(clona, track.firstChild);
+            }
+
+            // 2. Clona elementelor pentru partea din DREAPTA
+            for (let i = 0; i < cloneCount; i++) {
+                const indexToClone = i % totalSlide;
+                const clona = slides[indexToClone].cloneNode(true);
+                clona.classList.add('clona');
+                track.appendChild(clona);
+            }
+
+            let pozitie = cloneCount; // Poziția de pornire (sărim peste clone direct la primul card original)
             let isAnimating = false;
-            let pozitie = 1;
+            let isDragging = false;
+            let startX = 0;
 
-            const primul = slides[0].cloneNode(true);
-            const ultimul = slides[totalSlide - 1].cloneNode(true);
-            track.appendChild(primul);
-            track.insertBefore(ultimul, slides[0]);
-
-            track.style.transition = 'none';
-            track.style.transform = `translateX(-${pozitie * 100}%)`;
-
-            function mergiLa(index, animat = true) {
-                if (isAnimating) return;
+            // Funcție super-precisă care calculează mișcarea în pixeli
+            function miscaSlider(animat = true) {
+                // Măsurăm lățimea exactă a unui card (pe telefon va fi mare, pe PC va fi 1/3 din ecran)
+                const slideWidth = track.querySelector('.abonament-slide').getBoundingClientRect().width;
+                
                 if (animat) {
                     isAnimating = true;
-                    track.style.transition = 'transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
                 } else {
                     track.style.transition = 'none';
                 }
-                pozitie = index;
-                track.style.transform = `translateX(-${pozitie * 100}%)`;
+                
+                track.style.transform = `translateX(-${pozitie * slideWidth}px)`;
             }
 
+            // Punem slider-ul pe poziția corectă la deschiderea paginii, fără să animăm
+            miscaSlider(false);
+
+            function mergiLa(index) {
+                if (isAnimating) return; // Blochează click-urile rapide cât timp rulează animația
+                pozitie = index;
+                miscaSlider(true);
+            }
+
+            // Magia loop-ului infinit: se resetează invizibil când ajunge la final
             track.addEventListener('transitionend', () => {
                 isAnimating = false;
-                if (pozitie === totalSlide + 1) {
-                    pozitie = 1;
-                    track.style.transition = 'none';
-                    track.style.transform = `translateX(-${pozitie * 100}%)`;
+                
+                // Dacă a sărit de cardurile originale înspre dreapta
+                if (pozitie >= totalSlide + cloneCount) {
+                    pozitie = pozitie - totalSlide;
+                    miscaSlider(false); // Teleportare invizibilă
                 }
-                if (pozitie === 0) {
-                    pozitie = totalSlide;
-                    track.style.transition = 'none';
-                    track.style.transform = `translateX(-${pozitie * 100}%)`;
+                // Dacă a sărit de cardurile originale înspre stânga
+                else if (pozitie < cloneCount) {
+                    pozitie = pozitie + totalSlide;
+                    miscaSlider(false); // Teleportare invizibilă
                 }
             });
 
+            // Evenimente pentru săgețile Desktop
+            const btnPrev = document.getElementById('btn-prev-abonament');
+            const btnNext = document.getElementById('btn-next-abonament');
+            
+            if(btnPrev) btnPrev.onclick = () => mergiLa(pozitie - 1);
+            if(btnNext) btnNext.onclick = () => mergiLa(pozitie + 1);
+
+            // Evenimente pentru glisare tactilă (Telefon)
             track.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
                 isDragging = true;
@@ -321,6 +360,11 @@ programeFitness.forEach(program => {
                     mergiLa(diff > 0 ? pozitie + 1 : pozitie - 1);
                 }
                 isDragging = false;
+            });
+
+            // Repozitionare milimetrică la rotirea telefonului sau redimensionarea browserului
+            window.addEventListener('resize', () => {
+                miscaSlider(false);
             });
         }
 
