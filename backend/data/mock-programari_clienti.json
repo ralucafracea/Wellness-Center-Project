@@ -38,5 +38,13 @@
     "data_rezervare": "2026-06-22",
     "ora_rezervare": "20:58",
     "status": "neplatita"
+  },
+  {
+    "id": 6,
+    "id_utilizator": 10,
+    "id_serviciu": 3,
+    "data_rezervare": "2026-06-12",
+    "ora_rezervare": "12:00",
+    "status": "neplatita"
   }
 ]

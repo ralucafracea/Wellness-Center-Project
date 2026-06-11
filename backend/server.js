@@ -4,6 +4,31 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt'); //pt criptare parole
 
+// --- CODUL BAZA DE DATE ---
+require('dotenv').config(); 
+const mysql = require('mysql2/promise'); 
+
+// --- VERIFICARE PENTRU NOI IN CONSOLA ---
+console.log("=== DATE CITITE DE NODE.JS ===");
+console.log("Host:", process.env.DB_HOST);
+console.log("Port DB:", process.env.DB_PORT); // Pun pariu că aici va scrie 'undefined'
+console.log("==============================");
+
+// Creăm conexiunea
+const db = mysql.createPool({
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT || 27852, // NOU: Dacă din greșeală e undefined, forțează 27852!
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    ssl: {
+        rejectUnauthorized: false // Pentru cloud (Aiven)
+    },
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+});
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -13,19 +38,19 @@ app.use(express.json());
 // 1. RUTELE LUI TEO — Autentificare & Contul Meu
 // ==============================================================================================================================
 
-const usersFilePath = path.join(__dirname, 'data', 'mock-utilizatori.json');
-const programariClientiFilePath = path.join(__dirname, 'data', 'mock-programari_clienti.json');
-const catalogFilePath = path.join(__dirname, 'data', 'mock-catalog_servicii.json');
+// am comentat rutele vechi catre fisiere json pentru a le pastra in caz de nevoie
+// const usersFilePath = path.join(__dirname, 'data', 'mock-utilizatori.json');
+// const programariClientiFilePath = path.join(__dirname, 'data', 'mock-programari_clienti.json');
+// const catalogFilePath = path.join(__dirname, 'data', 'mock-catalog_servicii.json');
 
 // ---------------------------------------- RUTA DE LOGIN ---------------------------------------------
 app.post('/api/login', async(req, res) => {
     try {
         const { email, parola } = req.body; 
 
-        const usersRaw = fs.readFileSync(usersFilePath, 'utf8');
-        const users = JSON.parse(usersRaw);
-
-        const gasit = users.find(u => u.email === email); // prima data cautam dupa mail
+        // extragem utilizatorul din baza de date
+        const [rows] = await db.query('SELECT * FROM utilizatori WHERE email = ?', [email]);
+        const gasit = rows[0]; // prima data cautam dupa mail
 
         if (gasit) {
             const parolaE_Corecta = await bcrypt.compare(parola, gasit.parola_criptata);
@@ -58,11 +83,10 @@ app.post('/api/register', async(req, res) => {
     try {
         const { nume, email, telefon, parola } = req.body;
 
-        const usersRaw = fs.readFileSync(usersFilePath, 'utf8');
-        const users = JSON.parse(usersRaw);
-
-        const emailExista = users.find(u => u.email === email);
-        if (emailExista) {
+        // verificam daca exista deja emailul in baza de date
+        const [utilizatoriExistenti] = await db.query('SELECT id FROM utilizatori WHERE email = ?', [email]);
+        
+        if (utilizatoriExistenti.length > 0) {
             return res.status(400).json({ success: false, message: 'Acest email este deja folosit!' });
         }
 
@@ -70,19 +94,11 @@ app.post('/api/register', async(req, res) => {
         const saltRounds = 10; // cat de complexa sa fie criptarea
         const parolaCriptataReal = await bcrypt.hash(parola, saltRounds);
 
-        const nouId = users.length > 0 ? users[users.length - 1].id + 1 : 1;
-        
-        const utilizatorNou = {
-            id: nouId,
-            nume: nume,
-            email: email,
-            parola_criptata: parolaCriptataReal, 
-            telefon: telefon,
-            rol: "client" 
-        };
-
-        users.push(utilizatorNou);
-        fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+        // inseram utilizatorul in tabel
+        await db.query(
+            'INSERT INTO utilizatori (nume, email, parola_criptata, telefon, rol) VALUES (?, ?, ?, ?, ?)',
+            [nume, email, parolaCriptataReal, telefon, 'client']
+        );
 
         res.json({ success: true, message: 'Cont creat cu succes!' });
     } catch (eroare) {
@@ -93,43 +109,31 @@ app.post('/api/register', async(req, res) => {
 
 // --------------------------- RUTE PENTRU PAGINA PRINCIPALA (ACASA) --------------------------------
 // RUTA GET: Aducem doar pachetele din categoria "combinat"
-app.get('/api/pachete-combinate', (req, res) => {
+app.get('/api/pachete-combinate', async (req, res) => {
     try {
-        const catalogRaw = fs.readFileSync(catalogFilePath, 'utf8');
-        const catalog = JSON.parse(catalogRaw);
-
-        // Filtrăm catalogul și păstrăm doar ce ne interesează
-        const pacheteCombinate = catalog.filter(serviciu => serviciu.categorie === 'combinat');
+        // extragem pachetele direct cu filtru din mysql
+        const [pacheteCombinate] = await db.query('SELECT * FROM catalog_servicii WHERE categorie = ?', ['combinat']);
 
         res.json({ success: true, pachete: pacheteCombinate });
     } catch (eroare) {
         console.error("EROARE LA CITIREA PACHETELOR:", eroare);
-        }
-    });
+        // adaugat return de eroare pentru siguranta
+        res.status(500).json({ success: false, message: 'Eroare la extragerea pachetelor din baza de date.' });
+    }
+});
+
 // --------------------------- RUTE PENTRU "CONTUL MEU" --------------------------------------------
-app.get('/api/programari-client/:id', (req, res) => {
+app.get('/api/programari-client/:id', async (req, res) => {
     try {
         const idClient = parseInt(req.params.id); 
         
-        const programariRaw = fs.readFileSync(programariClientiFilePath, 'utf8');
-        const programari = JSON.parse(programariRaw);
-
-        const catalogRaw = fs.readFileSync(catalogFilePath, 'utf8');
-        const catalog = JSON.parse(catalogRaw);
-
-        const programarileLui = programari.filter(p => p.id_utilizator === idClient);
-
-        const programariComplete = programarileLui.map(prog => {
-            const serviciu = catalog.find(s => s.id === prog.id_serviciu);
-            
-            return {
-                id_programare: prog.id,
-                nume_serviciu: serviciu ? serviciu.nume : 'Serviciu necunoscut',
-                data: prog.data_rezervare,
-                ora: prog.ora_rezervare,
-                status: prog.status
-            };
-        });
+        // facem un join simplu ca sa aducem numele serviciului din catalog pe baza id-ului
+        const [programariComplete] = await db.query(`
+            SELECT p.id as id_programare, c.nume as nume_serviciu, p.data_rezervare as data, p.ora_rezervare as ora, p.status 
+            FROM programari_clienti p 
+            JOIN catalog_servicii c ON p.id_serviciu = c.id 
+            WHERE p.id_utilizator = ?
+        `, [idClient]);
 
         res.json({ success: true, programari: programariComplete });
 
@@ -144,34 +148,28 @@ app.get('/api/programari-client/:id', (req, res) => {
 // 2. RUTELE LUI RALUCA — Contact & Rezervări / Abonamente
 // ==============================================================================================================================
 
-const caleMesaje = path.join(__dirname, 'data', 'mock-mesaje_contact.json');
-const caleProgramari = path.join(__dirname, 'data', 'mock-programari_clienti.json');
-const caleUtilizatori = path.join(__dirname, 'data', 'mock-utilizatori.json');
-const caleServicii = path.join(__dirname, 'data', 'mock-catalog_servicii.json');
-const caleAbonamente = path.join(__dirname, 'data', 'mock-abonamente_clienti.json');
+// am comentat rutele vechi
+// const caleMesaje = path.join(__dirname, 'data', 'mock-mesaje_contact.json');
+// const caleProgramari = path.join(__dirname, 'data', 'mock-programari_clienti.json');
+// const caleUtilizatori = path.join(__dirname, 'data', 'mock-utilizatori.json');
+// const caleServicii = path.join(__dirname, 'data', 'mock-catalog_servicii.json');
+// const caleAbonamente = path.join(__dirname, 'data', 'mock-abonamente_clienti.json');
 
 // ---------------------------------------- RUTA POST CONTACT -----------------------------------------
-app.post('/api/contact', (req, res) => {
+app.post('/api/contact', async (req, res) => { // adaugat async
     const dateClient = req.body;
     
     try {
-        const mesaje = fs.existsSync(caleMesaje) ? JSON.parse(fs.readFileSync(caleMesaje)) : [];
-        const noulId = mesaje.length > 0 ? mesaje[mesaje.length - 1].id + 1 : 1;
-
         let dataBaza = dateClient.data_trimitere ? new Date(dateClient.data_trimitere) : new Date();
         let dataFormatata = dataBaza.toISOString().split('T')[0];
 
-        const mesajStructuraCorecta = {
-            id: noulId,
-            nume_expeditor: dateClient.nume || dateClient.nume_expeditor, 
-            email: dateClient.email,
-            subiect: dateClient.subiect,
-            mesaj: dateClient.mesaj,
-            data_trimitere: dataFormatata
-        };
-        
-        mesaje.push(mesajStructuraCorecta);
-        fs.writeFileSync(caleMesaje, JSON.stringify(mesaje, null, 2));
+        const numeExpeditor = dateClient.nume || dateClient.nume_expeditor;
+
+        // inseram direct in tabelul mysql
+        await db.query(
+            'INSERT INTO mesaje_contact (nume_expeditor, email, subiect, mesaj, data_trimitere) VALUES (?, ?, ?, ?, ?)',
+            [numeExpeditor, dateClient.email, dateClient.subiect, dateClient.mesaj, dataFormatata]
+        );
         
         res.status(200).json({ message: "Mesaj contact salvat cu succes pe structura corectă!" });
     } catch (error) {
@@ -181,29 +179,26 @@ app.post('/api/contact', (req, res) => {
 });
 
 // ------------------------------------ RUTA POST PROGRAMĂRI & ABONAMENTE -----------------------------
-app.post('/api/programari', (req, res) => {
+app.post('/api/programari', async (req, res) => { // adaugat async
     const dateClient = req.body;
     
     try {
-        const utilizatori = fs.existsSync(caleUtilizatori) ? JSON.parse(fs.readFileSync(caleUtilizatori)) : [];
-        const userFound = utilizatori.find(u => u.email === dateClient.email);
-        if (!userFound) return res.status(404).json({ error: "Utilizatorul nu a fost găsit." });
-        const id_utilizator = userFound.id;
+        // gasim id_utilizator
+        const [users] = await db.query('SELECT id FROM utilizatori WHERE email = ?', [dateClient.email]);
+        if (users.length === 0) return res.status(404).json({ error: "Utilizatorul nu a fost găsit." });
+        const id_utilizator = users[0].id;
 
-        const servicii = fs.existsSync(caleServicii) ? JSON.parse(fs.readFileSync(caleServicii)) : [];
-        const serviciuFound = servicii.find(s => s.nume === dateClient.pachet_abonament);
-        if (!serviciuFound) return res.status(404).json({ error: "Serviciul nu există." });
+        // gasim id_serviciu si detaliile acestuia
+        const [servicii] = await db.query('SELECT id, tip_achizitie, zile_valabilitate FROM catalog_servicii WHERE nume = ?', [dateClient.pachet_abonament]);
+        if (servicii.length === 0) return res.status(404).json({ error: "Serviciul nu există." });
         
-        const id_serviciu = serviciuFound.id;
-        const tip_achizitie = serviciuFound.tip_achizitie; 
+        const id_serviciu = servicii[0].id;
+        const tip_achizitie = servicii[0].tip_achizitie; 
 
         // Separare logică: Abonament vs Programare
         if (tip_achizitie === "abonament") {
-            const abonamente = fs.existsSync(caleAbonamente) ? JSON.parse(fs.readFileSync(caleAbonamente)) : [];
-            const noulId = abonamente.length > 0 ? abonamente[abonamente.length - 1].id + 1 : 1;
-
             let dataStart = new Date(dateClient.data_rezervare);
-            let zileValabilitate = serviciuFound.zile_valabilitate || 30; 
+            let zileValabilitate = servicii[0].zile_valabilitate || 30; 
             
             let dataEnd = new Date(dataStart);
             dataEnd.setDate(dataEnd.getDate() + zileValabilitate);
@@ -211,35 +206,22 @@ app.post('/api/programari', (req, res) => {
             const dataStartStr = dataStart.toISOString().split('T')[0];
             const dataEndStr = dataEnd.toISOString().split('T')[0];
 
-            const noulAbonament = {
-                id: noulId,
-                id_utilizator: id_utilizator,
-                id_serviciu: id_serviciu,
-                data_inceput: dataStartStr,
-                data_sfarsit: dataEndStr,
-                status: "activ" 
-            };
-
-            abonamente.push(noulAbonament);
-            fs.writeFileSync(caleAbonamente, JSON.stringify(abonamente, null, 2));
+            // inseram abonament
+            await db.query(
+                'INSERT INTO abonamente_clienti (id_utilizator, id_serviciu, data_inceput, data_sfarsit, status) VALUES (?, ?, ?, ?, ?)',
+                [id_utilizator, id_serviciu, dataStartStr, dataEndStr, 'activ']
+            );
             
             return res.status(200).json({ message: "Abonament salvat cu succes!" });
 
         } else {
-            const programari = fs.existsSync(caleProgramari) ? JSON.parse(fs.readFileSync(caleProgramari)) : [];
-            const noulId = programari.length > 0 ? programari[programari.length - 1].id + 1 : 1;
+            const statusPlata = dateClient.status_plata === "platita" ? "platita" : "neplatita";
             
-            const nouaProgramare = {
-                id: noulId,
-                id_utilizator: id_utilizator,
-                id_serviciu: id_serviciu,
-                data_rezervare: dateClient.data_rezervare,
-                ora_rezervare: dateClient.ora_rezervare,
-                status: dateClient.status_plata === "platita" ? "platita" : "neplatita"
-            };
-            
-            programari.push(nouaProgramare);
-            fs.writeFileSync(caleProgramari, JSON.stringify(programari, null, 2));
+            // inseram programare
+            await db.query(
+                'INSERT INTO programari_clienti (id_utilizator, id_serviciu, data_rezervare, ora_rezervare, status) VALUES (?, ?, ?, ?, ?)',
+                [id_utilizator, id_serviciu, dateClient.data_rezervare, dateClient.ora_rezervare, statusPlata]
+            );
             
             return res.status(200).json({ message: "Programare salvată cu succes!" });
         }
@@ -255,12 +237,12 @@ app.post('/api/programari', (req, res) => {
 // 3. RUTELE TALE (RADU) — Servicii Fitness & Spa (CRUD Admin)
 // ==============================================================================================================================
 
-const fisierJson = path.join(__dirname, 'data', 'mock-catalog_servicii.json');
+// const fisierJson = path.join(__dirname, 'data', 'mock-catalog_servicii.json'); // comentat pentru ca folosim mysql
 
 // GET /api/servicii — returnează toate serviciile (Actualizat pentru siguranță cu varianta Ralucăi)
-app.get('/api/servicii', (req, res) => {
+app.get('/api/servicii', async (req, res) => { // adaugat async
     try {
-        const servicii = fs.existsSync(fisierJson) ? JSON.parse(fs.readFileSync(fisierJson, 'utf8')) : [];
+        const [servicii] = await db.query('SELECT * FROM catalog_servicii');
         res.status(200).json(servicii);
     } catch (error) {
         console.error("Eroare la citire:", error);
@@ -269,49 +251,39 @@ app.get('/api/servicii', (req, res) => {
 });
 
 // POST /api/servicii — adaugă un serviciu nou din Admin
-app.post('/api/servicii', (req, res) => {
+app.post('/api/servicii', async (req, res) => { // adaugat async
     const serviciuNou = req.body;
 
-    fs.readFile(fisierJson, 'utf8', (err, date) => {
-        if (err) {
-            return res.status(500).send("Eroare la citirea bazei de date.");
-        }
-
-        const listaServicii = JSON.parse(date);
-
-        const urmatorulId = listaServicii.length > 0 ? listaServicii[listaServicii.length - 1].id + 1 : 1;
-        serviciuNou.id = urmatorulId;
-
+    try {
         serviciuNou.pret = Number(serviciuNou.pret);
         serviciuNou.durata_minute = serviciuNou.durata_minute ? Number(serviciuNou.durata_minute) : null;
         serviciuNou.zile_valabilitate = serviciuNou.zile_valabilitate ? Number(serviciuNou.zile_valabilitate) : null;
 
-        listaServicii.push(serviciuNou);
+        // inseram serviciul nou si preluam raspunsul in variabila result
+        const [result] = await db.query(
+            'INSERT INTO catalog_servicii (nume, descriere, pret, categorie, tip_achizitie, durata_minute, zile_valabilitate) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            [serviciuNou.nume, serviciuNou.descriere, serviciuNou.pret, serviciuNou.categorie, serviciuNou.tip_achizitie, serviciuNou.durata_minute, serviciuNou.zile_valabilitate]
+        );
 
-        fs.writeFile(fisierJson, JSON.stringify(listaServicii, null, 2), 'utf8', (err) => {
-            if (err) {
-                return res.status(500).send("Eroare la salvarea în baza de date.");
-            }
-            res.status(201).json(serviciuNou);
-        });
-    });
+        serviciuNou.id = result.insertId; // ii atasam noul id creat in mysql
+        res.status(201).json(serviciuNou);
+    } catch (error) {
+        console.error("Eroare la adaugare:", error);
+        res.status(500).send("Eroare la salvarea în baza de date.");
+    }
 });
 
 // DELETE /api/servicii/:id — șterge un serviciu din Admin
-app.delete('/api/servicii/:id', (req, res) => {
+app.delete('/api/servicii/:id', async (req, res) => { // adaugat async
     const idDeSters = Number(req.params.id);
 
-    fs.readFile(fisierJson, 'utf8', (err, date) => {
-        if (err) return res.status(500).send("Eroare la citire.");
-
-        let listaServicii = JSON.parse(date);
-        listaServicii = listaServicii.filter(s => s.id !== idDeSters);
-
-        fs.writeFile(fisierJson, JSON.stringify(listaServicii, null, 2), 'utf8', (err) => {
-            if (err) return res.status(500).send("Eroare la salvare.");
-            res.json({ mesaj: "Serviciu șters cu succes!" });
-        });
-    });
+    try {
+        await db.query('DELETE FROM catalog_servicii WHERE id = ?', [idDeSters]);
+        res.json({ mesaj: "Serviciu șters cu succes!" });
+    } catch (error) {
+        console.error("Eroare la stergere:", error);
+        res.status(500).send("Eroare la salvare.");
+    }
 });
 
 

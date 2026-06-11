@@ -70,5 +70,13 @@
     "parola_criptata": "parolaAPI123",
     "telefon": "0799999999",
     "rol": "client"
+  },
+  {
+    "id": 10,
+    "nume": "Puia Teodora",
+    "email": "puiateodora2005@gmail.com",
+    "parola_criptata": "$2b$10$QQnlpbsH83rG4AUsQylCU.ugUfuUeG5JKaswiONLrJFfMoEhm0wtC",
+    "telefon": "0751851869",
+    "rol": "client"
   }
 ]
