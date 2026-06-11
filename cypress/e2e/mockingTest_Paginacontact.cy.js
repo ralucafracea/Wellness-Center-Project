@@ -35,7 +35,7 @@ describe('Testare End-to-End (Frontend + Backend) - Pagina Contact', () => {
     cy.get('#btn-inchide-contact').click();
     cy.get('#contact-modal').should('not.be.visible');
 
-    cy.readFile('backend-spa/Data/mock-contact.json').then((mesaje) => {
+    cy.readFile('backend/Data/mock-contact.json').then((mesaje) => {
       
       // Cypress este foarte inteligent și transformă automat fișierul JSON într-un Array
       

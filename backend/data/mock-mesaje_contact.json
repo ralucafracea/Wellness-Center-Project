@@ -14,5 +14,29 @@
     "subiect": "Întrebare despre rezervări",
     "mesaj": "Bună ziua, aș dori să aflu mai multe detalii despre pachetele SPA.",
     "data_trimitere": "2026-06-11"
+  },
+  {
+    "id": 3,
+    "nume_expeditor": "Client Test",
+    "email": "client@email.com",
+    "subiect": "Întrebare despre rezervări",
+    "mesaj": "Bună ziua, aș dori să aflu mai multe detalii despre pachetele SPA.",
+    "data_trimitere": "2026-06-11"
+  },
+  {
+    "id": 4,
+    "nume_expeditor": "Utilizator E2E",
+    "email": "test.automat@tirra.ro",
+    "subiect": "Testare Integrare Cypress",
+    "mesaj": "Verificăm dacă fetch-ul trimite datele corect în JSON.",
+    "data_trimitere": "2026-06-11"
+  },
+  {
+    "id": 5,
+    "nume_expeditor": "Utilizator E2E",
+    "email": "test.automat@tirra.ro",
+    "subiect": "Testare Integrare Cypress",
+    "mesaj": "Verificăm dacă fetch-ul trimite datele corect în JSON.",
+    "data_trimitere": "2026-06-11"
   }
 ]
