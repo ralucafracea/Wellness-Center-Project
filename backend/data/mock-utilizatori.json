@@ -30,5 +30,29 @@
     "parola_criptata": "parolaSigura123",
     "telefon": "0712345678",
     "rol": "client"
+  },
+  {
+    "id": 5,
+    "nume": "Utilizator Test",
+    "email": "utilizator@test.ro",
+    "parola_criptata": "parolaSigura123",
+    "telefon": "0712345678",
+    "rol": "client"
+  },
+  {
+    "id": 6,
+    "nume": "Automatizare Backend",
+    "email": "api_test_1781174960496@tirra.ro",
+    "parola_criptata": "parolaAPI123",
+    "telefon": "0799999999",
+    "rol": "client"
+  },
+  {
+    "id": 7,
+    "nume": "Automatizare Backend",
+    "email": "api_test_1781174968579@tirra.ro",
+    "parola_criptata": "parolaAPI123",
+    "telefon": "0799999999",
+    "rol": "client"
   }
 ]
