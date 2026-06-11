@@ -10,6 +10,44 @@
     "zile_valabilitate": 30
   },
   {
+    "id": 12,
+    "nume": "Masaj terapeutic profund",
+    "descriere": "Ideal pentru tensiuni cronice, dureri musculare și recuperare.",
+    "pret": 270,
+    "categorie": "spa",
+    "tip_achizitie": "programare",
+    "durata_minute": 75,
+    "zile_valabilitate": null
+  },
+  {
+    "id": 13,
+    "nume": "Masaj cu pietre vulcanice",
+    "descriere": "Căldura pietrelor lavice topește tensiunea și echilibrează energia.",
+    "pret": 300,
+    "categorie": "spa",
+    "tip_achizitie": "programare",
+    "durata_minute": 75,
+    "zile_valabilitate": null
+  },
+  {
+    "id": 14,
+    "nume": "Aromaterapie senzorială",
+    "descriere": "Uleiuri esențiale alese după nevoile tale, într-un ritual olfactiv unic.",
+    "pret": 260,
+    "categorie": "spa",
+    "tip_achizitie": "programare",
+    "durata_minute": 60,
+    "zile_valabilitate": null
+  },
+  {
+    "id": 15,
+    "nume": "Ritual corp complet",
+    "descriere": "Exfoliere, învelire în nămol mineral și masaj - reset total.",
+    "pret": 460,
+    "categorie": "spa"
+  }
+  ,
+  {
     "id": 2,
     "nume": "TIRRA VITALITY",
     "descriere": "Tot ce este inclus în pachetul Performance.\nAcces la zona de Spa & Wellness.\n1 invitație Guest Pass gratuită în fiecare lună.",

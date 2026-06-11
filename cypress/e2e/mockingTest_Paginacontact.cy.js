@@ -47,6 +47,8 @@ describe('Testare End-to-End (Frontend + Backend) - Pagina Contact', () => {
       expect(ultimulMesaj.email).to.eq('test.automat@tirra.ro');
       expect(ultimulMesaj.subiect).to.eq('Testare Integrare Cypress');
       expect(ultimulMesaj.mesaj).to.eq('Verificăm dacă fetch-ul trimite datele corect în JSON.');
+
+      
       
     });
     
