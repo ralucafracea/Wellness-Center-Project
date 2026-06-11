@@ -27,100 +27,106 @@ html {
     overflow-x: clip;
 }
 
-.header-principal {
-    display: flex;
-    justify-content: space-between;
+/* ==========================================================================
+   HEADER ȘI MENIU (Stil preluat din SPA)
+   ========================================================================== */
+.main-header {
+    display: flex; 
+    justify-content: space-between; 
     align-items: center;
-    padding: 10px 20px;
-    background-color: var(--color-primary);
+    padding: 10px 20px; 
+    background-color: var(--color-primary); 
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0;        
+    left: 0;        
     right: 0;
-    z-index: 999;
-    box-sizing: border-box;
+    z-index: 1010;
+    box-sizing: border-box; 
+    height: 60px;
 }
 
 .logo {
     font-family: var(--font-sans);
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; 
+    align-items: center; 
 }
 
 .titlu-logo {
-    font-size: 24px;
+    font-size: 24px;        
     font-weight: 400;
-    letter-spacing: 4px;
-    color: var(--color-bg);
+    letter-spacing: 4px; 
+    color: var(--color-bg); 
 }
 
 .subtitlu-logo {
-    font-size: 10px;
+    font-size: 10px; 
     font-weight: 300;
     letter-spacing: 2px;
-    color: var(--color-bg);
+    color: var(--color-bg); 
 }
 
-.buton-hamburger {
+.hamburger-menu {
     background: transparent;
     border: none;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     gap: 6px;
-    color: var(--color-bg);
+    color: var(--color-bg); 
+    padding: 0;
+    margin: 0;
 }
 
-.buton-hamburger span {
+.hamburger-menu span { 
     display: block;
     width: 30px;
     height: 2px;
     background-color: var(--color-bg);
 }
 
-.meniu-navigatie {
-    position: fixed;
+.mobile-nav {
+    position: fixed; 
     top: 60px;
     left: 0;
     width: 100%;
-    height: calc(100vh - 60px);
-    background-color: var(--color-bg);
-    z-index: 1000;
+    height: calc(100vh - 60px); 
+    background-color: var(--color-bg); 
+    z-index: 1000; 
     display: none;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
     padding-top: 20px;
     padding-bottom: 20px;
     box-sizing: border-box;
 }
 
-.meniu-navigatie.deschis {
+.mobile-nav.active {
     display: flex;
 }
 
-.meniu-navigatie ul {
+.mobile-nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     text-align: center;
 }
 
-.meniu-navigatie li {
-    margin: 50px 0;
+.mobile-nav li {
+    margin: 50px 0; 
 }
 
-.meniu-navigatie a {
+.mobile-nav a {
     text-decoration: none;
     font-family: var(--font-sans);
-    color: var(--color-primary);
+    color: var(--color-primary); 
     font-size: 22px;
     transition: 0.3s;
 }
 
-.meniu-navigatie a:hover {
-    color: #a87e84;
+.mobile-nav a:hover {
+    color: #a87e84; 
 }
 
 .buton-inchidere {
@@ -128,18 +134,20 @@ html {
     background: transparent;
     position: absolute;
     border: none;
-    font-size: 30px;
-    color: var(--color-bg);
-    cursor: pointer;
-    transition: 0.3s;
+    top: 5px; 
     right: 20px;
+    font-size: 35px; 
+    color: var(--color-bg); 
+    cursor: pointer;
+    transition: 0.3s; 
+    z-index: 1015; 
 }
 
 .buton-inchidere:hover {
-    transform: scale(1.1);
+    transform: scale(1.1); 
 }
 
-/* ===== HERO — prefix fitness- pentru protecție la merge ===== */
+/* ===== HERO ===== */
 .fitness-hero {
     background-image:
         linear-gradient(rgba(244, 239, 234, 0.15), rgba(244, 239, 234, 0.15)),
@@ -185,7 +193,6 @@ html {
     text-align: left;
 }
 
-/* ===== SECTION TAG & TITLE — prefix fitness- pentru protecție la merge ===== */
 .fitness-section-tag {
     font-family: var(--font-sans);
     color: var(--visiniu);
@@ -242,7 +249,6 @@ html {
     line-height: 1.2;
 }
 
-/* ===== SERVICE CARD — prefix fitness- pentru protecție la merge ===== */
 .fitness-service-card {
     background-color: #F4EFEA;
     padding: 23px 25px 25px;
@@ -289,6 +295,13 @@ html {
     font-size: 0.82rem;
     line-height: 1.3;
     color: var(--visiniu);
+}
+
+.services-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
 }
 
 /* ===== DOTARI ===== */
@@ -436,6 +449,7 @@ html {
     padding: 30px 20px 120px;
     text-align: center;
     color: #F4EFEA;
+    position: relative;
 }
 
 .label-white {
@@ -516,7 +530,35 @@ html {
     color: #F4EFEA;
 }
 
-/* ===== SLIDER — prefix fitness- pentru protecție la merge ===== */
+/* Ascundem săgețile pe telefon ca să lăsăm doar glisarea tactilă */
+.arrow-abonament {
+    display: none;
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 2px solid #F4EFEA;
+    color: #F4EFEA;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+.arrow-abonament:hover {
+    background: #F4EFEA;
+    color: var(--visiniu);
+}
+
+.arrow-left { left: 4%; }
+.arrow-right { right: 4%; }
+
+/* ===== SLIDER CAROUSEL IMAGINI ===== */
 .slider-section {
     position: relative;
     width: 100%;
@@ -535,12 +577,6 @@ html {
     color: white;
     padding: 40px 20px 30px 20px;
     overflow: visible;
-}
-
-.footer-divider {
-    border: none;
-    border-top: 1px solid rgba(244, 239, 234, 0.2);
-    margin: 0 0 40px 0;
 }
 
 .footer-content {
@@ -597,7 +633,6 @@ html {
     font-family: var(--font-corp);
     font-size: 13px;
     opacity: 0.9;
-    border-bottom: 1px solid transparent;
     transition: opacity 0.3s;
 }
 
@@ -629,69 +664,217 @@ html {
     opacity: 0.8;
 }
 
-.menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: var(--crem);
-    z-index: 2000;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 
-.menu-overlay.active {
-    display: flex;
-}
+/* ================================================================= */
+/* DESKTOP STYLES (Conform schiței - Peste 1024px)                     */
+/* ================================================================= */
 
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    background: none;
-    border: none;
-    font-size: 2.5rem;
-    color: var(--visiniu);
-    cursor: pointer;
-    font-weight: 300;
-}
+@media (min-width: 1024px) {
 
-.overlay-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 35px;
-    text-align: center;
-}
+    /* --- Meniu glisant din dreapta (Desktop) --- */
+    
+    .hamburger-menu {
+        display: flex; /* AM ȘTERS !important pentru ca X-ul să funcționeze corect */
+        position: relative;
+        z-index: 9999; 
+    }
+    
+    .mobile-nav {
+        display: flex; 
+        position: fixed; 
+        top: 60px; 
+        right: 0;
+        left: auto; 
+        width: 350px; 
+        bottom: 0;
+        height: auto; 
+        background-color: var(--color-bg); 
+        flex-direction: column;
+        padding: 0 !important; 
+        z-index: 9999;
+        transform: translateX(100%); 
+        transition: transform 0.4s ease-in-out; 
+    }  
 
-.overlay-nav a {
-    font-family: var(--font-corp);
-    color: var(--visiniu);
-    text-decoration: none;
-    font-size: 1.3rem;
-    letter-spacing: 2px;
-    font-weight: 400;
-    text-transform: uppercase;
-    transition: opacity 0.3s;
-}
+    .mobile-nav.active {
+        transform: translateX(0); 
+    }
 
-.overlay-nav a:hover {
-    opacity: 0.6;
-}
+    .mobile-nav ul {
+        display: block !important; 
+        width: 100%;
+    }
 
-@media (min-width: 768px) {
-    .dotari-container, .trainers-container {
-        flex-direction: row;
+    /* Am lăsat marginile originale de pe mobil pentru a obține efectul tău de "center bottom" */
+    .mobile-nav li {
+        width: 100%;
+        display: block !important;
+        height: auto !important; 
+    }
+
+    /* Setări exacte din spa.css (Font mai mare la 15px, padding redus pentru a sta pe linie) */
+    .mobile-nav a {
+        display: block !important;
+        color: var(--color-primary) !important; 
+        font-family: var(--font-sans);
+        font-size: 15px; 
+        padding: 15px 0 !important; 
+        text-align: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+        height: auto !important;
+        line-height: 1.2 !important;
+        transition: color 0.3s;
+    }
+
+    /* Eliminăm fundalul gri închis și păstrăm doar schimbarea culorii textului la hover */
+    .mobile-nav a:hover {
+        background-color: transparent !important;  
+    }
+
+    .mobile-nav li:last-child a {
+        border-bottom: none !important;
+    }
+
+    /* --- Hero Image --- */
+    .fitness-hero {
+        padding: 80px 10%;
+        height: 60vh;
+        background-size: cover; 
+        background-position: center 60%;
+    }
+
+    .fitness-hero-subtitle {
+        font-size: 1.1rem;      
+        letter-spacing: 6px;
+        color: #F4EFEA;    
+    }
+
+    .fitness-hero-title {
+        font-size: 3.8rem;
+        font-weight: 500;
+        color: #F4EFEA; 
+    }
+
+    /* --- Filosofia Fitness (Imagine / Text pe 2 coloane stânga/dreapta) --- */
+    .philosophy {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 80px 10%;
+    }
+
+    .philosophy .fitness-section-tag {
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .philosophy .fitness-section-title {
+        width: 45%; /* Ocupă partea din stânga */
+        font-size: 40px;
+        margin-bottom: 0;
+    }
+
+    .philosophy .fitness-section-text {
+        width: 48%; /* Ocupă partea din dreapta */
+    }
+
+    /* --- Programe (Aranjare tip Grid pe 2 Coloane) --- */
+    .services {
+        padding: 80px 10%;
+    }
+
+    #lista-programe-fitness {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Creează exact 2 coloane egale */
+        gap: 40px;
         max-width: 1200px;
+        margin: 0 auto;
     }
-    .dotari-card, .trainer-card {
-        flex: 1;
+
+    /* --- Dotări (3 carduri sus, 2 carduri jos centrate) --- */
+    .dotari {
+        padding: 80px 10%;
     }
+
+    .dotari-container {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr); /* 6 diviziuni invizibile pentru centrare matematică */
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Distribuim cardurile pe grid */
+    .dotari-card:nth-child(1) { grid-column: 1 / 3; }
+    .dotari-card:nth-child(2) { grid-column: 3 / 5; }
+    .dotari-card:nth-child(3) { grid-column: 5 / 7; }
+    .dotari-card:nth-child(4) { grid-column: 2 / 4; } /* Rândul 2, centrat */
+    .dotari-card:nth-child(5) { grid-column: 4 / 6; } /* Rândul 2, centrat */
+
+
+    /* --- Echipa Noastră (3 carduri unul lângă altul) --- */
+    .trainers {
+        padding: 80px 10%;
+    }
+
+    .trainers-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .trainer-card {
+        margin-bottom: 0;
+    }
+
+    /* --- Abonamente (Afișează 3 pe ecran + Activează săgețile) --- */
+    .abonamente {
+        padding: 80px 10% 120px;
+    }
+
+    .slider-abonamente {
+        max-width: 1200px;
+        margin: 40px auto 0;
+    }
+
+    .abonament-slide {
+        min-width: calc(100% / 3); /* Fiecare card ocupă exact o treime din ecran */
+        padding: 0 20px;
+    }
+
+    .arrow-abonament {
+        display: flex; /* Acum săgețile devin vizibile */
+    }
+
+    /* --- Footer Desktop --- */
     .footer-content {
         flex-direction: row;
         justify-content: space-between;
         flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 0;
+    }
+    
+    .footer-brand-col {
+        width: 30%;
+        text-align: left;
+    }
+    
+    .footer-brand {
+        text-align: left;
+    }
+    
+    .footer-copy {
+        width: 100%;
+        margin-top: 40px;
+    }
+    
+    /* Carousel Poze jos */
+    .fitness-slide {
+        height: 500px; /* Mai înalt pe desktop */
     }
 }

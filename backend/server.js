@@ -1,18 +1,20 @@
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
-const path = require('path'); // pt autentificare (teo)
-const app = express();
+const path = require('path');
 
+const app = express();
 app.use(cors());
 app.use(express.json());
 
 
 // ==============================================================================================================================
-// TEO
+// 1. RUTELE LUI TEO — Autentificare & Contul Meu
 // ==============================================================================================================================
 
 const usersFilePath = path.join(__dirname, 'data', 'mock-utilizatori.json');
+const programariClientiFilePath = path.join(__dirname, 'data', 'mock-programari_clienti.json');
+const catalogFilePath = path.join(__dirname, 'data', 'mock-catalog_servicii.json');
 
 // ---------------------------------------- RUTA DE LOGIN ---------------------------------------------
 app.post('/api/login', (req, res) => {
@@ -96,30 +98,19 @@ app.get('/api/pachete-combinate', (req, res) => {
         }
     });
 // --------------------------- RUTE PENTRU "CONTUL MEU" --------------------------------------------
-
-
-// Căile către noile noastre fișiere JSON (Baza de date)
-const programariFilePath = path.join(__dirname, 'data', 'mock-programari_clienti.json');
-const catalogFilePath = path.join(__dirname, 'data', 'mock-catalog_servicii.json');
-
-// RUTA GET: Aducem programările unui client pe baza ID-ului său
 app.get('/api/programari-client/:id', (req, res) => {
     try {
-        const idClient = parseInt(req.params.id); // Luăm ID-ul din URL și îl facem număr
+        const idClient = parseInt(req.params.id); 
         
-        // 1. Citim programările și catalogul
-        const programariRaw = fs.readFileSync(programariFilePath, 'utf8');
+        const programariRaw = fs.readFileSync(programariClientiFilePath, 'utf8');
         const programari = JSON.parse(programariRaw);
 
         const catalogRaw = fs.readFileSync(catalogFilePath, 'utf8');
         const catalog = JSON.parse(catalogRaw);
 
-        // 2. Filtrăm doar programările acestui client
         const programarileLui = programari.filter(p => p.id_utilizator === idClient);
 
-        // 3. Facem "JOIN-ul": Adăugăm numele serviciului din catalog la fiecare programare
         const programariComplete = programarileLui.map(prog => {
-            // Căutăm serviciul în catalog după id_serviciu
             const serviciu = catalog.find(s => s.id === prog.id_serviciu);
             
             return {
@@ -131,7 +122,6 @@ app.get('/api/programari-client/:id', (req, res) => {
             };
         });
 
-        // Trimitem lista completă către frontend
         res.json({ success: true, programari: programariComplete });
 
     } catch (eroare) {
@@ -140,41 +130,23 @@ app.get('/api/programari-client/:id', (req, res) => {
     }
 });
 
+
 // ==============================================================================================================================
-// END TEO
+// 2. RUTELE LUI RALUCA — Contact & Rezervări / Abonamente
 // ==============================================================================================================================
 
-
-
-//RALUCA
 const caleMesaje = path.join(__dirname, 'data', 'mock-mesaje_contact.json');
 const caleProgramari = path.join(__dirname, 'data', 'mock-programari_clienti.json');
 const caleUtilizatori = path.join(__dirname, 'data', 'mock-utilizatori.json');
 const caleServicii = path.join(__dirname, 'data', 'mock-catalog_servicii.json');
 const caleAbonamente = path.join(__dirname, 'data', 'mock-abonamente_clienti.json');
 
-// ==========================================================================
-// RUTA GET: Trimite catalogul de servicii catre frontend
-// ==========================================================================
-app.get('/api/servicii', (req, res) => {
-    try {
-        const servicii = fs.existsSync(caleServicii) ? JSON.parse(fs.readFileSync(caleServicii)) : [];
-        res.status(200).json(servicii);
-    } catch (error) {
-        console.error(" Eroare la citirea catalogului:", error);
-        res.status(500).json({ error: "Eroare la server." });
-    }
-});
-
-// ==========================================================================
-// RUTA POST: Preluare mesaje contact 
-// ==========================================================================
+// ---------------------------------------- RUTA POST CONTACT -----------------------------------------
 app.post('/api/contact', (req, res) => {
     const dateClient = req.body;
     
     try {
         const mesaje = fs.existsSync(caleMesaje) ? JSON.parse(fs.readFileSync(caleMesaje)) : [];
-        
         const noulId = mesaje.length > 0 ? mesaje[mesaje.length - 1].id + 1 : 1;
 
         let dataBaza = dateClient.data_trimitere ? new Date(dateClient.data_trimitere) : new Date();
@@ -199,10 +171,7 @@ app.post('/api/contact', (req, res) => {
     }
 });
 
-
-// ==========================================================================
-// RUTA POST: Preluare programari si abonamente
-// ==========================================================================
+// ------------------------------------ RUTA POST PROGRAMĂRI & ABONAMENTE -----------------------------
 app.post('/api/programari', (req, res) => {
     const dateClient = req.body;
     
@@ -219,8 +188,7 @@ app.post('/api/programari', (req, res) => {
         const id_serviciu = serviciuFound.id;
         const tip_achizitie = serviciuFound.tip_achizitie; 
 
-
-        // Este Abonament sau Programare
+        // Separare logică: Abonament vs Programare
         if (tip_achizitie === "abonament") {
             const abonamente = fs.existsSync(caleAbonamente) ? JSON.parse(fs.readFileSync(caleAbonamente)) : [];
             const noulId = abonamente.length > 0 ? abonamente[abonamente.length - 1].id + 1 : 1;
@@ -246,7 +214,7 @@ app.post('/api/programari', (req, res) => {
             abonamente.push(noulAbonament);
             fs.writeFileSync(caleAbonamente, JSON.stringify(abonamente, null, 2));
             
-            return res.status(200).json({ message: "Abonament salvat cu succes în mock-abonamente_clienti.json!" });
+            return res.status(200).json({ message: "Abonament salvat cu succes!" });
 
         } else {
             const programari = fs.existsSync(caleProgramari) ? JSON.parse(fs.readFileSync(caleProgramari)) : [];
@@ -264,7 +232,7 @@ app.post('/api/programari', (req, res) => {
             programari.push(nouaProgramare);
             fs.writeFileSync(caleProgramari, JSON.stringify(programari, null, 2));
             
-            return res.status(200).json({ message: "Programare salvată cu succes în mock-programari_clienti.json!" });
+            return res.status(200).json({ message: "Programare salvată cu succes!" });
         }
 
     } catch (error) {
@@ -272,9 +240,76 @@ app.post('/api/programari', (req, res) => {
         res.status(500).json({ error: "Eroare la procesarea datelor." });
     }
 });
-//END RALUCA
 
-// Pornim serverul
+
+// ==============================================================================================================================
+// 3. RUTELE TALE (RADU) — Servicii Fitness & Spa (CRUD Admin)
+// ==============================================================================================================================
+
+const fisierJson = path.join(__dirname, 'data', 'mock-catalog_servicii.json');
+
+// GET /api/servicii — returnează toate serviciile (Actualizat pentru siguranță cu varianta Ralucăi)
+app.get('/api/servicii', (req, res) => {
+    try {
+        const servicii = fs.existsSync(fisierJson) ? JSON.parse(fs.readFileSync(fisierJson, 'utf8')) : [];
+        res.status(200).json(servicii);
+    } catch (error) {
+        console.error("Eroare la citire:", error);
+        res.status(500).send("Eroare la citirea bazei de date.");
+    }
+});
+
+// POST /api/servicii — adaugă un serviciu nou din Admin
+app.post('/api/servicii', (req, res) => {
+    const serviciuNou = req.body;
+
+    fs.readFile(fisierJson, 'utf8', (err, date) => {
+        if (err) {
+            return res.status(500).send("Eroare la citirea bazei de date.");
+        }
+
+        const listaServicii = JSON.parse(date);
+
+        const urmatorulId = listaServicii.length > 0 ? listaServicii[listaServicii.length - 1].id + 1 : 1;
+        serviciuNou.id = urmatorulId;
+
+        serviciuNou.pret = Number(serviciuNou.pret);
+        serviciuNou.durata_minute = serviciuNou.durata_minute ? Number(serviciuNou.durata_minute) : null;
+        serviciuNou.zile_valabilitate = serviciuNou.zile_valabilitate ? Number(serviciuNou.zile_valabilitate) : null;
+
+        listaServicii.push(serviciuNou);
+
+        fs.writeFile(fisierJson, JSON.stringify(listaServicii, null, 2), 'utf8', (err) => {
+            if (err) {
+                return res.status(500).send("Eroare la salvarea în baza de date.");
+            }
+            res.status(201).json(serviciuNou);
+        });
+    });
+});
+
+// DELETE /api/servicii/:id — șterge un serviciu din Admin
+app.delete('/api/servicii/:id', (req, res) => {
+    const idDeSters = Number(req.params.id);
+
+    fs.readFile(fisierJson, 'utf8', (err, date) => {
+        if (err) return res.status(500).send("Eroare la citire.");
+
+        let listaServicii = JSON.parse(date);
+        listaServicii = listaServicii.filter(s => s.id !== idDeSters);
+
+        fs.writeFile(fisierJson, JSON.stringify(listaServicii, null, 2), 'utf8', (err) => {
+            if (err) return res.status(500).send("Eroare la salvare.");
+            res.json({ mesaj: "Serviciu șters cu succes!" });
+        });
+    });
+});
+
+
+// ============================================================
+// PORNIRE SERVER
+// ============================================================
 app.listen(3000, () => {
-    console.log('Serverul SPA rulează pe http://localhost:3000');
+    console.log('✅ Serverul a pornit cu succes!');
+    console.log('👉 Accesează: http://localhost:3000');
 });
