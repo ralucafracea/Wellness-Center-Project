@@ -138,15 +138,5 @@
     "tip_achizitie": "programare",
     "durata_minute": 120,
     "zile_valabilitate": null
-  },
-  {
-    "nume": "test ralu",
-    "descriere": "nam",
-    "pret": 123,
-    "categorie": "spa",
-    "tip_achizitie": "programare",
-    "durata_minute": 123,
-    "zile_valabilitate": null,
-    "id": 16
   }
 ]
