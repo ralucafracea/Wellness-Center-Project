@@ -82,7 +82,6 @@ app.post('/api/register', (req, res) => {
 });
 
 // --------------------------- RUTE PENTRU PAGINA PRINCIPALA (ACASA) --------------------------------
-const catalogFilePath = path.join(__dirname, 'data', 'mock-catalog_servicii.json');
 // RUTA GET: Aducem doar pachetele din categoria "combinat"
 app.get('/api/pachete-combinate', (req, res) => {
     try {
