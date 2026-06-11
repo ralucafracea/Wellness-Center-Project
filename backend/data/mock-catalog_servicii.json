@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "nume": "Masaj Terapeutic",
+    "descriere": "Un masaj profund pentru relaxarea musculaturii și eliminarea stresului.",
+    "pret": 150.00,
+    "categorie": "spa",
+    "tip_achizitie": "programare",
+    "durata_minute": 60,
+    "zile_valabilitate": null
+  },
+  {
+    "id": 2,
+    "nume": "Abonament Sală 1 Lună",
+    "descriere": "Acces nelimitat în zona de fitness cu aparatură premium.",
+    "pret": 200.00,
+    "categorie": "fitness",
+    "tip_achizitie": "abonament",
+    "durata_minute": null,
+    "zile_valabilitate": 30
+  }
+]

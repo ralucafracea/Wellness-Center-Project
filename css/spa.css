@@ -412,12 +412,12 @@ body {
 
 
 .alt-tag {
-    color: var(--color-bg);
+    color: var(--color-primary);
     margin-bottom: 15px;
 }
 
 .alt-title {
-    color: var(--color-bg);
+    color: var(--color-primary);
     font-size: 26px; 
 }
 
@@ -842,7 +842,7 @@ body {
         font-family: var(--font-sans);
         font-size: 15px;
         padding: 15px 0 !important; 
-         text-align: center;
+        text-align: center;
         border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
         transition: background-color 0.3s;
         height: auto !important;

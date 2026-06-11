@@ -61,6 +61,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 { value: "fitness-3luni", text: "Abonament Fitness - 3 Luni" },
                 { value: "personal-training", text: "Antrenor Personal (10 ședințe)" },
                 { value: "clase-grup", text: "Clase de Grup (Aerobic/Yoga)" }
+            ],
+            combinat:[
+                { value: "ritual-relaxare", text: "Ritual de relaxare" },
+                { value: "pachet-vitalitate", text: "Pachet vitalitate" },
             ]
         };
 
@@ -277,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // DILEMA 3: REDIRECȚIONAREA CĂTRE "CONTUL MEU" (login.html)
     // ==========================================================================
     function finalizeazaSiRedirectioneaza() {
-        window.location.href = 'login.html'; 
+        window.location.href = 'conectare.html'; 
     }
 
     if (btnCloseModal) btnCloseModal.addEventListener('click', finalizeazaSiRedirectioneaza);
@@ -293,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (btnMergiLogin) {
         btnMergiLogin.addEventListener('click', () => {
-            window.location.href = 'login.html'; // Redirecționează utilizatorul
+            window.location.href = 'conectare.html'; // Redirecționează utilizatorul
         });
     }
 
