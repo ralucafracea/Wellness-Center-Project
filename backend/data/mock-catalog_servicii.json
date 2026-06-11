@@ -100,7 +100,6 @@
     "zile_valabilitate": null
   },
   {
-<<<<<<< HEAD
     "id": 12,
     "nume": "Masaj terapeutic profund",
     "descriere": "Ideal pentru tensiuni cronice, dureri musculare și recuperare.",
@@ -135,8 +134,10 @@
     "nume": "Ritual corp complet",
     "descriere": "Exfoliere, învelire în nămol mineral și masaj - reset total.",
     "pret": 460,
-    "categorie": "spa",
-=======
+    "categorie": "spa"
+  }
+  ,
+  {
     "id": 2,
     "nume": "Abonament Sală 1 Lună",
     "descriere": "Acces nelimitat în zona de fitness cu aparatură premium.",
@@ -162,7 +163,6 @@
     "descriere": "Antrenament personalizat, urmat de masaj de recuperare musculară, acces complet facilități fitness și plan nutrițional personalizat inclus.",
     "pret": 300.00,
     "categorie": "combinat",
->>>>>>> feature/backend-Acasa
     "tip_achizitie": "programare",
     "durata_minute": 120,
     "zile_valabilitate": null
