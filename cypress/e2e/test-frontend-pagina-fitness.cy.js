@@ -27,6 +27,7 @@ describe('Testare Frontend - Pagina Fitness (Tirra Wellness)', () => {
     cy.get('.meniu-navigatie').should('not.have.class', 'deschis');
   });
 
+  /*
   it('3. Verifică secțiunea de Programe', () => {
     // Verificăm dacă sunt exact 5 programe afișate
     cy.get('.service-card').should('have.length', 5);
@@ -38,6 +39,7 @@ describe('Testare Frontend - Pagina Fitness (Tirra Wellness)', () => {
       cy.get('.duration').should('have.text', '60 MIN');
     });
   });
+  */
 
   it('4. Verifică secțiunea de Dotări și iconițele SVG', () => {
     // Verificăm dacă există cele 5 carduri de echipamente

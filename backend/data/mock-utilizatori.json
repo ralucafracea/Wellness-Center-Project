@@ -14,5 +14,61 @@
     "parola_criptata": "admin123",
     "telefon": "0700000000",
     "rol": "admin"
+  },
+  {
+    "id": 3,
+    "nume": "Andreea Test",
+    "email": "andreeamatamaria@yahoo.com",
+    "parola_criptata": "parola123",
+    "telefon": "0746538161",
+    "rol": "client"
+  },
+  {
+    "id": 4,
+    "nume": "Raluca Fracea",
+    "email": "raluca@test.ro",
+    "parola_criptata": "parolaSigura123",
+    "telefon": "0712345678",
+    "rol": "client"
+  },
+  {
+    "id": 5,
+    "nume": "Utilizator Test",
+    "email": "utilizator@test.ro",
+    "parola_criptata": "parolaSigura123",
+    "telefon": "0712345678",
+    "rol": "client"
+  },
+  {
+    "id": 6,
+    "nume": "Automatizare Backend",
+    "email": "api_test_1781174960496@tirra.ro",
+    "parola_criptata": "parolaAPI123",
+    "telefon": "0799999999",
+    "rol": "client"
+  },
+  {
+    "id": 7,
+    "nume": "Automatizare Backend",
+    "email": "api_test_1781174968579@tirra.ro",
+    "parola_criptata": "parolaAPI123",
+    "telefon": "0799999999",
+    "rol": "client"
+  },
+  {
+    "id": 8,
+    "nume": "Automatizare Backend",
+    "email": "api_test_1781176134375@tirra.ro",
+    "parola_criptata": "parolaAPI123",
+    "telefon": "0799999999",
+    "rol": "client"
+  },
+  {
+    "id": 9,
+    "nume": "Automatizare Backend",
+    "email": "api_test_1781176138368@tirra.ro",
+    "parola_criptata": "parolaAPI123",
+    "telefon": "0799999999",
+    "rol": "client"
   }
 ]

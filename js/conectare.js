@@ -1,3 +1,17 @@
+
+// ----------------- PROTECTIE: REDIRECTIONARE AUTOMATA DACA ESTE DEJA LOGAT -----------------
+
+const idSesiune = localStorage.getItem('id_utilizator');
+const rolSesiune = localStorage.getItem('rol_utilizator');
+
+if (idSesiune) { // daca gasim un id in memorie
+    if (rolSesiune === 'admin') {
+        window.location.href = 'admin.html'; 
+    } else {
+        window.location.href = 'contul-meu.html'; 
+    }
+}
+
 // ---------------------------- SELECTORI ELEMENTE ---------------------------------
 const boxLogin = document.getElementById('box-login');
 const boxRegister = document.getElementById('box-register');
@@ -10,6 +24,38 @@ const formInregistrare = document.getElementById('formular-inregistrare');
 // Expresii regulate (Reguli)
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
 const telefonRegex = /^0[0-9]{9}$/; // Începe cu 0 și are fix 10 cifre
+
+// ------------------------------ LOGICA PENTRU MODALUL DE EROARE ----------------------------
+const modalEroare = document.getElementById('eroare-modal');
+const textModalEroare = document.getElementById('mesaj-eroare-modal');
+const btnInchideModal = document.getElementById('inchide-eroare-modal');
+const btnOkEroare = document.getElementById('btn-ok-eroare');
+
+function afiseazaEroarePersonalizata(mesaj) {
+    textModalEroare.textContent = mesaj;
+    modalEroare.style.display = 'flex';
+}
+
+function ascundeModalEroare(e) {
+    e.preventDefault();
+    modalEroare.style.display = 'none';
+}
+
+if (btnInchideModal) btnInchideModal.addEventListener('click', ascundeModalEroare);
+if (btnOkEroare) btnOkEroare.addEventListener('click', ascundeModalEroare);
+
+// ---------------------------- LOGICA PENTRU MODALUL DE SUCCES -----------------------
+const modalSucces = document.getElementById('succes-modal');
+const textModalSucces = document.getElementById('mesaj-succes-modal');
+const btnOkSucces = document.getElementById('btn-ok-succes');
+
+// Funcția care deschide modalul de succes
+function afiseazaSuccesPersonalizat(mesaj) {
+    if(textModalSucces && modalSucces) {
+        textModalSucces.textContent = mesaj;
+        modalSucces.style.display = 'flex';
+    }
+}
 
 // ---------------------------- GOLIRE ERORI (PT BUTONUL BACK) -----------------------
 window.addEventListener('pageshow', () => {
@@ -123,17 +169,16 @@ formLogin.addEventListener('submit', async (e) => {  // async pentru backend
             localStorage.setItem('email_utilizator', date.utilizator.email);
             localStorage.setItem('rol_utilizator', date.utilizator.rol);
 
-            alert(date.message); // afisam mesaj de succes (o sa sterg asta dupa ce e totul ok)
+            //alert(date.message); // afisam mesaj de succes (o sa sterg asta dupa ce e totul ok)
             if (date.utilizator.rol === 'admin') {
-                // Dacă e șeful, merge pe pagina de admin
                 window.location.href = 'admin.html';
             } else {
-                // Dacă e client, merge pe pagina "Contul Meu"
                 window.location.href = 'contul-meu.html'; 
             }
         } else {
             // daca emailul sau parola au fost gresite
-            alert(date.message);
+            //alert(date.message);
+            afiseazaEroarePersonalizata(date.message);
         }
     } catch (eroare) {
         console.error('Eroare de rețea:', eroare);
@@ -218,20 +263,32 @@ formInregistrare.addEventListener('submit', async (e) => { // async pt backend
         const date = await raspuns.json();
 
         if (date.success) {
-            alert(date.message); // Cont creat cu succes!
+            // 1. În loc de alert() clasic, apelăm modalul tău premium
+            afiseazaSuccesPersonalizat(date.message);
             
-            // Trecem vizual pe panoul de Login
-            boxRegister.style.display = 'none';
-            boxLogin.style.display = 'block';
-            
-            // Golim casetele pentru a fi curate
-            inputNume.value = '';
-            inputTelefon.value = '';
-            inputEmail.value = '';
-            inputParola.value = '';
+            // 2. Când utilizatorul apasă pe butonul din modal, facem acțiunile de curățare și mutare
+            if (btnOkSucces) {
+                btnOkSucces.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Ascundem modalul
+                    modalSucces.style.display = 'none';
+                    
+                    // Trecem vizual pe panoul de Login
+                    boxRegister.style.display = 'none';
+                    boxLogin.style.display = 'block';
+                    
+                    // Golim casetele
+                    inputNume.value = '';
+                    inputTelefon.value = '';
+                    inputEmail.value = '';
+                    inputParola.value = '';
+                }, { once: true }); // { once: true } se asigură că evenimentul se rulează o singură dată curat
+            }
         } else {
             // Esec (de ex: Email deja folosit)
-            alert(date.message);
+            //alert(date.message);
+            afiseazaEroarePersonalizata(date.message);
         }
     } catch (eroare) {
         console.error('Eroare de rețea:', eroare);

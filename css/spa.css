@@ -20,9 +20,8 @@ body {
     font-family: var(--font-sans);
 }
 
-/* 1. Header */
 /* ==========================================================================
-   HEADER ȘI MENIU MOBIL (Clasele originale + logica corectată)
+   HEADER SI MENIU MOBIL 
    ========================================================================== */
 
 .main-header {
@@ -36,9 +35,9 @@ body {
     top: 0;        
     left: 0;        
     right: 0;
-    z-index: 1010; /* Ridicat peste meniu */
+    z-index: 1010; 
     box-sizing: border-box; 
-    height: 60px; /* Înălțime fixă pentru a potrivi meniul sub el */
+    height: 60px; 
 }
 
 /* Containerul logo-ului */
@@ -63,7 +62,7 @@ body {
     color: var(--color-bg); 
 }
 
-/* Cele 3 liniuțe */
+/* Cele 3 liniute */
 .hamburger-menu {
     background: transparent;
     border: none;
@@ -83,7 +82,7 @@ body {
     background-color: var(--color-bg);
 }
 
-/* Meniul de navigație ascuns */
+/* Meniul de navigatie ascuns */
 .mobile-nav {
     position: fixed; 
     top: 60px;
@@ -93,7 +92,7 @@ body {
     background-color: var(--color-bg); 
     z-index: 1000; 
     
-    display: none; /* Ascuns implicit */
+    display: none; 
     flex-direction: column;
     justify-content: center; 
     align-items: center;
@@ -102,7 +101,7 @@ body {
     box-sizing: border-box;
 }
 
-/* Clasa adăugată de JS pentru a-l deschide */
+/* Clasa adaugata de JS pentru a-l deschide */
 .mobile-nav.active {
     display: flex;
 }
@@ -131,26 +130,26 @@ body {
     color: #a87e84; 
 }
 
-/* Butonul X pentru închidere */
+/* Butonul X pentru inchidere */
 .buton-inchidere {
-    display: none; /* Îl ținem ascuns la început! */
+    display: none; 
     background: transparent;
     position: absolute;
     border: none;
-    top: 5px; /* Îl aliniem sus, ca să pice exact pe locul liniilor */
+    top: 5px;
     right: 20px;
-    font-size: 35px; /* Puțin mai mare ca să fie ușor de apăsat */
-    color: var(--color-bg); /* Crem, ca să se vadă perfect pe headerul vișiniu */
+    font-size: 35px;
+    color: var(--color-bg); 
     cursor: pointer;
     transition: 0.3s; 
-    z-index: 1015; /* Să fim siguri că stă deasupra tuturor */
+    z-index: 1015; 
 }
 
 .buton-inchidere:hover {
     transform: scale(1.1); 
 }
 
-/*2.Hero */
+/*2. Hero */
 .hero {
     background-image: 
         linear-gradient(rgba(244, 239, 234, 0.15), rgba(244, 239, 234, 0.15)),
@@ -181,7 +180,7 @@ body {
     font-size: 22px;
 }
 
-/* 3.Descriere spa */
+/* 3. Descriere spa */
 .philosophy {
     padding: 50px 20px;
 }
@@ -209,7 +208,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* 4.Tratamente si facilitati*/
+/* 4. Tratamente si facilitati*/
 .services {
     padding: 50px 45px;
 
@@ -351,7 +350,7 @@ body {
     line-height: 1.5;
 }
 
-/* 5.Ritualul tau */
+/* 5. Ritualul tau */
 .visit-steps {
     padding: 50px 20px;
 }
@@ -398,8 +397,47 @@ body {
 .btn-primary:hover {
     opacity: 0.85;
 }
+.inclus-tratament {
+    background-color: var(--color-primary); 
+    color: var(--color-bg);                 
+    padding: 60px 20px;                     
+    text-align: center;                  
+}
 
-/* 6.Carusel*/
+.inclus-tratament .alt-tag,
+.inclus-tratament .alt-title,
+.inclus-tratament .lista-inclus li {
+    color: var(--color-bg);
+}
+.lista-inclus {
+    list-style: none;
+    padding: 0;
+    margin: 30px auto 0; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+}
+
+.lista-inclus li {
+    position: relative;
+    padding-left: 25px; 
+    font-family: var(--font-sans); 
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--color-bg);
+}
+
+.lista-inclus li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 0; 
+    color: var(--color-bg);
+    font-size: 20px;
+}
+
+/* 6. Carusel*/
 .included-section {
     background-color: var(--color-primary);
     padding-top: 60px;
@@ -441,7 +479,7 @@ body {
     object-fit: cover; 
 }
 
-/* 7.Footer*/
+/* 7. Footer*/
 .main-footer {
     background-color: var(--color-primary);
     color: var(--color-bg);
@@ -512,7 +550,7 @@ body {
     opacity: 0.7; 
 }
 
-/* Iconițele de social media */
+/* Iconitele de social media */
 .social-icons {
     display: flex;
     justify-content: flex-start !important; 
@@ -540,13 +578,15 @@ body {
 }
 
 
-/* 8.Desktop version*/
+/*=================================================================
+    8.Desktop version
+ ==================================================================*/
 
 
     
 @media (min-width: 992px) {
     
-    /*HERO */
+    /* HERO */
     .hero {
         background-size: 110%; 
         background-position: 90% 28%; 
@@ -578,15 +618,12 @@ body {
     padding: 80px;
     background-color: #F4EFEA; 
     color: var(--color-primary);
-    
-    /* AICI E MAGIA: Le așezăm pe un rând */
     display: flex;
-    justify-content: space-between; /* Împinge cutiile în extreme */
-    align-items: flex-start; /* Le aliniază sus */
-    gap: 40px; /* Spațiu de siguranță între ele pe ecrane mai mici */
+    justify-content: space-between; 
+    align-items: flex-start; 
+    gap: 40px; 
 }
 
-/* Partea din stânga ocupă maxim 45% din lățime */
 .philosophy-left {
     flex: 1;
     max-width: 45%; 
@@ -601,14 +638,12 @@ body {
     text-transform: uppercase;
 }
 
-/* Titlul se aliniază la stânga acum */
 .section-title {
     font-size: 42px;
     margin: 0;
     line-height: 1.2;
 }
 
-/* Partea din dreapta ocupă restul de spațiu (50%) */
 .philosophy-right {
     flex: 1;
     max-width: 50%; 
@@ -664,12 +699,18 @@ body {
     }
 
     /*RITUALUL TAU*/
+
+    .inclus-tratament .section-tag,
+    .inclus-tratament .section-title {
+        color: var(--color-bg) !important; 
+    }
     .visit-steps { 
         padding: 80px;
         max-width: 800px;
         margin: 0 auto;
         background-color: #F4EFEA; 
         color: var(--color-primary);
+        
         text-align: center; 
     }
 
@@ -686,38 +727,35 @@ body {
 
     /*CARUSEL*/
     .inclus-tratament {
-        background-color: var(--color-primary); /* Fundalul vișiniu */
-        color: var(--color-bg); /* Textul crem */
+        background-color: var(--color-primary);
+        color: var(--color-bg); 
         padding: 80px 20px 40px 20px; 
     }
 
     .included-content {
-        text-align: center; /* Centram titlurile pe mijloc */
+        text-align: center;
         max-width: 800px;
-        margin: 0 auto; /* Asigură centrarea cutiei pe ecrane mari */
+        margin: 0 auto;
     }
 
-    /* 2. Lista împărțită pe 2 coloane */
     .lista-inclus {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Creează exact 2 coloane egale */
-        gap: 15px 40px; /* Spațiu între rânduri și coloane */
-        max-width: 600px; /* Nu lăsăm lista să se întindă prea mult */
-        margin: 40px auto 0 auto; /* O așezăm fix pe centrul ecranului */
-        text-align: left; /* Punctele listei rămân aliniate curat la stânga */
+        grid-template-columns: 1fr 1fr; 
+        gap: 15px 40px;
+        max-width: 600px;
+        margin: 40px auto 0 auto;
+        text-align: left; 
         font-size: 16px;
-        list-style-position: inside; /* Aduce punctele mai aproape de scris */
+        list-style-position: inside; 
     }
 
-    /* 3. Secțiunea care ține caruselul */
     .carusel-poze {
-        background-color: var(--color-primary); /* Continuă fundalul vișiniu */
-        padding-bottom: 80px; /* Spațiu sub poze */
+        background-color: var(--color-primary); 
+        padding-bottom: 80px; 
     }
 
-    /* 4. Pozele caruselului (Păstrăm înălțimea setată de tine) */
     #spaCarousel {
-        width: 100%; /* Ocupă tot spațiul disponibil acum, nu doar jumătate */
+        width: 100%;
     }
 
     .carousel-item img {
@@ -727,10 +765,9 @@ body {
         object-position: center; 
     }
 
-    /* 5. Linia despărțitoare de deasupra footer-ului */
     .delimitator-footer {
         border: none;
-        border-top: 1px solid rgba(244, 239, 234, 0.3); /* O linie crem ușor transparentă */
+        border-top: 1px solid rgba(244, 239, 234, 0.3);
         margin: 0;
         width: 100%;
     }
@@ -738,7 +775,7 @@ body {
     /*FOOTER*/
     .main-footer {
         border-top: 1px solid rgba(244, 239, 234, 0.3);
-        padding-top: 50px; /* Împinge textul în jos, departe de linia de sus */
+        padding-top: 50px; 
     }
 
     .footer-content {
@@ -799,18 +836,15 @@ body {
     .mobile-nav {
         display: flex; 
         position: fixed; 
-        top: 60px; /* Sau cât e înălțimea header-ului tău */
+        top: 60px;
         right: 0;
         left: auto; 
         width: 350px; 
         bottom:0;
-        height: auto; /* Până jos de tot */
-        background-color: var(--color-bg); 
+        height: auto;
+        background-color: var(--color-primary); 
         flex-direction: column;
-        
-        /* AICI E SCHIMBAREA: Am șters padding-ul ca să nu mai lase spațiu mort sus și jos */
         padding: 0 !important; 
-        
         z-index: 9999;
         transform: translateX(100%); 
         transition: transform 0.4s ease-in-out; 
@@ -828,17 +862,15 @@ body {
         display: block !important; 
     }
 
-    /* 2. Asigurăm elementele listei să fie blocuri simple */
     .mobile-nav li {
         width: 100%;
         display: block !important;
         height: auto !important; 
     }
 
-    /* 3. AICI SCHIMBĂM: Padding-ul mai mic și fără height forțat */
     .mobile-nav a {
         display: block !important;
-        color: var(--color-primary) !important; 
+        color: var(--color-bg) !important; 
         font-family: var(--font-sans);
         font-size: 15px;
         padding: 15px 0 !important; 
@@ -912,10 +944,10 @@ body {
         max-height: none !important; 
         display: flex !important;
         flex-direction: column !important;
-        justify-content: flex-end !important; /* Împinge jos */
-        align-items: flex-start !important; /* Ține în stânga */
-        padding-bottom: 80px !important; /* Spațiu sub text */
-        padding-left: 80px !important; /* Spațiu în stânga textului */
+        justify-content: flex-end !important; 
+        align-items: flex-start !important; 
+        padding-bottom: 80px !important; 
+        padding-left: 80px !important;
     }
 
     .contact-hero .hero-content {
@@ -925,11 +957,10 @@ body {
         transform: none !important;
         margin: 0 !important;
         padding: 0 !important;
-        height: auto !important; /* Nu o lăsa să ocupe tot ecranul, altfel nu poate coborî */
-        display: block !important; /* Taie orice flexbox intern care ținea textul pe centru */
+        height: auto !important; 
+        display: block !important; 
     }
 
-    /* Containerul care taie ecranul în două (Stânga - Dreapta) */
     .contact-grid {
         display: flex !important;
         flex-direction: row !important; 
@@ -963,7 +994,6 @@ body {
         margin-bottom: 10px !important;
     }
 
-    /* Subtitlul ("Suntem aici pentru tine") */
     .contact-hero .hero-subtitle,
     .contact-hero .hero-content p {
         font-family: 'Montserrat', sans-serif !important; 
@@ -978,7 +1008,7 @@ body {
 
 
 /* ==========================================================================
-   PAGINA DE REZERVĂRI & MODAL PLATĂ
+   PAGINA DE REZERVARI SI MODAL PLATA
    ========================================================================== */
 .rezervari-page-content {
     padding-top: 120px;
@@ -1094,18 +1124,17 @@ body {
     border: 2px solid var(--color-primary) !important;
 }
 
-/* Pop-up Mărimi Modal Plată  */
 .modal-overlay {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    background-color: rgba(0, 0, 0, 0.7) !important; /* Fundalul negru transparent */
-    display: none; /* Aici NU punem !important ca să poată JS-ul să-l modifice */
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    display: none;
     justify-content: center !important;
     align-items: center !important;
-    z-index: 999999 !important; /* Îl aruncăm deasupra a absolut orice */
+    z-index: 999999 !important;
     box-sizing: border-box;
 }
 
@@ -1251,7 +1280,6 @@ body {
     margin-bottom: 5px;
 }
 
-/* Stilul pentru textul permanent de sus */
 .form-group label {
     font-family: var(--font-sans) !important;
     font-size: 11px !important;              
