@@ -4,6 +4,7 @@
 const idSesiune = localStorage.getItem('id_utilizator');
 const rolSesiune = localStorage.getItem('rol_utilizator');
 
+
 if (idSesiune) { // daca gasim un id in memorie
     if (rolSesiune === 'admin') {
         window.location.href = 'admin.html'; 
@@ -168,6 +169,7 @@ formLogin.addEventListener('submit', async (e) => {  // async pentru backend
             localStorage.setItem('nume_utilizator', date.utilizator.nume);
             localStorage.setItem('email_utilizator', date.utilizator.email);
             localStorage.setItem('rol_utilizator', date.utilizator.rol);
+            localStorage.setItem('telefon_utilizator', date.utilizator.telefon);
 
             //alert(date.message); // afisam mesaj de succes (o sa sterg asta dupa ce e totul ok)
             if (date.utilizator.rol === 'admin') {

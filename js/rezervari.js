@@ -1,7 +1,28 @@
+(function verificaLogareInstantan() {
+    const numeClient = localStorage.getItem('nume_utilizator');
+    const emailClient = localStorage.getItem('email_utilizator');
+    const telefonClient = localStorage.getItem('telefon_utilizator');
+
+    console.log("🕵️ Detectat în LocalStorage:", numeClient, emailClient);
+
+    if (numeClient && emailClient) {
+        setTimeout(() => {
+            const inputNume = document.getElementById('contact-name');
+            const inputEmail = document.getElementById('contact-email');
+            const inputTelefon = document.getElementById('contact-telefon');
+
+            if (inputNume) inputNume.value = numeClient;
+            if (inputEmail) inputEmail.value = emailClient;
+            if (inputTelefon && telefonClient) inputTelefon.value = telefonClient;
+            
+            console.log("🎯 Autofill realizat cu succes!");
+        }, 100);
+    }
+})();
 document.addEventListener('DOMContentLoaded', function() {
 
 // ==========================================================================
-// A. AUTO-COMPLETARE FORMULAR DACA UTILIZATORUL ESTE LOGAT
+// AUTO-COMPLETARE FORMULAR DACA UTILIZATORUL ESTE LOGAT
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
     const numeClient = localStorage.getItem('nume_utilizator');
@@ -12,8 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('contact-name').value = numeClient;
         document.getElementById('contact-email').value = emailClient;
         
-        if (telefonClient) {
+        if (telefonClient && telefonClient !== 'undefined' && telefonClient !== 'null') {
             document.getElementById('contact-telefon').value = telefonClient;
+        } else {
+            document.getElementById('contact-telefon').value = ''; 
         }
     }
 });
