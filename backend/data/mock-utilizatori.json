@@ -86,5 +86,13 @@
     "parola_criptata": "parolaAPI123",
     "telefon": "0799999999",
     "rol": "client"
+  },
+  {
+    "id": 12,
+    "nume": "Automatizare Backend",
+    "email": "api_test_1781190322200@tirra.ro",
+    "parola_criptata": "parolaAPI123",
+    "telefon": "0799999999",
+    "rol": "client"
   }
 ]
