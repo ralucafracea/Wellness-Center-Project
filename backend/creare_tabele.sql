@@ -37,7 +37,7 @@ CREATE TABLE abonamente_clienti (
     id_utilizator INT NOT NULL,
     id_serviciu INT NOT NULL,
     data_inceput DATE NOT NULL,
-    data_sfarsabonamente_clientiit DATE NOT NULL,
+    data_sfarsit DATE NOT NULL,
     status ENUM('activ', 'expirat') DEFAULT 'activ',
     FOREIGN KEY (id_utilizator) REFERENCES utilizatori(id) ON DELETE CASCADE,
     FOREIGN KEY (id_serviciu) REFERENCES catalog_servicii(id) ON DELETE RESTRICT
