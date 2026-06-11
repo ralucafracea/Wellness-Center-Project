@@ -19,134 +19,25 @@
     "durata_minute": null,
     "zile_valabilitate": 30
   },
+
   {
     "id": 3,
-    "nume": "TIRRA ELITE",
-    "descriere": "Toate beneficiile incluse în pachetul Vitality.\n2 ședințe lunare cu antrenor personal.\n1 masaj terapeutic sau de relaxare (60 min) inclus lunar.",
-    "pret": 700,
-    "categorie": "fitness",
-    "tip_achizitie": "abonament",
-    "durata_minute": null,
-    "zile_valabilitate": 30
-  },
-  {
-    "id": 5,
-    "nume": "Personal Training 1-on-1",
-    "descriere": "Antrenament construit pe obiectivele tale, cu un coach dedicat.",
-    "pret": 180,
-    "categorie": "fitness",
+    "nume": "Ritual de Relaxare",
+    "descriere": "Masaj terapeutic la alegere, urmat de acces nelimitat în zonele spa și fitness, terapie prin arome și halat spa inclus.",
+    "pret": 350.00,
+    "categorie": "combinat",
     "tip_achizitie": "programare",
-    "durata_minute": 60,
+    "durata_minute": 90,
     "zile_valabilitate": null
   },
   {
-    "id": 6,
-    "nume": "Small Group Training",
-    "descriere": "Maxim 4 persoane. Intensitate înaltă, atenție personalizată.",
-    "pret": 90,
-    "categorie": "fitness",
-    "tip_achizitie": "programare",
-    "durata_minute": 60,
-    "zile_valabilitate": null
-  },
-  {
-    "id": 7,
-    "nume": "Strength & Conditioning",
-    "descriere": "Forță, mobilitate și putere — bazat pe principii științifice.",
-    "pret": 120,
-    "categorie": "fitness",
-    "tip_achizitie": "programare",
-    "durata_minute": 75,
-    "zile_valabilitate": null
-  },
-  {
-    "id": 8,
-    "nume": "Recovery & Mobility",
-    "descriere": "Stretching ghidat, foam rolling și tehnici de recuperare activă.",
-    "pret": 100,
-    "categorie": "fitness",
-    "tip_achizitie": "programare",
-    "durata_minute": 45,
-    "zile_valabilitate": null
-  },
-  {
-    "id": 9,
-    "nume": "HIIT Express",
-    "descriere": "Sesiune intensă de cardio pentru rezultate rapide.",
-    "pret": 70,
-    "categorie": "fitness",
-    "tip_achizitie": "programare",
-    "durata_minute": 30,
-    "zile_valabilitate": null
-  },
-  {
-    "id": 10,
-    "nume": "Yoga & Pilates",
-    "descriere": "Echilibru între forță, flexibilitate și respirație conștientă.",
-    "pret": 85,
-    "categorie": "fitness",
-    "tip_achizitie": "programare",
-    "durata_minute": 60,
-    "zile_valabilitate": null
-  },
-  {
-    "id": 11,
-    "nume": "Masaj suedez de relaxare",
-    "descriere": "Manevre lente, presiune medie, pentru detensionare completă a corpului.",
-    "pret": 220,
-    "categorie": "spa",
-    "tip_achizitie": "programare",
-    "durata_minute": 60,
-    "zile_valabilitate": null
-  },
-  {
-    "id": 12,
-    "nume": "Masaj terapeutic profund",
-    "descriere": "Ideal pentru tensiuni cronice, dureri musculare și recuperare.",
-    "pret": 270,
-    "categorie": "spa",
-    "tip_achizitie": "programare",
-    "durata_minute": 75,
-    "zile_valabilitate": null
-  },
-  {
-    "id": 13,
-    "nume": "Masaj cu pietre vulcanice",
-    "descriere": "Căldura pietrelor lavice topește tensiunea și echilibrează energia.",
-    "pret": 300,
-    "categorie": "spa",
-    "tip_achizitie": "programare",
-    "durata_minute": 75,
-    "zile_valabilitate": null
-  },
-  {
-    "id": 14,
-    "nume": "Aromaterapie senzorială",
-    "descriere": "Uleiuri esențiale alese după nevoile tale, într-un ritual olfactiv unic.",
-    "pret": 260,
-    "categorie": "spa",
-    "tip_achizitie": "programare",
-    "durata_minute": 60,
-    "zile_valabilitate": null
-  },
-  {
-    "id": 15,
-    "nume": "Ritual corp complet",
-    "descriere": "Exfoliere, învelire în nămol mineral și masaj - reset total.",
-    "pret": 460,
-    "categorie": "spa",
+    "id": 4,
+    "nume": "Pachet Vitalitate",
+    "descriere": "Antrenament personalizat, urmat de masaj de recuperare musculară, acces complet facilități fitness și plan nutrițional personalizat inclus.",
+    "pret": 300.00,
+    "categorie": "combinat",
     "tip_achizitie": "programare",
     "durata_minute": 120,
     "zile_valabilitate": null
-  },
-  {
-    "nume": "test ralu",
-    "descriere": "nam",
-    "pret": 123,
-    "categorie": "spa",
-    "tip_achizitie": "programare",
-    "durata_minute": 123,
-    "zile_valabilitate": null,
-    "id": 16
   }
 ]
