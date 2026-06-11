@@ -143,3 +143,82 @@ body {
     outline: 1px solid #b32d2d !important; 
     /* important ca sa se faca rosie si nu visinie in cazul in care cursorul este pe input (visiniu) */
 }
+
+
+/* ---------------STILIZARE MODAL (Inspirat de la pagina rezervari) -------------------------------*/
+
+/* Fundalul intunecat care acopera pagina */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Cardul alb din centru */
+.modal-content-card {
+    background-color: var(--color-bg); 
+    padding: 50px 40px; /* Am marit padding-ul vertical ca să fie mai înalt */
+    border-radius: 20px; /* Colturi mult mai rotunjite, ca la Raluca */
+    width: 90%;
+    max-width: 380px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeScale 0.3s ease; 
+}
+
+/* Animatia */
+@keyframes fadeScale {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal-title {
+    font-family: var(--font-serif);
+    font-size: 34px; /* Text mai mare */
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.modal-desc {
+    font-family: var(--font-sans);
+    font-size: 16px; /* Text mai mare */
+    line-height: 1.5;
+    color: var(--color-primary);
+}
+
+/* Butonul X din colt */
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: transparent;
+    border: none;
+    font-size: 30px; /* X mai vizibil */
+    font-weight: 200;
+    cursor: pointer;
+    color: var(--color-primary);
+    transition: 0.3s;
+}
+
+.close-modal:hover {
+    opacity: 0.6;
+}
+
+/* Suprascriem designul butonului DOAR pentru acest modal */
+#btn-ok-eroare {
+    font-family: var(--font-serif) !important; /* Același font ca la titlu */
+    font-size: 18px !important;
+    font-weight: 400;
+    border-radius: 50px !important; /* Forma de pastilă (pill) */
+    padding: 20px 20px;
+    margin-top: 10px;
+}

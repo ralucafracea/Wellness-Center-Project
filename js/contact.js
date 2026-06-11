@@ -6,18 +6,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if(hamburger && mobileNav && closeBtn) {
         hamburger.addEventListener('click', function() {
-            mobileNav.classList.add('active'); // Deschidem meniul
-            hamburger.style.display = 'none';  // Ascundem liniutele
-            closeBtn.style.display = 'block';  // Afisam X-ul
+            mobileNav.classList.add('active'); 
+            hamburger.style.display = 'none'; 
+            closeBtn.style.display = 'block';  
         });
     }
 
-    // 2. Cand apesi pe X
     if(closeBtn && mobileNav && hamburger) {
         closeBtn.addEventListener('click', function() {
-            mobileNav.classList.remove('active'); // Ascundem meniul
-            closeBtn.style.display = 'none';      // Ascundem X-ul
-            hamburger.style.display = 'flex';     // Aducem liniutele inapoi
+            mobileNav.classList.remove('active'); 
+            closeBtn.style.display = 'none';     
+            hamburger.style.display = 'flex';     
         });
     }
 
@@ -28,11 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeContactModalBtn = document.getElementById('close-contact-modal-btn');
     const btnInchideContact = document.getElementById('btn-inchide-contact');
 
-    // 2. Logica la trimiterea formularului (Cand se apasa butonul)
+    //Logica la trimiterea formularului
     if (contactForm) {
         contactForm.addEventListener('submit', async (e) => {
             
-            // MAGIA CARE OPRESTE REFRESH-UL PAGINII:
             e.preventDefault(); 
 
             // Validarea de email
@@ -41,14 +39,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!emailRegex.test(inputEmail.value.trim())) {
                     textEroare.style.display = 'block';
                     inputEmail.classList.add('input-eroare');
-                    return; // Ne oprim aici dacă emailul nu e valid
+                    return;
                 } else {
                     textEroare.style.display = 'none';
                     inputEmail.classList.remove('input-eroare');
                 }
             }
 
-            // Extragem datele cu ID-urile corecte din HTML-ul tău
+            // Extragem datele cu ID-urile corecte din HTML-ul tau
             const dateTrimise = {
                 nume: document.getElementById('contact-name').value,
                 email: document.getElementById('contact-email').value,
@@ -68,12 +66,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (response.ok) {
                     console.log("Mesaj salvat în mock-contact.json!");
                     
-                    // Afisam pop-up-ul și GATA (nu se va mai inchide singur)
                     if (contactModal) {
                         contactModal.style.display = 'flex';
                     }
                     
-                    // Optional: golim campurile formularului
                     contactForm.reset(); 
                 } else {
                     alert("Serverul a răspuns cu eroare.");
@@ -85,12 +81,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 4. Logica pentru inchiderea modalului (Butonul X si butonul "Inapoi la site")
+    // Logica pentru inchiderea modalului 
     if (contactModal) {
         if (closeContactModalBtn) {
             closeContactModalBtn.addEventListener('click', () => {
                 contactModal.style.display = 'none';
-                contactForm.reset(); // Resetează campurile dupa trimitere cu succes
+                contactForm.reset(); 
             });
         }
         if (btnInchideContact) {
