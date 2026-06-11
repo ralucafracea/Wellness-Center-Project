@@ -30,16 +30,6 @@
     "zile_valabilitate": 30
   },
   {
-    "id": 4,
-    "nume": "Abonament test",
-    "descriere": "descriere",
-    "pret": 999,
-    "categorie": "fitness",
-    "tip_achizitie": "abonament",
-    "durata_minute": null,
-    "zile_valabilitate": 30
-  },
-  {
     "id": 5,
     "nume": "Personal Training 1-on-1",
     "descriere": "Antrenament construit pe obiectivele tale, cu un coach dedicat.",
@@ -148,5 +138,15 @@
     "tip_achizitie": "programare",
     "durata_minute": 120,
     "zile_valabilitate": null
+  },
+  {
+    "nume": "test ralu",
+    "descriere": "nam",
+    "pret": 123,
+    "categorie": "spa",
+    "tip_achizitie": "programare",
+    "durata_minute": 123,
+    "zile_valabilitate": null,
+    "id": 16
   }
 ]
