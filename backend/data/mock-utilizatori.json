@@ -14,5 +14,13 @@
     "parola_criptata": "admin123",
     "telefon": "0700000000",
     "rol": "admin"
+  },
+  {
+    "id": 3,
+    "nume": "Teo Tester",
+    "email": "test_nou@tirra.ro",
+    "parola_criptata": "098765",
+    "telefon": "0989898987",
+    "rol": "client"
   }
 ]
