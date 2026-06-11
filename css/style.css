@@ -654,8 +654,6 @@ html {
     opacity: 0.8;
 }
 
-<<<<<<< HEAD
-=======
 /* ------------------------------- MEDIA QUERIES - DESKTOP ---------------------------------- */
 
 @media (min-width: 1024px) {
@@ -935,4 +933,3 @@ html {
         text-align: center; /* Doar copyright-ul trebuie să rămână pe mijloc */
     }
 }
->>>>>>> fd4f86332aeb35940c44dd145f8b4d1e205cf2b6

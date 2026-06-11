@@ -78,7 +78,6 @@ app.post('/api/register', (req, res) => {
     }
 });
 
-<<<<<<< HEAD
 // --------------------------- RUTE PENTRU PAGINA PRINCIPALA (ACASA) --------------------------------
 const catalogFilePath = path.join(__dirname, 'data', 'mock-catalog_servicii.json');
 // RUTA GET: Aducem doar pachetele din categoria "combinat"
@@ -93,7 +92,8 @@ app.get('/api/pachete-combinate', (req, res) => {
         res.json({ success: true, pachete: pacheteCombinate });
     } catch (eroare) {
         console.error("EROARE LA CITIREA PACHETELOR:", eroare);
-=======
+        }
+    });
 // --------------------------- RUTE PENTRU "CONTUL MEU" --------------------------------------------
 
 
@@ -135,7 +135,6 @@ app.get('/api/programari-client/:id', (req, res) => {
 
     } catch (eroare) {
         console.error("EROARE LA CITIREA PROGRAMARILOR:", eroare);
->>>>>>> fd4f86332aeb35940c44dd145f8b4d1e205cf2b6
         res.status(500).json({ success: false, message: 'Eroare internă a serverului.' });
     }
 });
