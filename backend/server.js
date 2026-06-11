@@ -105,20 +105,32 @@ app.get('/api/servicii', (req, res) => {
 });
 
 // ==========================================================================
-// RUTA POST: Preluare mesaje contact
+// RUTA POST: Preluare mesaje contact 
 // ==========================================================================
 app.post('/api/contact', (req, res) => {
-    const mesajNou = req.body;
+    const dateClient = req.body;
     
     try {
         const mesaje = fs.existsSync(caleMesaje) ? JSON.parse(fs.readFileSync(caleMesaje)) : [];
         
-        mesajNou.id = mesaje.length > 0 ? mesaje[mesaje.length - 1].id + 1 : 1;
+        const noulId = mesaje.length > 0 ? mesaje[mesaje.length - 1].id + 1 : 1;
+
+        let dataBaza = dateClient.data_trimitere ? new Date(dateClient.data_trimitere) : new Date();
+        let dataFormatata = dataBaza.toISOString().split('T')[0];
+
+        const mesajStructuraCorecta = {
+            id: noulId,
+            nume_expeditor: dateClient.nume || dateClient.nume_expeditor, 
+            email: dateClient.email,
+            subiect: dateClient.subiect,
+            mesaj: dateClient.mesaj,
+            data_trimitere: dataFormatata
+        };
         
-        mesaje.push(mesajNou);
+        mesaje.push(mesajStructuraCorecta);
         fs.writeFileSync(caleMesaje, JSON.stringify(mesaje, null, 2));
         
-        res.status(200).json({ message: "Mesaj salvat cu succes în JSON!" });
+        res.status(200).json({ message: "Mesaj contact salvat cu succes pe structura corectă!" });
     } catch (error) {
         console.error(" Eroare la salvarea mesajului de contact:", error);
         res.status(500).json({ error: "Eroare la scrierea în fișier." });
