@@ -17,10 +17,10 @@
   },
   {
     "id": 3,
-    "nume_expeditor": "Utilizator E2E",
-    "email": "test.automat@tirra.ro",
-    "subiect": "Testare Integrare Cypress",
-    "mesaj": "Verificăm dacă fetch-ul trimite datele corect în JSON.",
+    "nume_expeditor": "Client Test",
+    "email": "client@email.com",
+    "subiect": "Întrebare despre rezervări",
+    "mesaj": "Bună ziua, aș dori să aflu mai multe detalii despre pachetele SPA.",
     "data_trimitere": "2026-06-11"
   },
   {
@@ -33,38 +33,6 @@
   },
   {
     "id": 5,
-    "nume_expeditor": "Client Test",
-    "email": "client@email.com",
-    "subiect": "Întrebare despre rezervări",
-    "mesaj": "Bună ziua, aș dori să aflu mai multe detalii despre pachetele SPA.",
-    "data_trimitere": "2026-06-11"
-  },
-  {
-    "id": 6,
-    "nume_expeditor": "Utilizator E2E",
-    "email": "test.automat@tirra.ro",
-    "subiect": "Testare Integrare Cypress",
-    "mesaj": "Verificăm dacă fetch-ul trimite datele corect în JSON.",
-    "data_trimitere": "2026-06-11"
-  },
-  {
-    "id": 7,
-    "nume_expeditor": "Utilizator E2E",
-    "email": "test.automat@tirra.ro",
-    "subiect": "Testare Integrare Cypress",
-    "mesaj": "Verificăm dacă fetch-ul trimite datele corect în JSON.",
-    "data_trimitere": "2026-06-11"
-  },
-  {
-    "id": 8,
-    "nume_expeditor": "Utilizator E2E",
-    "email": "test.automat@tirra.ro",
-    "subiect": "Testare Integrare Cypress",
-    "mesaj": "Verificăm dacă fetch-ul trimite datele corect în JSON.",
-    "data_trimitere": "2026-06-11"
-  },
-  {
-    "id": 9,
     "nume_expeditor": "Utilizator E2E",
     "email": "test.automat@tirra.ro",
     "subiect": "Testare Integrare Cypress",

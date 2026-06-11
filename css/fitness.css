@@ -679,6 +679,7 @@ html {
         z-index: 9999; 
     }
     
+    /* --- Fundalul meniului glisant devine vișiniu --- */
     .mobile-nav {
         display: flex; 
         position: fixed; 
@@ -688,7 +689,7 @@ html {
         width: 350px; 
         bottom: 0;
         height: auto; 
-        background-color: var(--color-bg); 
+        background-color: var(--color-primary); /* AICI s-a schimbat în vișiniu */
         flex-direction: column;
         padding: 0 !important; 
         z-index: 9999;
@@ -705,30 +706,30 @@ html {
         width: 100%;
     }
 
-    /* Am lăsat marginile originale de pe mobil pentru a obține efectul tău de "center bottom" */
     .mobile-nav li {
         width: 100%;
         display: block !important;
         height: auto !important; 
     }
 
-    /* Setări exacte din spa.css (Font mai mare la 15px, padding redus pentru a sta pe linie) */
+    /* --- Textul și liniile despărțitoare devin crem/deschise --- */
     .mobile-nav a {
         display: block !important;
-        color: var(--color-primary) !important; 
+        color: var(--color-bg) !important; /* Textul devine crem deschis */
         font-family: var(--font-sans);
         font-size: 15px; 
         padding: 15px 0 !important; 
         text-align: center;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+        /* Liniuța devine un alb-crem subtil și transparent */
+        border-bottom: 1px solid rgba(244, 239, 234, 0.15) !important; 
         height: auto !important;
         line-height: 1.2 !important;
         transition: color 0.3s;
     }
 
-    /* Eliminăm fundalul gri închis și păstrăm doar schimbarea culorii textului la hover */
+    /* Efectul la trecerea cu mouse-ul peste link-uri */
     .mobile-nav a:hover {
-        background-color: transparent !important;  
+        background-color: transparent !important; 
     }
 
     .mobile-nav li:last-child a {

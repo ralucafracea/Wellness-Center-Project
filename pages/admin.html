@@ -8,7 +8,10 @@
 <body style="padding: 30px;">
 
     <h1>Panou Administrare</h1>
-    <a href="../index.html" class="btn btn-secondary mb-4">Înapoi la Site</a>
+    <div class="d-flex gap-2 mb-4">
+        <a href="../index.html" class="btn btn-secondary">Înapoi la Site</a>
+        <button id="btn-deconectare-admin" class="btn btn-danger">Deconectare</button>
+    </div>
 
     <hr>
 
@@ -28,6 +31,7 @@
         <select id="categorie" class="form-control mb-2" required>
             <option value="spa">Spa & Wellness</option>
             <option value="fitness">Fitness</option>
+            <option value="combinat">Spa și Fitness - combinate</option>
         </select>
 
         <label>Tip Achiziție:</label>
@@ -143,6 +147,11 @@
                 }
             }
         }
+        // 4. FUNCȚIA DE DECONECTARE (Șterge sesiunea și trimite la login)
+        document.getElementById('btn-deconectare-admin').addEventListener('click', () => {
+            localStorage.clear(); // Golește memoria browserului (îl "uită" pe Admin)
+            window.location.href = 'conectare.html'; // Te aruncă pe pagina de login
+        });
     </script>
 </body>
 </html>
