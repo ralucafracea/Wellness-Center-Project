@@ -3,7 +3,7 @@
     const emailClient = localStorage.getItem('email_utilizator');
     const telefonClient = localStorage.getItem('telefon_utilizator');
 
-    console.log("🕵️ Detectat în LocalStorage:", numeClient, emailClient);
+    console.log(" Detectat în LocalStorage:", numeClient, emailClient);
 
     if (numeClient && emailClient) {
         setTimeout(() => {
@@ -188,8 +188,8 @@ document.addEventListener('DOMContentLoaded', () => {
         rezervariForm.addEventListener('submit', async (e) => {
             e.preventDefault(); 
             
-            // PAZNICUL DE LOGARE
-            if (!localStorage.getItem('userLogat')) {
+            //Paznicul de logare
+            if (!localStorage.getItem('email_utilizator')) {
                 const loginModal = document.getElementById('login-modal');
                 if (loginModal) loginModal.style.display = 'flex';
                 return; 
