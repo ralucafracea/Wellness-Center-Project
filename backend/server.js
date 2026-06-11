@@ -34,7 +34,8 @@ app.post('/api/login', (req, res) => {
                     id: gasit.id, 
                     nume: gasit.nume, 
                     email: gasit.email,
-                    rol: gasit.rol 
+                    rol: gasit.rol,
+                    telefon: gasit.telefon 
                 } 
             });
         } else {
