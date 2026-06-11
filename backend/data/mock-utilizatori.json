@@ -73,10 +73,10 @@
   },
   {
     "id": 10,
-    "nume": "Puia Teodora",
-    "email": "puiateodora2005@gmail.com",
-    "parola_criptata": "$2b$10$QQnlpbsH83rG4AUsQylCU.ugUfuUeG5JKaswiONLrJFfMoEhm0wtC",
-    "telefon": "0751851869",
+    "nume": "Automatizare Backend",
+    "email": "api_test_1781214205053@tirra.ro",
+    "parola_criptata": "$2b$10$drogpbA.V7yQ8G4W3Jvc8eZEpGfhRyUyQO4pY2SoNS/knXiCROQBG",
+    "telefon": "0799999999",
     "rol": "client"
   }
 ]
