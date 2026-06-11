@@ -6,21 +6,5 @@
     "subiect": "Întrebare programare",
     "mesaj": "Bună ziua, ce produse folosiți pentru tratamentul facial?",
     "data_trimitere": "2026-06-10"
-  },
-  {
-    "nume": "Raluca",
-    "email": "raluca@test.ro",
-    "subiect": "parcare",
-    "mesaj": "unde gasesc cea mai apropiata parcare?",
-    "data_trimitere": "2026-06-11T08:30:43.158Z",
-    "id": 2
-  },
-  {
-    "id": 3,
-    "nume_expeditor": "ralu",
-    "email": "email@gmail.com",
-    "subiect": "parcare",
-    "mesaj": "ce faci?",
-    "data_trimitere": "2026-06-11"
   }
 ]
