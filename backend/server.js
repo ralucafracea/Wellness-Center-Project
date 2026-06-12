@@ -4,25 +4,23 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt'); //pt criptare parole
 
-// --- CODUL BAZA DE DATE ---
+// baze de date:
 require('dotenv').config(); 
 const mysql = require('mysql2/promise'); 
 
-// --- VERIFICARE PENTRU NOI IN CONSOLA ---
-console.log("=== DATE CITITE DE NODE.JS ===");
+// verificare in consola ca nu mai putem:
+console.log("DATE CITITE DE NODE.JS");
 console.log("Host:", process.env.DB_HOST);
-console.log("Port DB:", process.env.DB_PORT); // Pun pariu că aici va scrie 'undefined'
-console.log("==============================");
+console.log("Port DB:", process.env.DB_PORT); 
 
-// Creăm conexiunea
 const db = mysql.createPool({
     host: process.env.DB_HOST,
-    port: process.env.DB_PORT || 27852, // NOU: Dacă din greșeală e undefined, forțează 27852!
+    port: process.env.DB_PORT || 27852,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     ssl: {
-        rejectUnauthorized: false // Pentru cloud (Aiven)
+        rejectUnauthorized: false 
     },
     waitForConnections: true,
     connectionLimit: 10,
@@ -35,7 +33,7 @@ app.use(express.json());
 
 
 // ==============================================================================================================================
-// 1. RUTELE LUI TEO — Autentificare & Contul Meu
+// RUTE TEO — Autentificare & Contul Meu
 // ==============================================================================================================================
 
 // am comentat rutele vechi catre fisiere json pentru a le pastra in caz de nevoie
@@ -108,26 +106,22 @@ app.post('/api/register', async(req, res) => {
 });
 
 // --------------------------- RUTE PENTRU PAGINA PRINCIPALA (ACASA) --------------------------------
-// RUTA GET: Aducem doar pachetele din categoria "combinat"
 app.get('/api/pachete-combinate', async (req, res) => {
     try {
-        // extragem pachetele direct cu filtru din mysql
+        // extragem pachetele cu filtru din mysql
         const [pacheteCombinate] = await db.query('SELECT * FROM catalog_servicii WHERE categorie = ?', ['combinat']);
 
         res.json({ success: true, pachete: pacheteCombinate });
     } catch (eroare) {
         console.error("EROARE LA CITIREA PACHETELOR:", eroare);
-        // adaugat return de eroare pentru siguranta
         res.status(500).json({ success: false, message: 'Eroare la extragerea pachetelor din baza de date.' });
     }
 });
 
-// --------------------------- RUTE PENTRU "CONTUL MEU" --------------------------------------------
+// ------------------------------ RUTE PENTRU "CONTUL MEU" --------------------------------------------
 app.get('/api/programari-client/:id', async (req, res) => {
     try {
         const idClient = parseInt(req.params.id); 
-        
-        // facem un join simplu ca sa aducem numele serviciului din catalog pe baza id-ului
         const [programariComplete] = await db.query(`
             SELECT p.id as id_programare, c.nume as nume_serviciu, p.data_rezervare as data, p.ora_rezervare as ora, p.status 
             FROM programari_clienti p 
@@ -145,7 +139,7 @@ app.get('/api/programari-client/:id', async (req, res) => {
 
 
 // ==============================================================================================================================
-// 2. RUTELE LUI RALUCA — Contact & Rezervări / Abonamente
+// RUTE RALUCA — Contact si Rezervari / Abonamente
 // ==============================================================================================================================
 
 // am comentat rutele vechi
@@ -165,7 +159,6 @@ app.post('/api/contact', async (req, res) => { // adaugat async
 
         const numeExpeditor = dateClient.nume || dateClient.nume_expeditor;
 
-        // inseram direct in tabelul mysql
         await db.query(
             'INSERT INTO mesaje_contact (nume_expeditor, email, subiect, mesaj, data_trimitere) VALUES (?, ?, ?, ?, ?)',
             [numeExpeditor, dateClient.email, dateClient.subiect, dateClient.mesaj, dataFormatata]
@@ -178,24 +171,22 @@ app.post('/api/contact', async (req, res) => { // adaugat async
     }
 });
 
-// ------------------------------------ RUTA POST PROGRAMĂRI & ABONAMENTE -----------------------------
+// ------------------------------------ RUTA POST PROGRAMARI & ABONAMENTE -----------------------------
 app.post('/api/programari', async (req, res) => { // adaugat async
     const dateClient = req.body;
     
     try {
-        // gasim id_utilizator
         const [users] = await db.query('SELECT id FROM utilizatori WHERE email = ?', [dateClient.email]);
         if (users.length === 0) return res.status(404).json({ error: "Utilizatorul nu a fost găsit." });
         const id_utilizator = users[0].id;
 
-        // gasim id_serviciu si detaliile acestuia
         const [servicii] = await db.query('SELECT id, tip_achizitie, zile_valabilitate FROM catalog_servicii WHERE nume = ?', [dateClient.pachet_abonament]);
         if (servicii.length === 0) return res.status(404).json({ error: "Serviciul nu există." });
         
         const id_serviciu = servicii[0].id;
         const tip_achizitie = servicii[0].tip_achizitie; 
 
-        // Separare logică: Abonament vs Programare
+        // separare logica: Abonament vs Programare
         if (tip_achizitie === "abonament") {
             let dataStart = new Date(dateClient.data_rezervare);
             let zileValabilitate = servicii[0].zile_valabilitate || 30; 
@@ -234,12 +225,12 @@ app.post('/api/programari', async (req, res) => { // adaugat async
 
 
 // ==============================================================================================================================
-// 3. RUTELE TALE (RADU) — Servicii Fitness & Spa (CRUD Admin)
+// RUTE RADU — Servicii Fitness & Spa (CRUD Admin)
 // ==============================================================================================================================
 
-// const fisierJson = path.join(__dirname, 'data', 'mock-catalog_servicii.json'); // comentat pentru ca folosim mysql
+// const fisierJson = path.join(__dirname, 'data', 'mock-catalog_servicii.json'); // comentat 
 
-// GET /api/servicii — returnează toate serviciile (Actualizat pentru siguranță cu varianta Ralucăi)
+// GET /api/servicii — returnează toate serviciile 
 app.get('/api/servicii', async (req, res) => { // adaugat async
     try {
         const [servicii] = await db.query('SELECT * FROM catalog_servicii');
@@ -250,7 +241,7 @@ app.get('/api/servicii', async (req, res) => { // adaugat async
     }
 });
 
-// POST /api/servicii — adaugă un serviciu nou din Admin
+// POST /api/servicii — adauga un serviciu nou din Admin
 app.post('/api/servicii', async (req, res) => { // adaugat async
     const serviciuNou = req.body;
 
@@ -273,7 +264,7 @@ app.post('/api/servicii', async (req, res) => { // adaugat async
     }
 });
 
-// DELETE /api/servicii/:id — șterge un serviciu din Admin
+// DELETE /api/servicii/:id — sterge un serviciu din Admin
 app.delete('/api/servicii/:id', async (req, res) => { // adaugat async
     const idDeSters = Number(req.params.id);
 
