@@ -50,7 +50,7 @@ const modalSucces = document.getElementById('succes-modal');
 const textModalSucces = document.getElementById('mesaj-succes-modal');
 const btnOkSucces = document.getElementById('btn-ok-succes');
 
-// Funcția care deschide modalul de succes
+// Functia care deschide modalul de succes
 function afiseazaSuccesPersonalizat(mesaj) {
     if(textModalSucces && modalSucces) {
         textModalSucces.textContent = mesaj;
@@ -171,7 +171,7 @@ formLogin.addEventListener('submit', async (e) => {  // async pentru backend
             localStorage.setItem('rol_utilizator', date.utilizator.rol);
             localStorage.setItem('telefon_utilizator', date.utilizator.telefon);
 
-            //alert(date.message); // afisam mesaj de succes (o sa sterg asta dupa ce e totul ok)
+            //alert(date.message); // mesaj de succes (o sa sterg asta dupa ce e totul ok)
             if (date.utilizator.rol === 'admin') {
                 window.location.href = 'admin.html';
             } else {
@@ -235,7 +235,7 @@ formInregistrare.addEventListener('submit', async (e) => { // async pt backend
         inputEmail.classList.remove('input-eroare');
     }
 
-    // Validare Parolă
+    // Validare Parola
     if (inputParola.value.trim().length < 6) {
         errParola.style.display = 'block';
         inputParola.classList.add('input-eroare');
@@ -265,27 +265,21 @@ formInregistrare.addEventListener('submit', async (e) => { // async pt backend
         const date = await raspuns.json();
 
         if (date.success) {
-            // 1. În loc de alert() clasic, apelăm modalul tău premium
+            // apel modal
             afiseazaSuccesPersonalizat(date.message);
             
-            // 2. Când utilizatorul apasă pe butonul din modal, facem acțiunile de curățare și mutare
+            // curatam mutam
             if (btnOkSucces) {
                 btnOkSucces.addEventListener('click', (e) => {
                     e.preventDefault();
-                    
-                    // Ascundem modalul
                     modalSucces.style.display = 'none';
-                    
-                    // Trecem vizual pe panoul de Login
                     boxRegister.style.display = 'none';
                     boxLogin.style.display = 'block';
-                    
-                    // Golim casetele
                     inputNume.value = '';
                     inputTelefon.value = '';
                     inputEmail.value = '';
                     inputParola.value = '';
-                }, { once: true }); // { once: true } se asigură că evenimentul se rulează o singură dată curat
+                }, { once: true }); 
             }
         } else {
             // Esec (de ex: Email deja folosit)
