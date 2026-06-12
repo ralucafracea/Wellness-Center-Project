@@ -47,7 +47,7 @@
                 <!-- novalidate nu lasa browserul sa valideze datele ca apar mesaje urate vizual -->
                 <div class="grup-input">
                     <label class="eticheta-input">EMAIL</label>
-                    <input type="email" id="email-login" placeholder="nume@email.com" required>
+                    <input type="email" id="email-login" placeholder="nume@email.com" required autocomplete="off">
                     <span id="eroare-email-login" class="eroare-email" style="display: none;">&#9888; Introdu o adresă de email validă (ex: nume@email.com).</span>
                 </div>
 
@@ -71,7 +71,7 @@
                 <div class="grup-input">
                     <label class="eticheta-input">NUME COMPLET</label>
                     <input type="text" id="nume-register" placeholder="ex: Maria Popescu" required>
-                    <span id="eroare-nume-register" class="eroare-email" style="display: none;">&#9888; Te rugăm să introduci numele complet.</span>
+                    <span id="eroare-nume-register" class="eroare-email" style="display: none; " autocomplete="off">&#9888; Te rugăm să introduci numele complet.</span>
                 </div>
 
                 <div class="grup-input">
