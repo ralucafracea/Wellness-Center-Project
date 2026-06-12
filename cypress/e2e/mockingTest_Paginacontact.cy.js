@@ -35,7 +35,7 @@ describe('Testare End-to-End (Frontend + Backend) - Pagina Contact', () => {
     cy.get('#btn-inchide-contact').click();
     cy.get('#contact-modal').should('not.be.visible');
 
-    cy.readFile('backend-spa/Data/mock-contact.json').then((mesaje) => {
+    cy.readFile('backend/Data/mock-contact.json').then((mesaje) => {
       
       // Cypress este foarte inteligent și transformă automat fișierul JSON într-un Array
       
@@ -47,6 +47,8 @@ describe('Testare End-to-End (Frontend + Backend) - Pagina Contact', () => {
       expect(ultimulMesaj.email).to.eq('test.automat@tirra.ro');
       expect(ultimulMesaj.subiect).to.eq('Testare Integrare Cypress');
       expect(ultimulMesaj.mesaj).to.eq('Verificăm dacă fetch-ul trimite datele corect în JSON.');
+
+      
       
     });
     

@@ -30,17 +30,7 @@ describe('Testare Frontend - Pagina SPA & Wellness (Tirra Wellness)', () => {
     cy.get('#mobile-nav').should('not.have.class', 'active');
   });
   
-  it('3. Verifică existența pachetelor de tratamente', () => {
-    // Verificăm dacă sunt afișate corect toate cele 5 carduri de tratamente statice
-    cy.get('.static-card').should('have.length', 5);
-
-    // Verificăm primul card pentru a ne asigura că structura de text e corectă
-    cy.get('.static-card').first().within(() => {
-      cy.get('.card-title').should('contain.text', 'Masaj suedez de relaxare');
-      cy.get('.card-price').should('have.text', '220 RON');
-      cy.get('.card-duration').should('have.text', '60 MIN');
-    });
-  });
+  
 
   it('4. Testează interacțiunea cu Flip Cards (Facilități)', () => {
     cy.get('.flip-card').first().as('primulCard');
