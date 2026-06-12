@@ -73,10 +73,34 @@
   },
   {
     "id": 10,
-    "nume": "Puia Teodora",
-    "email": "puiateodora2005@gmail.com",
-    "parola_criptata": "$2b$10$QQnlpbsH83rG4AUsQylCU.ugUfuUeG5JKaswiONLrJFfMoEhm0wtC",
-    "telefon": "0751851869",
+    "nume": "Automatizare Backend",
+    "email": "api_test_1781214205053@tirra.ro",
+    "parola_criptata": "$2b$10$drogpbA.V7yQ8G4W3Jvc8eZEpGfhRyUyQO4pY2SoNS/knXiCROQBG",
+    "telefon": "0799999999",
+    "rol": "client"
+  },
+  {
+    "id": 11,
+    "nume": "Andreea Test",
+    "email": "andreeamatamaria12@yahoo.com",
+    "parola_criptata": "$2b$10$o1VPnFsUnCqZsgSQ8zs4JecWNdL.mnVhxSaeXMckaBn3JCAoQJYTy",
+    "telefon": "0746538161",
+    "rol": "client"
+  },
+  {
+    "id": 12,
+    "nume": "Andreea Test",
+    "email": "email123@yahoo.com",
+    "parola_criptata": "$2b$10$2yCmhVtB3YRMjNuBwckGr.4GKuZauX1qOuN5kJLxjvPxNji400mIC",
+    "telefon": "0746538161",
+    "rol": "client"
+  },
+  {
+    "id": 13,
+    "nume": "Andreea Test",
+    "email": "andreeamatamaria123456@yahoo.com",
+    "parola_criptata": "$2b$10$EexTjdxpvq9Ex8Hud8JYxOoEr2JjSdkgFqKn317RMrNbc8rvlBvx2",
+    "telefon": "0746538161",
     "rol": "client"
   }
 ]
