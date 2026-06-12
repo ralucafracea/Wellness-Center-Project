@@ -39,6 +39,21 @@ async function incarcaProgramari() {
                 // Facem prima literă mare pentru design
                 const statusFormatat = statusText.charAt(0).toUpperCase() + statusText.slice(1);
                 
+                // 1. Formatăm data (din '2026-07-06T21:00...' facem '07.07.2026' - format românesc)
+                const dataObiect = new Date(programare.data);
+                const dataFormatata = dataObiect.toLocaleDateString('ro-RO', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                });
+
+                // 2. Formatăm ora (tăiem secundele: din '00:40:00' păstrăm doar primele 5 caractere '00:40')
+                let oraFormatata = programare.ora;
+                if (oraFormatata && oraFormatata.length >= 5) {
+                    oraFormatata = oraFormatata.substring(0, 5);
+                }
+
+                // 3. Generăm HTML-ul cu noile variabile
                 const cardHtml = `
                     <div class="card-item">
                         <div class="card-header">
@@ -48,11 +63,11 @@ async function incarcaProgramari() {
                         <div class="card-body">
                             <div class="detaliu-rand">
                                 <span class="detaliu-label">DATA</span>
-                                <span class="detaliu-valoare">${programare.data}</span>
+                                <span class="detaliu-valoare">${dataFormatata}</span> 
                             </div>
                             <div class="detaliu-rand">
                                 <span class="detaliu-label">ORA</span>
-                                <span class="detaliu-valoare">${programare.ora}</span>
+                                <span class="detaliu-valoare">${oraFormatata}</span>
                             </div>
                         </div>
                     </div>
