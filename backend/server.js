@@ -137,6 +137,25 @@ app.get('/api/programari-client/:id', async (req, res) => {
     }
 });
 
+// abonamente:
+app.get('/api/abonamente-client/:id', async (req, res) => {
+    try {
+        const idClient = parseInt(req.params.id); 
+        const [abonamenteComplete] = await db.query(`
+            SELECT a.id as id_abonament, c.nume as nume_abonament, a.data_inceput, a.data_sfarsit, a.status 
+            FROM abonamente_clienti a 
+            JOIN catalog_servicii c ON a.id_serviciu = c.id 
+            WHERE a.id_utilizator = ?
+        `, [idClient]);
+
+        res.json({ success: true, abonamente: abonamenteComplete });
+
+    } catch (eroare) {
+        console.error("EROARE LA CITIREA ABONAMENTELOR:", eroare);
+        res.status(500).json({ success: false, message: 'Eroare interna a serverului.' });
+    }
+});
+
 
 // ==============================================================================================================================
 // RUTE RALUCA — Contact si Rezervari / Abonamente
