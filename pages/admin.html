@@ -68,7 +68,6 @@
     </table>
 
     <script>
-        // 1. FUNCȚIA DE ÎNCĂRCARE A DATELOR (GET)
         async function incarcaServicii() {
             try {
                 const response = await fetch('http://localhost:3000/api/servicii');
@@ -79,7 +78,6 @@
 
                 servicii.forEach(serviciu => {
     const rand = document.createElement('tr');
-    // Convertește tip_achizitie în text mai prietenos
     const tipAchizitieText = serviciu.tip_achizitie === 'programare' ? 'Programare' : 'Abonament';
     rand.innerHTML = `
         <td>${serviciu.id}</td>
@@ -95,15 +93,11 @@
                 console.error('Eroare la citire:', eroare);
             }
         }
-
-        // Apelăm funcția când se deschide pagina
         incarcaServicii();
 
-        // 2. FUNCȚIA DE ADĂUGARE (POST)
         document.getElementById('form-adaugare').addEventListener('submit', async (e) => {
-            e.preventDefault(); // Oprim reîncărcarea paginii
+            e.preventDefault(); 
 
-            // Colectăm datele din formular
             const serviciuNou = {
                 nume: document.getElementById('nume').value,
                 descriere: document.getElementById('descriere').value,
@@ -123,15 +117,14 @@
 
                 if (response.ok) {
                     alert('Serviciu salvat cu succes!');
-                    document.getElementById('form-adaugare').reset(); // Golește căsuțele
-                    incarcaServicii(); // Reface tabelul
+                    document.getElementById('form-adaugare').reset(); 
+                    incarcaServicii(); 
                 }
             } catch (eroare) {
                 console.error('Eroare la salvare:', eroare);
             }
         });
 
-        // 3. FUNCȚIA DE ȘTERGERE (DELETE)
         async function stergeServiciu(id) {
             if (confirm('Ești sigur că vrei să ștergi acest serviciu?')) {
                 try {
@@ -147,10 +140,9 @@
                 }
             }
         }
-        // 4. FUNCȚIA DE DECONECTARE (Șterge sesiunea și trimite la login)
         document.getElementById('btn-deconectare-admin').addEventListener('click', () => {
-            localStorage.clear(); // Golește memoria browserului (îl "uită" pe Admin)
-            window.location.href = 'conectare.html'; // Te aruncă pe pagina de login
+            localStorage.clear(); 
+            window.location.href = 'conectare.html'; 
         });
     </script>
 </body>
