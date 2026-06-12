@@ -1,5 +1,5 @@
 body {
-    background-color: var(--color-bg); /* Fundalul crem general */
+    background-color: var(--color-bg);
     margin: 0;
     padding: 0;
     display: flex;
@@ -8,11 +8,10 @@ body {
     min-height: 100vh;
 }
 
-/* ---------------------------------------------AUTENTIFICARE--------------------------------------------- */
-/* Containerul centrat pe ecran */
+/* AUTENTIFICARE */
 .container-autentificare {
     width: 100%;
-    max-width: 420px; /* Împiedică lărgirea exagerată pe ecrane mari */
+    max-width: 420px; 
     padding: 40px 24px;
     box-sizing: border-box;
 }
@@ -34,7 +33,7 @@ body {
 .titlu-autentificare {
     font-family: var(--font-serif);
     font-size: 38px;
-    font-weight: 300; /* Stilul Cormorant Light */
+    font-weight: 300; 
     color: var(--color-primary);
     margin: 0 0 15px 0;
 }
@@ -49,7 +48,7 @@ body {
     margin-bottom: 35px;
 }
 
-/* Stiluri casete text (Formular) */
+/* Stiluri casete text */
 .grup-input {
     display: flex;
     flex-direction: column;
@@ -66,7 +65,7 @@ body {
 }
 
 .grup-input input {
-    background-color: var(--color-bg-alt); /* Cremul mai închis din schiță */
+    background-color: var(--color-bg-alt); 
     border: none;
     padding: 16px;
     font-family: var(--font-sans);
@@ -83,10 +82,10 @@ body {
 }
 
 .grup-input input:focus {
-    outline: 1px solid var(--color-primary); /* Un mic contur elegant la scriere */
+    outline: 1px solid var(--color-primary); 
 }
 
-/* Butonul Vișiniu Principal */
+/* Butonul Visiniu Principal */
 .buton-principal-autentificare {
     width: 100%;
     background-color: var(--color-primary);
@@ -97,14 +96,14 @@ body {
     font-weight: 500;
     letter-spacing: 2px;
     padding: 16px;
-    border-radius: 4px; /* MODIFICAT: Colțuri fin rotunjite în tema site-ului */
+    border-radius: 4px; 
     cursor: pointer;
     margin-top: 15px;
     transition: background-color 0.3s;
 }
 
 .buton-principal-autentificare:hover {
-    background-color: #4a1018; /* Nuanță mai închisă la hover */
+    background-color: #4a1018; 
 }
 
 /* Link-ul de jos */
@@ -124,8 +123,6 @@ body {
     font-weight: 500;
 }
 
-
-/* --- COD FURAT DE LA RALUCA PENTRU EROARE --- */
 .eroare-email {
     color: #b32d2d; 
     font-family: var(--font-sans);
@@ -133,19 +130,17 @@ body {
     font-weight: 500;
     line-height: 1.4;
     margin-top: 6px;
-    /* display: block; am scos asta pt ca e ascuns din html */
     text-align: left;
     letter-spacing: 0.5px;
 }
 
-/* Caseta se face roșie când emailul e greșit */
+/* Caseta se face rosie când emailul e gresit */
 .grup-input input.input-eroare {
     outline: 1px solid #b32d2d !important; 
-    /* important ca sa se faca rosie si nu visinie in cazul in care cursorul este pe input (visiniu) */
 }
 
 
-/* ---------------STILIZARE MODAL (Inspirat de la pagina rezervari) -------------------------------*/
+/* STILIZARE MODAL */
 
 /* Fundalul intunecat care acopera pagina */
 .modal-overlay {
@@ -164,8 +159,8 @@ body {
 /* Cardul alb din centru */
 .modal-content-card {
     background-color: var(--color-bg); 
-    padding: 50px 40px; /* Am marit padding-ul vertical ca să fie mai înalt */
-    border-radius: 20px; /* Colturi mult mai rotunjite, ca la Raluca */
+    padding: 50px 40px; 
+    border-radius: 20px; 
     width: 90%;
     max-width: 380px;
     position: relative;
@@ -182,7 +177,7 @@ body {
 
 .modal-title {
     font-family: var(--font-serif);
-    font-size: 34px; /* Text mai mare */
+    font-size: 34px; 
     font-weight: 400;
     margin-top: 0;
     margin-bottom: 20px;
@@ -190,7 +185,7 @@ body {
 
 .modal-desc {
     font-family: var(--font-sans);
-    font-size: 16px; /* Text mai mare */
+    font-size: 16px; 
     line-height: 1.5;
     color: var(--color-primary);
 }
@@ -202,7 +197,7 @@ body {
     right: 25px;
     background: transparent;
     border: none;
-    font-size: 30px; /* X mai vizibil */
+    font-size: 30px;
     font-weight: 200;
     cursor: pointer;
     color: var(--color-primary);
@@ -213,12 +208,21 @@ body {
     opacity: 0.6;
 }
 
-/* Suprascriem designul butonului DOAR pentru acest modal */
 #btn-ok-eroare {
-    font-family: var(--font-serif) !important; /* Același font ca la titlu */
+    font-family: var(--font-serif) !important; 
     font-size: 18px !important;
     font-weight: 400;
-    border-radius: 50px !important; /* Forma de pastilă (pill) */
+    border-radius: 50px !important; 
     padding: 20px 20px;
     margin-top: 10px;
+}
+
+/* ==========================================================================
+   VARIANTA DESKTOP 
+   ========================================================================== */
+@media (min-width: 1024px) {
+    .container-autentificare {
+        margin-top: 30px; 
+        max-width: 450px; 
+    }
 }
