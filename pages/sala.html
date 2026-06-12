@@ -164,7 +164,6 @@
     <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-        // 1. Meniul Hamburger (Stil SPA)
         const hamburger = document.getElementById('hamburger-btn');
         const mobileNav = document.getElementById('mobile-nav');
         const closeBtn = document.querySelector('.buton-inchidere'); 
@@ -183,7 +182,6 @@
                 hamburger.style.display = 'flex';     
             });
 
-            // Opțional: Închide meniul când dai click pe un link
             linkuriMeniu.forEach(link => {
                 link.addEventListener('click', () => {
                     mobileNav.classList.remove('active');
@@ -193,7 +191,6 @@
             });
         }
 
-        // 2. Încarcă abonamentele din server și inițializează slider-ul
         async function incarcaAbonamenteFitness() {
             try {
                 const response = await fetch('http://localhost:3000/api/servicii');
@@ -260,7 +257,6 @@ programeFitness.forEach(program => {
                     track.appendChild(slide);
                 });
 
-                // Inițializează slider-ul DUPĂ ce slide-urile sunt în DOM
                 initiazaSlider();
 
             } catch (eroare) {
@@ -268,7 +264,6 @@ programeFitness.forEach(program => {
             }
         }
 
-        // 3. Logica slider-ului adaptiv infinit (Fără spații goale)
         function initiazaSlider() {
             const track = document.getElementById('track-abonamente');
             let slides = Array.from(track.querySelectorAll('.abonament-slide'));
@@ -276,10 +271,8 @@ programeFitness.forEach(program => {
             const totalSlide = slides.length;
             if (totalSlide === 0) return;
 
-            // Avem nevoie de cel puțin 3 clone pentru că pe desktop afișăm 3 carduri vizibile deodată
             const cloneCount = 3; 
 
-            // 1. Clona elementelor pentru partea din STÂNGA
             for (let i = 0; i < cloneCount; i++) {
                 const indexToClone = (totalSlide - 1) - (i % totalSlide);
                 const clona = slides[indexToClone].cloneNode(true);
@@ -287,7 +280,6 @@ programeFitness.forEach(program => {
                 track.insertBefore(clona, track.firstChild);
             }
 
-            // 2. Clona elementelor pentru partea din DREAPTA
             for (let i = 0; i < cloneCount; i++) {
                 const indexToClone = i % totalSlide;
                 const clona = slides[indexToClone].cloneNode(true);
@@ -295,14 +287,12 @@ programeFitness.forEach(program => {
                 track.appendChild(clona);
             }
 
-            let pozitie = cloneCount; // Poziția de pornire (sărim peste clone direct la primul card original)
+            let pozitie = cloneCount; 
             let isAnimating = false;
             let isDragging = false;
             let startX = 0;
 
-            // Funcție super-precisă care calculează mișcarea în pixeli
             function miscaSlider(animat = true) {
-                // Măsurăm lățimea exactă a unui card (pe telefon va fi mare, pe PC va fi 1/3 din ecran)
                 const slideWidth = track.querySelector('.abonament-slide').getBoundingClientRect().width;
                 
                 if (animat) {
@@ -315,39 +305,33 @@ programeFitness.forEach(program => {
                 track.style.transform = `translateX(-${pozitie * slideWidth}px)`;
             }
 
-            // Punem slider-ul pe poziția corectă la deschiderea paginii, fără să animăm
             miscaSlider(false);
 
             function mergiLa(index) {
-                if (isAnimating) return; // Blochează click-urile rapide cât timp rulează animația
+                if (isAnimating) return; 
                 pozitie = index;
                 miscaSlider(true);
             }
 
-            // Magia loop-ului infinit: se resetează invizibil când ajunge la final
             track.addEventListener('transitionend', () => {
                 isAnimating = false;
-                
-                // Dacă a sărit de cardurile originale înspre dreapta
+
                 if (pozitie >= totalSlide + cloneCount) {
                     pozitie = pozitie - totalSlide;
-                    miscaSlider(false); // Teleportare invizibilă
+                    miscaSlider(false); 
                 }
-                // Dacă a sărit de cardurile originale înspre stânga
                 else if (pozitie < cloneCount) {
                     pozitie = pozitie + totalSlide;
-                    miscaSlider(false); // Teleportare invizibilă
+                    miscaSlider(false); 
                 }
             });
 
-            // Evenimente pentru săgețile Desktop
             const btnPrev = document.getElementById('btn-prev-abonament');
             const btnNext = document.getElementById('btn-next-abonament');
             
             if(btnPrev) btnPrev.onclick = () => mergiLa(pozitie - 1);
             if(btnNext) btnNext.onclick = () => mergiLa(pozitie + 1);
 
-            // Evenimente pentru glisare tactilă (Telefon)
             track.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
                 isDragging = true;
@@ -362,16 +346,14 @@ programeFitness.forEach(program => {
                 isDragging = false;
             });
 
-            // Repozitionare milimetrică la rotirea telefonului sau redimensionarea browserului
             window.addEventListener('resize', () => {
                 miscaSlider(false);
             });
         }
 
-        // Pornește totul
         incarcaAbonamenteFitness();
 
-    }); // închide DOMContentLoaded
+    }); 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
