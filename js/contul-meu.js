@@ -1,5 +1,5 @@
 // ==============================================================================
-// 1. PROTECȚIE PAGINĂ ȘI ÎNCĂRCARE DATE UTILIZATOR
+// PROTECTIE PAGINA SI INCARCARE DATE UTILIZATOR
 // ==============================================================================
 
 // Citim datele salvate în browser (localStorage)
@@ -10,18 +10,16 @@ const numeUtilizator = localStorage.getItem('nume_utilizator');
 if (!idUtilizator) {
     window.location.href = 'conectare.html';
 } else {
-    // Afișăm numele lui real în pagină
     document.getElementById('salut-utilizator').textContent = `Bună, ${numeUtilizator}!`;
 }
 
 // ==============================================================================
-// 2. FETCH: ADUCEREA PROGRAMĂRILOR REALE
+// FETCH: ADUCEREA PROGRAMARILOR REALE
 // ==============================================================================
 async function incarcaProgramari() {
     const containerProgramari = document.getElementById('sectiune-programari');
     
     try {
-        // Facem cerere la ruta noastră nouă, trimițând ID-ul clientului
         const raspuns = await fetch(`http://localhost:3000/api/programari-client/${idUtilizator}`);
         const date = await raspuns.json();
 
@@ -31,15 +29,14 @@ async function incarcaProgramari() {
                 return;
             }
 
-            containerProgramari.innerHTML = ''; // Curățăm containerul
+            containerProgramari.innerHTML = '';
 
-            // Generăm cardurile pentru fiecare programare găsită
             date.programari.forEach(programare => {
                 const statusText = programare.status || 'confirmat';
                 // Facem prima literă mare pentru design
                 const statusFormatat = statusText.charAt(0).toUpperCase() + statusText.slice(1);
                 
-                // 1. Formatăm data (din '2026-07-06T21:00...' facem '07.07.2026' - format românesc)
+                // 1. Formatam data
                 const dataObiect = new Date(programare.data);
                 const dataFormatata = dataObiect.toLocaleDateString('ro-RO', {
                     day: '2-digit',
@@ -47,13 +44,12 @@ async function incarcaProgramari() {
                     year: 'numeric'
                 });
 
-                // 2. Formatăm ora (tăiem secundele: din '00:40:00' păstrăm doar primele 5 caractere '00:40')
+                // 2. Formatam ora
                 let oraFormatata = programare.ora;
                 if (oraFormatata && oraFormatata.length >= 5) {
                     oraFormatata = oraFormatata.substring(0, 5);
                 }
 
-                // 3. Generăm HTML-ul cu noile variabile
                 const cardHtml = `
                     <div class="card-item">
                         <div class="card-header">
@@ -81,27 +77,25 @@ async function incarcaProgramari() {
     }
 }
 
-// Apelăm funcția ca să se ruleze automat la deschiderea paginii
 incarcaProgramari();
 
 // ==============================================================================
-// 3. LOGICA PENTRU LOGOUT (DECONECTARE)
+// LOGICA PENTRU LOGOUT (DECONECTARE)
 // ==============================================================================
 const btnDeconectare = document.getElementById('buton-deconectare');
 if (btnDeconectare) {
     btnDeconectare.addEventListener('click', (e) => {
         e.preventDefault();
         
-        // Ștergem absolut tot din memorie
+        // Stergem absolut tot din memorie
         localStorage.clear();
 
-        // Îl trimitem înapoi la login
         window.location.href = 'conectare.html';
     });
 }
 
 // ==============================================================================
-// 4. LOGICA DE MENIU ȘI TAB-URI (RĂMASĂ NESCHIMBATĂ)
+// LOGICA DE MENIU SI TAB-URI
 // ==============================================================================
 const btnProgramari = document.getElementById('btn-programari');
 const btnAbonamente = document.getElementById('btn-abonamente');
