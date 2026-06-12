@@ -660,31 +660,29 @@ html {
     
     /* Meniul se deschide in dreapta */
     .meniu-navigatie {
-        left: auto;          /* resetam alinierea la stanga de pe telefon */
-        right: 0;            /* fixat in marginea din dreapta */
-        width: 350px;        /* latimea meniului */
+        left: auto;          
+        right: 0;          
+        width: 350px;      
         background-color: var(--color-primary); 
     }
 
-    /* Containerul listei */
     .meniu-navigatie ul {
         width: 100%;
         box-sizing: border-box;
     }
 
-    /* Delimitarea elementelor cu linii */
+    /* delimitarea cu linii */
     .meniu-navigatie li {
         margin: 0;           
-        padding: 30px 0;     /* Spatiu sus-jos */
+        padding: 30px 0;     
         border-bottom: 1px solid #4a1018; 
     }
-
-    /* fara ultima linie despartitoare */
+    /* fara ultima linie */
     .meniu-navigatie li:last-child {
         border-bottom: none;
     }
 
-    /* texxt meniu */
+    /* text meniu */
     .meniu-navigatie a {
         color: var(--color-bg); 
         font-size: 15px;        
@@ -696,25 +694,21 @@ html {
     }
 
     .hero {
-        /* Un raport clasic pentru ecrane wide. Dacă poza e mai îngustă, poți pune 16/7 sau 21/9 */
         aspect-ratio: 16 / 7; 
-        
-        /* Păstrăm gradientul de întunecare, dar schimbăm URL-ul imaginii */
         background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
                           url('../imagini/Poza_pagina_principala_landscape.png');
-        /* Pe ecrane mari, textul arată mai bine centrat pe verticală, nu lipit de jos */
         justify-content: flex-end; 
-        padding-bottom: 85px; /* Resetăm padding-ul de 50px care era util doar pe telefon */
+        padding-bottom: 85px; 
     }
 
     .continut-hero h1 {
         font-size: 45px; 
-        margin-bottom: 10px; /* Redus de la 25px / 15px */  
+        margin-bottom: 10px; 
     }
 
     .continut-hero h2 {
         font-size: 24px;
-        margin-bottom: 35px; /* Redus de la 40px / 35px */
+        margin-bottom: 35px; 
     }
 
     .buton-rezervare {
@@ -724,63 +718,55 @@ html {
 
     .continut-hero p {
         font-size: 18px;
-        margin-top: 45px; /* Redus de la 25px, trage textul mai aproape de buton */
+        margin-top: 45px; 
     }
 
     /* --- SECTIUNEA DESPRE NOI (LAPTOP) --- */
-
-    /* Modificăm layout-ul general al secțiunii pentru a grupa elementele */
     .despre-noi {
         padding: 60px 40px 10px 40px;
         display: grid;
-        /* TRUCUL AICI: în loc de max-width pe toată secțiunea, limităm lățimea celor 2 coloane */
         grid-template-columns: minmax(0, 580px) minmax(0, 580px); 
-        justify-content: center;        /* Centrăm coloanele pe mijlocul ecranului */
-        gap: 40px;                      /* Spațiu între text și imagine */
-        align-items: center;            /* Aliniere verticală pe mijloc */
+        justify-content: center;     
+        gap: 40px;           
+        align-items: center; 
     }
 
-    /* 1. Mărim titlul principal (DESPRE TIRRA WELLNESS) */
     .despre-noi .subtitlu-sectiune:first-of-type {
-        font-size: 22px;      /* Un pic mai mare pentru desktop */
-        margin-bottom: 10px;  /* Spațiu generos sub el, înainte de conținut */
-        align-self: center;   /* Ne asigurăm că rămâne centrat pe mijlocul paginii */
-        text-align: center;
+        font-size: 22px;    
+        margin-bottom: 10px;  
+        align-self: center;   
         grid-column: 1 / span 2; 
     }
 
-    /* Textul de descriere stă în prima coloană (stânga) */
     .text-sectiune:first-of-type {
         grid-column: 1;
-        text-align: left;    /* Aliniem textul la stânga, cum vrea designerul */
-        font-size: 16px;     /* Îl facem o idee mai lizibil pe desktop */
+        text-align: left;  
+        font-size: 16px;   
         line-height: 1.8;
     }
 
-    /* Poza cu piscina stă în a doua coloană (dreapta) și o micșorăm */
     .imagine-despre {
         grid-column: 2;
-        width: 100%;         /* Ocupă complet coloana ei (care e deja jumătate de ecran) */
-        max-width: 480px;    /* O limităm ca să fie „micită” și rafinată, să nu devină uriașă */
-        justify-self: center;/* O centrăm frumos în spațiul ei din dreapta */
-        margin: 0;           /* Resetăm marginile de pe mobil */
+        width: 100%;        
+        max-width: 480px;
+        justify-self: center;
+        margin: 0;
     }
 
-    /* --- ATENȚIE: Elementele de jos (Serviciile noastre) --- */
-    /* Le forțăm să ocupe ambele coloane și să rămână centrate pe mijloc, sub text și poză */
-    
+    /* --- Elementele de jos (Serviciile noastre) --- */
+
     .despre-noi .subtitlu-sectiune:last-of-type {
         grid-column: 1 / span 2;
         text-align: center;
         font-size: 22px;
-        margin-top: 50px;    /* Spațiu clar între blocul de sus și începutul serviciilor */
+        margin-top: 50px;    
         margin-bottom: 0px;
     }
 
     .text-sectiune:last-of-type {
         grid-column: 1 / span 2;
-        text-align: center;  /* Rămâne pe mijloc */
-        max-width: 10000px;  /* Îl îngustăm puțin ca să fie mai ușor de citit centrat */
+        text-align: center;  
+        max-width: 10000px; 
         margin: 0 auto;
         font-size: 16px;
     }
@@ -789,20 +775,19 @@ html {
 
     .categorii-servicii {
         padding: 0px 40px 60px 40px;
-        display: flex;          /* Punem elementele pe orizontală */
-        flex-direction: row;    /* Aliniere de la stânga la dreapta */
-        justify-content: center;/* Centrăm cardurile pe mijlocul ecranului */
-        gap: 30px;              /* Spațiu elegant între cele două imagini */
+        display: flex;          
+        flex-direction: row;  
+        justify-content: center;
+        gap: 30px; 
     }
 
     .card-serviciu {
-        flex: 1;                /* Forțează ambele carduri să fie perfect egale ca lățime */
-        max-width: 585px;       /* Limităm cardurile să nu crească la infinit pe monitoare wide */
-        border-radius: 6px;     /* Adăugăm o ușoară rotunjire a colțurilor */
-        overflow: hidden;       /* Ne asigurăm că imaginea la zoom nu depășește colțurile rotunjite */
+        flex: 1; 
+        max-width: 585px; 
+        border-radius: 6px;
+        overflow: hidden;
     }
 
-    /* Mărim subtil textul de pe imagini pentru a fi mai lizibil pe laptop */
     .text-card h3 {
         font-size: 18px;
         letter-spacing: 3px;
@@ -811,65 +796,59 @@ html {
     /* --- SECTIUNEA PACHETE SI TARIFE (LAPTOP) --- */
 
     .pachete-tarife {
-        padding: 10px 40px 50px 40px; /* Dăm spațiu de respirație secțiunii sus și jos */
+        padding: 10px 40px 50px 40px; 
     }
 
     /* Containerul dinamic care va ține cardurile */
     .container-carduri {
-        flex-direction: row;     /* Trecem de la o singură coloană la așezare pe rând */
-        flex-wrap: wrap;         /* Asta este cheia: când lățimea ecranului se umple, cardul trece jos */
-        justify-content: center; /* Centrează toate cardurile (1, 2, 3 sau cele rămase pe ultimul rând) */
-        align-items: stretch;    /* Le forțează să aibă aceeași înălțime dacă un titlu/text e mai lung */
-        gap: 30px;               /* Spațiul dintre carduri, pe toate direcțiile */
-        max-width: 1100px;       /* Limităm spațiul ca să încapă maxim 3 carduri frumos proporționate pe rând */
-        margin: 0 auto;          /* Centrăm containerul pe ecran */
+        flex-direction: row;     
+        flex-wrap: wrap;         
+        justify-content: center; 
+        align-items: stretch;  
+        gap: 30px;    
+        max-width: 1100px;  
+        margin: 0 auto;   
     }
 
-    /* Dimensiunea fiecărui card individual */
     .card-pret {
-        width: 320px;            /* Fixăm o lățime ideală pentru desktop */
-        max-width: 100%;         /* Resetăm regula de mobil */
+        width: 320px; 
+        max-width: 100%;  
         display: flex;
-        flex-direction: column;  /* Pentru a putea împinge prețul și butonul jos */
+        flex-direction: column;  
     }
 
-    /* Împingem butonul și prețul mereu în partea de jos a cardului, 
-       util dacă textele din lista de beneficii au înălțimi diferite */
     .card-pret .footer-card {
-        margin-top: auto;        /* Preia tot spațiul gol rămas deasupra */
+        margin-top: auto;        
         padding-top: 20px;
     }
 
-    /* Mărirea titlurilor pentru secțiunea Pachete & Tarife */
     .pachete-tarife .subtitlu-mic {
-        font-size: 18px;     /* Mărit de la 14px pentru a fi mai vizibil */
-        margin-bottom: 15px; /* Un pic mai mult spațiu sub el */
+        font-size: 18px;    
+        margin-bottom: 15px;
     }
 
     .pachete-tarife .titlu-mare {
-        font-size: 46px;     /* Mărit de la 32px, pentru un impact vizual puternic */
-        margin-bottom: 50px; /* Spațiu generos înainte de a începe grila cu carduri */
+        font-size: 46px;  
+        margin-bottom: 50px;
     }
 
     /* --- SECTIUNILE RECENZII SI CONTACT (LAPTOP) --- */
 
-    /* 1. Mărirea titlurilor pentru Recenzii */
     .subtitlu-recenzii {
-        font-size: 18px;     /* Aliniat cu restul subtitlurilor (crescut de la 14px) */
+        font-size: 18px;  
     }
 
     .titlu-recenzii {
-        font-size: 38px;     /* Aliniat cu titlul de la Pachete (crescut de la 36px) */
-        margin-bottom: 30px; /* Mai mult aer între titlu și slider-ul de recenzii */
+        font-size: 38px;  
+        margin-bottom: 30px; 
     }
 
-    /* 2. Mărirea titlului pentru Contact */
     .titlu-contact {
-        font-size: 18px;     /* Crescut de la 16px pentru a fi mai impunător pe monitor */
-        margin-bottom: 40px; /* Spațiu mai mare înainte de a începe detaliile de contact */
+        font-size: 18px;    
+        margin-bottom: 40px; 
     }
 
-    /* --- FOOTER (LAPTOP) CORECTAT --- */
+    /* --- FOOTER (LAPTOP)  --- */
 
     .main-footer {
         padding: 20px 40px 20px 40px;
@@ -877,7 +856,6 @@ html {
 
     .footer-content {
         display: grid;
-        /* Schimbăm din 2fr în 3fr pentru a împinge listele mai spre dreapta, ca în referință */
         grid-template-columns: 3fr 1fr 1fr; 
         gap: 40px;
         max-width: 1200px;
@@ -885,29 +863,28 @@ html {
         align-items: start;
     }
 
-    /* 1. Coloana de Brand (Stânga) - FORȚĂM alinierea la stânga */
+
     .footer-brand-col,
     .footer-brand,
     .footer-desc {
-        text-align: left !important; /* Anulăm centrarea de pe mobil */
+        text-align: left !important; 
     }
 
     .footer-brand {
         font-size: 32px;
         margin-top: 0;
-        margin-bottom: 25px; /* Mai mult spațiu sub titlu */
+        margin-bottom: 25px;
     }
 
     .footer-desc {
-        max-width: 350px; /* Forțăm textul să se rupă exact după cuvântul "și" */
+        max-width: 350px;
         margin-left: 0;
         line-height: 1.6;
     }
 
-    /* 2. Coloanele de Navigare și Social (Mijloc și Dreapta) */
     .footer-section {
         margin-bottom: 0;
-        text-align: left; /* Aliniem și aceste elemente perfect la stânga în coloana lor */
+        text-align: left; 
     }
 
     .footer-heading {
@@ -916,20 +893,19 @@ html {
     }
 
     .footer-links {
-        gap: 15px; /* Mărim spațiul dintre link-urile de navigare să respire mai bine */
+        gap: 15px; 
     }
 
     .footer-links a {
         font-size: 15px;
     }
 
-    /* 3. Linia despărțitoare și textul de copyright */
     .footer-copy {
         grid-column: 1 / -1; 
         border-top: 1px solid rgba(255, 255, 255, 0.15); 
         padding-top: 20px;
-        margin-top: 0px; /* O distanță mai clară de la liste la linia de jos */
+        margin-top: 0px; 
         font-size: 12px;
-        text-align: center; /* Doar copyright-ul trebuie să rămână pe mijloc */
+        text-align: center; 
     }
 }
