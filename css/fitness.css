@@ -150,10 +150,10 @@ html {
 /* ===== HERO ===== */
 .fitness-hero {
     background-image:
-        linear-gradient(rgba(244, 239, 234, 0.15), rgba(244, 239, 234, 0.15)),
-        url('../assets/Gemini_Generated_Image_3189uc3189uc3189_cleanup.png');
-    background-size: 100%;
-    background-position: 50% 40%;
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+        url('../assets/sala1.png');
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     height: 45vh;
     display: flex;
@@ -741,7 +741,7 @@ html {
         padding: 80px 10%;
         height: 70vh;
         background-size: cover; 
-        background-position: center 60%;
+        background-position: center 50%;
     }
 
     .fitness-hero-subtitle {
