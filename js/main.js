@@ -2,24 +2,21 @@
 
 async function incarcaPacheteAcasa() {
     const container = document.getElementById('container-pachete');
-    if (!container) return; // Daca nu suntem pe pagina principala, ne oprim
+    if (!container) return; 
 
     try {
         const raspuns = await fetch('http://localhost:3000/api/pachete-combinate');
         const date = await raspuns.json();
 
         if (date.success) {
-            container.innerHTML = ''; // Stergem textul "Se incarca..."
+            container.innerHTML = ''; 
 
-            // Daca nu exista niciun pachet "combinat" in JSON
             if (date.pachete.length === 0) {
                 container.innerHTML = `<p style="color: var(--color-primary);">Momentan nu avem pachete promoționale.</p>`;
                 return;
             }
 
-            // Generam dinamic fiecare card
             date.pachete.forEach(pachet => {
-                // Daca e programare afisam minutele, dacă e abonament afisam zilele
                 const durataText = pachet.durata_minute ? `${pachet.durata_minute} MIN` : `${pachet.zile_valabilitate} ZILE`;
                 
                 const cardHtml = `
@@ -44,7 +41,6 @@ async function incarcaPacheteAcasa() {
     }
 }
 
-// Apelam functia automat
 incarcaPacheteAcasa();
 
         // --------------------------------LOGICA PENTRU RECENZII---------------------------
@@ -56,13 +52,11 @@ incarcaPacheteAcasa();
         function arataRecenzia(index) {
             slideuri.forEach(slide => slide.classList.remove('activa'));
             slideuri[index].classList.add('activa');
-            // sageata stanga, care dispare daca suntem la prima recenzie:
             if (index === 0) {
                 btnStanga.style.visibility = 'hidden';
             } else {
                 btnStanga.style.visibility = 'visible';
             }
-            // sageata dreapta, dispare daca suntem la ultima recenzie:
             if (index === (slideuri.length - 1)) {
                 btnDreapta.style.visibility = 'hidden';
             } else {
